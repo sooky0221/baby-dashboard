@@ -345,6 +345,92 @@
   .note li{margin:3px 0}
   .disc{margin-top:32px;font-size:10.5px;color:#a99d97;line-height:1.7;border-top:1px dashed #eadcd5;padding-top:14px}
   .disc b{color:#8d807a}
+  .disc a{color:#c9764f;font-weight:700;text-decoration:none;border-bottom:1px solid #f0c3b0}
+
+  /* ---------- 내 구매 기록 ---------- */
+  .mb{grid-column:2 / -1;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px}
+  .mb-k{font-size:9px;font-weight:800;letter-spacing:.05em;color:#b3a6a0;background:#f7f1ed;border-radius:5px;padding:1px 5px;white-space:nowrap}
+  .mb-n,.mb-p{font:inherit;font-size:11px;font-weight:700;color:var(--ink);background:#fffdfb;border:1px solid #e9dcd4;border-radius:8px;padding:5px 8px;min-height:30px}
+  .mb-n{flex:1 1 140px;min-width:0;max-width:260px}
+  .mb-p{width:98px;text-align:right}
+  .mb-n::placeholder,.mb-p::placeholder{font-weight:600;color:#c0b4ae}
+  .mb-n:focus,.mb-p:focus{outline:none;border-color:#f0ac8e;box-shadow:0 0 0 3px rgba(242,143,110,.14)}
+  .mb-p::-webkit-outer-spin-button,.mb-p::-webkit-inner-spin-button,
+  .lv-in[type="number"]::-webkit-outer-spin-button,.lv-in[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .mb-p,.lv-in[type="number"]{-moz-appearance:textfield;appearance:textfield}
+  .mb-w{font-size:10px;font-weight:700;color:var(--ink3);margin-left:-3px}
+  .mb-b{font-size:9.5px;font-weight:800;border-radius:6px;padding:2px 7px;white-space:nowrap}
+  .mb-b.save{background:#e4f5ee;color:#2f7d63}
+  .mb-b.same{background:#e9f0fa;color:#4a6f9e}
+  .mb-b.over{background:#ffe6ec;color:#c0506c}
+
+  .sb-my{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:3px 8px;align-items:baseline;font-size:11px;font-weight:700;color:#4c8f76;border-top:1px dashed #d5ece1;padding-top:5px;margin-top:2px}
+  .sb-my[hidden]{display:none}
+  .sb-my b{font-size:12.5px;font-weight:800;color:#24594a}
+  .sb-my b.save{color:#2f7d63}
+  .sb-my b.over{color:#c0506c}
+
+  /* ---------- 육아휴직 계산기 ---------- */
+  .lv-form{display:grid;gap:14px;grid-template-columns:1fr;margin-bottom:18px}
+  @media(min-width:760px){ .lv-form{grid-template-columns:1fr 1fr} }
+  .lv-f{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .lv-lab{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--ink3)}
+  .lv-payrow{display:flex;align-items:center;gap:7px}
+  .lv-in{font:inherit;font-size:15px;font-weight:800;color:var(--ink);background:#fff;border:1px solid #e9dcd4;border-radius:11px;padding:9px 11px;width:100%;min-height:42px}
+  .lv-in:focus{outline:none;border-color:#f0ac8e;box-shadow:0 0 0 3px rgba(242,143,110,.16)}
+  .lv-unit{font-size:11.5px;font-weight:700;color:var(--ink3);white-space:nowrap}
+  .lv-q{display:flex;gap:5px;flex-wrap:wrap}
+  .lv-q button{font:inherit;font-size:11px;font-weight:800;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:8px;padding:5px 9px;cursor:pointer}
+  .lv-q button:hover{border-color:#e6b9a5;color:#c9764f}
+  .lv-q button[aria-pressed="true"]{background:linear-gradient(135deg,#f9b295,#ec7f5f);border-color:#ec7f5f;color:#fff}
+  .lv-seg{display:flex;gap:5px;flex-wrap:wrap}
+  .lv-seg button{font:inherit;font-size:11.5px;font-weight:800;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:9px;padding:8px 11px;cursor:pointer;line-height:1.25}
+  .lv-seg button[aria-pressed="true"]{background:linear-gradient(135deg,#f9b295,#ec7f5f);border-color:#ec7f5f;color:#fff;box-shadow:0 8px 18px -12px rgba(236,127,95,.9)}
+  .lv-months{display:flex;align-items:center;gap:6px}
+  .lv-months input{width:78px;text-align:center}
+  .lv-months button{width:36px;height:42px;font:inherit;font-size:17px;font-weight:800;color:#c9764f;background:#fff;border:1px solid var(--line2);border-radius:10px;cursor:pointer}
+  .lv-months button:hover{border-color:#f0c3b0;background:#fff6f1}
+  .lv-auto{font:inherit;font-size:11px;font-weight:800;color:#c9764f;background:#fff3ec;border:1px dashed #f0c3b0;border-radius:10px;padding:8px 10px;cursor:pointer;text-align:left;line-height:1.4}
+  .lv-auto:hover{background:#ffe9dd}
+  .lv-cards{display:grid;gap:10px;grid-template-columns:1fr}
+  @media(min-width:640px){ .lv-cards{grid-template-columns:1fr 1fr 1fr} }
+  .lv-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 14px;box-shadow:var(--shadow);min-width:0}
+  .lv-card.main{background:linear-gradient(135deg,#fff6f1,#fff);border-color:#f6ddd0}
+  .lv-k{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--ink3)}
+  .lv-v{font-size:clamp(19px,4.4vw,25px);font-weight:800;letter-spacing:-.02em;color:#48383a;margin-top:3px;white-space:nowrap}
+  .lv-v span{font-size:12px;font-weight:700;color:var(--ink2);margin-left:3px;letter-spacing:0}
+  .lv-v.lv-vd{font-size:clamp(15px,3.2vw,18px);white-space:normal}
+  .lv-s{font-size:10.5px;color:var(--ink3);margin-top:3px;line-height:1.45}
+  .lv-table{margin-top:16px;border-top:1px solid var(--line)}
+  .ltr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px 8px;padding:9px 2px;border-bottom:1px solid #faf3ef;align-items:baseline}
+  .ltr.h{display:none}
+  .lc{min-width:0}
+  .lc-m{grid-column:1 / -1}
+  .lc-m b{font-size:12px;font-weight:800;display:block;letter-spacing:-.01em}
+  .lc-m small{font-size:9.5px;color:var(--ink3);display:block;margin-top:1px}
+  .lc-b{grid-column:1 / 3;grid-row:2;font-size:11px;font-weight:700;color:var(--ink2)}
+  .lc-r{grid-column:1;grid-row:3;font-size:10.5px;font-weight:700;color:var(--ink3)}
+  .lc-c{grid-column:2;grid-row:3;font-size:10.5px;font-weight:700;color:var(--ink3)}
+  .lc-a{grid-column:3;grid-row:2;font-size:13px;font-weight:800;letter-spacing:-.01em;color:#48383a;text-align:right}
+  .lc-u{grid-column:3;grid-row:3;font-size:10.5px;font-weight:700;color:var(--ink3);text-align:right}
+  .lc-r::before,.lc-c::before,.lc-u::before{content:attr(data-l) " ";font-weight:600;color:#bdb2ac}
+  @media(min-width:760px){
+    .ltr{grid-template-columns:96px 1fr 58px 96px 118px 122px;gap:10px}
+    .ltr.h{display:grid;font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--ink3);padding:0 2px 7px;border-bottom:1px solid var(--line2)}
+    .lc-m{grid-column:1;grid-row:auto}
+    .lc-b{grid-column:2;grid-row:auto}
+    .lc-r{grid-column:3;grid-row:auto;text-align:right}
+    .lc-c{grid-column:4;grid-row:auto;text-align:right}
+    .lc-a{grid-column:5;grid-row:auto}
+    .lc-u{grid-column:6;grid-row:auto}
+    .lc-r::before,.lc-c::before,.lc-u::before{content:none}
+  }
+  .lv-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+  .lv-reset{font:inherit;font-size:11px;font-weight:700;color:#9c8f88;background:#fff;border:1px solid #e6dcd5;border-radius:9px;padding:7px 11px;cursor:pointer}
+  .lv-reset:hover{color:#c9764f;border-color:#f0c3b0}
+  .lv-msg{font-size:11px;font-weight:800;color:#3f9878}
+  .lv-birth{margin-top:14px;font-size:11px;line-height:1.7;color:var(--ink2);background:#fffaf4;border:1px solid #f6e7d9;border-radius:12px;padding:10px 12px}
+  .lv-birth b{color:#b9613f}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .noscript{flex-basis:100%;font-size:10.5px;line-height:1.6;color:#8d7f79;background:#fff8f2;border:1px dashed #f0d8ca;border-radius:10px;padding:6px 10px}
   .noscript b{color:#b9613f}
@@ -360,7 +446,7 @@
       <div class="hero-title"><span aria-hidden="true">🌸</span> <span id="heroTitleText">수영 님의 임신·육아 준비</span></div>
       <div class="hero-sub" id="todayLine">기준일 2026-11-25 (수) · 저장은 이 브라우저에만</div>
       <button class="hero-gear" id="settingsToggle" type="button" aria-expanded="false" aria-controls="settingsPanel">⚙️ 내 정보 설정</button>
-      <noscript><div class="noscript"><b>미리보기 모드</b> — JavaScript 없이 그려진 화면입니다. 그래프·표·체크리스트는 모두 그대로 보이고, 체크·필터·자동 저장과 <b>이름·출산예정일 바꾸기</b>는 동작하지 않습니다. 기준일(D-day·주수)은 이 파일을 만든 <b>2026-11-25</b> 기준입니다.</div></noscript>
+      <noscript><div class="noscript"><b>미리보기 모드</b> — JavaScript 없이 그려진 화면입니다. 그래프·표·체크리스트·계산기 결과는 모두 그대로 보이고, 체크·필터·자동 저장과 <b>이름·출산예정일 바꾸기</b>, <b>계산기 입력·내 구매 기록</b>은 동작하지 않습니다. 기준일(D-day·주수)은 이 파일을 만든 <b>2026-11-25</b> 기준입니다.</div></noscript>
     </div>
 
     <div class="settings" id="settingsPanel" hidden>
@@ -638,17 +724,18 @@
       <div class="panel-h">
         <div class="panel-t">구매 체크리스트 <span>체크한 품목의 최저가 합계가 자동 계산됩니다</span></div>
       </div>
-      <p class="panel-d">최저가 채널 뱃지가 붙은 곳이 그 품목에서 더 싼 채널입니다 · 쿠팡 미확인/네이버 미조사 칸은 비워 두었습니다 · 각 행의 <b>초록 버튼</b>을 누르면 그 품목 최저가 상품이 새 창으로 열립니다(네이버가 최저인 품목은 네이버쇼핑 최저가 목록으로 연결).</p>
+      <p class="panel-d">최저가 채널 뱃지가 붙은 곳이 그 품목에서 더 싼 채널입니다 · 쿠팡 미확인/네이버 미조사 칸은 비워 두었습니다 · 각 행의 <b>초록 버튼</b>을 누르면 그 품목 최저가 상품이 새 창으로 열립니다(네이버가 최저인 품목은 네이버쇼핑 최저가 목록으로 연결). 각 행의 <b>내 구매</b> 칸에 실제로 산 제품명과 가격을 적으면 최저가와 얼마나 차이 나는지 바로 비교해 드립니다.</p>
       <div class="sum-bar" id="sumBar" role="status" aria-live="polite">
         <div class="sum-bar-l"><b id="sbC">0개 선택</b><span class="sb-sep">·</span> 합계 <b id="sbV">0원</b></div>
         <div class="sum-bar-r muted" id="sbSW">절약 <b id="sbS">0원</b></div>
+        <div class="sb-my" id="sbMy" hidden>내 실구매 <b id="sbMyV">0원</b> · 최저가 대비 <b id="sbMyD">0원</b></div>
         <div class="sb-track"><i id="sbP"></i></div>
       </div>
       <div class="table" id="table">
         <div class="tr h">
           <div></div><div>품목 · 대표 제품</div><div>쿠팡</div><div>네이버 (배송비 포함)</div><div>최저가</div>
         </div>
-        <div id="rows"><div class="tr" data-row="g1"><input class="gcheck" type="checkbox" data-good="g1" aria-label="기저귀 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">기저귀</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div><div class="gd-note">네이버는 최저 표시가 17,900원(배송 3,000원)이지만 네이버의 '배송비포함 혜택가'가 19,380원(무료배송 판매처 기준)이라 쿠팡 19,310원과 70원 차이입니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">19,310원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">19,380원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8409449109?itemId=29319327796&amp;vendorItemId=96234192010" target="_blank" rel="noopener noreferrer" aria-label="기저귀 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g2"><input class="gcheck" type="checkbox" data-good="g2" aria-label="물티슈 10팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 10팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div><div class="gd-note">10팩은 양쪽 동일가(1매 35원). 20팩은 네이버가 16,990원 저렴하니 20팩으로 사는 편이 낫습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/6532149469?itemId=6922145055&amp;vendorItemId=3096887843" target="_blank" rel="noopener noreferrer" aria-label="물티슈 10팩 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g3"><input class="gcheck" type="checkbox" data-good="g3" aria-label="물티슈 20팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 20팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div><div class="gd-note">쿠팡 47,980원 vs 네이버 30,990원 — 16,990원 차. 1팩당 1,395원은 최근 저점(10/27주 27,900원) 이후 4주째 유지 중.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">47,980원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">30,990원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EB%B2%A0%EC%88%B2+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+%EC%9C%84%EB%93%9C%EB%B8%94%EB%A3%A8+%EB%AC%BC%ED%8B%B0%EC%8A%88+%EC%BA%A1%ED%98%95+70%EB%A7%A4+20%ED%8C%A9" target="_blank" rel="noopener noreferrer" aria-label="물티슈 20팩 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g4"><input class="gcheck" type="checkbox" data-good="g4" aria-label="분유 1단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 1단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div><div class="gd-note">쿠팡 1캔 21,570원으로 어제(22,000원)보다 430원 내렸고, 네이버 배송비포함 혜택가 22,000원보다 430원 쌉니다. 쿠팡은 2캔 41,130원(개당 20,565원), 3캔 61,690원이 캔당 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">21,570원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">22,000원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534" target="_blank" rel="noopener noreferrer" aria-label="분유 1단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g5"><input class="gcheck" type="checkbox" data-good="g5" aria-label="젖병 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div><div class="gd-note">트윈팩(젖병2+젖꼭지2입) 동일가. 젖병만 2개로 사면 쿠팡 34,500원 / 네이버 34,490원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8342841236?itemId=18936774672&amp;vendorItemId=88914450359" target="_blank" rel="noopener noreferrer" aria-label="젖병 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g6"><input class="gcheck" type="checkbox" data-good="g6" aria-label="젖병소독기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병소독기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">유팡 시그니처2 플러스 UP920A 28L</div><div class="gd-note">쿠팡 334,000원은 정가 448,000원의 25% 쿠폰가 — 다나와 최저 347,990원보다도 낮습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8438035154?itemId=24425263488&amp;vendorItemId=94963937041" target="_blank" rel="noopener noreferrer" aria-label="젖병소독기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g7"><input class="gcheck" type="checkbox" data-good="g7" aria-label="유축기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">유축기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">스펙트라 s2+ 전동식 싱글유축기 세트</div><div class="gd-note">동일가(네이버 최저 판매처가 쿠팡). S2 Pro는 165,000원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/29162999?itemId=111414136&amp;vendorItemId=3452585644" target="_blank" rel="noopener noreferrer" aria-label="유축기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g8"><input class="gcheck" type="checkbox" data-good="g8" aria-label="속싸개 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">속싸개</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div><div class="gd-note">동일가. 팔분리형 50/50 슈트 라이트는 네이버 33,800원.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8952492715?itemId=26187938531&amp;vendorItemId=93167381841" target="_blank" rel="noopener noreferrer" aria-label="속싸개 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g9"><input class="gcheck" type="checkbox" data-good="g9" aria-label="쪽쪽이 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">쪽쪽이</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div><div class="gd-note">네이버가 1,350원 저렴. 2세트로 사면 쿠팡 18,900원(개당 9,450원)이 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">14,550원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">13,200원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%EB%B2%A4%ED%8A%B8+%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90%EC%96%B4+%EC%95%BC%EA%B4%91+%EB%85%B8%EB%A6%AC%EA%B0%9C+SCF376+2%EC%A2%85+%EC%84%B8%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="쪽쪽이 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g10"><input class="gcheck" type="checkbox" data-good="g10" aria-label="바운서 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">바운서</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">베이비뵨 바운서 블리스 메쉬</div><div class="gd-note">베이비뵨 공식 302,000원(정가 310,000원 쿠폰가, 리뷰 4.93/858). 쿠팡에는 '바운서 메쉬 정품' 일본내수·병행 상품만 있어(108,000원+배송 50,000원 등) 정품 동일 모델 가격으로 확정하지 않았습니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price win">302,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC" target="_blank" rel="noopener noreferrer" aria-label="바운서 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g11"><input class="gcheck" type="checkbox" data-good="g11" aria-label="하이체어 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">하이체어</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">스토케 트립트랩 하이체어 단품</div><div class="gd-note">쿠팡 220,000원에 배송비 150,000원이 붙어 실결제 370,000원 — 네이버 최저(203,810원+배송 15,000원=218,810원)가 151,190원 저렴합니다. 둘 다 해외구매·병행 성격이 섞여 있어 정품등록·AS 조건을 확인하세요. 스토케 공식은 430,000원.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">370,000원<small>배송비 포함</small></div></div><div class="pcell" data-l="네이버"><div class="price win">218,810원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%8A%A4%ED%86%A0%EC%BC%80+%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9+%ED%95%98%EC%9D%B4%EC%B2%B4%EC%96%B4+%EB%8B%A8%ED%92%88" target="_blank" rel="noopener noreferrer" aria-label="하이체어 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g12"><input class="gcheck" type="checkbox" data-good="g12" aria-label="분유 2단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 2단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div><div class="gd-note">3캔 묶음 기준. 네이버 최저 54,700원(판매처 162)으로 쿠팡과 동일가 — 어제 미조사였던 네이버 가격을 오늘 확인했습니다. 1캔 가격은 미확인.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/7308156780?itemId=11615060339&amp;vendorItemId=78889733722" target="_blank" rel="noopener noreferrer" aria-label="분유 2단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div></div>
+        <div id="rows"><div class="tr" data-row="g1"><input class="gcheck" type="checkbox" data-good="g1" aria-label="기저귀 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">기저귀</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div><div class="gd-note">네이버는 최저 표시가 17,900원(배송 3,000원)이지만 네이버의 '배송비포함 혜택가'가 19,380원(무료배송 판매처 기준)이라 쿠팡 19,310원과 70원 차이입니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">19,310원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">19,380원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8409449109?itemId=29319327796&amp;vendorItemId=96234192010" target="_blank" rel="noopener noreferrer" aria-label="기저귀 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g1" aria-label="기저귀 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g1" aria-label="기저귀 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g2"><input class="gcheck" type="checkbox" data-good="g2" aria-label="물티슈 10팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 10팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div><div class="gd-note">10팩은 양쪽 동일가(1매 35원). 20팩은 네이버가 16,990원 저렴하니 20팩으로 사는 편이 낫습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/6532149469?itemId=6922145055&amp;vendorItemId=3096887843" target="_blank" rel="noopener noreferrer" aria-label="물티슈 10팩 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g2" aria-label="물티슈 10팩 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g2" aria-label="물티슈 10팩 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g3"><input class="gcheck" type="checkbox" data-good="g3" aria-label="물티슈 20팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 20팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div><div class="gd-note">쿠팡 47,980원 vs 네이버 30,990원 — 16,990원 차. 1팩당 1,395원은 최근 저점(10/27주 27,900원) 이후 4주째 유지 중.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">47,980원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">30,990원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EB%B2%A0%EC%88%B2+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+%EC%9C%84%EB%93%9C%EB%B8%94%EB%A3%A8+%EB%AC%BC%ED%8B%B0%EC%8A%88+%EC%BA%A1%ED%98%95+70%EB%A7%A4+20%ED%8C%A9" target="_blank" rel="noopener noreferrer" aria-label="물티슈 20팩 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g3" aria-label="물티슈 20팩 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g3" aria-label="물티슈 20팩 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g4"><input class="gcheck" type="checkbox" data-good="g4" aria-label="분유 1단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 1단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div><div class="gd-note">쿠팡 1캔 21,570원으로 어제(22,000원)보다 430원 내렸고, 네이버 배송비포함 혜택가 22,000원보다 430원 쌉니다. 쿠팡은 2캔 41,130원(개당 20,565원), 3캔 61,690원이 캔당 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">21,570원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">22,000원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534" target="_blank" rel="noopener noreferrer" aria-label="분유 1단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g4" aria-label="분유 1단계 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g4" aria-label="분유 1단계 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g5"><input class="gcheck" type="checkbox" data-good="g5" aria-label="젖병 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div><div class="gd-note">트윈팩(젖병2+젖꼭지2입) 동일가. 젖병만 2개로 사면 쿠팡 34,500원 / 네이버 34,490원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8342841236?itemId=18936774672&amp;vendorItemId=88914450359" target="_blank" rel="noopener noreferrer" aria-label="젖병 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g5" aria-label="젖병 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g5" aria-label="젖병 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g6"><input class="gcheck" type="checkbox" data-good="g6" aria-label="젖병소독기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병소독기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">유팡 시그니처2 플러스 UP920A 28L</div><div class="gd-note">쿠팡 334,000원은 정가 448,000원의 25% 쿠폰가 — 다나와 최저 347,990원보다도 낮습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8438035154?itemId=24425263488&amp;vendorItemId=94963937041" target="_blank" rel="noopener noreferrer" aria-label="젖병소독기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g6" aria-label="젖병소독기 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g6" aria-label="젖병소독기 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g7"><input class="gcheck" type="checkbox" data-good="g7" aria-label="유축기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">유축기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">스펙트라 s2+ 전동식 싱글유축기 세트</div><div class="gd-note">동일가(네이버 최저 판매처가 쿠팡). S2 Pro는 165,000원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/29162999?itemId=111414136&amp;vendorItemId=3452585644" target="_blank" rel="noopener noreferrer" aria-label="유축기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g7" aria-label="유축기 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g7" aria-label="유축기 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g8"><input class="gcheck" type="checkbox" data-good="g8" aria-label="속싸개 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">속싸개</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div><div class="gd-note">동일가. 팔분리형 50/50 슈트 라이트는 네이버 33,800원.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8952492715?itemId=26187938531&amp;vendorItemId=93167381841" target="_blank" rel="noopener noreferrer" aria-label="속싸개 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g8" aria-label="속싸개 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g8" aria-label="속싸개 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g9"><input class="gcheck" type="checkbox" data-good="g9" aria-label="쪽쪽이 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">쪽쪽이</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div><div class="gd-note">네이버가 1,350원 저렴. 2세트로 사면 쿠팡 18,900원(개당 9,450원)이 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">14,550원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">13,200원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%EB%B2%A4%ED%8A%B8+%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90%EC%96%B4+%EC%95%BC%EA%B4%91+%EB%85%B8%EB%A6%AC%EA%B0%9C+SCF376+2%EC%A2%85+%EC%84%B8%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="쪽쪽이 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g9" aria-label="쪽쪽이 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g9" aria-label="쪽쪽이 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g10"><input class="gcheck" type="checkbox" data-good="g10" aria-label="바운서 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">바운서</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">베이비뵨 바운서 블리스 메쉬</div><div class="gd-note">베이비뵨 공식 302,000원(정가 310,000원 쿠폰가, 리뷰 4.93/858). 쿠팡에는 '바운서 메쉬 정품' 일본내수·병행 상품만 있어(108,000원+배송 50,000원 등) 정품 동일 모델 가격으로 확정하지 않았습니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price win">302,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC" target="_blank" rel="noopener noreferrer" aria-label="바운서 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g10" aria-label="바운서 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g10" aria-label="바운서 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g11"><input class="gcheck" type="checkbox" data-good="g11" aria-label="하이체어 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">하이체어</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">스토케 트립트랩 하이체어 단품</div><div class="gd-note">쿠팡 220,000원에 배송비 150,000원이 붙어 실결제 370,000원 — 네이버 최저(203,810원+배송 15,000원=218,810원)가 151,190원 저렴합니다. 둘 다 해외구매·병행 성격이 섞여 있어 정품등록·AS 조건을 확인하세요. 스토케 공식은 430,000원.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">370,000원<small>배송비 포함</small></div></div><div class="pcell" data-l="네이버"><div class="price win">218,810원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%8A%A4%ED%86%A0%EC%BC%80+%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9+%ED%95%98%EC%9D%B4%EC%B2%B4%EC%96%B4+%EB%8B%A8%ED%92%88" target="_blank" rel="noopener noreferrer" aria-label="하이체어 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g11" aria-label="하이체어 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g11" aria-label="하이체어 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g12"><input class="gcheck" type="checkbox" data-good="g12" aria-label="분유 2단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 2단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div><div class="gd-note">3캔 묶음 기준. 네이버 최저 54,700원(판매처 162)으로 쿠팡과 동일가 — 어제 미조사였던 네이버 가격을 오늘 확인했습니다. 1캔 가격은 미확인.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/7308156780?itemId=11615060339&amp;vendorItemId=78889733722" target="_blank" rel="noopener noreferrer" aria-label="분유 2단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g12" aria-label="분유 2단계 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g12" aria-label="분유 2단계 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div></div>
       </div>
       <div class="total">
         <div>
@@ -677,6 +764,77 @@
     <div class="disc">
       <b>읽어두실 점</b> · 가격은 2026-11-25 08:30 조사 시점 기준이며 쿠폰·카드할인·와우 멤버십 조건에 따라 달라집니다. 주수와 태아 크기는 대표값이라 개인차가 있고 초음파 추정치가 우선합니다. 이 대시보드는 참고용이며 진료를 대신하지 않습니다 — 실제 결정은 다니는 병원 지시가 우선입니다.<br>
       <b>데이터</b> · 임신 4~40주 카드: 질병관리청 국가건강정보포털 · 보건복지부 아이사랑 · 대한산부인과학회 대조 / 가격: 쿠팡 · 네이버쇼핑 · 다나와 실측 (2026-11-25).
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3 ================= -->
+  <section id="sec3">
+    <div class="sec-head">
+      <div>
+        <div class="sec-kick">SECTION 3</div>
+        <h2 class="sec-title">육아휴직 급여 계산기</h2>
+        <p class="sec-desc">월 통상임금과 휴직 기간을 넣으면 <b>월별 수령액·누적액·복직 예정일</b>을 바로 계산합니다. 2025년 1월 1일 이후 시작한 육아휴직 기준(사후지급금 없이 매월 전액 지급)입니다.</p>
+      </div>
+      <div class="sec-note">입력값은 이 브라우저에 자동 저장됩니다 · 2026-11-25 기준 · 고용보험법 시행령 제95조·제95조의3</div>
+    </div>
+    <div class="panel">
+      <div class="lv-form">
+        <div class="lv-f">
+          <label class="lv-lab" for="lvPay">월 통상임금</label>
+          <div class="lv-payrow">
+            <input class="lv-in" id="lvPay" type="number" min="0" max="50000000" step="10000" inputmode="numeric" value="3500000" aria-label="월 통상임금(원)">
+            <span class="lv-unit">원</span>
+          </div>
+          <div class="lv-q" id="lvQuick" role="group" aria-label="통상임금 빠른 선택">
+            <button type="button" data-pay="2500000" aria-pressed="false">250만</button>
+            <button type="button" data-pay="3000000" aria-pressed="false">300만</button>
+            <button type="button" data-pay="3500000" aria-pressed="true">350만</button>
+            <button type="button" data-pay="4000000" aria-pressed="false">400만</button>
+          </div>
+        </div>
+        <div class="lv-f">
+          <span class="lv-lab" id="lvTypeLab">육아휴직 유형</span>
+          <div class="lv-seg" id="lvType" role="group" aria-labelledby="lvTypeLab">
+            <button type="button" data-type="normal" aria-pressed="true">일반 육아휴직</button>
+            <button type="button" data-type="both" aria-pressed="false">6+6 부모육아휴직제</button>
+            <button type="button" data-type="single" aria-pressed="false">한부모 근로자</button>
+          </div>
+          <div class="set-note" style="margin-top:0">6+6은 부모 모두 생후 18개월 안에 시작해야 하고, 함께 쓴 기간만큼 상한이 올라갑니다.</div>
+        </div>
+        <div class="lv-f">
+          <label class="lv-lab" for="lvMonths">휴직 개월 수 (1~18개월)</label>
+          <div class="lv-months">
+            <button type="button" id="lvMinus" aria-label="1개월 줄이기">−</button>
+            <input class="lv-in" id="lvMonths" type="number" min="1" max="18" step="1" inputmode="numeric" value="12" aria-label="휴직 개월 수">
+            <span class="lv-unit">개월</span>
+            <button type="button" id="lvPlus" aria-label="1개월 늘리기">+</button>
+          </div>
+          <div class="set-note" style="margin-top:0">부모 각각 3개월 이상이면 최대 1년 6개월(18개월)까지</div>
+        </div>
+        <div class="lv-f">
+          <label class="lv-lab" for="lvStart">육아휴직 시작일</label>
+          <input class="lv-in" id="lvStart" type="date" min="2020-01-01" max="2035-12-31" value="2027-04-22" aria-label="육아휴직 시작일">
+          <button class="lv-auto" type="button" id="lvAuto">🍼 출산예정일 기준 출산휴가(90일) 직후로 맞추기</button>
+        </div>
+      </div>
+
+      <div class="lv-cards" id="lvCards"><div class="lv-card main"><div class="lv-k">예상 총 수령액</div><div class="lv-v">23,100,000<span>원</span></div><div class="lv-s">12개월 · 일반 육아휴직</div></div><div class="lv-card"><div class="lv-k">월 평균 수령액</div><div class="lv-v">1,925,000<span>원</span></div><div class="lv-s">총 수령액 ÷ 12개월</div></div><div class="lv-card"><div class="lv-k">복직 예정일</div><div class="lv-v lv-vd">2028-04-22 (토)</div><div class="lv-s">04-22 시작 · 12개월</div></div></div>
+      <div class="lv-birth" id="lvBirthNote"><b>출산전후휴가 90일(단태아)</b>은 출산 후 45일 이상이 남도록 배정합니다 — 예정일 기준 <b>2027-01-22 (금) ~ 2027-04-21 (수)</b>, 육아휴직은 그다음 날 <b>2027-04-22 (목)</b>부터 시작할 수 있습니다. (출산일이 예정일과 달라지면 휴가 끝나는 날도 함께 밀립니다)</div>
+
+      <div class="lv-table">
+        <div class="ltr h"><div>개월차</div><div>적용 구간</div><div>지급률</div><div>월 상한</div><div>월 수령액</div><div>누적액</div></div>
+        <div id="lvRows"><div class="ltr" data-m="1"><div class="lc lc-m"><b>1개월차</b><small>04-22~05-21</small></div><div class="lc lc-b" data-l="적용 구간">1~3개월</div><div class="lc lc-r" data-l="지급률">100%</div><div class="lc lc-c" data-l="월 상한">250만원</div><div class="lc lc-a" data-l="월 수령액">2,500,000원</div><div class="lc lc-u" data-l="누적">2,500,000원</div></div><div class="ltr" data-m="2"><div class="lc lc-m"><b>2개월차</b><small>05-22~06-21</small></div><div class="lc lc-b" data-l="적용 구간">1~3개월</div><div class="lc lc-r" data-l="지급률">100%</div><div class="lc lc-c" data-l="월 상한">250만원</div><div class="lc lc-a" data-l="월 수령액">2,500,000원</div><div class="lc lc-u" data-l="누적">5,000,000원</div></div><div class="ltr" data-m="3"><div class="lc lc-m"><b>3개월차</b><small>06-22~07-21</small></div><div class="lc lc-b" data-l="적용 구간">1~3개월</div><div class="lc lc-r" data-l="지급률">100%</div><div class="lc lc-c" data-l="월 상한">250만원</div><div class="lc lc-a" data-l="월 수령액">2,500,000원</div><div class="lc lc-u" data-l="누적">7,500,000원</div></div><div class="ltr" data-m="4"><div class="lc lc-m"><b>4개월차</b><small>07-22~08-21</small></div><div class="lc lc-b" data-l="적용 구간">4~6개월</div><div class="lc lc-r" data-l="지급률">100%</div><div class="lc lc-c" data-l="월 상한">200만원</div><div class="lc lc-a" data-l="월 수령액">2,000,000원</div><div class="lc lc-u" data-l="누적">9,500,000원</div></div><div class="ltr" data-m="5"><div class="lc lc-m"><b>5개월차</b><small>08-22~09-21</small></div><div class="lc lc-b" data-l="적용 구간">4~6개월</div><div class="lc lc-r" data-l="지급률">100%</div><div class="lc lc-c" data-l="월 상한">200만원</div><div class="lc lc-a" data-l="월 수령액">2,000,000원</div><div class="lc lc-u" data-l="누적">11,500,000원</div></div><div class="ltr" data-m="6"><div class="lc lc-m"><b>6개월차</b><small>09-22~10-21</small></div><div class="lc lc-b" data-l="적용 구간">4~6개월</div><div class="lc lc-r" data-l="지급률">100%</div><div class="lc lc-c" data-l="월 상한">200만원</div><div class="lc lc-a" data-l="월 수령액">2,000,000원</div><div class="lc lc-u" data-l="누적">13,500,000원</div></div><div class="ltr" data-m="7"><div class="lc lc-m"><b>7개월차</b><small>10-22~11-21</small></div><div class="lc lc-b" data-l="적용 구간">7개월 이후</div><div class="lc lc-r" data-l="지급률">80%</div><div class="lc lc-c" data-l="월 상한">160만원</div><div class="lc lc-a" data-l="월 수령액">1,600,000원</div><div class="lc lc-u" data-l="누적">15,100,000원</div></div><div class="ltr" data-m="8"><div class="lc lc-m"><b>8개월차</b><small>11-22~12-21</small></div><div class="lc lc-b" data-l="적용 구간">7개월 이후</div><div class="lc lc-r" data-l="지급률">80%</div><div class="lc lc-c" data-l="월 상한">160만원</div><div class="lc lc-a" data-l="월 수령액">1,600,000원</div><div class="lc lc-u" data-l="누적">16,700,000원</div></div><div class="ltr" data-m="9"><div class="lc lc-m"><b>9개월차</b><small>12-22~01-21</small></div><div class="lc lc-b" data-l="적용 구간">7개월 이후</div><div class="lc lc-r" data-l="지급률">80%</div><div class="lc lc-c" data-l="월 상한">160만원</div><div class="lc lc-a" data-l="월 수령액">1,600,000원</div><div class="lc lc-u" data-l="누적">18,300,000원</div></div><div class="ltr" data-m="10"><div class="lc lc-m"><b>10개월차</b><small>01-22~02-21</small></div><div class="lc lc-b" data-l="적용 구간">7개월 이후</div><div class="lc lc-r" data-l="지급률">80%</div><div class="lc lc-c" data-l="월 상한">160만원</div><div class="lc lc-a" data-l="월 수령액">1,600,000원</div><div class="lc lc-u" data-l="누적">19,900,000원</div></div><div class="ltr" data-m="11"><div class="lc lc-m"><b>11개월차</b><small>02-22~03-21</small></div><div class="lc lc-b" data-l="적용 구간">7개월 이후</div><div class="lc lc-r" data-l="지급률">80%</div><div class="lc lc-c" data-l="월 상한">160만원</div><div class="lc lc-a" data-l="월 수령액">1,600,000원</div><div class="lc lc-u" data-l="누적">21,500,000원</div></div><div class="ltr" data-m="12"><div class="lc lc-m"><b>12개월차</b><small>03-22~04-21</small></div><div class="lc lc-b" data-l="적용 구간">7개월 이후</div><div class="lc lc-r" data-l="지급률">80%</div><div class="lc lc-c" data-l="월 상한">160만원</div><div class="lc lc-a" data-l="월 수령액">1,600,000원</div><div class="lc lc-u" data-l="누적">23,100,000원</div></div></div>
+      </div>
+
+      <div class="lv-foot">
+        <button class="lv-reset" id="lvReset" type="button">계산기 입력 초기화</button>
+        <span class="lv-msg" id="lvMsg"></span>
+      </div>
+      <ul class="note" id="lvNotes" style="margin:14px 0 0;padding-left:16px"><li>부모가 각각 3개월 이상 육아휴직을 쓰면 한 명당 최대 1년 6개월까지 급여를 받을 수 있습니다(한부모·중증장애아동 부모도 1년 6개월).</li><li>2025-01-01 이후 시작한 육아휴직은 사후지급금(급여의 25%를 복직 후에 주는 제도)이 폐지되어 매월 전액 지급됩니다.</li><li>육아휴직급여는 비과세입니다(소득세법 제12조제3호마목).</li><li>지급률·상한·하한은 2026-11-25 기준 · 고용보험법 시행령 제95조·제95조의3입니다. 2027년 상한 인상은 아직 확정된 바 없어 현행 기준으로 계산합니다.</li><li>실제 수령액은 휴직 시작일의 통상임금과 피보험단위기간 180일 충족 여부, 신청 시점에 따라 달라질 수 있습니다 — 고용24 모의계산으로 다시 확인해 보세요.</li></ul>
+    </div>
+
+    <div class="disc">
+      <b>근거</b> · 고용보험법 시행령 제95조(육아휴직 급여)·제95조의3(부모함께·한부모 특례) [시행 2026. 9. 18.] · 근로기준법 제74조(출산전후휴가 단태아 90일, 출산 후 45일 이상) · 소득세법 제12조제3호마목(비과세). 2025-01-01 이후 시작한 육아휴직은 사후지급금이 폐지되어 매월 전액 지급됩니다. 2027년 상한 인상은 확정된 바 없습니다. 계산 결과는 참고용이며 실제 지급액은 고용센터 심사로 정해집니다 — <a href="https://www.work24.go.kr/cm/c/f/11000/selecSimulate12.do?systId=SI00000402" target="_blank" rel="noopener noreferrer">고용24 모의계산</a>.
     </div>
   </section>
 </div>
@@ -957,8 +1115,22 @@
   var DAY = 86400000;
   var STORE = "soo-baby-dashboard-v1";
 
+  /* 육아휴직 계산기 기본값·법령 상수 (고용보험법 시행령 제95조·제95조의3) */
+  var LEAVE_DEFAULT = {"pay": 3500000, "type": "normal", "months": 12, "start": "2027-04-22"};
+  var LV_TYPES = [["normal", "일반 육아휴직"], ["both", "6+6 부모육아휴직제"], ["single", "한부모 근로자"]];
+  var LV_TYPE_NAME = {};
+  LV_TYPES.forEach(function(x){ LV_TYPE_NAME[x[0]] = x[1]; });
+  var LV_NOTE = {"normal": ["부모가 각각 3개월 이상 육아휴직을 쓰면 한 명당 최대 1년 6개월까지 급여를 받을 수 있습니다(한부모·중증장애아동 부모도 1년 6개월).", "2025-01-01 이후 시작한 육아휴직은 사후지급금(급여의 25%를 복직 후에 주는 제도)이 폐지되어 매월 전액 지급됩니다.", "육아휴직급여는 비과세입니다(소득세법 제12조제3호마목).", "지급률·상한·하한은 2026-11-25 기준 · 고용보험법 시행령 제95조·제95조의3입니다. 2027년 상한 인상은 아직 확정된 바 없어 현행 기준으로 계산합니다.", "실제 수령액은 휴직 시작일의 통상임금과 피보험단위기간 180일 충족 여부, 신청 시점에 따라 달라질 수 있습니다 — 고용24 모의계산으로 다시 확인해 보세요."], "both": ["6+6은 부모 모두 자녀 생후 18개월 안에 육아휴직을 시작해야 하고, 부모가 함께 쓴 기간만큼만 상한이 올라갑니다. 위 금액은 배우자도 같은 기간 이상 썼다고 가정한 값입니다.", "2025-01-01 이후 시작한 육아휴직은 사후지급금(급여의 25%를 복직 후에 주는 제도)이 폐지되어 매월 전액 지급됩니다.", "육아휴직급여는 비과세입니다(소득세법 제12조제3호마목).", "지급률·상한·하한은 2026-11-25 기준 · 고용보험법 시행령 제95조·제95조의3입니다. 2027년 상한 인상은 아직 확정된 바 없어 현행 기준으로 계산합니다.", "실제 수령액은 휴직 시작일의 통상임금과 피보험단위기간 180일 충족 여부, 신청 시점에 따라 달라질 수 있습니다 — 고용24 모의계산으로 다시 확인해 보세요."], "single": ["한부모 특례는 「한부모가족지원법」 제4조제1호의 모·부만 해당합니다. 첫 3개월 상한 300만원, 이후는 일반과 같습니다.", "2025-01-01 이후 시작한 육아휴직은 사후지급금(급여의 25%를 복직 후에 주는 제도)이 폐지되어 매월 전액 지급됩니다.", "육아휴직급여는 비과세입니다(소득세법 제12조제3호마목).", "지급률·상한·하한은 2026-11-25 기준 · 고용보험법 시행령 제95조·제95조의3입니다. 2027년 상한 인상은 아직 확정된 바 없어 현행 기준으로 계산합니다.", "실제 수령액은 휴직 시작일의 통상임금과 피보험단위기간 180일 충족 여부, 신청 시점에 따라 달라질 수 있습니다 — 고용24 모의계산으로 다시 확인해 보세요."]};
+  var LV_BOTH_CAPS = [2500000, 2500000, 3000000, 3500000, 4000000, 4500000];
+  var LV_FLOOR = 700000;
+  var LV_MAX = 18;
+  var lv = {
+    pay: LEAVE_DEFAULT.pay, type: LEAVE_DEFAULT.type,
+    months: LEAVE_DEFAULT.months, start: LEAVE_DEFAULT.start, auto: true
+  };
+
   /* ---------- state ---------- */
-  var state = { p:{}, g:{} };
+  var state = { p:{}, g:{}, b:{} };
   function loadState(){
     try{
       var raw = localStorage.getItem(STORE);
@@ -967,6 +1139,15 @@
         if(o && typeof o === "object"){
           state.p = (o.p && typeof o.p === "object") ? o.p : {};
           state.g = (o.g && typeof o.g === "object") ? o.g : {};
+          state.b = (o.b && typeof o.b === "object") ? o.b : {};
+          if(o.lv && typeof o.lv === "object"){
+            var L = o.lv;
+            if(typeof L.pay === "number" && L.pay >= 0) lv.pay = Math.round(L.pay);
+            if(L.type === "normal" || L.type === "both" || L.type === "single") lv.type = L.type;
+            if(typeof L.months === "number") lv.months = Math.min(LV_MAX, Math.max(1, Math.round(L.months)));
+            if(validEdd(L.start)) lv.start = L.start;
+            lv.auto = (L.auto === true);
+          }
           if(o.u && typeof o.u === "object"){
             if(o.u.edd && validEdd(o.u.edd)) user.edd = o.u.edd;
             if(typeof o.u.name === "string") user.name = normName(o.u.name);
@@ -974,15 +1155,113 @@
           }
         }
       }
-    }catch(e){ state.p = {}; state.g = {}; }
+    }catch(e){ state.p = {}; state.g = {}; state.b = {}; }
   }
   function saveState(){
-    try{ localStorage.setItem(STORE, JSON.stringify({p:state.p, g:state.g, u:{name:user.name, edd:user.edd}})); }catch(e){}
+    try{ localStorage.setItem(STORE, JSON.stringify({p:state.p, g:state.g, b:state.b, lv:lv, u:{name:user.name, edd:user.edd}})); }catch(e){}
   }
 
   function won(n){ return Number(n).toLocaleString("ko-KR"); }
   function pad(n){ return n < 10 ? "0" + n : String(n); }
   function dparse(s){ var p = String(s).split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function escH(s){
+    return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  /* ---------- 육아휴직 계산 ---------- */
+  function isoD(d){ return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
+  function lvAddMonths(d, n){
+    var y = d.getFullYear(), m = d.getMonth() + n, day = d.getDate();
+    var last = new Date(y, m+1, 0).getDate();
+    return new Date(y, m, Math.min(day, last));
+  }
+  function lvDstr(d){
+    return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()) + " (" + WEEKDAY[d.getDay()] + ")";
+  }
+  function lvMd(d){ return pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
+  function lvMan(n){ return won(n/10000) + "만원"; }
+  function lvBand(kind, m){
+    if(m >= 7) return {rate:80, cap:1600000};
+    if(kind === "both") return {rate:100, cap:LV_BOTH_CAPS[m-1]};
+    if(kind === "single" && m <= 3) return {rate:100, cap:3000000};
+    if(m <= 3) return {rate:100, cap:2500000};
+    return {rate:100, cap:2000000};
+  }
+  function lvBracket(kind, m){
+    if(m >= 7) return "7개월 이후";
+    if(kind === "both") return "6+6 " + m + "개월차";
+    if(kind === "single") return m <= 3 ? "한부모 1~3개월" : "한부모 4~6개월";
+    return m <= 3 ? "1~3개월" : "4~6개월";
+  }
+  function lvCalc(pay, kind, months, startStr){
+    var start = dparse(startStr);
+    var rows = [], cum = 0;
+    for(var m = 1; m <= months; m++){
+      var bd = lvBand(kind, m);
+      var raw = Math.round(pay * bd.rate / 100);
+      var amt = Math.min(Math.max(raw, LV_FLOOR), bd.cap);
+      cum += amt;
+      rows.push({
+        m: m,
+        period: lvMd(lvAddMonths(start, m-1)) + "~" + lvMd(new Date(lvAddMonths(start, m).getTime() - DAY)),
+        bracket: lvBracket(kind, m), rate: bd.rate, cap: bd.cap, amount: amt, cum: cum
+      });
+    }
+    return {
+      rows: rows, total: cum, avg: months ? Math.round(cum/months) : 0,
+      back: lvAddMonths(start, months), pay: pay, type: kind, months: months, start: start
+    };
+  }
+  function lvStartFromEdd(){ return isoD(new Date(EDD_MS + 46*DAY)); }
+
+  function lvCardsHtml(c){
+    return '<div class="lv-card main"><div class="lv-k">예상 총 수령액</div>' +
+        '<div class="lv-v">' + won(c.total) + '<span>원</span></div>' +
+        '<div class="lv-s">' + c.months + '개월 · ' + LV_TYPE_NAME[c.type] + '</div></div>' +
+      '<div class="lv-card"><div class="lv-k">월 평균 수령액</div>' +
+        '<div class="lv-v">' + won(c.avg) + '<span>원</span></div>' +
+        '<div class="lv-s">총 수령액 ÷ ' + c.months + '개월</div></div>' +
+      '<div class="lv-card"><div class="lv-k">복직 예정일</div>' +
+        '<div class="lv-v lv-vd">' + lvDstr(c.back) + '</div>' +
+        '<div class="lv-s">' + lvMd(c.start) + ' 시작 · ' + c.months + '개월</div></div>';
+  }
+  function lvRowsHtml(c){
+    return c.rows.map(function(r){
+      return '<div class="ltr" data-m="' + r.m + '">' +
+        '<div class="lc lc-m"><b>' + r.m + '개월차</b><small>' + escH(r.period) + '</small></div>' +
+        '<div class="lc lc-b" data-l="적용 구간">' + escH(r.bracket) + '</div>' +
+        '<div class="lc lc-r" data-l="지급률">' + r.rate + '%</div>' +
+        '<div class="lc lc-c" data-l="월 상한">' + lvMan(r.cap) + '</div>' +
+        '<div class="lc lc-a" data-l="월 수령액">' + won(r.amount) + '원</div>' +
+        '<div class="lc lc-u" data-l="누적">' + won(r.cum) + '원</div>' +
+      '</div>';
+    }).join("");
+  }
+  function lvBirthHtml(start){
+    var b0 = new Date(EDD_MS - 44*DAY), b1 = new Date(EDD_MS + 45*DAY);
+    return "<b>출산전후휴가 90일(단태아)</b>은 출산 후 45일 이상이 남도록 배정합니다 — 예정일 기준 <b>" +
+      lvDstr(b0) + " ~ " + lvDstr(b1) + "</b>, 육아휴직은 그다음 날 <b>" + lvDstr(start) +
+      "</b>부터 시작할 수 있습니다. (출산일이 예정일과 달라지면 휴가 끝나는 날도 함께 밀립니다)";
+  }
+  function lvNotesHtml(kind){
+    return (LV_NOTE[kind] || []).map(function(x){ return "<li>" + escH(x) + "</li>"; }).join("");
+  }
+  function renderLeave(){
+    var box = document.getElementById("lvCards");
+    if(!box) return;
+    var c = lvCalc(lv.pay, lv.type, lv.months, lv.start);
+    box.innerHTML = lvCardsHtml(c);
+    document.getElementById("lvRows").innerHTML = lvRowsHtml(c);
+    document.getElementById("lvNotes").innerHTML = lvNotesHtml(lv.type);
+    document.getElementById("lvBirthNote").innerHTML = lvBirthHtml(c.start);
+    each("#lvType button[data-type]", function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-type") === lv.type ? "true" : "false");
+    });
+    each("#lvQuick button[data-pay]", function(b){
+      b.setAttribute("aria-pressed", Number(b.getAttribute("data-pay")) === lv.pay ? "true" : "false");
+    });
+  }
 
   /* ---------- 내 정보(이름·출산예정일) ---------- */
   function validEdd(s){
@@ -1010,6 +1289,8 @@
     document.title = heroTitle();
     saveState();
     renderHeader();
+    lvFollowEdd();
+    renderLeave();
   }
 
   /* ---------- header ---------- */
@@ -1120,6 +1401,16 @@
         if(rb) rb.style.display = "";
       }
     }
+  }
+
+  /* 출산예정일을 바꾸면 계산기 시작일도 따라간다(자동 모드일 때만) */
+  function lvFollowEdd(){
+    if(!lv.auto) return;
+    lv.start = lvStartFromEdd();
+    var si = document.getElementById("lvStart");
+    if(si) si.value = lv.start;
+    saveState();
+    renderLeave();
   }
 
   /* ---------- section 1 checkboxes ---------- */
@@ -1280,6 +1571,49 @@
       '<span class="buy-t">' + label + '</span><span class="buy-ch">' + ln.ch + '</span><span class="buy-a">↗</span></a>';
   }
 
+  /* ---------- section 2: 내 구매 기록 ---------- */
+  function buyOf(key){
+    var r = state.b[key];
+    if(!r || typeof r !== "object") return {n:"", p:null};
+    return {
+      n: (typeof r.n === "string") ? r.n : "",
+      p: (typeof r.p === "number" && r.p >= 0) ? r.p : null
+    };
+  }
+  function buyBadgeHtml(g){
+    var rec = buyOf(g.key);
+    if(rec.p == null) return "";
+    var best = bestOf(g);
+    if(best.v == null) return "";
+    var d = rec.p - best.v;
+    if(d < 0) return '<span class="mb-b save">최저가보다 ' + won(-d) + '원 절약 💚</span>';
+    if(d === 0) return '<span class="mb-b same">최저가와 동일</span>';
+    return '<span class="mb-b over">최저가보다 ' + won(d) + '원 더 지출</span>';
+  }
+  function mbHtml(g){
+    var rec = buyOf(g.key);
+    return '<div class="mb">' +
+      '<span class="mb-k">내 구매</span>' +
+      '<input class="mb-n" type="text" data-bn="' + g.key + '" aria-label="' + escH(g.item) +
+        ' 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value="' + escH(rec.n) + '">' +
+      '<input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="' + g.key +
+        '" aria-label="' + escH(g.item) + ' 내 구매 가격(원)" placeholder="실구매가" value="' +
+        (rec.p == null ? "" : rec.p) + '">' +
+      '<span class="mb-w">원</span>' + buyBadgeHtml(g) + '</div>';
+  }
+  function updateBuyBadge(key){
+    var row = document.querySelector('#rows .tr[data-row="' + key + '"]');
+    if(!row) return;
+    var mb = row.querySelector(".mb");
+    if(!mb) return;
+    var old = mb.querySelector(".mb-b");
+    if(old) old.parentNode.removeChild(old);
+    var g = GOODS.filter(function(x){ return x.key === key; })[0];
+    if(!g) return;
+    var h = buyBadgeHtml(g);
+    if(h) mb.insertAdjacentHTML("beforeend", h);
+  }
+
   function renderTable(){
     var list = visible();
     var out = "";
@@ -1311,6 +1645,7 @@
           '<div class="' + nvCls + '">' + nvTxt + (g.nv != null && g.nvShipText ? '<small>' + g.nvShipText + '</small>' : '') + '</div>' +
         '</div>' +
         '<div class="pcell badge-cell buy-cell" data-l="최저가">' + badge + buyHtml(g) + '</div>' +
+        mbHtml(g) +
       '</div>';
     });
     document.getElementById("rows").innerHTML = out;
@@ -1333,6 +1668,32 @@
         renderTotal();
       });
     });
+
+    /* 내 구매 기록 — 입력하는 즉시 저장하고 그 행과 합계만 다시 계산한다 */
+    each("#rows input[data-bn]", function(b){
+      b.addEventListener("input", function(){
+        var k = b.getAttribute("data-bn");
+        var rec = state.b[k] || {};
+        rec.n = b.value;
+        if((rec.n || "") === "" && (typeof rec.p !== "number")) delete state.b[k];
+        else state.b[k] = rec;
+        saveState();
+      });
+    });
+    each("#rows input[data-bp]", function(b){
+      b.addEventListener("input", function(){
+        var k = b.getAttribute("data-bp");
+        var rec = state.b[k] || {};
+        var v = parseInt(b.value, 10);
+        if(b.value === "" || isNaN(v)) delete rec.p;
+        else rec.p = Math.max(0, v);
+        if((rec.n || "") === "" && (typeof rec.p !== "number")) delete state.b[k];
+        else state.b[k] = rec;
+        saveState();
+        updateBuyBadge(k);
+        renderTotal();
+      });
+    });
     renderTotal();
   }
 
@@ -1351,6 +1712,20 @@
 
     document.getElementById("sumV").innerHTML = won(minSum) + '원<small id="sumC">' + picked.length + '개</small>';
 
+    /* 내 구매 기록 — 실구매가를 적은 품목만 따로 합산해 최저가와 비교한다 */
+    var mySum = 0, bestSum = 0, myCount = 0;
+    GOODS.forEach(function(g){
+      var rec = buyOf(g.key);
+      if(rec.p == null) return;
+      var bb = bestOf(g);
+      if(bb.v == null) return;
+      mySum += rec.p; bestSum += bb.v; myCount++;
+    });
+    var myDiff = mySum - bestSum;
+    var myTxt = myDiff === 0 ? "최저가와 동일"
+              : (myDiff < 0 ? won(-myDiff) + "원 절약" : won(myDiff) + "원 더 지출");
+    var myCls = myDiff === 0 ? "" : (myDiff < 0 ? "save" : "over");
+
     /* 표 위 스티키 요약 바 — 체크하면 바로 바뀐다 */
     var sbC = document.getElementById("sbC");
     var sbV = document.getElementById("sbV");
@@ -1363,6 +1738,17 @@
     if(sbSW) sbSW.className = "sum-bar-r" + (picked.length ? "" : " muted");
     if(sbP) sbP.style.width = (GOODS.length ? Math.round(picked.length*100/GOODS.length) : 0) + "%";
 
+    var sbMy = document.getElementById("sbMy");
+    if(sbMy){
+      if(myCount){
+        sbMy.removeAttribute("hidden");
+        sbMy.innerHTML = '내 실구매 <b id="sbMyV">' + won(mySum) + '원</b> (' + myCount + '개) · 최저가 대비 <b id="sbMyD" class="' + myCls + '">' + myTxt + '</b>';
+      }else{
+        sbMy.setAttribute("hidden", "");
+        sbMy.innerHTML = '내 실구매 <b id="sbMyV">0원</b> · 최저가 대비 <b id="sbMyD">0원</b>';
+      }
+    }
+
     var allMin = GOODS.reduce(function(a,g){ var b = bestOf(g); return a + (b.v == null ? 0 : b.v); }, 0);
     var lines = [];
     if(!picked.length){
@@ -1370,6 +1756,9 @@
     }else{
       lines.push("최저가 기준 합계입니다 · 쿠팡에서만 살 때 " + won(cpSum) + "원, 네이버에서만 살 때 " + won(nvSum) + "원입니다.");
       lines.push("두 곳 중 <b>비싼 쪽으로 샀을 때보다 " + won(saving) + "원 절약</b>했습니다.");
+    }
+    if(myCount){
+      lines.push("내 실구매 합계 <b>" + won(mySum) + "원</b> (" + myCount + "개) · 최저가 대비 <b>" + myTxt + "</b>");
     }
     lines.push("참고 · " + GOODS.length + "개 항목을 모두 최저가로 사면 " + won(allMin) + "원");
     document.getElementById("sumN").innerHTML = lines.join("<br>");
@@ -1811,6 +2200,80 @@ null,
     if(fromUrl) saveState();
   }
 
+  /* ---------- 육아휴직 계산기 입력 ---------- */
+  function initLeave(){
+    var payEl = document.getElementById("lvPay");
+    var monEl = document.getElementById("lvMonths");
+    var stEl = document.getElementById("lvStart");
+    var msg = document.getElementById("lvMsg");
+    function say(t){ if(msg) msg.textContent = t || ""; }
+    function sync(){
+      if(payEl) payEl.value = lv.pay;
+      if(monEl) monEl.value = lv.months;
+      if(stEl) stEl.value = lv.start;
+    }
+    function commit(){ saveState(); renderLeave(); }
+    function setMonths(v){
+      lv.months = Math.min(LV_MAX, Math.max(1, v));
+      if(monEl) monEl.value = lv.months;
+      commit();
+    }
+
+    if(payEl){
+      payEl.addEventListener("input", function(){
+        var v = parseInt(payEl.value, 10);
+        if(isNaN(v) || v < 0) return;
+        lv.pay = Math.min(v, 50000000);
+        commit();
+      });
+      payEl.addEventListener("blur", function(){ payEl.value = lv.pay; });
+    }
+    each("#lvQuick button[data-pay]", function(b){
+      b.addEventListener("click", function(){
+        lv.pay = Number(b.getAttribute("data-pay"));
+        sync(); commit();
+        say("통상임금 " + (lv.pay/10000) + "만원으로 계산했어요");
+      });
+    });
+    each("#lvType button[data-type]", function(b){
+      b.addEventListener("click", function(){
+        lv.type = b.getAttribute("data-type");
+        commit(); say("");
+      });
+    });
+    if(monEl){
+      monEl.addEventListener("input", function(){
+        var v = parseInt(monEl.value, 10);
+        if(isNaN(v)) return;
+        setMonths(v);
+      });
+      monEl.addEventListener("blur", function(){ monEl.value = lv.months; });
+    }
+    var mi = document.getElementById("lvMinus"), pl = document.getElementById("lvPlus");
+    if(mi) mi.addEventListener("click", function(){ setMonths(lv.months - 1); });
+    if(pl) pl.addEventListener("click", function(){ setMonths(lv.months + 1); });
+    if(stEl){
+      stEl.addEventListener("change", function(){
+        if(validEdd(stEl.value)){ lv.start = stEl.value; lv.auto = false; commit(); say(""); }
+        else { stEl.value = lv.start; }
+      });
+    }
+    var auto = document.getElementById("lvAuto");
+    if(auto) auto.addEventListener("click", function(){
+      lv.start = lvStartFromEdd(); lv.auto = true;
+      sync(); commit(); say("출산예정일 기준으로 맞췄어요");
+    });
+    var rs = document.getElementById("lvReset");
+    if(rs) rs.addEventListener("click", function(){
+      lv.pay = LEAVE_DEFAULT.pay; lv.type = LEAVE_DEFAULT.type; lv.months = LEAVE_DEFAULT.months;
+      lv.start = lvStartFromEdd(); lv.auto = true;
+      sync(); commit(); say("기본값으로 되돌렸어요");
+    });
+
+    sync();
+    renderLeave();
+  }
+
   /* ---------- reset ---------- */
   function initReset(){
     document.getElementById("resetBtn").addEventListener("click", function(){
@@ -1834,6 +2297,7 @@ null,
   renderTable();
   renderTrend();
   initTrendToggle();
+  initLeave();
   initReset();
 })();
 </script>
