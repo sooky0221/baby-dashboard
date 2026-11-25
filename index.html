@@ -178,8 +178,11 @@
   .t-선택{background:#eae6fb;color:#6f63c2}
   .t-주의{background:#fff1cf;color:#a97d22}
   .t-조건부{background:#e5e5ea;color:#6b6771}
+  .sel{display:inline-block;font-size:8px;font-weight:800;line-height:1.5;color:#a99d97;background:#f5f1ee;border-radius:4px;padding:0 3.5px;margin-left:2px;vertical-align:1.5px;letter-spacing:.01em}
   .stage-foot{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:9.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:7px;margin-top:auto}
   .stage-foot b{color:var(--ink2);font-weight:800}
+  .stage-foot .sf-r{display:inline-flex;align-items:baseline;gap:4px;white-space:nowrap}
+  .stage-foot .sf-r i{font-style:normal;font-size:9px;font-weight:700;color:#bcb0ab}
 
   /* ---------- goods controls ---------- */
   .controls-wrap{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
@@ -525,11 +528,11 @@
     <div class="progs">
       <div class="prog-card">
         <div class="prog-head">
-          <div class="prog-k">검진 · 영양제 체크</div>
+          <div class="prog-k">검진 · 영양제 체크 <span style="font-weight:600;color:#b7aba6">필수 기준</span></div>
           <div class="prog-v" id="pvA">0%</div>
         </div>
         <div class="prog"><i id="pbarA"></i></div>
-        <div class="prog-f" id="pfA">0 / 71 항목 · 아래 카드에서 체크하면 자동 저장됩니다</div>
+        <div class="prog-f" id="pfA">필수 0 / 34 완료 (0%) · 아래 카드에서 체크하면 자동 저장됩니다</div>
       </div>
       <div class="prog-card">
         <div class="prog-head">
@@ -551,8 +554,9 @@
         <div class="sec-kick">SECTION 1</div>
         <h2 class="sec-title">임신 4~40주 카드뉴스</h2>
         <p class="sec-desc">8개 구간으로 묶은 성장 기록 — 태아 크기와 발달, 엄마의 변화, 그 주차에 챙길 검진과 영양제. 지금 구간(<span id="curStageShort">5단계 · 24~28주</span>)에 <b>★ 현재</b> 표시가 있습니다.</p>
+        <p class="sec-desc" id="mustBasis">검진 41 · 영양제 30개 중 <b>필수 34개</b>만 진행률에 집계합니다(선택 37개는 체크만 저장).</p>
       </div>
-      <div class="sec-note">체크박스는 이 브라우저에 자동 저장됩니다 · 데스크톱에서는 항목이 많은 카드가 안에서 스크롤되고, 모바일에서는 전체가 펼쳐집니다</div>
+      <div class="sec-note">필수 항목만 100%에 집계 · ‘선택’ 항목은 체크해도 진행률 그대로 · 체크는 이 브라우저에 자동 저장 · 데스크톱은 카드 안 스크롤, 모바일은 전체 펼쳐짐</div>
     </div>
     <div class="stage-grid" id="stageGrid">
 <div class="stage" data-id="c1">
@@ -564,21 +568,21 @@
 <div class="blk tip"><span class="k">TIP</span><div>이 시기 약 복용은 의사·약사와 상의. 엽산은 이미 시작했어야 하는 구간.</div></div>
 <div class="items">
 <div class="grp">검진 <em>첫 방문 6~8주, 이후 4주 간격</em></div>
-<label class="it"><input type="checkbox" data-check="c1-k0" aria-label="첫 산전 진료 + 초음파 6~8주"><span class="it-t"><span class="tag t-필수">필수</span>첫 산전 진료 + 초음파<span class="it-w">6~8주 · 아기집·심박동·주수·예정일 확인</span></span></label>
-<label class="it"><input type="checkbox" data-check="c1-k1" aria-label="산전 기본 혈액검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>산전 기본 혈액검사<span class="it-w">첫 방문 · CBC·혈액형·Rh·간·신장·공복혈당</span></span></label>
-<label class="it"><input type="checkbox" data-check="c1-k2" aria-label="감염 선별 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>감염 선별<span class="it-w">첫 방문 · 매독·B형간염 항원/항체·HIV·풍진 항체</span></span></label>
-<label class="it"><input type="checkbox" data-check="c1-k3" aria-label="소변검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>소변검사<span class="it-w">첫 방문 · 단백뇨·요로감염(+세균배양)</span></span></label>
-<label class="it"><input type="checkbox" data-check="c1-k4" aria-label="자궁경부 세포검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>자궁경부 세포검사<span class="it-w">첫 방문 · 최근 1년 내 이력 없을 때</span></span></label>
-<label class="it"><input type="checkbox" data-check="c1-k5" aria-label="보건소 임산부 등록 8주 전후"><span class="it-t"><span class="tag t-필수">필수</span>보건소 임산부 등록<span class="it-w">8주 전후 · 엽산·철분제 수령, 국민행복카드</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k0" data-must="1" aria-label="첫 산전 진료 + 초음파 6~8주"><span class="it-t"><span class="tag t-필수">필수</span>첫 산전 진료 + 초음파<span class="it-w">6~8주 · 아기집·심박동·주수·예정일 확인</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k1" data-must="1" aria-label="산전 기본 혈액검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>산전 기본 혈액검사<span class="it-w">첫 방문 · CBC·혈액형·Rh·간·신장·공복혈당</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k2" data-must="1" aria-label="감염 선별 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>감염 선별<span class="it-w">첫 방문 · 매독·B형간염 항원/항체·HIV·풍진 항체</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k3" data-must="1" aria-label="소변검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>소변검사<span class="it-w">첫 방문 · 단백뇨·요로감염(+세균배양)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k4" data-must="1" aria-label="자궁경부 세포검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>자궁경부 세포검사<span class="it-w">첫 방문 · 최근 1년 내 이력 없을 때</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k5" data-must="1" aria-label="보건소 임산부 등록 8주 전후"><span class="it-t"><span class="tag t-필수">필수</span>보건소 임산부 등록<span class="it-w">8주 전후 · 엽산·철분제 수령, 국민행복카드</span></span></label>
 <label class="it"><input type="checkbox" data-check="c1-k6" aria-label="갑상선 기능 톡소플라즈마/CMV 항체"><span class="it-t"><span class="tag t-선택">선택</span>갑상선 기능<span class="it-w">톡소플라즈마/CMV 항체 · 병력·노출 위험 시</span></span></label>
 <label class="it"><input type="checkbox" data-check="c1-k7" aria-label="치과 검진 치료는 중기(14~27주)가 편함"><span class="it-t"><span class="tag t-선택">선택</span>치과 검진<span class="it-w">치료는 중기(14~27주)가 편함</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c1-s0" aria-label="엽산 400µg 매일 임신 전~12주"><span class="it-t"><span class="tag t-필수">필수</span>엽산 400µg 매일<span class="it-w">임신 전~12주 · 늦게 시작해도 계속 복용</span></span></label>
-<label class="it"><input type="checkbox" data-check="c1-s1" aria-label="비타민D 400~1,000IU 전 기간"><span class="it-t"><span class="tag t-권장">권장</span>비타민D 400~1,000IU<span class="it-w">전 기간</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-s0" data-must="1" aria-label="엽산 400µg 매일 임신 전~12주"><span class="it-t"><span class="tag t-필수">필수</span>엽산 400µg 매일<span class="it-w">임신 전~12주 · 늦게 시작해도 계속 복용</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-s1" data-must="1" aria-label="비타민D 400~1,000IU 전 기간"><span class="it-t"><span class="tag t-필수">필수</span>비타민D 400~1,000IU<span class="it-w">전 기간</span></span></label>
 <label class="it"><input type="checkbox" data-check="c1-s2" aria-label="종합비타민 레티놀 비타민A 3,000µg RAE(10,000IU) 이하"><span class="it-t"><span class="tag t-선택">선택</span>종합비타민<span class="it-w">레티놀 비타민A 3,000µg RAE(10,000IU) 이하</span></span></label>
-<label class="it"><input type="checkbox" data-check="c1-s3" aria-label="철분제는 이 구간 불필요 빈혈 없으면 입덧·구역 악화"><span class="it-t"><span class="tag t-주의">주의</span>철분제는 이 구간 불필요<span class="it-w">빈혈 없으면 입덧·구역 악화</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-s3" aria-label="철분제는 이 구간 불필요 빈혈 없으면 입덧·구역 악화"><span class="it-t"><span class="tag t-주의">주의</span>철분제는 이 구간 불필요 <span class="sel">선택</span><span class="it-w">빈혈 없으면 입덧·구역 악화</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 8 · 영양제 4</span><b>0/12</b></div>
+<div class="stage-foot"><span>검진 8 · 영양제 4</span><span class="sf-r"><b>필수 0/8</b><i>· 선택 4개</i></span></div>
 </div>
 <div class="stage" data-id="c2">
 <span class="ribbon" style="display:none">★ 현재</span>
@@ -589,18 +593,18 @@
 <div class="blk tip"><span class="k">TIP</span><div>1차 기형아 검사는 11~13주 6일 — 이 구간을 놓치면 다른 방식으로 대체해야 한다.</div></div>
 <div class="items">
 <div class="grp">검진 <em>4주 간격</em></div>
-<label class="it"><input type="checkbox" data-check="c2-k0" aria-label="1차 기형아 선별(NT 초음파 + PAPP-A·free β-hCG) 11~13주 6일"><span class="it-t"><span class="tag t-필수">필수</span>1차 기형아 선별(NT 초음파 + PAPP-A·free β-hCG)<span class="it-w">11~13주 6일</span></span></label>
-<label class="it"><input type="checkbox" data-check="c2-k1" aria-label="초음파 주수 재확인(CRL) 11~12주"><span class="it-t"><span class="tag t-필수">필수</span>초음파 주수 재확인(CRL)<span class="it-w">11~12주</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-k0" data-must="1" aria-label="1차 기형아 선별(NT 초음파 + PAPP-A·free β-hCG) 11~13주 6일"><span class="it-t"><span class="tag t-필수">필수</span>1차 기형아 선별(NT 초음파 + PAPP-A·free β-hCG)<span class="it-w">11~13주 6일</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-k1" data-must="1" aria-label="초음파 주수 재확인(CRL) 11~12주"><span class="it-t"><span class="tag t-필수">필수</span>초음파 주수 재확인(CRL)<span class="it-w">11~12주</span></span></label>
 <label class="it"><input type="checkbox" data-check="c2-k2" aria-label="NIPT(태아 DNA) 10주 이후"><span class="it-t"><span class="tag t-선택">선택</span>NIPT(태아 DNA)<span class="it-w">10주 이후 · 선별검사이며 확진 아님</span></span></label>
 <label class="it"><input type="checkbox" data-check="c2-k3" aria-label="융모막 융모 생검 10~13주"><span class="it-t"><span class="tag t-선택">선택</span>융모막 융모 생검<span class="it-w">10~13주 · 고위험 시(유산 위험 1.5~3%)</span></span></label>
-<label class="it"><input type="checkbox" data-check="c2-k4" aria-label="태아 심음 도플러 청취 11주 이후"><span class="it-t"><span class="tag t-권장">권장</span>태아 심음 도플러 청취<span class="it-w">11주 이후</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-k4" aria-label="태아 심음 도플러 청취 11주 이후"><span class="it-t"><span class="tag t-권장">권장</span>태아 심음 도플러 청취 <span class="sel">선택</span><span class="it-w">11주 이후</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c2-s0" aria-label="엽산 지속 12~14주까지(이후에도 400µg 권장)"><span class="it-t"><span class="tag t-필수">필수</span>엽산 지속<span class="it-w">12~14주까지(이후에도 400µg 권장)</span></span></label>
-<label class="it"><input type="checkbox" data-check="c2-s1" aria-label="비타민D 지속"><span class="it-t"><span class="tag t-권장">권장</span>비타민D 지속</span></label>
-<label class="it"><input type="checkbox" data-check="c2-s2" aria-label="프로바이오틱스(유산균) 시작 고려 변비 완화 목적"><span class="it-t"><span class="tag t-권장">권장</span>프로바이오틱스(유산균) 시작 고려<span class="it-w">변비 완화 목적</span></span></label>
-<label class="it"><input type="checkbox" data-check="c2-s3" aria-label="오메가3(DHA) 시작 가능 EPA+DHA 300mg(그중 DHA 200mg)"><span class="it-t"><span class="tag t-권장">권장</span>오메가3(DHA) 시작 가능<span class="it-w">EPA+DHA 300mg(그중 DHA 200mg)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-s0" data-must="1" aria-label="엽산 지속 12~14주까지(이후에도 400µg 권장)"><span class="it-t"><span class="tag t-필수">필수</span>엽산 지속<span class="it-w">12~14주까지(이후에도 400µg 권장)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-s1" data-must="1" aria-label="비타민D 지속"><span class="it-t"><span class="tag t-필수">필수</span>비타민D 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c2-s2" aria-label="프로바이오틱스(유산균) 시작 고려 변비 완화 목적"><span class="it-t"><span class="tag t-권장">권장</span>프로바이오틱스(유산균) 시작 고려 <span class="sel">선택</span><span class="it-w">변비 완화 목적</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-s3" aria-label="오메가3(DHA) 시작 가능 EPA+DHA 300mg(그중 DHA 200mg)"><span class="it-t"><span class="tag t-권장">권장</span>오메가3(DHA) 시작 가능 <span class="sel">선택</span><span class="it-w">EPA+DHA 300mg(그중 DHA 200mg)</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 5 · 영양제 4</span><b>0/9</b></div>
+<div class="stage-foot"><span>검진 5 · 영양제 4</span><span class="sf-r"><b>필수 0/4</b><i>· 선택 5개</i></span></div>
 </div>
 <div class="stage" data-id="c3">
 <span class="ribbon" style="display:none">★ 현재</span>
@@ -611,18 +615,18 @@
 <div class="blk tip"><span class="k">TIP</span><div>철분제는 16~20주에 시작. 공복에 비타민C와 함께 먹으면 흡수가 좋다.</div></div>
 <div class="items">
 <div class="grp">검진 <em>4주 간격</em></div>
-<label class="it"><input type="checkbox" data-check="c3-k0" aria-label="2차 기형아 선별(쿼드/통합선별 2차) 15~20주(채혈 16~18주)"><span class="it-t"><span class="tag t-필수">필수</span>2차 기형아 선별(쿼드/통합선별 2차)<span class="it-w">15~20주(채혈 16~18주)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-k0" data-must="1" aria-label="2차 기형아 선별(쿼드/통합선별 2차) 15~20주(채혈 16~18주)"><span class="it-t"><span class="tag t-필수">필수</span>2차 기형아 선별(쿼드/통합선별 2차)<span class="it-w">15~20주(채혈 16~18주)</span></span></label>
 <label class="it"><input type="checkbox" data-check="c3-k1" aria-label="양수검사 16~20주"><span class="it-t"><span class="tag t-선택">선택</span>양수검사<span class="it-w">16~20주 · 선별 이상 시 확진(유산 위험 0.5% 정도)</span></span></label>
-<label class="it"><input type="checkbox" data-check="c3-k2" aria-label="빈혈 수치 확인 후 철분제 시작 16~20주"><span class="it-t"><span class="tag t-필수">필수</span>빈혈 수치 확인 후 철분제 시작<span class="it-w">16~20주</span></span></label>
-<label class="it"><input type="checkbox" data-check="c3-k3" aria-label="태동 인지 시작 18~20주"><span class="it-t"><span class="tag t-권장">권장</span>태동 인지 시작<span class="it-w">18~20주</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-k2" data-must="1" aria-label="빈혈 수치 확인 후 철분제 시작 16~20주"><span class="it-t"><span class="tag t-필수">필수</span>빈혈 수치 확인 후 철분제 시작<span class="it-w">16~20주</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-k3" aria-label="태동 인지 시작 18~20주"><span class="it-t"><span class="tag t-권장">권장</span>태동 인지 시작 <span class="sel">선택</span><span class="it-w">18~20주</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c3-s0" aria-label="철분제 30~60mg(성분철) 16~20주 이후"><span class="it-t"><span class="tag t-필수">필수</span>철분제 30~60mg(성분철)<span class="it-w">16~20주 이후 · 빈혈 시 60~120mg</span></span></label>
-<label class="it"><input type="checkbox" data-check="c3-s1" aria-label="엽산 400µg 유지"><span class="it-t"><span class="tag t-필수">필수</span>엽산 400µg 유지</span></label>
-<label class="it"><input type="checkbox" data-check="c3-s2" aria-label="오메가3/DHA 태아 뇌·망막 발달"><span class="it-t"><span class="tag t-권장">권장</span>오메가3/DHA<span class="it-w">태아 뇌·망막 발달</span></span></label>
-<label class="it"><input type="checkbox" data-check="c3-s3" aria-label="칼슘은 식품 우선 우유 3컵/일, 치즈, 멸치·뱅어포"><span class="it-t"><span class="tag t-권장">권장</span>칼슘은 식품 우선<span class="it-w">우유 3컵/일, 치즈, 멸치·뱅어포</span></span></label>
-<label class="it"><input type="checkbox" data-check="c3-s4" aria-label="철분 ↔ 칼슘·커피·홍차·녹차·우유는 2시간 간격"><span class="it-t"><span class="tag t-주의">주의</span>철분 ↔ 칼슘·커피·홍차·녹차·우유는 2시간 간격</span></label>
+<label class="it"><input type="checkbox" data-check="c3-s0" data-must="1" aria-label="철분제 30~60mg(성분철) 16~20주 이후"><span class="it-t"><span class="tag t-필수">필수</span>철분제 30~60mg(성분철)<span class="it-w">16~20주 이후 · 빈혈 시 60~120mg</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-s1" data-must="1" aria-label="엽산 400µg 유지"><span class="it-t"><span class="tag t-필수">필수</span>엽산 400µg 유지</span></label>
+<label class="it"><input type="checkbox" data-check="c3-s2" aria-label="오메가3/DHA 태아 뇌·망막 발달"><span class="it-t"><span class="tag t-권장">권장</span>오메가3/DHA <span class="sel">선택</span><span class="it-w">태아 뇌·망막 발달</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-s3" aria-label="칼슘은 식품 우선 우유 3컵/일, 치즈, 멸치·뱅어포"><span class="it-t"><span class="tag t-권장">권장</span>칼슘은 식품 우선 <span class="sel">선택</span><span class="it-w">우유 3컵/일, 치즈, 멸치·뱅어포</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-s4" aria-label="철분 ↔ 칼슘·커피·홍차·녹차·우유는 2시간 간격"><span class="it-t"><span class="tag t-주의">주의</span>철분 ↔ 칼슘·커피·홍차·녹차·우유는 2시간 간격 <span class="sel">선택</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 4 · 영양제 5</span><b>0/9</b></div>
+<div class="stage-foot"><span>검진 4 · 영양제 5</span><span class="sf-r"><b>필수 0/4</b><i>· 선택 5개</i></span></div>
 </div>
 <div class="stage" data-id="c4">
 <span class="ribbon" style="display:none">★ 현재</span>
@@ -633,17 +637,17 @@
 <div class="blk tip"><span class="k">TIP</span><div>정밀초음파(20~24주)는 아기 구조를 확인하는 핵심 검사. 얼굴·손가락 사진을 남겨두기 좋다.</div></div>
 <div class="items">
 <div class="grp">검진 <em>4주 간격</em></div>
-<label class="it"><input type="checkbox" data-check="c4-k0" aria-label="임신 중기 정밀초음파 20~24주(20~22주 권장)"><span class="it-t"><span class="tag t-필수">필수</span>임신 중기 정밀초음파<span class="it-w">20~24주(20~22주 권장) · 뇌·심장·척추·복벽·사지</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-k0" data-must="1" aria-label="임신 중기 정밀초음파 20~24주(20~22주 권장)"><span class="it-t"><span class="tag t-필수">필수</span>임신 중기 정밀초음파<span class="it-w">20~24주(20~22주 권장) · 뇌·심장·척추·복벽·사지</span></span></label>
 <label class="it"><input type="checkbox" data-check="c4-k1" aria-label="태아 심장초음파 20~24주"><span class="it-t"><span class="tag t-선택">선택</span>태아 심장초음파<span class="it-w">20~24주 · 고위험·이상 소견 시</span></span></label>
 <label class="it"><input type="checkbox" data-check="c4-k2" aria-label="입체(3D/4D) 초음파 24~32주"><span class="it-t"><span class="tag t-선택">선택</span>입체(3D/4D) 초음파<span class="it-w">24~32주 · 26~30주가 잘 보임</span></span></label>
-<label class="it"><input type="checkbox" data-check="c4-k3" aria-label="매 방문 혈압·체중·부종 확인 임신중독증 선별"><span class="it-t"><span class="tag t-필수">필수</span>매 방문 혈압·체중·부종 확인<span class="it-w">임신중독증 선별</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-k3" data-must="1" aria-label="매 방문 혈압·체중·부종 확인 임신중독증 선별"><span class="it-t"><span class="tag t-필수">필수</span>매 방문 혈압·체중·부종 확인<span class="it-w">임신중독증 선별</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c4-s0" aria-label="철분제 지속"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속</span></label>
-<label class="it"><input type="checkbox" data-check="c4-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속</span></label>
-<label class="it"><input type="checkbox" data-check="c4-s2" aria-label="칼슘·마그네슘 검토 다리 쥐·부종 시(경련 효과 근거는 약함)"><span class="it-t"><span class="tag t-권장">권장</span>칼슘·마그네슘 검토<span class="it-w">다리 쥐·부종 시(경련 효과 근거는 약함)</span></span></label>
-<label class="it"><input type="checkbox" data-check="c4-s3" aria-label="마그네슘 보충 상한 350mg/일 설사 시 중단"><span class="it-t"><span class="tag t-주의">주의</span>마그네슘 보충 상한 350mg/일<span class="it-w">설사 시 중단</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-s0" data-must="1" aria-label="철분제 지속"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c4-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속 <span class="sel">선택</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-s2" aria-label="칼슘·마그네슘 검토 다리 쥐·부종 시(경련 효과 근거는 약함)"><span class="it-t"><span class="tag t-권장">권장</span>칼슘·마그네슘 검토 <span class="sel">선택</span><span class="it-w">다리 쥐·부종 시(경련 효과 근거는 약함)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-s3" aria-label="마그네슘 보충 상한 350mg/일 설사 시 중단"><span class="it-t"><span class="tag t-주의">주의</span>마그네슘 보충 상한 350mg/일 <span class="sel">선택</span><span class="it-w">설사 시 중단</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 4 · 영양제 4</span><b>0/8</b></div>
+<div class="stage-foot"><span>검진 4 · 영양제 4</span><span class="sf-r"><b>필수 0/3</b><i>· 선택 5개</i></span></div>
 </div>
 <div class="stage cur" data-id="c5">
 <span class="ribbon">★ 현재</span>
@@ -654,19 +658,19 @@
 <div class="blk tip"><span class="k">TIP</span><div>임신성 당뇨 검사는 28주 전에 마쳐야 한다. 밤 다리 쥐는 마그네슘보다 스트레칭·수분·철분 상태를 먼저 확인.</div></div>
 <div class="items">
 <div class="grp">검진 <em>4주 간격, 28주부터 2주 간격</em></div>
-<label class="it"><input type="checkbox" data-check="c5-k0" aria-label="임신성 당뇨 선별(50g) 24~28주"><span class="it-t"><span class="tag t-필수">필수</span>임신성 당뇨 선별(50g)<span class="it-w">24~28주 · 1시간 혈당 140 이상(고위험 130)이면 확진</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-k1" aria-label="100g 경구당부하 확진 공복 95/1h 180/2h 155/3h 140 중 2개 이상이면 임신당뇨병"><span class="it-t"><span class="tag t-조건부">조건부</span>100g 경구당부하 확진<span class="it-w">공복 95/1h 180/2h 155/3h 140 중 2개 이상이면 임신당뇨병</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-k2" aria-label="빈혈 재검(CBC) 24~28주"><span class="it-t"><span class="tag t-필수">필수</span>빈혈 재검(CBC)<span class="it-w">24~28주 · 2분기 기준 Hb 10.5 미만</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-k3" aria-label="Rh 음성 → 항D 면역글로불린 28주"><span class="it-t"><span class="tag t-조건부">조건부</span>Rh 음성 → 항D 면역글로불린<span class="it-w">28주</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-k4" aria-label="백일해(Tdap) 예방접종 27~36주"><span class="it-t"><span class="tag t-필수">필수</span>백일해(Tdap) 예방접종<span class="it-w">27~36주 · 매 임신 1회</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-k5" aria-label="독감 예방접종 주수 무관"><span class="it-t"><span class="tag t-권장">권장</span>독감 예방접종<span class="it-w">주수 무관 · 임신부 무료(2026-09-21~2027-04-30)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k0" data-must="1" aria-label="임신성 당뇨 선별(50g) 24~28주"><span class="it-t"><span class="tag t-필수">필수</span>임신성 당뇨 선별(50g)<span class="it-w">24~28주 · 1시간 혈당 140 이상(고위험 130)이면 확진</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k1" aria-label="100g 경구당부하 확진 공복 95/1h 180/2h 155/3h 140 중 2개 이상이면 임신당뇨병"><span class="it-t"><span class="tag t-조건부">조건부</span>100g 경구당부하 확진 <span class="sel">선택</span><span class="it-w">공복 95/1h 180/2h 155/3h 140 중 2개 이상이면 임신당뇨병</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k2" data-must="1" aria-label="빈혈 재검(CBC) 24~28주"><span class="it-t"><span class="tag t-필수">필수</span>빈혈 재검(CBC)<span class="it-w">24~28주 · 2분기 기준 Hb 10.5 미만</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k3" aria-label="Rh 음성 → 항D 면역글로불린 28주"><span class="it-t"><span class="tag t-조건부">조건부</span>Rh 음성 → 항D 면역글로불린 <span class="sel">선택</span><span class="it-w">28주</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k4" data-must="1" aria-label="백일해(Tdap) 예방접종 27~36주"><span class="it-t"><span class="tag t-필수">필수</span>백일해(Tdap) 예방접종<span class="it-w">27~36주 · 매 임신 1회</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k5" aria-label="독감 예방접종 주수 무관"><span class="it-t"><span class="tag t-권장">권장</span>독감 예방접종 <span class="sel">선택</span><span class="it-w">주수 무관 · 임신부 무료(2026-09-21~2027-04-30)</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c5-s0" aria-label="철분제 지속 빈혈 수치에 따라 용량 조정"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">빈혈 수치에 따라 용량 조정</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-s1" aria-label="오메가3 지속 28주 이후 수요↑"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속<span class="it-w">28주 이후 수요↑</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-s2" aria-label="칼슘 보충 검토 국내 섭취 부족 시 500mg 내외, 철분과 시간 분리"><span class="it-t"><span class="tag t-권장">권장</span>칼슘 보충 검토<span class="it-w">국내 섭취 부족 시 500mg 내외, 철분과 시간 분리</span></span></label>
-<label class="it"><input type="checkbox" data-check="c5-s3" aria-label="임당 진단 시 단순당·주스 줄이고 식후 10~20분 걷기"><span class="it-t"><span class="tag t-주의">주의</span>임당 진단 시 단순당·주스 줄이고 식후 10~20분 걷기</span></label>
+<label class="it"><input type="checkbox" data-check="c5-s0" data-must="1" aria-label="철분제 지속 빈혈 수치에 따라 용량 조정"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">빈혈 수치에 따라 용량 조정</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-s1" aria-label="오메가3 지속 28주 이후 수요↑"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속 <span class="sel">선택</span><span class="it-w">28주 이후 수요↑</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-s2" aria-label="칼슘 보충 검토 국내 섭취 부족 시 500mg 내외, 철분과 시간 분리"><span class="it-t"><span class="tag t-권장">권장</span>칼슘 보충 검토 <span class="sel">선택</span><span class="it-w">국내 섭취 부족 시 500mg 내외, 철분과 시간 분리</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-s3" aria-label="임당 진단 시 단순당·주스 줄이고 식후 10~20분 걷기"><span class="it-t"><span class="tag t-주의">주의</span>임당 진단 시 단순당·주스 줄이고 식후 10~20분 걷기 <span class="sel">선택</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 6 · 영양제 4</span><b>0/10</b></div>
+<div class="stage-foot"><span>검진 6 · 영양제 4</span><span class="sf-r"><b>필수 0/4</b><i>· 선택 6개</i></span></div>
 </div>
 <div class="stage" data-id="c6">
 <span class="ribbon" style="display:none">★ 현재</span>
@@ -677,17 +681,17 @@
 <div class="blk tip"><span class="k">TIP</span><div>부기가 아침까지 빠지지 않고 두통·시야 흐림·상복부 통증이 동반되면 자간전증 신호 — 즉시 병원.</div></div>
 <div class="items">
 <div class="grp">검진 <em>2주 간격</em></div>
-<label class="it"><input type="checkbox" data-check="c6-k0" aria-label="정기 초음파 32~36주"><span class="it-t"><span class="tag t-필수">필수</span>정기 초음파<span class="it-w">32~36주 · 태아 체중·태위·태반 위치·양수량</span></span></label>
-<label class="it"><input type="checkbox" data-check="c6-k1" aria-label="비수축검사(NST·태동검사) 32주 이후"><span class="it-t"><span class="tag t-권장">권장</span>비수축검사(NST·태동검사)<span class="it-w">32주 이후 · 고위험은 32주부터 주 1~2회</span></span></label>
-<label class="it"><input type="checkbox" data-check="c6-k2" aria-label="백일해 접종 미완료 시 36주 전까지"><span class="it-t"><span class="tag t-필수">필수</span>백일해 접종 미완료 시<span class="it-w">36주 전까지</span></span></label>
-<label class="it"><input type="checkbox" data-check="c6-k3" aria-label="태동 카운트 습관 뚜렷이 줄면 다음 진료 기다리지 말고 연락"><span class="it-t"><span class="tag t-권장">권장</span>태동 카운트 습관<span class="it-w">뚜렷이 줄면 다음 진료 기다리지 말고 연락</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-k0" data-must="1" aria-label="정기 초음파 32~36주"><span class="it-t"><span class="tag t-필수">필수</span>정기 초음파<span class="it-w">32~36주 · 태아 체중·태위·태반 위치·양수량</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-k1" aria-label="비수축검사(NST·태동검사) 32주 이후"><span class="it-t"><span class="tag t-권장">권장</span>비수축검사(NST·태동검사) <span class="sel">선택</span><span class="it-w">32주 이후 · 고위험은 32주부터 주 1~2회</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-k2" data-must="1" aria-label="백일해 접종 미완료 시 36주 전까지"><span class="it-t"><span class="tag t-필수">필수</span>백일해 접종 미완료 시<span class="it-w">36주 전까지</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-k3" aria-label="태동 카운트 습관 뚜렷이 줄면 다음 진료 기다리지 말고 연락"><span class="it-t"><span class="tag t-권장">권장</span>태동 카운트 습관 <span class="sel">선택</span><span class="it-w">뚜렷이 줄면 다음 진료 기다리지 말고 연락</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c6-s0" aria-label="철분제 지속"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속</span></label>
-<label class="it"><input type="checkbox" data-check="c6-s1" aria-label="오메가3·DHA 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3·DHA 지속</span></label>
-<label class="it"><input type="checkbox" data-check="c6-s2" aria-label="유산균 지속 변비 관리"><span class="it-t"><span class="tag t-권장">권장</span>유산균 지속<span class="it-w">변비 관리</span></span></label>
-<label class="it"><input type="checkbox" data-check="c6-s3" aria-label="단백질 +30g/일·열량 +450kcal/일 &quot;두 명분&quot;이 아니라 이 정도"><span class="it-t"><span class="tag t-주의">주의</span>단백질 +30g/일·열량 +450kcal/일<span class="it-w">&quot;두 명분&quot;이 아니라 이 정도</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-s0" data-must="1" aria-label="철분제 지속"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c6-s1" aria-label="오메가3·DHA 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3·DHA 지속 <span class="sel">선택</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-s2" aria-label="유산균 지속 변비 관리"><span class="it-t"><span class="tag t-권장">권장</span>유산균 지속 <span class="sel">선택</span><span class="it-w">변비 관리</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-s3" aria-label="단백질 +30g/일·열량 +450kcal/일 &quot;두 명분&quot;이 아니라 이 정도"><span class="it-t"><span class="tag t-주의">주의</span>단백질 +30g/일·열량 +450kcal/일 <span class="sel">선택</span><span class="it-w">&quot;두 명분&quot;이 아니라 이 정도</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 4 · 영양제 4</span><b>0/8</b></div>
+<div class="stage-foot"><span>검진 4 · 영양제 4</span><span class="sf-r"><b>필수 0/3</b><i>· 선택 5개</i></span></div>
 </div>
 <div class="stage" data-id="c7">
 <span class="ribbon" style="display:none">★ 현재</span>
@@ -698,17 +702,17 @@
 <div class="blk tip"><span class="k">TIP</span><div>출산가방을 현관 근처로. GBS 검사와 분만 전 혈액검사를 이 구간에 한다.</div></div>
 <div class="items">
 <div class="grp">검진 <em>2주 간격(36주까지), 이후 매주</em></div>
-<label class="it"><input type="checkbox" data-check="c7-k0" aria-label="GBS(B군 연쇄상구균) 검사 35~37주"><span class="it-t"><span class="tag t-권장">권장</span>GBS(B군 연쇄상구균) 검사<span class="it-w">35~37주 · 국내 표준표엔 없고 병원별 시행</span></span></label>
-<label class="it"><input type="checkbox" data-check="c7-k1" aria-label="분만 전 검사 35주 이후"><span class="it-t"><span class="tag t-권장">권장</span>분만 전 검사<span class="it-w">35주 이후 · 혈액·응고·심전도 등 응급 대비</span></span></label>
-<label class="it"><input type="checkbox" data-check="c7-k2" aria-label="말기 초음파 태위·태반·양수 최종 확인"><span class="it-t"><span class="tag t-필수">필수</span>말기 초음파<span class="it-w">태위·태반·양수 최종 확인</span></span></label>
-<label class="it"><input type="checkbox" data-check="c7-k3" aria-label="NST 36주 이후 매 진찰 시"><span class="it-t"><span class="tag t-권장">권장</span>NST<span class="it-w">36주 이후 매 진찰 시</span></span></label>
-<label class="it"><input type="checkbox" data-check="c7-k4" aria-label="출산가방·분만 계획 정리 36주 전후"><span class="it-t"><span class="tag t-필수">필수</span>출산가방·분만 계획 정리<span class="it-w">36주 전후</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k0" aria-label="GBS(B군 연쇄상구균) 검사 35~37주"><span class="it-t"><span class="tag t-권장">권장</span>GBS(B군 연쇄상구균) 검사 <span class="sel">선택</span><span class="it-w">35~37주 · 국내 표준표엔 없고 병원별 시행</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k1" aria-label="분만 전 검사 35주 이후"><span class="it-t"><span class="tag t-권장">권장</span>분만 전 검사 <span class="sel">선택</span><span class="it-w">35주 이후 · 혈액·응고·심전도 등 응급 대비</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k2" data-must="1" aria-label="말기 초음파 태위·태반·양수 최종 확인"><span class="it-t"><span class="tag t-필수">필수</span>말기 초음파<span class="it-w">태위·태반·양수 최종 확인</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k3" aria-label="NST 36주 이후 매 진찰 시"><span class="it-t"><span class="tag t-권장">권장</span>NST <span class="sel">선택</span><span class="it-w">36주 이후 매 진찰 시</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k4" data-must="1" aria-label="출산가방·분만 계획 정리 36주 전후"><span class="it-t"><span class="tag t-필수">필수</span>출산가방·분만 계획 정리<span class="it-w">36주 전후</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c7-s0" aria-label="철분제 지속 분만 출혈 대비 철 저장"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">분만 출혈 대비 철 저장</span></span></label>
-<label class="it"><input type="checkbox" data-check="c7-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속</span></label>
-<label class="it"><input type="checkbox" data-check="c7-s2" aria-label="코피·잇몸 출혈 잦으면 빈혈 재확인"><span class="it-t"><span class="tag t-주의">주의</span>코피·잇몸 출혈 잦으면 빈혈 재확인</span></label>
+<label class="it"><input type="checkbox" data-check="c7-s0" data-must="1" aria-label="철분제 지속 분만 출혈 대비 철 저장"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">분만 출혈 대비 철 저장</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속 <span class="sel">선택</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-s2" aria-label="코피·잇몸 출혈 잦으면 빈혈 재확인"><span class="it-t"><span class="tag t-주의">주의</span>코피·잇몸 출혈 잦으면 빈혈 재확인 <span class="sel">선택</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 5 · 영양제 3</span><b>0/8</b></div>
+<div class="stage-foot"><span>검진 5 · 영양제 3</span><span class="sf-r"><b>필수 0/3</b><i>· 선택 5개</i></span></div>
 </div>
 <div class="stage" data-id="c8">
 <span class="ribbon" style="display:none">★ 현재</span>
@@ -719,16 +723,16 @@
 <div class="blk tip"><span class="k">TIP</span><div>규칙적 진통이 10분 간격이면 분만 시작. 양수가 터지면 진통이 없어도 즉시 병원.</div></div>
 <div class="items">
 <div class="grp">검진 <em>매주</em></div>
-<label class="it"><input type="checkbox" data-check="c8-k0" aria-label="매주 진찰 혈압·체중·소변·태아 심박동"><span class="it-t"><span class="tag t-필수">필수</span>매주 진찰<span class="it-w">혈압·체중·소변·태아 심박동</span></span></label>
-<label class="it"><input type="checkbox" data-check="c8-k1" aria-label="내진 37주 이후"><span class="it-t"><span class="tag t-필수">필수</span>내진<span class="it-w">37주 이후 · 선진부·개대·소실·하강</span></span></label>
-<label class="it"><input type="checkbox" data-check="c8-k2" aria-label="NST + 초음파 양수량·태반·태아 상태"><span class="it-t"><span class="tag t-필수">필수</span>NST + 초음파<span class="it-w">양수량·태반·태아 상태</span></span></label>
-<label class="it"><input type="checkbox" data-check="c8-k3" aria-label="출산 징후 체크 이슬·규칙 진통·양막 파수"><span class="it-t"><span class="tag t-필수">필수</span>출산 징후 체크<span class="it-w">이슬·규칙 진통·양막 파수</span></span></label>
-<label class="it"><input type="checkbox" data-check="c8-k4" aria-label="예정일 초과 시 BPP·유도분만 상의"><span class="it-t"><span class="tag t-권장">권장</span>예정일 초과 시 BPP·유도분만 상의</span></label>
+<label class="it"><input type="checkbox" data-check="c8-k0" data-must="1" aria-label="매주 진찰 혈압·체중·소변·태아 심박동"><span class="it-t"><span class="tag t-필수">필수</span>매주 진찰<span class="it-w">혈압·체중·소변·태아 심박동</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k1" data-must="1" aria-label="내진 37주 이후"><span class="it-t"><span class="tag t-필수">필수</span>내진<span class="it-w">37주 이후 · 선진부·개대·소실·하강</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k2" data-must="1" aria-label="NST + 초음파 양수량·태반·태아 상태"><span class="it-t"><span class="tag t-필수">필수</span>NST + 초음파<span class="it-w">양수량·태반·태아 상태</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k3" data-must="1" aria-label="출산 징후 체크 이슬·규칙 진통·양막 파수"><span class="it-t"><span class="tag t-필수">필수</span>출산 징후 체크<span class="it-w">이슬·규칙 진통·양막 파수</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k4" aria-label="예정일 초과 시 BPP·유도분만 상의"><span class="it-t"><span class="tag t-권장">권장</span>예정일 초과 시 BPP·유도분만 상의 <span class="sel">선택</span></span></label>
 <div class="grp">영양제 <em></em></div>
-<label class="it"><input type="checkbox" data-check="c8-s0" aria-label="철분제 지속 분만 출혈 대비"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">분만 출혈 대비</span></span></label>
-<label class="it"><input type="checkbox" data-check="c8-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c8-s0" data-must="1" aria-label="철분제 지속 분만 출혈 대비"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">분만 출혈 대비</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속 <span class="sel">선택</span></span></label>
 </div>
-<div class="stage-foot"><span>검진 5 · 영양제 2</span><b>0/7</b></div>
+<div class="stage-foot"><span>검진 5 · 영양제 2</span><span class="sf-r"><b>필수 0/5</b><i>· 선택 2개</i></span></div>
 </div>
     </div>
   </section>
@@ -2207,20 +2211,27 @@
 
   function updateCardFoot(){
     each(".stage", function(card){
-      var ins = card.querySelectorAll("input[data-check]");
-      var done = card.querySelectorAll("input[data-check]:checked").length;
+      var must = card.querySelectorAll("input[data-check][data-must]");
+      var done = card.querySelectorAll("input[data-check][data-must]:checked").length;
       var f = card.querySelector(".stage-foot b");
-      if(f) f.textContent = done + "/" + ins.length;
+      if(f) f.textContent = "필수 " + done + "/" + must.length;
     });
   }
 
   function updateProgress(){
-    var total = boxes.length;
-    var done = boxes.filter(function(b){ return b.checked; }).length;
+    /* 100%는 필수 항목만으로 계산한다. 선택 항목 체크는 저장만 하고 분모·분자에 넣지 않는다. */
+    var mustBoxes = boxes.filter(function(b){ return b.getAttribute("data-must"); });
+    var optDone = boxes.filter(function(b){ return b.checked && !b.getAttribute("data-must"); }).length;
+    var total = mustBoxes.length;
+    var done = mustBoxes.filter(function(b){ return b.checked; }).length;
     var pct = total ? Math.round(done*100/total) : 0;
     document.getElementById("pvA").textContent = pct + "%";
     document.getElementById("pbarA").style.width = pct + "%";
-    document.getElementById("pfA").textContent = done + " / " + total + " 항목 · 아래 카드에서 체크하면 자동 저장됩니다";
+    var msg = (pct === 100 && total)
+      ? "🎉 필수 항목 " + total + "개 모두 완료!"
+      : "필수 " + done + " / " + total + " 완료 (" + pct + "%)";
+    if(optDone) msg += " · 선택 " + optDone + "개 체크";
+    document.getElementById("pfA").textContent = msg + " · 아래 카드에서 체크하면 자동 저장됩니다";
 
     var gt = GOODS.length;
     var gd = GOODS.filter(function(g){ return !!state.g[g.key]; }).length;
