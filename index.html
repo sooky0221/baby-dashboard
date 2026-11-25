@@ -429,6 +429,12 @@
   .lv-reset{font:inherit;font-size:11px;font-weight:700;color:#9c8f88;background:#fff;border:1px solid #e6dcd5;border-radius:9px;padding:7px 11px;cursor:pointer}
   .lv-reset:hover{color:#c9764f;border-color:#f0c3b0}
   .lv-msg{font-size:11px;font-weight:800;color:#3f9878}
+  .lv-calc{font-size:11px;font-weight:800;color:#3f9878;line-height:1.5;margin-top:-1px}
+  .lv-calc.empty{color:#a99d97;font-weight:700}
+  .lv-cap{margin:0 0 12px;background:#fff8ec;border:1px solid #f2d8b8;border-left:4px solid #e5a04b;border-radius:12px;padding:9px 12px;font-size:11.5px;line-height:1.65;color:#8a5c25}
+  .lv-cap[hidden]{display:none}
+  .lv-cap-msg b{color:#b9613f}
+  .lv-cap-extra{margin-top:4px;font-size:10.5px;font-weight:700;color:#a1804f}
   .lv-birth{margin-top:14px;font-size:11px;line-height:1.7;color:var(--ink2);background:#fffaf4;border:1px solid #f6e7d9;border-radius:12px;padding:10px 12px}
   .lv-birth b{color:#b9613f}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -782,9 +788,10 @@
         <div class="lv-f">
           <label class="lv-lab" for="lvPay">월 통상임금</label>
           <div class="lv-payrow">
-            <input class="lv-in" id="lvPay" type="number" min="0" max="50000000" step="10000" inputmode="numeric" value="3500000" aria-label="월 통상임금(원)">
+            <input class="lv-in" id="lvPay" type="text" inputmode="numeric" autocomplete="off" maxlength="14" value="3,500,000" aria-label="월 통상임금(원)" aria-describedby="lvPayHint">
             <span class="lv-unit">원</span>
           </div>
+          <div class="lv-calc" id="lvPayHint" aria-live="polite">= 350만 원 기준으로 자동 계산 중</div>
           <div class="lv-q" id="lvQuick" role="group" aria-label="통상임금 빠른 선택">
             <button type="button" data-pay="2500000" aria-pressed="false">250만</button>
             <button type="button" data-pay="3000000" aria-pressed="false">300만</button>
@@ -818,6 +825,7 @@
         </div>
       </div>
 
+      <div class="lv-cap" id="lvCap" role="status" aria-live="polite"><div class="lv-cap-msg">ℹ️ 입력하신 <b>350만 원</b>은 법정 상한(<b>250·200·160만 원</b>)이 적용된 금액입니다.</div><div class="lv-cap-extra">6+6 부모육아휴직제 선택 시 3~6개월차 상한 300~450만 원 적용</div></div>
       <div class="lv-cards" id="lvCards"><div class="lv-card main"><div class="lv-k">예상 총 수령액</div><div class="lv-v">23,100,000<span>원</span></div><div class="lv-s">12개월 · 일반 육아휴직</div></div><div class="lv-card"><div class="lv-k">월 평균 수령액</div><div class="lv-v">1,925,000<span>원</span></div><div class="lv-s">총 수령액 ÷ 12개월</div></div><div class="lv-card"><div class="lv-k">복직 예정일</div><div class="lv-v lv-vd">2028-04-22 (토)</div><div class="lv-s">04-22 시작 · 12개월</div></div></div>
       <div class="lv-birth" id="lvBirthNote"><b>출산전후휴가 90일(단태아)</b>은 출산 후 45일 이상이 남도록 배정합니다 — 예정일 기준 <b>2027-01-22 (금) ~ 2027-04-21 (수)</b>, 육아휴직은 그다음 날 <b>2027-04-22 (목)</b>부터 시작할 수 있습니다. (출산일이 예정일과 달라지면 휴가 끝나는 날도 함께 밀립니다)</div>
 
@@ -1181,6 +1189,19 @@
   }
   function lvMd(d){ return pad(d.getMonth()+1) + "-" + pad(d.getDate()); }
   function lvMan(n){ return won(n/10000) + "만원"; }
+  /* 통상임금을 '만 원' 단위로 — 350만 원, 385.5만 원 */
+  function lvManWon(n){
+    var man = Math.round(n / 1000) / 10;
+    return (man % 1 === 0 ? String(man) : man.toFixed(1)) + "만 원";
+  }
+  /* '3,800,000' / '3800000' / '3 800 000' 모두 숫자로. 비었거나 숫자 없으면 null */
+  function lvParsePay(s){
+    var d = String(s == null ? "" : s).replace(/[^0-9]/g, "");
+    if(!d) return null;
+    var v = parseInt(d, 10);
+    if(isNaN(v)) return null;
+    return Math.min(v, 50000000);
+  }
   function lvBand(kind, m){
     if(m >= 7) return {rate:80, cap:1600000};
     if(kind === "both") return {rate:100, cap:LV_BOTH_CAPS[m-1]};
@@ -1247,11 +1268,51 @@
   function lvNotesHtml(kind){
     return (LV_NOTE[kind] || []).map(function(x){ return "<li>" + escH(x) + "</li>"; }).join("");
   }
+  /* 입력한 통상임금이 법정 상한을 넘어 깎이는 구간의 상한만 모은다 */
+  function lvCapCaps(pay, kind, months){
+    var caps = [];
+    for(var m = 1; m <= months; m++){
+      var bd = lvBand(kind, m);
+      if(Math.round(pay * bd.rate / 100) > bd.cap && caps.indexOf(bd.cap) < 0) caps.push(bd.cap);
+    }
+    return caps;
+  }
+  function lvCapHtml(pay, kind, months){
+    var caps = lvCapCaps(pay, kind, months);
+    if(!caps.length) return "";
+    var s = '<div class="lv-cap-msg">ℹ️ 입력하신 <b>' + lvManWon(pay) + '</b>은 법정 상한(<b>' +
+      caps.map(function(c){ return c / 10000; }).join("·") + '만 원</b>)이 적용된 금액입니다.</div>';
+    if(kind === "normal" && pay >= 2500000){
+      s += '<div class="lv-cap-extra">6+6 부모육아휴직제 선택 시 3~6개월차 상한 300~450만 원 적용</div>';
+    }
+    return s;
+  }
+  function lvCapPaint(pay, kind, months){
+    var el = document.getElementById("lvCap");
+    if(!el) return;
+    var html = lvCapHtml(pay, kind, months);
+    el.innerHTML = html;
+    if(html) el.removeAttribute("hidden"); else el.setAttribute("hidden", "");
+  }
+  function lvPayHint(pay){
+    var el = document.getElementById("lvPayHint");
+    if(!el) return;
+    el.textContent = "= " + lvManWon(pay) + " 기준으로 자동 계산 중";
+    el.className = "lv-calc";
+  }
+  function lvPayHintNone(){
+    var el = document.getElementById("lvPayHint");
+    if(!el) return;
+    el.textContent = "금액을 입력하면 바로 계산합니다";
+    el.className = "lv-calc empty";
+  }
   function renderLeave(){
     var box = document.getElementById("lvCards");
     if(!box) return;
     var c = lvCalc(lv.pay, lv.type, lv.months, lv.start);
     box.innerHTML = lvCardsHtml(c);
+    lvCapPaint(lv.pay, lv.type, lv.months);
+    lvPayHint(lv.pay);
     document.getElementById("lvRows").innerHTML = lvRowsHtml(c);
     document.getElementById("lvNotes").innerHTML = lvNotesHtml(lv.type);
     document.getElementById("lvBirthNote").innerHTML = lvBirthHtml();
@@ -2219,7 +2280,7 @@ null,
     var msg = document.getElementById("lvMsg");
     function say(t){ if(msg) msg.textContent = t || ""; }
     function sync(){
-      if(payEl) payEl.value = lv.pay;
+      if(payEl) payEl.value = won(lv.pay);
       if(monEl) monEl.value = lv.months;
       if(stEl) stEl.value = lv.start;
     }
@@ -2231,13 +2292,24 @@ null,
     }
 
     if(payEl){
-      payEl.addEventListener("input", function(){
-        var v = parseInt(payEl.value, 10);
-        if(isNaN(v) || v < 0) return;
-        lv.pay = Math.min(v, 50000000);
+      /* 쉼표가 있어도 없어도 바로 숫자로 읽어 실시간 재계산. 비우면 직전 계산을 그대로 둔다. */
+      function readPay(){
+        var v = lvParsePay(payEl.value);
+        if(v === null){ lvPayHintNone(); return; }
+        lv.pay = v;
         commit();
+      }
+      payEl.addEventListener("input", readPay);
+      payEl.addEventListener("change", readPay);
+      /* 입력 중에는 쉼표 없이(커서가 튀지 않게), 포커스를 잃으면 3,800,000 형태로.
+         포커스를 받으면 전체 선택 — 쉼표 섞인 값을 지우지 않고 그대로 덮어쓸 수 있게. */
+      payEl.addEventListener("focus", function(){
+        try{ payEl.select(); }catch(e){}
       });
-      payEl.addEventListener("blur", function(){ payEl.value = lv.pay; });
+      payEl.addEventListener("blur", function(){
+        payEl.value = won(lv.pay);
+        lvPayHint(lv.pay);
+      });
     }
     each("#lvQuick button[data-pay]", function(b){
       b.addEventListener("click", function(){
