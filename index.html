@@ -65,6 +65,27 @@
   .edd-k{font-size:10.5px;letter-spacing:.08em;color:var(--ink3);font-weight:700}
   .edd-v{font-size:17px;font-weight:800;letter-spacing:-.01em}
   .edd-v span{display:block;font-size:11px;font-weight:600;color:var(--ink2);margin:3px 0 0;line-height:1.4}
+  .edd-v span.edd-d{font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.01em;margin:0}
+
+  /* ---------- 내 정보 설정 ---------- */
+  .hero-gear{font:inherit;font-size:11.5px;font-weight:700;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:99px;padding:5px 11px;cursor:pointer;margin-left:auto;display:inline-flex;gap:5px;align-items:center;transition:.15s;white-space:nowrap}
+  .hero-gear:hover{border-color:#e6b9a5;color:#c9764f}
+  .hero-gear[aria-expanded="true"]{background:linear-gradient(135deg,#f9b295,#ec7f5f);border-color:#ec7f5f;color:#fff}
+  .settings{margin:0 0 16px;background:#fffdfb;border:1px solid #f4e6de;border-radius:16px;padding:13px 14px;box-shadow:0 12px 28px -24px rgba(170,120,100,.7)}
+  .settings[hidden]{display:none}
+  .set-grid{display:grid;gap:10px;grid-template-columns:1fr}
+  @media(min-width:560px){ .set-grid{grid-template-columns:1.4fr 1fr} }
+  .set-f{display:flex;flex-direction:column;gap:4px}
+  .set-k{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--ink3)}
+  .set-i{font:inherit;font-size:13px;font-weight:700;color:var(--ink);background:#fff;border:1px solid #e9dcd4;border-radius:10px;padding:8px 10px;width:100%;min-height:38px}
+  .set-i:focus{outline:none;border-color:#f0ac8e;box-shadow:0 0 0 3px rgba(242,143,110,.16)}
+  .set-actions{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:11px}
+  .set-btn{font:inherit;font-size:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f9b295,#ec7f5f);border:1px solid #ec7f5f;border-radius:9px;padding:8px 15px;cursor:pointer}
+  .set-btn.ghost{background:#fff;color:var(--ink2);border-color:var(--line2);font-weight:700}
+  .set-btn.ghost:hover{color:#c9764f;border-color:#f0c3b0}
+  .set-msg{font-size:11px;font-weight:800;color:#3f9878}
+  .set-note{font-size:10.5px;color:var(--ink3);line-height:1.6;margin-top:9px}
+  .set-note code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;background:#f7f1ed;border-radius:5px;padding:1px 5px;color:#8d7f79;word-break:break-all}
 
   .sched{display:grid;gap:10px;grid-template-columns:1fr}
   @media(min-width:520px){ .sched{grid-template-columns:1fr 1fr} }
@@ -335,9 +356,29 @@
   <!-- ================= HERO ================= -->
   <header class="hero">
     <div class="hero-top">
-      <div class="hero-title">🌸 수영 님의 임신·육아 준비</div>
+      <div class="hero-title"><span aria-hidden="true">🌸</span> <span id="heroTitleText">수영 님의 임신·육아 준비</span></div>
       <div class="hero-sub" id="todayLine">기준일 2026-11-25 (수) · 저장은 이 브라우저에만</div>
-      <noscript><div class="noscript"><b>미리보기 모드</b> — JavaScript 없이 그려진 화면입니다. 그래프·표·체크리스트는 모두 그대로 보이고, 체크·필터·자동 저장만 동작하지 않습니다. 기준일(D-day·주수)은 이 파일을 만든 <b>2026-11-25</b> 기준입니다.</div></noscript>
+      <button class="hero-gear" id="settingsToggle" type="button" aria-expanded="false" aria-controls="settingsPanel">⚙️ 내 정보 설정</button>
+      <noscript><div class="noscript"><b>미리보기 모드</b> — JavaScript 없이 그려진 화면입니다. 그래프·표·체크리스트는 모두 그대로 보이고, 체크·필터·자동 저장과 <b>이름·출산예정일 바꾸기</b>는 동작하지 않습니다. 기준일(D-day·주수)은 이 파일을 만든 <b>2026-11-25</b> 기준입니다.</div></noscript>
+    </div>
+
+    <div class="settings" id="settingsPanel" hidden>
+      <div class="set-grid">
+        <label class="set-f">
+          <span class="set-k">이름</span>
+          <input class="set-i" id="setName" type="text" maxlength="20" autocomplete="off" placeholder="예: 수영" value="수영">
+        </label>
+        <label class="set-f">
+          <span class="set-k">출산예정일</span>
+          <input class="set-i" id="setEdd" type="date" min="2020-01-01" max="2035-12-31" value="2027-03-07">
+        </label>
+      </div>
+      <div class="set-actions">
+        <button class="set-btn" id="setApply" type="button">적용</button>
+        <button class="set-btn ghost" id="setReset" type="button">기본값 복원</button>
+        <span class="set-msg" id="setMsg"></span>
+      </div>
+      <div class="set-note">바꾸면 제목·주수·D-day·현재 구간·다가오는 일정·마일스톤 날짜가 모두 새 출산예정일 기준으로 다시 계산됩니다. 값은 이 브라우저에만 저장되어 매일 가격이 갱신돼도 그대로 유지되고, <code>?name=이름&amp;edd=2027-03-07</code>처럼 링크 뒤에 붙여 열어도 됩니다.</div>
     </div>
 
     <div class="hero-main">
@@ -354,7 +395,7 @@
           <div class="edd-ico">🍼</div>
           <div>
             <div class="edd-k">출산예정일</div>
-            <div class="edd-v">2027년 3월 7일 (일)<span>40주 0일 기준 · 주수는 마지막 월경 시작일부터 셉니다</span></div>
+            <div class="edd-v"><span class="edd-d" id="eddText">2027년 3월 7일 (일)</span><span>40주 0일 기준 · 주수는 마지막 월경 시작일부터 셉니다</span></div>
           </div>
         </div>
       </div>
@@ -868,47 +909,49 @@
 "k": "다가오는 일정 1",
 "t": "백일해(Tdap) 접종 시작",
 "s": "27주 0일 · 27~36주 사이 1회 접종",
-"d": "2026-12-06"
+"w": 27
 },
 {
 "k": "다가오는 일정 2",
 "t": "임당 검사 마감",
 "s": "28주 0일 · 이후 2주 간격 진찰로 전환",
-"d": "2026-12-13"
+"w": 28
 }
 ],
 "mile": [
 {
-"d": "2026-12-06",
+"w": 27,
 "l": "백일해 접종 시작"
 },
 {
-"d": "2026-12-13",
+"w": 28,
 "l": "임당 검사 마감"
 },
 {
-"d": "2027-01-10",
+"w": 32,
 "l": "NST 시작 가능"
 },
 {
-"d": "2027-01-31",
+"w": 35,
 "l": "GBS · 분만 전 검사"
 },
 {
-"d": "2027-02-07",
+"w": 36,
 "l": "진찰 매주 전환"
 },
 {
-"d": "2027-02-14",
+"w": 37,
 "l": "만삭 (37주)"
 },
 {
-"d": "2027-03-07",
+"w": 40,
 "l": "출산예정일"
 }
 ]
 };
-  var EDD = new Date(2027, 2, 7);           /* 2027-03-07 */
+  var DEFAULT_USER = { name: "수영", edd: "2027-03-07" };
+  var user = { name: DEFAULT_USER.name, edd: DEFAULT_USER.edd };
+  var EDD = dparse(user.edd);
   var EDD_MS = EDD.getTime();
   var DAY = 86400000;
   var STORE = "soo-baby-dashboard-v1";
@@ -923,17 +966,50 @@
         if(o && typeof o === "object"){
           state.p = (o.p && typeof o.p === "object") ? o.p : {};
           state.g = (o.g && typeof o.g === "object") ? o.g : {};
+          if(o.u && typeof o.u === "object"){
+            if(o.u.edd && validEdd(o.u.edd)) user.edd = o.u.edd;
+            if(typeof o.u.name === "string") user.name = normName(o.u.name);
+            EDD = dparse(user.edd); EDD_MS = EDD.getTime();
+          }
         }
       }
     }catch(e){ state.p = {}; state.g = {}; }
   }
   function saveState(){
-    try{ localStorage.setItem(STORE, JSON.stringify({p:state.p, g:state.g})); }catch(e){}
+    try{ localStorage.setItem(STORE, JSON.stringify({p:state.p, g:state.g, u:{name:user.name, edd:user.edd}})); }catch(e){}
   }
 
   function won(n){ return Number(n).toLocaleString("ko-KR"); }
   function pad(n){ return n < 10 ? "0" + n : String(n); }
   function dparse(s){ var p = String(s).split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+
+  /* ---------- 내 정보(이름·출산예정일) ---------- */
+  function validEdd(s){
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(String(s || ""))) return false;
+    var d = dparse(s);
+    return !isNaN(d.getTime()) && d.getFullYear() >= 2020 && d.getFullYear() <= 2035;
+  }
+  function normName(s){ return String(s == null ? "" : s).replace(/\s+/g, " ").trim().slice(0, 20); }
+  /* 40주 0일 = 출산예정일. w주 0일의 날짜 */
+  function dateAtWeek(w){ return new Date(EDD_MS - (40 - w) * 7 * DAY); }
+  function schedDate(o){ return (o.w != null && o.w !== "") ? dateAtWeek(Number(o.w)) : dparse(o.d); }
+  function eddText(d){
+    return d.getFullYear() + "년 " + (d.getMonth()+1) + "월 " + d.getDate() + "일 (" + WEEKDAY[d.getDay()] + ")";
+  }
+  function heroTitle(){
+    return user.name ? (user.name + " 님의 임신·육아 준비") : "임신·육아 준비 대시보드";
+  }
+  function applyUser(name, edd){
+    if(edd && validEdd(edd)) user.edd = edd;
+    if(name != null) user.name = normName(name);
+    EDD = dparse(user.edd); EDD_MS = EDD.getTime();
+    var ni = document.getElementById("setName"), ei = document.getElementById("setEdd");
+    if(ni) ni.value = user.name;
+    if(ei) ei.value = user.edd;
+    document.title = heroTitle();
+    saveState();
+    renderHeader();
+  }
 
   /* ---------- header ---------- */
   function each(sel, fn){
@@ -971,6 +1047,13 @@
     var wk = Math.floor(days/7), dd = days % 7;
     var left = Math.round((EDD_MS - t.getTime())/DAY);
 
+    var ht = document.getElementById("heroTitleText");
+    if(ht) ht.textContent = heroTitle();
+    document.title = heroTitle();
+
+    var et = document.getElementById("eddText");
+    if(et) et.textContent = eddText(EDD);
+
     document.getElementById("todayLine").textContent =
       "기준일 " + t.getFullYear() + "-" + pad(t.getMonth()+1) + "-" + pad(t.getDate()) +
       " (" + WEEKDAY[t.getDay()] + ") · 저장은 이 브라우저에만";
@@ -986,13 +1069,19 @@
       if(csh) csh.textContent = st.n + "단계 · " + st.weeks;
     }else if(days < 0){
       document.getElementById("curStage").innerHTML = "현재 구간 <b>출산 후</b> · 수고하셨어요";
+      document.getElementById("sizeChip").textContent = "출산 후";
       var csh2 = document.getElementById("curStageShort");
       if(csh2) csh2.textContent = "출산 후";
+    }else{
+      document.getElementById("curStage").innerHTML = "현재 구간 <b>" + wk + "주</b> · 카드 뉴스는 4~40주";
+      document.getElementById("sizeChip").textContent = "카드 범위 밖 주차";
+      var csh3 = document.getElementById("curStageShort");
+      if(csh3) csh3.textContent = wk + "주 · 카드 범위 밖";
     }
 
-    /* 핵심 일정 카드 2개 */
+    /* 핵심 일정 카드 2개 — 출산예정일 기준 주차로 날짜를 계산한다 */
     var key = DATES.sched.map(function(o){
-      return {d:dparse(o.d), k:o.k, t:o.t, s:o.s};
+      return {d:schedDate(o), k:o.k, t:o.t, s:o.s};
     });
     var sched = document.getElementById("sched");
     sched.innerHTML = key.map(function(o,i){
@@ -1006,8 +1095,8 @@
       '</div>';
     }).join("");
 
-    /* 마일스톤 스트립 */
-    var mile = DATES.mile.map(function(o){ return {d:dparse(o.d), l:o.l}; });
+    /* 마일스톤 스트립 — 주차 기준으로 출산예정일에서 거슬러 계산 */
+    var mile = DATES.mile.map(function(o){ return {d:schedDate(o), l:o.l}; });
     document.getElementById("milestones").innerHTML = mile.map(function(o){
       var dl = Math.round((o.d.getTime() - t.getTime())/DAY);
       var tag = dl > 0 ? ("D-" + dl) : (dl === 0 ? "오늘" : ("D+" + Math.abs(dl)));
@@ -1666,6 +1755,61 @@ null,
     });
   }
 
+  /* ---------- 내 정보 설정 패널 ---------- */
+  function initSettings(){
+    var ni = document.getElementById("setName");
+    var ei = document.getElementById("setEdd");
+
+    /* ?name=이름&?edd=YYYY-MM-DD — 링크로도 열 수 있다 (명시한 값은 이 브라우저에 저장) */
+    var fromUrl = false;
+    try{
+      var q = new URLSearchParams(window.location.search || "");
+      var qn = q.get("name"), qe = q.get("edd");
+      if(qe && validEdd(qe)){ user.edd = qe; fromUrl = true; }
+      if(qn != null && normName(qn)){ user.name = normName(qn); fromUrl = true; }
+      if(fromUrl){ EDD = dparse(user.edd); EDD_MS = EDD.getTime(); }
+    }catch(e){}
+
+    if(ni) ni.value = user.name;
+    if(ei) ei.value = user.edd;
+
+    var tg = document.getElementById("settingsToggle");
+    var pn = document.getElementById("settingsPanel");
+    if(tg && pn){
+      tg.addEventListener("click", function(){
+        var open = tg.getAttribute("aria-expanded") === "true";
+        tg.setAttribute("aria-expanded", open ? "false" : "true");
+        if(open) pn.setAttribute("hidden", ""); else pn.removeAttribute("hidden");
+      });
+    }
+
+    function say(msg, bad){
+      var m = document.getElementById("setMsg");
+      if(!m) return;
+      m.style.color = bad ? "#d9698a" : "";
+      m.textContent = msg;
+    }
+    function commit(){
+      var rawEdd = ei ? ei.value : user.edd;
+      if(rawEdd && !validEdd(rawEdd)){ say("출산예정일을 정확히 골라 주세요", true); return; }
+      applyUser(ni ? ni.value : user.name, rawEdd || user.edd);
+      say("적용했어요 · 이 브라우저에 저장했습니다");
+    }
+
+    var ap = document.getElementById("setApply");
+    if(ap) ap.addEventListener("click", commit);
+    if(ni) ni.addEventListener("keydown", function(ev){ if(ev.key === "Enter"){ ev.preventDefault(); commit(); } });
+    if(ei) ei.addEventListener("keydown", function(ev){ if(ev.key === "Enter"){ ev.preventDefault(); commit(); } });
+
+    var rs = document.getElementById("setReset");
+    if(rs) rs.addEventListener("click", function(){
+      applyUser(DEFAULT_USER.name, DEFAULT_USER.edd);
+      say("기본값으로 되돌렸어요");
+    });
+
+    if(fromUrl) saveState();
+  }
+
   /* ---------- reset ---------- */
   function initReset(){
     document.getElementById("resetBtn").addEventListener("click", function(){
@@ -1681,6 +1825,7 @@ null,
 
   /* ---------- boot ---------- */
   loadState();
+  initSettings();
   renderHeader();
   initCards();
   renderFilters();
