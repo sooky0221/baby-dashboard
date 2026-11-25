@@ -777,7 +777,7 @@
           <div class="total-k">체크한 품목 합계</div>
           <div class="total-v" id="sumV">0원<small id="sumC">0개</small></div>
         </div>
-        <div class="total-s" id="sumN">아직 체크한 품목이 없습니다. 위 목록에서 사야 할 것을 체크해 보세요.<br>참고 · 36개 항목을 모두 최저가로 사면 2,163,900원</div>
+        <div class="total-s" id="sumN">아직 체크한 품목이 없습니다. 위 목록에서 사야 할 것을 체크해 보세요.<br>참고 · 36개 항목 중 가격을 확인한 17개를 모두 최저가로 사면 2,163,900원 (나머지 19개는 가격 미조사)</div>
         <button class="reset" id="resetBtn" type="button">체크 초기화</button>
       </div>
     </div>
@@ -2605,7 +2605,9 @@
     if(myCount){
       lines.push("내 실구매 합계 <b>" + won(mySum) + "원</b> (" + myCount + "개) · 최저가 대비 <b>" + myTxt + "</b>");
     }
-    lines.push("참고 · " + GOODS.length + "개 항목을 모두 최저가로 사면 " + won(allMin) + "원");
+    var pricedCnt = GOODS.filter(function(g){ return bestOf(g).v != null; }).length;
+    lines.push("참고 · " + GOODS.length + "개 항목 중 가격을 확인한 " + pricedCnt + "개를 모두 최저가로 사면 " + won(allMin) +
+      "원 (나머지 " + (GOODS.length - pricedCnt) + "개는 가격 미조사)");
     document.getElementById("sumN").innerHTML = lines.join("<br>");
   }
 
