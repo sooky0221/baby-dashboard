@@ -1572,9 +1572,16 @@
   }
 
   /* ---------- section 2: 내 구매 기록 ---------- */
+  function goodOf(key){
+    for(var i = 0; i < GOODS.length; i++){ if(GOODS[i].key === key) return GOODS[i]; }
+    return null;
+  }
   function buyOf(key){
     var r = state.b[key];
     if(!r || typeof r !== "object") return {n:"", p:null};
+    /* 상품 순서가 바뀌어도 남의 기록이 붙지 않도록 품목명이 다르면 버린다 */
+    var g = goodOf(key);
+    if(g && r.t && r.t !== g.item) return {n:"", p:null};
     return {
       n: (typeof r.n === "string") ? r.n : "",
       p: (typeof r.p === "number" && r.p >= 0) ? r.p : null
@@ -1673,7 +1680,9 @@
     each("#rows input[data-bn]", function(b){
       b.addEventListener("input", function(){
         var k = b.getAttribute("data-bn");
+        var g = goodOf(k);
         var rec = state.b[k] || {};
+        rec.t = g ? g.item : "";
         rec.n = b.value;
         if((rec.n || "") === "" && (typeof rec.p !== "number")) delete state.b[k];
         else state.b[k] = rec;
@@ -1683,7 +1692,9 @@
     each("#rows input[data-bp]", function(b){
       b.addEventListener("input", function(){
         var k = b.getAttribute("data-bp");
+        var g = goodOf(k);
         var rec = state.b[k] || {};
+        rec.t = g ? g.item : "";
         var v = parseInt(b.value, 10);
         if(b.value === "" || isNaN(v)) delete rec.p;
         else rec.p = Math.max(0, v);
