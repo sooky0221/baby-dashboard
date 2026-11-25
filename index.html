@@ -466,6 +466,117 @@
   .lv-cap-extra{margin-top:4px;font-size:10.5px;font-weight:700;color:#a1804f}
   .lv-birth{margin-top:14px;font-size:11px;line-height:1.7;color:var(--ink2);background:#fffaf4;border:1px solid #f6e7d9;border-radius:12px;padding:10px 12px}
   .lv-birth b{color:#b9613f}
+
+  /* ---------- SECTION 4: 임신 중 체중 · BMI · 맞춤 식단 ---------- */
+  .wt-form{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-bottom:13px}
+  .wt-form .wt-wide{grid-column:1 / -1}
+  @media(max-width:759px){
+    .wt-form .wt-wide .ws-c{display:flex;align-items:baseline;gap:8px;padding:8px 11px}
+    .wt-form .wt-wide .ws-s br{display:none}
+  }
+  @media(min-width:760px){ .wt-form{grid-template-columns:1fr 1fr 150px} .wt-form .wt-wide{grid-column:auto} }
+  .wt-f{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .wt-lab{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--ink3)}
+  .wt-in{font:inherit;font-size:16px;font-weight:800;color:var(--ink);background:#fff;border:1px solid #e9dcd4;border-radius:11px;padding:9px 11px;width:100%;min-height:44px}
+  .wt-in:focus{outline:none;border-color:#f0ac8e;box-shadow:0 0 0 3px rgba(242,143,110,.16)}
+  .wt-in::placeholder{font-weight:600;color:#c0b4ae;font-size:13px}
+  .wt-in::-webkit-outer-spin-button,.wt-in::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .wt-in{-moz-appearance:textfield;appearance:textfield}
+  .wt-save{font:inherit;font-size:13px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f9b295,#ec7f5f);border:1px solid #ec7f5f;border-radius:11px;padding:11px 12px;cursor:pointer;min-height:44px;white-space:nowrap}
+  .wt-save:hover{filter:brightness(.97)}
+  .wt-msg{font-size:11px;font-weight:800;color:#3f9878;margin:0 0 9px;min-height:0}
+  .wt-msg.bad{color:#d9698a}
+  .wt-msg:empty{display:none}
+  .wt-sum{display:grid;gap:9px;grid-template-columns:1fr 1fr}
+  @media(min-width:900px){ .wt-sum{grid-template-columns:repeat(4,1fr)} }
+  .ws-c{background:#fffdfb;border:1px solid var(--line);border-radius:13px;padding:10px 12px;min-width:0}
+  .ws-c.hi{background:linear-gradient(135deg,#fff6f1,#fff);border-color:#f6ddd0;box-shadow:0 10px 26px -24px rgba(226,130,95,.9)}
+  .ws-k{font-size:9.5px;font-weight:800;letter-spacing:.06em;color:var(--ink3);line-height:1.3}
+  .ws-v{font-size:clamp(16px,3.4vw,20px);font-weight:800;letter-spacing:-.02em;margin-top:3px;color:#48383a;line-height:1.2}
+  .ws-s{font-size:9.5px;color:var(--ink3);margin-top:3px;line-height:1.45}
+  .wt-basis{font-size:10.5px;color:var(--ink3);line-height:1.65;margin:11px 0 0}
+  .wt-basis b{color:var(--ink2)}
+  .wc{background:linear-gradient(180deg,#fffdfc,#fdfaf8);border:1px solid #f4eae4;border-radius:16px;padding:8px 6px 2px;overflow-x:auto;overscroll-behavior-x:contain}
+  .wc svg{width:100%;height:auto;display:block}
+  @media(max-width:760px){ .wc svg{width:720px;max-width:none} }
+  .wc .hit{cursor:pointer}
+  .wc-lg{display:flex;flex-wrap:wrap;gap:5px 12px;align-items:center;margin-top:9px;font-size:10.5px;font-weight:700;color:var(--ink2)}
+  .wc-lg .sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+  .sw-band{background:#d9f0e6;border:1px dashed #8fd3b8}
+  .sw-ok{background:#3f9878}
+  .sw-down{background:#dd724f}
+  .sw-up{background:#5a92ba}
+  .wc-h{margin-left:auto;color:#b3a8a3;font-weight:600}
+  .wt-tip{margin:6px 0 9px;padding:8px 11px;border-radius:12px;background:linear-gradient(135deg,#fff7f1,#fff1e7);border:1px solid #f3d9c6;font-size:11.5px;font-weight:800;color:#8c5a37;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+  .wt-tip[hidden]{display:none}
+  .wt-tip b{color:#c0703a;font-size:12.5px}
+  .wt-tip .vb{font-size:10px}
+  .wt-table{margin-top:15px;border-top:1px solid var(--line)}
+  .wr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px 8px;padding:10px 2px;border-bottom:1px solid #faf3ef;align-items:center}
+  .wr.h{display:none}
+  .wr-w{grid-column:1 / -1}
+  .wr-w b{font-size:12.5px;font-weight:800;letter-spacing:-.01em}
+  .wr-w small{font-size:9.5px;color:var(--ink3);margin-left:5px}
+  .wr-kg{grid-column:1;grid-row:2;font-size:13px;font-weight:800;letter-spacing:-.01em}
+  .wr-g{grid-column:2;grid-row:2;font-size:12px;font-weight:800;color:#48383a}
+  .wr-b{grid-column:3;grid-row:2;justify-self:end}
+  .wr-r{grid-column:1 / 3;grid-row:3;font-size:10.5px;color:var(--ink3)}
+  .wr-a{grid-column:3;grid-row:3;display:flex;gap:4px;justify-self:end}
+  .wr-kg::before,.wr-g::before,.wr-r::before{content:attr(data-l) " ";font-weight:600;color:#bdb2ac;font-size:9.5px}
+  @media(min-width:760px){
+    .wr{grid-template-columns:78px 112px 118px 1fr 86px 108px}
+    .wr.h{display:grid;font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--ink3);padding:0 2px 7px;border-bottom:1px solid var(--line2)}
+    .wr-w,.wr-kg,.wr-g,.wr-b,.wr-r,.wr-a{grid-column:auto;grid-row:auto;justify-self:start}
+    .wr-kg::before,.wr-g::before,.wr-r::before{content:none}
+    .wr-a{justify-self:end}
+  }
+  .wbtn{font:inherit;font-size:10.5px;font-weight:800;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:8px;padding:5px 8px;cursor:pointer;white-space:nowrap}
+  .wbtn:hover{border-color:#e6b9a5;color:#c9764f}
+  .wbtn.del:hover{border-color:#f0b6c2;color:#c0506c;background:#fff5f7}
+  .vb{font-size:10px;font-weight:800;border-radius:7px;padding:2px 7px;white-space:nowrap;display:inline-block}
+  .v-ok{background:#d9f0e6;color:#3d8f72}
+  .v-down{background:#ffe6dc;color:#c05a34}
+  .v-up{background:#dde9f7;color:#3f6f9e}
+  .wt-empty{font-size:11.5px;color:var(--ink3);line-height:1.65;background:#fdfaf8;border:1px dashed #e6d7d0;border-radius:12px;padding:12px 14px}
+  .wj{background:linear-gradient(135deg,#fff8f3,#fff);border:1px solid #f6ddd0;border-radius:16px;padding:13px 14px;margin-bottom:14px}
+  .wj[data-v="적정"]{background:linear-gradient(135deg,#f2fbf6,#fff);border-color:#cbe9db}
+  .wj[data-v="감량 필요"]{background:linear-gradient(135deg,#fff2ec,#fff);border-color:#f7cdb9}
+  .wj[data-v="증량 필요"]{background:linear-gradient(135deg,#f2f7fd,#fff);border-color:#cfdff2}
+  .wj-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .wj-badge{font-size:13px;font-weight:800;border-radius:9px;padding:4px 11px;color:#fff;background:#b3a8a3;letter-spacing:-.01em}
+  .wj-badge.v-ok{background:linear-gradient(135deg,#7fcbaa,#3f9878)}
+  .wj-badge.v-down{background:linear-gradient(135deg,#f2a583,#dd724f)}
+  .wj-badge.v-up{background:linear-gradient(135deg,#8db4d9,#5a92ba)}
+  .wj-when{font-size:11px;font-weight:700;color:var(--ink2)}
+  .wj-line{font-size:12.5px;line-height:1.65;color:#4d4548;margin:9px 0 0}
+  .wj-line b{color:#48383a}
+  .wj-note{font-size:11px;line-height:1.7;color:var(--ink2);margin:7px 0 0;background:#ffffffb8;border-radius:10px;padding:8px 10px}
+  .wj-note b{color:#c9764f}
+  .dt-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .dt-tab{font:inherit;font-size:12px;font-weight:800;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:99px;padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  .dt-tab:hover{border-color:#e6b9a5;color:#c9764f}
+  .dt-tab[aria-pressed="true"]{background:linear-gradient(135deg,#fff3ec,#ffe9dd);border-color:#f0b89e;color:#b9613f;box-shadow:0 8px 18px -14px rgba(226,130,95,.9)}
+  .dt-dot{width:9px;height:9px;border-radius:99px;display:inline-block}
+  .d-ok{background:#3f9878}
+  .d-down{background:#dd724f}
+  .d-up{background:#5a92ba}
+  .dt-now{font-size:9px;font-weight:800;color:#fff;background:#c9764f;border-radius:5px;padding:1px 5px}
+  .dt-now[hidden]{display:none}
+  .dt-panel[hidden]{display:none}
+  .dt-panel{background:#fffdfb;border:1px solid var(--line);border-radius:15px;padding:13px 14px}
+  .dt-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .dt-sub{font-size:11px;font-weight:700;color:var(--ink3)}
+  .dt-meals{display:grid;gap:8px;grid-template-columns:1fr}
+  @media(min-width:760px){ .dt-meals{grid-template-columns:1fr 1fr} }
+  .dt-meal{background:#fff;border:1px solid var(--line);border-radius:11px;padding:9px 11px;display:flex;gap:9px;align-items:flex-start}
+  .dt-mk{flex:none;font-size:10px;font-weight:800;color:#c9764f;background:#fff1ea;border-radius:6px;padding:2px 6px;white-space:nowrap;margin-top:1px}
+  .dt-mt{font-size:11.5px;line-height:1.6;color:#4d4548}
+  .dt-rules{margin-top:11px}
+  .dt-rules b{font-size:11px;font-weight:800;color:#48383a}
+  .dt-rules ul{margin:5px 0 0;padding-left:16px;font-size:11px;line-height:1.75;color:var(--ink2)}
+  .dt-rules li{margin:2px 0}
+  .dt-warn{margin-top:13px;font-size:11px;line-height:1.75;color:#8a5c25;background:#fff8ec;border:1px solid #f2d8b8;border-left:4px solid #e5a04b;border-radius:12px;padding:10px 12px}
+  .dt-warn b{color:#b9613f}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .noscript{flex-basis:100%;font-size:10.5px;line-height:1.6;color:#8d7f79;background:#fff8f2;border:1px dashed #f0d8ca;border-radius:10px;padding:6px 10px}
   .noscript b{color:#b9613f}
@@ -479,9 +590,9 @@
   <header class="hero">
     <div class="hero-top">
       <div class="hero-title"><span aria-hidden="true">🌸</span> <span id="heroTitleText">수영 님의 임신·육아 준비</span></div>
-      <div class="hero-sub" id="todayLine">기준일 2026-11-25 (수) · 저장은 이 브라우저에만</div>
+      <div class="hero-sub" id="todayLine">기준일 2026-11-26 (목) · 저장은 이 브라우저에만</div>
       <button class="hero-gear" id="settingsToggle" type="button" aria-expanded="false" aria-controls="settingsPanel">⚙️ 내 정보 설정</button>
-      <noscript><div class="noscript"><b>미리보기 모드</b> — JavaScript 없이 그려진 화면입니다. 그래프·표·체크리스트·계산기 결과는 모두 그대로 보이고, 체크·필터·자동 저장과 <b>이름·출산예정일 바꾸기</b>, <b>계산기 입력·내 구매 기록</b>은 동작하지 않습니다. 기준일(D-day·주수)은 이 파일을 만든 <b>2026-11-25</b> 기준입니다.</div></noscript>
+      <noscript><div class="noscript"><b>미리보기 모드</b> — JavaScript 없이 그려진 화면입니다. 그래프·표·체크리스트·계산기 결과는 모두 그대로 보이고, 체크·필터·자동 저장과 <b>이름·출산예정일 바꾸기</b>, <b>계산기 입력·내 구매 기록</b>은 동작하지 않습니다. 기준일(D-day·주수)은 이 파일을 만든 <b>2026-11-26</b> 기준입니다.</div></noscript>
     </div>
 
     <div class="settings" id="settingsPanel" hidden>
@@ -506,8 +617,8 @@
     <div class="hero-main">
       <div>
         <div class="ga">
-          <div class="ga-big" id="gaBig">25주 3일</div>
-          <div class="dday" id="dday">D-102</div>
+          <div class="ga-big" id="gaBig">25주 4일</div>
+          <div class="dday" id="dday">D-101</div>
         </div>
         <div class="ga-meta">
           <div class="chip cur" id="curStage">현재 구간 <b>24~28주</b> · 세상의 소리를 듣는 시기</div>
@@ -522,7 +633,7 @@
         </div>
       </div>
 
-      <div class="sched" id="sched"><div class="sched-card"><div class="sched-k">다가오는 일정 1</div><div class="sched-n">D-11</div><div class="sched-t">백일해(Tdap) 접종 시작</div><div class="sched-d">12/06 · 27주 0일 · 27~36주 사이 1회 접종</div></div><div class="sched-card alt"><div class="sched-k">다가오는 일정 2</div><div class="sched-n">D-18</div><div class="sched-t">임당 검사 마감</div><div class="sched-d">12/13 · 28주 0일 · 이후 2주 간격 진찰로 전환</div></div></div>
+      <div class="sched" id="sched"><div class="sched-card"><div class="sched-k">다가오는 일정 1</div><div class="sched-n">D-10</div><div class="sched-t">백일해(Tdap) 접종 시작</div><div class="sched-d">12/06 · 27주 0일 · 27~36주 사이 1회 접종</div></div><div class="sched-card alt"><div class="sched-k">다가오는 일정 2</div><div class="sched-n">D-17</div><div class="sched-t">임당 검사 마감</div><div class="sched-d">12/13 · 28주 0일 · 이후 2주 간격 진찰로 전환</div></div></div>
     </div>
 
     <div class="progs">
@@ -544,7 +655,7 @@
       </div>
     </div>
 
-    <div class="mile" id="milestones"><div class="mile-i"><div class="mile-d">D-11 · 12/06</div><div class="mile-l">백일해 접종 시작</div></div><div class="mile-i"><div class="mile-d">D-18 · 12/13</div><div class="mile-l">임당 검사 마감</div></div><div class="mile-i"><div class="mile-d">D-46 · 01/10</div><div class="mile-l">NST 시작 가능</div></div><div class="mile-i"><div class="mile-d">D-67 · 01/31</div><div class="mile-l">GBS · 분만 전 검사</div></div><div class="mile-i"><div class="mile-d">D-74 · 02/07</div><div class="mile-l">진찰 매주 전환</div></div><div class="mile-i"><div class="mile-d">D-81 · 02/14</div><div class="mile-l">만삭 (37주)</div></div><div class="mile-i"><div class="mile-d">D-102 · 03/07</div><div class="mile-l">출산예정일</div></div></div>
+    <div class="mile" id="milestones"><div class="mile-i"><div class="mile-d">D-10 · 12/06</div><div class="mile-l">백일해 접종 시작</div></div><div class="mile-i"><div class="mile-d">D-17 · 12/13</div><div class="mile-l">임당 검사 마감</div></div><div class="mile-i"><div class="mile-d">D-45 · 01/10</div><div class="mile-l">NST 시작 가능</div></div><div class="mile-i"><div class="mile-d">D-66 · 01/31</div><div class="mile-l">GBS · 분만 전 검사</div></div><div class="mile-i"><div class="mile-d">D-73 · 02/07</div><div class="mile-l">진찰 매주 전환</div></div><div class="mile-i"><div class="mile-d">D-80 · 02/14</div><div class="mile-l">만삭 (37주)</div></div><div class="mile-i"><div class="mile-d">D-101 · 03/07</div><div class="mile-l">출산예정일</div></div></div>
   </header>
 
   <!-- ================= SECTION 1 ================= -->
@@ -877,6 +988,159 @@
 
     <div class="disc">
       <b>근거</b> · 고용보험법 시행령 제95조(육아휴직 급여)·제95조의3(부모함께·한부모 특례) [시행 2026. 9. 18.] · 근로기준법 제74조(출산전후휴가 단태아 90일, 출산 후 45일 이상) · 소득세법 제12조제3호마목(비과세). 2025-01-01 이후 시작한 육아휴직은 사후지급금이 폐지되어 매월 전액 지급됩니다. 2027년 상한 인상은 확정된 바 없습니다. 계산 결과는 참고용이며 실제 지급액은 고용센터 심사로 정해집니다 — <a href="https://www.work24.go.kr/cm/c/f/11000/selecSimulate12.do?systId=SI00000402" target="_blank" rel="noopener noreferrer">고용24 모의계산</a>.
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4 ================= -->
+  <section id="sec4">
+    <div class="sec-head">
+      <div>
+        <div class="sec-kick">SECTION 4</div>
+        <h2 class="sec-title">임신 중 체중 · BMI · 맞춤 식단</h2>
+        <p class="sec-desc">임신 전 키·몸무게로 <b>BMI</b>를 계산해 그 구간의 <b>권장 체중 증가 범위</b>를 그리고, 주차별로 남긴 체중이 범위 안에 있는지 <b>적정 · 감량 필요 · 증량 필요</b>로 판정합니다. 판정에 맞는 하루 식단 예시도 함께 보여드려요.</p>
+      </div>
+      <div class="sec-note">기록은 이 브라우저에만 저장 · ⚙️에서 출산예정일을 바꾸면 현재 주차와 권장 범위가 같이 다시 계산됩니다</div>
+    </div>
+
+    <div class="panel" id="p-wt">
+      <div class="panel-h">
+        <div class="panel-t">1. 임신 전 BMI와 권장 범위 <span>값을 넣으면 바로 계산됩니다</span></div>
+      </div>
+      <div class="wt-form">
+        <label class="wt-f">
+          <span class="wt-lab">임신 전 키 (cm)</span>
+          <input class="wt-in" id="wtH" type="number" inputmode="decimal" min="120" max="200" step="0.1" autocomplete="off" placeholder="예: 163" aria-label="임신 전 키(cm)">
+        </label>
+        <label class="wt-f">
+          <span class="wt-lab">임신 전 몸무게 (kg)</span>
+          <input class="wt-in" id="wtPre" type="number" inputmode="decimal" min="30" max="150" step="0.1" autocomplete="off" placeholder="예: 52.0" aria-label="임신 전 몸무게(kg)">
+        </label>
+        <div class="wt-f wt-wide">
+          <span class="wt-lab">BMI 계산식</span>
+          <div class="ws-c" style="padding:9px 11px"><div class="ws-s" style="margin:0">몸무게(kg)<br>÷ 키(m)²</div></div>
+        </div>
+      </div>
+      <div class="wt-sum" id="wtSummary"><div class="ws-c"><div class="ws-k">BMI</div><div class="ws-v">—</div><div class="ws-s">키와 몸무게를 입력하세요</div></div><div class="ws-c"><div class="ws-k">체중 단계</div><div class="ws-v">—</div><div class="ws-s">임신 전 BMI 기준</div></div><div class="ws-c"><div class="ws-k">임신 전체 권장 증가량</div><div class="ws-v">—</div><div class="ws-s">BMI 구간별 기준</div></div><div class="ws-c hi"><div class="ws-k">이번 주 권장 범위</div><div class="ws-v">—</div><div class="ws-s">25주 기준 · 출산예정일 연동</div></div></div>
+      <p class="wt-basis">BMI 단계는 <b>아시아-태평양(대한비만학회) 기준</b>으로 나뉩니다 — 저체중 &lt;18.5 · 정상 18.5~22.9 · 과체중 23.0~24.9 · 비만 25.0~29.9 · 고도비만 ≥30.0. 국제 기준(18.5/25.0/30.0)보다 과체중·비만 구간이 낮아, 같은 몸무게라도 국제 기준보다 한 단계 위로 볼 수 있습니다.</p>
+    </div>
+
+    <div class="panel" id="p-wtlog">
+      <div class="panel-h">
+        <div class="panel-t">2. 주차별 체중 기록 <span id="wtNow">지금 <b>25주</b> · 진찰 때 잰 몸무게를 넣어 보세요</span></div>
+      </div>
+      <div class="wt-form">
+        <label class="wt-f">
+          <span class="wt-lab">주차 (1~40주)</span>
+          <input class="wt-in" id="wtWeek" type="number" inputmode="numeric" min="1" max="40" step="1" value="25" aria-label="체중을 기록할 임신 주차">
+        </label>
+        <label class="wt-f">
+          <span class="wt-lab">몸무게 (kg)</span>
+          <input class="wt-in" id="wtKg" type="number" inputmode="decimal" min="30" max="150" step="0.1" autocomplete="off" placeholder="예: 58.4" aria-label="그 주차의 몸무게(kg)">
+        </label>
+        <div class="wt-f wt-wide">
+          <span class="wt-lab">&nbsp;</span>
+          <button class="wt-save" id="wtSave" type="button">기록 저장</button>
+        </div>
+      </div>
+      <div class="wt-msg" id="wtMsg" role="status" aria-live="polite"></div>
+      <div class="wt-tip" id="wtTip" role="status" aria-live="polite" hidden></div>
+      <div class="wc" id="wtChart"><svg viewBox="0 0 1000 360" role="img" aria-label="임신 주차별 체중 추이 그래프, BMI를 입력하면 권장 범위 밴드가 표시됩니다"><line x1="58" y1="316" x2="984" y2="316" stroke="#f3ece7" stroke-width="1"/><text x="50" y="320" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">0</text><line x1="58" y1="287" x2="984" y2="287" stroke="#f3ece7" stroke-width="1"/><text x="50" y="291" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">2</text><line x1="58" y1="257" x2="984" y2="257" stroke="#f3ece7" stroke-width="1"/><text x="50" y="261" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">4</text><line x1="58" y1="228" x2="984" y2="228" stroke="#f3ece7" stroke-width="1"/><text x="50" y="232" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">6</text><line x1="58" y1="198" x2="984" y2="198" stroke="#f3ece7" stroke-width="1"/><text x="50" y="202" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">8</text><line x1="58" y1="169" x2="984" y2="169" stroke="#f3ece7" stroke-width="1"/><text x="50" y="173" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">10</text><line x1="58" y1="140" x2="984" y2="140" stroke="#f3ece7" stroke-width="1"/><text x="50" y="144" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">12</text><line x1="58" y1="110" x2="984" y2="110" stroke="#f3ece7" stroke-width="1"/><text x="50" y="114" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">14</text><line x1="58" y1="81" x2="984" y2="81" stroke="#f3ece7" stroke-width="1"/><text x="50" y="85" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">16</text><line x1="58" y1="51" x2="984" y2="51" stroke="#f3ece7" stroke-width="1"/><text x="50" y="55" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">18</text><line x1="58" y1="22" x2="984" y2="22" stroke="#f3ece7" stroke-width="1"/><text x="50" y="26" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">20</text><text x="12" y="12" font-size="10" font-weight="700" fill="#b3a8a3" font-family="inherit">임신 전 대비 증가량(kg)</text><text x="58" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">4주</text><text x="161" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">8주</text><text x="264" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">12주</text><text x="367" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">16주</text><text x="470" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">20주</text><text x="572" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">24주</text><text x="675" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">28주</text><text x="778" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">32주</text><text x="881" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">36주</text><text x="984" y="348" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">40주</text><text x="521" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#b3a8a3" font-family="inherit">키와 임신 전 몸무게를 입력하면 권장 범위 밴드가 그려집니다</text><line x1="598" y1="22" x2="598" y2="316" stroke="#e7c0ae" stroke-width="1.4" stroke-dasharray="4 4"/><text x="598" y="33" text-anchor="middle" font-size="10.5" font-weight="800" fill="#c9764f" font-family="inherit">지금 25주</text></svg></div>
+      <div class="wc-lg">
+        <span><i class="sw sw-band"></i>권장 범위</span>
+        <span><i class="sw sw-ok"></i>적정</span>
+        <span><i class="sw sw-down"></i>감량 필요</span>
+        <span><i class="sw sw-up"></i>증량 필요</span>
+        <span class="wc-h">점을 누르면 그 주차의 판정이 보입니다</span>
+      </div>
+      <div class="wt-table">
+        <div class="wr h"><div>주차</div><div>몸무게</div><div>임신 전 대비</div><div>권장 범위</div><div>판정</div><div></div></div>
+        <div id="wtRows"><div class="wt-empty">아직 기록이 없습니다. 위에서 주차와 몸무게를 넣고 <b>기록 저장</b>을 누르면 이 표와 그래프에 쌓입니다.</div></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-wtdiet">
+      <div class="panel-h">
+        <div class="panel-t">3. 지금 내 상태 · 맞춤 식단 <span>판정이 바뀌면 열리는 식단도 함께 바뀝니다</span></div>
+      </div>
+      <div class="wj" id="wtJudge" data-v="none"><div class="wj-head"><span class="wj-badge none">기록 없음</span><span class="wj-when">아직 체중 기록이 없습니다</span></div><p class="wj-line">키와 임신 전 몸무게를 입력하고 주차별 체중을 남기면 <b>적정 · 감량 필요 · 증량 필요</b> 중 하나로 바로 판정해 드립니다.</p></div>
+
+      <div class="dt-tabs" id="dtTabs" role="group" aria-label="식단 종류">
+        <button class="dt-tab" type="button" data-dt="감량 필요" aria-pressed="false" aria-controls="dtp-down"><span class="dt-dot d-down"></span>감량 필요<span class="dt-now" hidden>지금</span></button>
+        <button class="dt-tab" type="button" data-dt="적정" aria-pressed="true" aria-controls="dtp-ok"><span class="dt-dot d-ok"></span>적정<span class="dt-now" hidden>지금</span></button>
+        <button class="dt-tab" type="button" data-dt="증량 필요" aria-pressed="false" aria-controls="dtp-up"><span class="dt-dot d-up"></span>증량 필요<span class="dt-now" hidden>지금</span></button>
+      </div>
+
+      <div class="dt-panel" id="dtp-down" data-dt="감량 필요" role="region" aria-label="감량 필요 식단" hidden>
+        <div class="dt-head"><span class="vb v-down">감량 필요</span><span class="dt-sub">증가 속도를 조절하는 식단 · 열량은 줄이지 않고 질만 바꿉니다</span></div>
+        <div class="dt-meals">
+          <div class="dt-meal"><span class="dt-mk">아침</span><span class="dt-mt">현미밥 2/3공기 · 계란찜 · 시금치나물 · 김</span></div>
+          <div class="dt-meal"><span class="dt-mk">점심</span><span class="dt-mt">잡곡밥 1/2공기 · 닭가슴살구이 100g · 양배추 샐러드(올리브유 1작은술)</span></div>
+          <div class="dt-meal"><span class="dt-mk">저녁</span><span class="dt-mt">두부 1/2모 부침 · 브로콜리·버섯 볶음 · 고구마 1개</span></div>
+          <div class="dt-meal"><span class="dt-mk">간식</span><span class="dt-mt">무가당 그릭요거트 100g + 블루베리 한 줌 / 삶은 달걀 1개 + 방울토마토</span></div>
+        </div>
+        <div class="dt-rules"><b>핵심 원칙</b>
+          <ul>
+            <li>하루 열량은 임신 권장량 그대로 — 중기 +340kcal, 후기 +450kcal. 끼니를 거르거나 크게 줄이면 체지방이 분해되며 케톤체가 생겨 태아에 좋지 않습니다.</li>
+            <li>흰밥·빵·면·떡은 잡곡·현미로 바꾸고 한 끼 2/3공기로. 저GI 탄수화물이 혈당과 체중 증가 속도를 완만하게 만듭니다.</li>
+            <li>매끼 단백질(달걀·두부·살코기·생선)을 손바닥 크기만큼 먼저 먹습니다.</li>
+            <li>채소 두 접시를 먼저 먹으면 같은 양으로도 포만감이 커집니다.</li>
+            <li>단 음료·과일주스·디저트·야식부터 정리 — 액상과당이 가장 빠른 증가 원인입니다.</li>
+            <li>국물·찌개·젓갈·가공식품을 줄여 나트륨을 낮춥니다(부종·임신고혈압 예방).</li>
+            <li>식후 10~20분 걷기. 의료진이 운동을 제한하지 않았다면 가장 안전한 속도 조절 방법입니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dt-panel" id="dtp-ok" data-dt="적정" role="region" aria-label="적정 식단">
+        <div class="dt-head"><span class="vb v-ok">적정</span><span class="dt-sub">균형식 · 지금 속도를 그대로 유지합니다</span></div>
+        <div class="dt-meals">
+          <div class="dt-meal"><span class="dt-mk">아침</span><span class="dt-mt">잡곡밥 2/3공기 · 소고기무국 · 달걀후라이 · 콩나물무침</span></div>
+          <div class="dt-meal"><span class="dt-mk">점심</span><span class="dt-mt">비빔밥(밥 2/3) · 두부부침 · 플레인 요구르트</span></div>
+          <div class="dt-meal"><span class="dt-mk">저녁</span><span class="dt-mt">고등어구이 1토막 · 현미밥 2/3공기 · 미역국 · 깻잎·상추</span></div>
+          <div class="dt-meal"><span class="dt-mk">간식</span><span class="dt-mt">우유 1컵 + 견과 10알 / 사과 반쪽 + 삶은 달걀</span></div>
+        </div>
+        <div class="dt-rules"><b>핵심 원칙</b>
+          <ul>
+            <li>세 끼 규칙적으로, 간식 1~2회. 중기 +340kcal·후기 +450kcal면 충분하고 ‘두 명분’을 먹을 필요는 없습니다.</li>
+            <li>단백질을 매끼 — 중기 +15g, 후기 +30g(고기·생선·달걀·콩·유제품).</li>
+            <li>철은 살코기·조개·달걀에 비타민C(과일·피망)를 곁들여. 식후 커피·녹차는 철 흡수를 막습니다.</li>
+            <li>칼슘은 우유·요구르트·치즈·멸치·두부로 하루 3회.</li>
+            <li>DHA는 고등어·연어·꽁치 주 2회(날것은 금지, 충분히 익혀서).</li>
+            <li>채소·과일·통곡물로 식이섬유를 채우고 물은 하루 2.3L.</li>
+            <li>카페인은 하루 200mg 이하(커피 1~2잔), 술은 먹지 않습니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dt-panel" id="dtp-up" data-dt="증량 필요" role="region" aria-label="증량 필요 식단" hidden>
+        <div class="dt-head"><span class="vb v-up">증량 필요</span><span class="dt-sub">소량 다회 · 영양 밀도를 높입니다</span></div>
+        <div class="dt-meals">
+          <div class="dt-meal"><span class="dt-mk">아침</span><span class="dt-mt">우유 오트밀(귀리 40g + 우유 200ml) · 바나나 · 아몬드 6알</span></div>
+          <div class="dt-meal"><span class="dt-mk">점심</span><span class="dt-mt">소고기 100g · 밥 1공기 · 시금치나물 · 참기름</span></div>
+          <div class="dt-meal"><span class="dt-mk">저녁</span><span class="dt-mt">연어구이 · 밥 2/3공기 · 감자 샐러드(마요 대신 요거트) · 미역국</span></div>
+          <div class="dt-meal"><span class="dt-mk">간식</span><span class="dt-mt">통밀토스트 + 땅콩버터 / 치즈 1장 + 크래커 / 미숫가루 우유 1잔</span></div>
+        </div>
+        <div class="dt-rules"><b>핵심 원칙</b>
+          <ul>
+            <li>한 번에 많이보다 5~6번 나눠서. 배가 눌려 한 끼 양이 적어지기 쉬운 시기입니다.</li>
+            <li>매끼 단백질 25~30g — 고기 100g, 생선 1토막, 두부 1모, 달걀 2개, 우유 2컵 중에서.</li>
+            <li>건강한 지방을 더합니다: 견과 한 줌, 아보카도, 들기름·참기름, 치즈.</li>
+            <li>밤 간식은 우유+바나나, 미숫가루, 요거트+그래놀라처럼 단백질+탄수 조합으로.</li>
+            <li>물 2.3L를 챙기고 공복을 길게 두지 않습니다.</li>
+            <li>빈혈이 있으면 철분제·식사 상담을 받으세요. 목표는 저체중아·조산 위험을 낮추는 것입니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dt-warn">
+        🚫 <b>임신 중에는 살을 빼는 다이어트를 하지 않습니다.</b> 단식·간헐적 단식·디톡스주스·극단적 감량은 케톤체를 만들어 태아 발달에 해롭고 저체중아·조산 위험을 높입니다. ‘감량 필요’는 <b>증가 속도를 조절</b>하라는 뜻이고, 실제 조절은 반드시 담당 산부인과와 상의해 주세요.<br>
+        ⚠️ 주 1kg 이상 갑자기 늘거나 손·얼굴 부종, 심한 두통, 시야 흐림이 있으면 임신중독증 신호일 수 있으니 바로 병원에 연락하세요.<br>
+        <span style="color:#a1804f;font-weight:700">식단 예시는 1인분 기준 참고용입니다. 알레르기·임신성당뇨·빈혈 등 진단을 받았다면 병원 식이 상담이 우선입니다.</span>
+      </div>
+    </div>
+
+    <div class="disc">
+      <b>근거</b> · BMI 구간·총 권장 증가량: 보건복지부 아이사랑 「영양 및 체중관리」(한국인 기준, 아시아-태평양 BMI) · 주당 증가율·1삼분기 0.5~2kg: IOM 2009 / ACOG Committee Opinion No.548(2023 재확인) · 열량·단백질·수분 기준: 질병관리청 국가건강정보포털 「식이영양(임산부)」. BMI 구간은 저체중 &lt;18.5 / 정상 18.5~22.9 / 과체중 23.0~24.9 / 비만 25.0~29.9 / 고도비만 ≥30.0(아시아-태평양 기준)이고, 총 권장 증가량은 <a href="https://www.childcare.go.kr/?menuno=363" target="_blank" rel="noopener noreferrer">보건복지부 아이사랑 「영양 및 체중관리」</a> 표를 그대로 따랐습니다 — 23.0~24.9(비만 전 단계)는 이 표에서 정상과 같은 11.5~16kg, 25.0 이상부터 7~11.5kg(30 이상은 5~9kg)으로 줄어듭니다. 주차별 범위는 1삼분기 0.5~2kg과 40주 총 권장량을 14~40주에 걸쳐 선형으로 이은 값이라, 표의 주당 증가율(0.44~0.58 / 0.35~0.50 / 0.23~0.33 / 0.17~0.27kg)과 ±0.02kg/주 정도 차이가 날 수 있습니다. 열량·단백질·수분 기준은 <a href="https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=5214" target="_blank" rel="noopener noreferrer">질병관리청 국가건강정보포털 「식이영양(임산부)」</a>입니다. 이 판정은 참고용이며 진료를 대신하지 않습니다 — 체중 조절이 필요하다는 판정이 나와도 실제 식사 처방은 담당 산부인과·영양사와 상의하세요.
     </div>
   </section>
 </div>
@@ -1856,7 +2120,7 @@
   };
 
   /* ---------- state ---------- */
-  var state = { p:{}, g:{}, b:{} };
+  var state = { p:{}, g:{}, b:{}, wt:null, wr:[] };
   function loadState(){
     try{
       var raw = localStorage.getItem(STORE);
@@ -1866,6 +2130,19 @@
           state.p = (o.p && typeof o.p === "object") ? o.p : {};
           state.g = (o.g && typeof o.g === "object") ? o.g : {};
           state.b = (o.b && typeof o.b === "object") ? o.b : {};
+          if(o.wt && typeof o.wt === "object" && (typeof o.wt.h === "number" || typeof o.wt.kg === "number")){
+            state.wt = {
+              h: (typeof o.wt.h === "number" && o.wt.h > 0) ? o.wt.h : null,
+              kg: (typeof o.wt.kg === "number" && o.wt.kg > 0) ? o.wt.kg : null
+            };
+          }
+          if(Array.isArray(o.wr)){
+            state.wr = o.wr.filter(function(r){
+              return r && typeof r.w === "number" && typeof r.kg === "number" && r.w >= 1 && r.w <= 40;
+            }).map(function(r){
+              return {w: Math.round(r.w), kg: Math.round(r.kg * 10) / 10, d: (typeof r.d === "string" ? r.d : null)};
+            });
+          }
           if(o.lv && typeof o.lv === "object"){
             var L = o.lv;
             if(typeof L.pay === "number" && L.pay >= 0) lv.pay = Math.round(L.pay);
@@ -1881,10 +2158,10 @@
           }
         }
       }
-    }catch(e){ state.p = {}; state.g = {}; state.b = {}; }
+    }catch(e){ state.p = {}; state.g = {}; state.b = {}; state.wt = null; state.wr = []; }
   }
   function saveState(){
-    try{ localStorage.setItem(STORE, JSON.stringify({p:state.p, g:state.g, b:state.b, lv:lv, u:{name:user.name, edd:user.edd}})); }catch(e){}
+    try{ localStorage.setItem(STORE, JSON.stringify({p:state.p, g:state.g, b:state.b, wt:state.wt, wr:state.wr, lv:lv, u:{name:user.name, edd:user.edd}})); }catch(e){}
   }
 
   function won(n){ return Number(n).toLocaleString("ko-KR"); }
@@ -2070,6 +2347,7 @@
     renderHeader();
     lvFollowEdd();
     renderLeave();
+    wtRender();
   }
 
   /* ---------- header ---------- */
@@ -3184,6 +3462,347 @@ null,
     renderLeave();
   }
 
+  /* ---------- section 4: 임신 중 체중·BMI·식단 ---------- */
+  var WT_BANDS = [
+    {k:"저체중", hi:18.5, note:"18.5 미만", tmin:12.5, tmax:18, rmin:0.44, rmax:0.58},
+    {k:"정상", hi:23, note:"18.5~22.9", tmin:11.5, tmax:16, rmin:0.35, rmax:0.5},
+    {k:"과체중", hi:25, note:"23.0~24.9 · 비만 전 단계", tmin:11.5, tmax:16, rmin:0.35, rmax:0.5},
+    {k:"비만", hi:30, note:"25.0~29.9", tmin:7, tmax:11.5, rmin:0.23, rmax:0.33},
+    {k:"고도비만", hi:99, note:"30.0 이상", tmin:5, tmax:9, rmin:0.17, rmax:0.27}
+  ];
+  var WT_TOL = 0.5;
+  var WT_VCLS = {"적정":"v-ok", "감량 필요":"v-down", "증량 필요":"v-up"};
+  var WT_VCOLOR = {"적정":"#3f9878", "감량 필요":"#dd724f", "증량 필요":"#5a92ba"};
+  var WT_NOTE = {
+    "적정": "지금 속도를 그대로 유지하세요. 다음 기록도 같은 요일·같은 시간에 재면 흐름이 더 정확해집니다.",
+    "감량 필요": "‘감량 필요’는 임신 중 살을 빼라는 뜻이 아니라 <b>늘어나는 속도를 조절</b>하라는 신호입니다. 열량을 크게 줄이지 말고 단 간식·음료·야식부터 줄여 보세요. 무리한 단식은 금물입니다.",
+    "증량 필요": "영양 밀도가 높은 음식을 <b>소량씩 자주</b> 드세요. 단백질과 건강한 지방을 더하고 공복을 길게 두지 않는 것이 좋습니다."
+  };
+
+  function wtF1(x){ return (Math.round(Number(x) * 10) / 10).toFixed(1); }
+  function wtF2(x){ return (Math.round(Number(x) * 100) / 100).toFixed(2); }
+  function wtSg(x){ return (x >= 0 ? "+" : "-") + wtF1(Math.abs(x)); }
+  function wtBmi(h, kg){ if(!h || !kg) return null; var m = h / 100; return kg / (m * m); }
+  function wtCat(bmi){
+    for(var i = 0; i < WT_BANDS.length; i++){ if(bmi < WT_BANDS[i].hi - 1e-9) return WT_BANDS[i]; }
+    return WT_BANDS[WT_BANDS.length - 1];
+  }
+  function wtGain(cat, week){
+    var w = Math.max(0, Math.min(40, week));
+    if(w <= 13) return [0.5 * w / 13, 2 * w / 13];
+    var t = (w - 13) / 27;
+    return [0.5 + (cat.tmin - 0.5) * t, 2 + (cat.tmax - 2) * t];
+  }
+  function wtVerdict(gain, cat, week){
+    var g = wtGain(cat, week);
+    if(gain > g[1] + WT_TOL) return "감량 필요";
+    if(gain < g[0] - WT_TOL) return "증량 필요";
+    return "적정";
+  }
+  function wtProf(){ return (state.wt && state.wt.h && state.wt.kg) ? state.wt : null; }
+  function wtWeekNow(){
+    var days = gaDays();
+    if(days < 0) return 40;
+    return Math.max(4, Math.min(40, Math.floor(days / 7)));
+  }
+  function wtSorted(){ return state.wr.slice().sort(function(a, b){ return a.w - b.w; }); }
+  function wtLastVerdict(){
+    var p = wtProf();
+    if(!p || !state.wr.length) return null;
+    var last = wtSorted().pop();
+    return wtVerdict(last.kg - p.kg, wtCat(wtBmi(p.h, p.kg)), last.w);
+  }
+
+  function wtSummaryHtml(prof, week){
+    var bmi = prof ? wtBmi(prof.h, prof.kg) : null;
+    if(bmi === null){
+      return '<div class="ws-c"><div class="ws-k">BMI</div><div class="ws-v">—</div>' +
+          '<div class="ws-s">키와 몸무게를 입력하세요</div></div>' +
+        '<div class="ws-c"><div class="ws-k">체중 단계</div><div class="ws-v">—</div>' +
+          '<div class="ws-s">임신 전 BMI 기준</div></div>' +
+        '<div class="ws-c"><div class="ws-k">임신 전체 권장 증가량</div><div class="ws-v">—</div>' +
+          '<div class="ws-s">BMI 구간별 기준</div></div>' +
+        '<div class="ws-c hi"><div class="ws-k">이번 주 권장 범위</div><div class="ws-v">—</div>' +
+          '<div class="ws-s">' + week + '주 기준 · 출산예정일 연동</div></div>';
+    }
+    var cat = wtCat(bmi);
+    var g = wtGain(cat, week);
+    var m = prof.h / 100;
+    return '<div class="ws-c"><div class="ws-k">BMI</div><div class="ws-v">' + wtF1(bmi) + '</div>' +
+        '<div class="ws-s">' + wtF1(prof.kg) + 'kg ÷ ' + wtF2(m * m) + 'm²</div></div>' +
+      '<div class="ws-c"><div class="ws-k">체중 단계</div><div class="ws-v">' + cat.k + '</div>' +
+        '<div class="ws-s">' + cat.note + ' · 아시아-태평양 기준</div></div>' +
+      '<div class="ws-c"><div class="ws-k">임신 전체 권장 증가량</div><div class="ws-v">' + wtF1(cat.tmin) + '~' + wtF1(cat.tmax) + 'kg</div>' +
+        '<div class="ws-s">주당 ' + wtF2(cat.rmin) + '~' + wtF2(cat.rmax) + 'kg · 14~40주</div></div>' +
+      '<div class="ws-c hi"><div class="ws-k">이번 주 권장 범위</div><div class="ws-v">' + wtF1(prof.kg + g[0]) + '~' + wtF1(prof.kg + g[1]) + 'kg</div>' +
+        '<div class="ws-s">' + week + '주 · 임신 전보다 ' + wtSg(g[0]) + '~' + wtSg(g[1]) + 'kg</div></div>';
+  }
+
+  function wtJudgeHtml(recs, prof, week){
+    if(!prof || !recs || !recs.length){
+      return '<div class="wj-head"><span class="wj-badge none">기록 없음</span>' +
+          '<span class="wj-when">아직 체중 기록이 없습니다</span></div>' +
+        '<p class="wj-line">키와 임신 전 몸무게를 입력하고 주차별 체중을 남기면 <b>적정 · 감량 필요 · 증량 필요</b> 중 하나로 바로 판정해 드립니다.</p>';
+    }
+    var cat = wtCat(wtBmi(prof.h, prof.kg));
+    var last = recs.slice().sort(function(a, b){ return a.w - b.w; }).pop();
+    var gain = last.kg - prof.kg;
+    var g = wtGain(cat, last.w);
+    var v = wtVerdict(gain, cat, last.w);
+    var cmp;
+    if(v === "감량 필요") cmp = "보다 <b>+" + wtF1(gain - g[1]) + "kg</b> 많습니다.";
+    else if(v === "증량 필요") cmp = "보다 <b>" + wtF1(g[0] - gain) + "kg</b> 적습니다.";
+    else cmp = " 안에 있습니다.";
+    var when = "최근 기록 " + last.w + "주 · " + wtF1(last.kg) + "kg";
+    if(last.d) when += " (" + String(last.d).slice(5).replace("-", "/") + ")";
+    return '<div class="wj-head"><span class="wj-badge ' + WT_VCLS[v] + '">' + v + '</span>' +
+        '<span class="wj-when">' + escH(when) + '</span></div>' +
+      '<p class="wj-line">임신 전보다 <b>' + wtSg(gain) + 'kg</b> — ' + last.w + '주 권장 범위 <b>' +
+        wtSg(g[0]) + '~' + wtSg(g[1]) + 'kg</b>' + cmp + '</p>' +
+      '<p class="wj-note">' + WT_NOTE[v] + '</p>';
+  }
+
+  function wtChartHtml(recs, prof, week){
+    var W = 1000, H = 360, PL = 58, PR = 16, PT = 22, PB = 44;
+    var iw = W - PL - PR, ih = H - PT - PB;
+    function X(w){ return PL + Math.round(iw * (w - 4) / 36); }
+    var cat = null, prep = null, gains = [];
+    var rs = (recs || []).slice().sort(function(a, b){ return a.w - b.w; });
+    if(prof){
+      cat = wtCat(wtBmi(prof.h, prof.kg));
+      prep = prof.kg;
+      rs.forEach(function(r){ gains.push(r.kg - prep); });
+    }
+    var ymx = 20;
+    if(cat){
+      var mx = Math.max.apply(null, [cat.tmax].concat(gains.length ? gains : [0]));
+      ymx = Math.ceil((mx + 1) / 2) * 2;
+    }
+    function Y(v){ return PT + Math.round(ih * (1 - v / ymx)); }
+    var aria = "임신 주차별 체중 추이 그래프" +
+      (cat ? ", " + cat.k + " 기준 권장 증가 범위 밴드 표시" : ", BMI를 입력하면 권장 범위 밴드가 표시됩니다");
+    var o = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + escH(aria) + '">'];
+    for(var vv = 0; vv <= ymx + 0.001; vv += 2){
+      var y = Y(vv);
+      o.push('<line x1="' + PL + '" y1="' + y + '" x2="' + (W - PR) + '" y2="' + y + '" stroke="#f3ece7" stroke-width="1"/>');
+      o.push('<text x="' + (PL - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">' + vv + '</text>');
+    }
+    o.push('<text x="' + (PL - 46) + '" y="' + (PT - 10) + '" font-size="10" font-weight="700" fill="#b3a8a3" font-family="inherit">임신 전 대비 증가량(kg)</text>');
+    [4,8,12,16,20,24,28,32,36,40].forEach(function(wk){
+      o.push('<text x="' + X(wk) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">' + wk + '주</text>');
+    });
+
+    if(cat){
+      var hiP = [], loP = [];
+      for(var wk2 = 4; wk2 <= 40; wk2++){
+        var gg = wtGain(cat, wk2);
+        hiP.push([X(wk2), Y(gg[1])]);
+        loP.push([X(wk2), Y(gg[0])]);
+      }
+      var poly = hiP.concat(loP.slice().reverse()).map(function(p){ return p[0] + "," + p[1]; }).join(" ");
+      o.push('<polygon points="' + poly + '" fill="#d9f0e6" opacity="0.75"/>');
+      [hiP, loP].forEach(function(pts){
+        o.push('<polyline points="' + pts.map(function(p){ return p[0] + "," + p[1]; }).join(" ") + '" fill="none" stroke="#8fd3b8" stroke-width="1.6" stroke-dasharray="5 4"/>');
+      });
+    }else{
+      o.push('<text x="' + Math.round((PL + W - PR) / 2) + '" y="' + (PT + Math.floor(ih * 0.52)) + '" text-anchor="middle" font-size="13" font-weight="700" fill="#b3a8a3" font-family="inherit">키와 임신 전 몸무게를 입력하면 권장 범위 밴드가 그려집니다</text>');
+    }
+
+    var xc = X(week);
+    o.push('<line x1="' + xc + '" y1="' + PT + '" x2="' + xc + '" y2="' + (H - PB) + '" stroke="#e7c0ae" stroke-width="1.4" stroke-dasharray="4 4"/>');
+    var anchor = xc < PL + 44 ? "start" : (xc > W - PR - 44 ? "end" : "middle");
+    o.push('<text x="' + xc + '" y="' + (PT + 11) + '" text-anchor="' + anchor + '" font-size="10.5" font-weight="800" fill="#c9764f" font-family="inherit">지금 ' + week + '주</text>');
+
+    if(cat && rs.length > 1){
+      var line = rs.map(function(r, i){ return (i ? "L" : "M") + X(r.w) + " " + Y(r.kg - prep); }).join(" ");
+      o.push('<path d="' + line + '" fill="none" stroke="#b3a8a3" stroke-width="1.8" stroke-linejoin="round"/>');
+    }
+    if(cat){
+      rs.forEach(function(r){
+        var g = r.kg - prep;
+        var vd = wtVerdict(g, cat, r.w);
+        o.push('<circle cx="' + X(r.w) + '" cy="' + Y(g) + '" r="4.6" fill="' + WT_VCOLOR[vd] + '" stroke="#fff" stroke-width="1.8"/>');
+        o.push('<circle class="hit" cx="' + X(r.w) + '" cy="' + Y(g) + '" r="15" fill="transparent" data-w="' + r.w +
+          '" data-kg="' + wtF1(r.kg) + '" data-g="' + wtSg(g) + '" data-v="' + vd + '"/>');
+      });
+    }
+    o.push("</svg>");
+    return o.join("");
+  }
+
+  function wtRowsHtml(recs, prof){
+    if(!prof || !recs || !recs.length){
+      return '<div class="wt-empty">아직 기록이 없습니다. 위에서 주차와 몸무게를 넣고 <b>기록 저장</b>을 누르면' +
+        ' 이 표와 그래프에 쌓입니다.</div>';
+    }
+    var cat = wtCat(wtBmi(prof.h, prof.kg));
+    return recs.slice().sort(function(a, b){ return a.w - b.w; }).map(function(r){
+      var g = r.kg - prof.kg;
+      var v = wtVerdict(g, cat, r.w);
+      var gg = wtGain(cat, r.w);
+      var date = r.d ? '<small>' + escH(String(r.d).slice(5).replace("-", "/")) + '</small>' : '';
+      return '<div class="wr" data-w="' + r.w + '"><div class="wr-w"><b>' + r.w + '주</b>' + date + '</div>' +
+        '<div class="wr-kg" data-l="몸무게">' + wtF1(r.kg) + 'kg</div>' +
+        '<div class="wr-g" data-l="증가">' + wtSg(g) + 'kg</div>' +
+        '<div class="wr-r" data-l="권장 범위">' + wtSg(gg[0]) + '~' + wtSg(gg[1]) + 'kg</div>' +
+        '<div class="wr-b"><span class="vb ' + WT_VCLS[v] + '">' + v + '</span></div>' +
+        '<div class="wr-a"><button class="wbtn" type="button" data-edit="' + r.w + '">수정</button>' +
+        '<button class="wbtn del" type="button" data-del="' + r.w + '" aria-label="' + r.w + '주 ' + wtF1(r.kg) + 'kg 기록 삭제">삭제</button></div></div>';
+    }).join("");
+  }
+
+  function wtDiet(v, withNow){
+    each("#dtTabs .dt-tab", function(b){
+      var on = b.getAttribute("data-dt") === v;
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      var now = b.querySelector(".dt-now");
+      if(now){
+        if(on && withNow) now.removeAttribute("hidden"); else now.setAttribute("hidden", "");
+      }
+    });
+    each(".dt-panel", function(p){
+      if(p.getAttribute("data-dt") === v) p.removeAttribute("hidden");
+      else p.setAttribute("hidden", "");
+    });
+  }
+
+  function wtRender(){
+    var sum = document.getElementById("wtSummary");
+    if(!sum) return;
+    var prof = wtProf();
+    var week = wtWeekNow();
+    sum.innerHTML = wtSummaryHtml(prof, week);
+    document.getElementById("wtJudge").innerHTML = wtJudgeHtml(state.wr, prof, week);
+    var cbox = document.getElementById("wtChart");
+    cbox.innerHTML = wtChartHtml(state.wr, prof, week);
+    if(cbox.scrollWidth > cbox.clientWidth + 4){
+      cbox.scrollLeft = Math.max(0, (cbox.scrollWidth * (week - 4) / 36) - cbox.clientWidth * 0.5);
+    }
+    document.getElementById("wtRows").innerHTML = wtRowsHtml(state.wr, prof);
+    var v = wtLastVerdict();
+    document.getElementById("wtJudge").setAttribute("data-v", v || "none");
+    var now = document.getElementById("wtNow");
+    if(now){
+      var days = gaDays();
+      if(days < 0) now.innerHTML = "출산 후 · 수고하셨어요";
+      else now.innerHTML = "지금 <b>" + Math.floor(days / 7) + "주 " + (days % 7) + "일</b> · 진찰 때 잰 몸무게를 넣어 보세요";
+    }
+    wtDiet(v || "적정", !!v);
+  }
+
+  function wtSay(msg, bad){
+    var m = document.getElementById("wtMsg");
+    if(!m) return;
+    m.className = "wt-msg" + (bad ? " bad" : "");
+    m.textContent = msg || "";
+  }
+
+  function wtTodayIso(){
+    var d = new Date();
+    return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+
+  function wtSaveRecord(){
+    var prof = wtProf();
+    var wEl = document.getElementById("wtWeek"), kEl = document.getElementById("wtKg");
+    if(!prof){
+      wtSay("먼저 위에서 임신 전 키와 몸무게를 입력해 주세요", true);
+      var hEl = document.getElementById("wtH");
+      if(hEl) hEl.focus();
+      return;
+    }
+    var w = parseInt(wEl.value, 10);
+    var kg = parseFloat(kEl.value);
+    if(isNaN(w) || w < 1 || w > 40){ wtSay("주차는 1~40주 사이로 넣어 주세요", true); wEl.focus(); return; }
+    if(isNaN(kg) || kg < 30 || kg > 150){ wtSay("몸무게는 30~150kg 사이로 넣어 주세요", true); kEl.focus(); return; }
+    w = Math.round(w);
+    kg = Math.round(kg * 10) / 10;
+    var found = null;
+    for(var i = 0; i < state.wr.length; i++){ if(state.wr[i].w === w) found = state.wr[i]; }
+    if(found){ found.kg = kg; found.d = wtTodayIso(); wtSay(w + "주 기록을 " + wtF1(kg) + "kg으로 바꿨어요"); }
+    else { state.wr.push({w:w, kg:kg, d:wtTodayIso()}); wtSay(w + "주 " + wtF1(kg) + "kg 기록을 저장했어요"); }
+    state.wr.sort(function(a, b){ return a.w - b.w; });
+    kEl.value = "";
+    saveState();
+    wtRender();
+  }
+
+  function initWt(){
+    var hEl = document.getElementById("wtH"), pEl = document.getElementById("wtPre");
+    var wEl = document.getElementById("wtWeek"), kEl = document.getElementById("wtKg");
+    if(!hEl || !pEl) return;
+    if(state.wt && state.wt.h) hEl.value = state.wt.h;
+    if(state.wt && state.wt.kg) pEl.value = state.wt.kg;
+    if(wEl) wEl.value = wtWeekNow();
+
+    function readProf(){
+      var h = parseFloat(hEl.value), kg = parseFloat(pEl.value);
+      var cur = state.wt || {};
+      cur.h = (!isNaN(h) && h > 0) ? Math.round(h * 10) / 10 : null;
+      cur.kg = (!isNaN(kg) && kg > 0) ? Math.round(kg * 10) / 10 : null;
+      state.wt = (cur.h || cur.kg) ? cur : null;
+      saveState();
+      wtRender();
+    }
+    hEl.addEventListener("input", readProf);
+    pEl.addEventListener("input", readProf);
+
+    var sv = document.getElementById("wtSave");
+    if(sv) sv.addEventListener("click", wtSaveRecord);
+    if(kEl) kEl.addEventListener("keydown", function(ev){ if(ev.key === "Enter"){ ev.preventDefault(); wtSaveRecord(); } });
+
+    each("#dtTabs .dt-tab", function(b){
+      b.addEventListener("click", function(){ wtDiet(b.getAttribute("data-dt"), !!wtLastVerdict()); });
+    });
+
+    var rows = document.getElementById("wtRows");
+    if(rows) rows.addEventListener("click", function(ev){
+      var t = ev.target;
+      while(t && t !== rows && !(t.getAttribute && (t.getAttribute("data-edit") || t.getAttribute("data-del")))) t = t.parentNode;
+      if(!t || t === rows || !t.getAttribute) return;
+      var ew = t.getAttribute("data-edit"), dw = t.getAttribute("data-del");
+      if(ew){
+        var r = null;
+        for(var i = 0; i < state.wr.length; i++){ if(state.wr[i].w === parseInt(ew, 10)) r = state.wr[i]; }
+        if(r){
+          if(wEl) wEl.value = r.w;
+          if(kEl){ kEl.value = wtF1(r.kg); kEl.focus(); }
+          wtSay(r.w + "주 기록을 불러왔어요 — 값을 고치고 저장을 누르세요");
+        }
+        return;
+      }
+      if(dw){
+        var n = parseInt(dw, 10);
+        state.wr = state.wr.filter(function(x){ return x.w !== n; });
+        saveState();
+        wtRender();
+        wtSay(n + "주 기록을 지웠어요");
+      }
+    });
+
+    var box = document.getElementById("wtChart"), tip = document.getElementById("wtTip");
+    function show(el){
+      if(!tip || !el || !el.getAttribute) return;
+      var v = el.getAttribute("data-v");
+      if(!v) return;
+      tip.innerHTML = '<span>' + el.getAttribute("data-w") + '주</span><b>' + el.getAttribute("data-kg") +
+        'kg</b><span>임신 전보다 ' + el.getAttribute("data-g") + 'kg</span><b class="vb ' +
+        (WT_VCLS[v] || "") + '">' + v + '</b>';
+      tip.removeAttribute("hidden");
+    }
+    function hitOf(ev){
+      var t = ev.target;
+      if(t && t.getAttribute && String(t.getAttribute("class") || "").indexOf("hit") > -1) return t;
+      return null;
+    }
+    if(box){
+      box.addEventListener("click", function(ev){ var t = hitOf(ev); if(t) show(t); });
+      box.addEventListener("pointerover", function(ev){ var t = hitOf(ev); if(t) show(t); });
+    }
+
+    wtRender();
+  }
+
   /* ---------- reset ---------- */
   function initReset(){
     document.getElementById("resetBtn").addEventListener("click", function(){
@@ -3209,6 +3828,7 @@ null,
   initTrendToggle();
   initTrendTip();
   initLeave();
+  initWt();
   initReset();
 })();
 </script>
