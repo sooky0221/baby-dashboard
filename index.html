@@ -1238,10 +1238,10 @@
       '</div>';
     }).join("");
   }
-  function lvBirthHtml(start){
+  function lvBirthHtml(){
     var b0 = new Date(EDD_MS - 44*DAY), b1 = new Date(EDD_MS + 45*DAY);
     return "<b>출산전후휴가 90일(단태아)</b>은 출산 후 45일 이상이 남도록 배정합니다 — 예정일 기준 <b>" +
-      lvDstr(b0) + " ~ " + lvDstr(b1) + "</b>, 육아휴직은 그다음 날 <b>" + lvDstr(start) +
+      lvDstr(b0) + " ~ " + lvDstr(b1) + "</b>, 육아휴직은 그다음 날 <b>" + lvDstr(new Date(EDD_MS + 46*DAY)) +
       "</b>부터 시작할 수 있습니다. (출산일이 예정일과 달라지면 휴가 끝나는 날도 함께 밀립니다)";
   }
   function lvNotesHtml(kind){
@@ -1254,7 +1254,7 @@
     box.innerHTML = lvCardsHtml(c);
     document.getElementById("lvRows").innerHTML = lvRowsHtml(c);
     document.getElementById("lvNotes").innerHTML = lvNotesHtml(lv.type);
-    document.getElementById("lvBirthNote").innerHTML = lvBirthHtml(c.start);
+    document.getElementById("lvBirthNote").innerHTML = lvBirthHtml();
     each("#lvType button[data-type]", function(b){
       b.setAttribute("aria-pressed", b.getAttribute("data-type") === lv.type ? "true" : "false");
     });
