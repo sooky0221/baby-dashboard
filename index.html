@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>수영 님의 임신·육아 준비 대시보드</title>
+<style>
+  :root{
+    --bg:#fdfaf8;
+    --ink:#3f3a3d; --ink2:#6f686c; --ink3:#9c9397;
+    --line:#f0e6e1; --line2:#e6d7d0;
+    --peach:#ffd7c7; --peach-d:#f28f6e; --peach-dd:#dd724f;
+    --mint:#cdeadd; --mint-d:#5fb795; --mint-dd:#3f9878;
+    --lav:#e2ddf7; --lav-d:#8b82d6;
+    --butter:#ffeec6; --butter-d:#c9922a;
+    --rose:#ffd9e2; --rose-d:#d9698a;
+    --sky:#d9ebf7; --sky-d:#5a92ba;
+    --shadow:0 14px 34px -22px rgba(150,110,95,.55);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1100px 560px at 8% -8%, #ffe9e0 0%, rgba(255,233,224,0) 62%),
+      radial-gradient(900px 520px at 100% -4%, #e9e3fa 0%, rgba(233,227,250,0) 58%),
+      radial-gradient(900px 600px at 60% 110%, #e3f4ec 0%, rgba(227,244,236,0) 60%),
+      var(--bg);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    font-size:15px; line-height:1.5;
+    -webkit-text-size-adjust:100%;
+    word-break:keep-all;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:26px 16px 64px}
+  @media(min-width:900px){ .wrap{padding:36px 26px 80px} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(135deg,#fff7f1 0%,#fdf0f5 46%,#eef7f2 100%);
+    border:1px solid #f7e6df; border-radius:26px;
+    box-shadow:0 20px 44px -30px rgba(170,120,100,.65);
+    padding:22px 20px 20px;
+  }
+  @media(min-width:900px){ .hero{padding:28px 30px 26px} }
+  .hero-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .hero-title{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--peach-dd);background:#fff;border:1px solid #f9dfd2;border-radius:99px;padding:5px 12px}
+  .hero-sub{font-size:11.5px;color:var(--ink3)}
+  .hero-main{display:grid;gap:16px;grid-template-columns:1fr}
+  @media(min-width:760px){ .hero-main{grid-template-columns:1.15fr .85fr;align-items:start} }
+
+  .ga{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+  .ga-big{font-size:clamp(38px,8vw,56px);font-weight:800;line-height:1;letter-spacing:-.03em;color:#48383a}
+  .ga-big small{font-size:.36em;font-weight:700;color:var(--ink2);margin-left:6px;letter-spacing:0}
+  .dday{font-size:14px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f6a184,#ec7f5f);border-radius:12px;padding:6px 11px;box-shadow:0 8px 18px -10px rgba(236,127,95,.9);white-space:nowrap}
+  .ga-meta{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:11.5px;font-weight:600;color:var(--ink2);background:#ffffffb8;border:1px solid var(--line);border-radius:99px;padding:4px 10px}
+  .chip b{color:#48383a;font-weight:800}
+  .chip.cur{background:#fff3ec;border-color:#f7d5c4;color:#b9613f}
+
+  .edd{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-top:14px}
+  .edd-ico{font-size:22px}
+  .edd-k{font-size:10.5px;letter-spacing:.08em;color:var(--ink3);font-weight:700}
+  .edd-v{font-size:17px;font-weight:800;letter-spacing:-.01em}
+  .edd-v span{display:block;font-size:11px;font-weight:600;color:var(--ink2);margin:3px 0 0;line-height:1.4}
+
+  .sched{display:grid;gap:10px;grid-template-columns:1fr}
+  @media(min-width:520px){ .sched{grid-template-columns:1fr 1fr} }
+  @media(min-width:760px){ .sched{grid-template-columns:1fr} }
+  @media(min-width:1040px){ .sched{grid-template-columns:1fr 1fr} }
+  .sched-card{background:#fff;border:1px solid #f6ddd0;border-radius:16px;padding:12px 13px;position:relative;overflow:hidden}
+  .sched-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--peach-d),#f7bc9f)}
+  .sched-card.alt::before{background:linear-gradient(180deg,var(--lav-d),#bbb3ea)}
+  .sched-k{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--ink3)}
+  .sched-t{font-size:13.5px;font-weight:800;margin:2px 0 3px;letter-spacing:-.01em}
+  .sched-d{font-size:11.5px;color:var(--ink2)}
+  .sched-n{position:absolute;top:10px;right:11px;font-size:11px;font-weight:800;color:#c9764f;background:#fff3ec;border-radius:8px;padding:2px 7px}
+  .sched-card.alt .sched-n{color:#6e63c4;background:#f1effc}
+
+  /* progress */
+  .progs{display:grid;gap:14px;grid-template-columns:1fr;margin-top:18px;padding-top:16px;border-top:1px dashed #eddcd3}
+  @media(min-width:640px){ .progs{grid-template-columns:1fr 1fr} }
+  .prog-card{background:#ffffffc9;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .prog-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+  .prog-k{font-size:11.5px;font-weight:700;color:var(--ink2)}
+  .prog-v{font-size:15px;font-weight:800;letter-spacing:-.01em}
+  .prog{height:9px;border-radius:99px;background:#f1e8e3;overflow:hidden}
+  .prog > i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#fbc0a6,#ef8a67);transition:width .4s ease}
+  .prog.goods > i{background:linear-gradient(90deg,#bfe6d4,#57b28f)}
+  .prog-f{font-size:10.5px;color:var(--ink3);margin-top:6px}
+
+  /* milestones strip */
+  .mile{margin-top:16px;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(118px,1fr))}
+  .mile-i{background:#fff;border:1px solid var(--line);border-radius:11px;padding:7px 10px}
+  .mile-i.done{opacity:.5}
+  .mile-d{font-size:10px;font-weight:800;color:var(--peach-dd);letter-spacing:.02em}
+  .mile-l{font-size:11px;font-weight:600;color:var(--ink2);margin-top:1px}
+  .mile-i.done .mile-d{color:var(--ink3)}
+
+  /* ---------- sections ---------- */
+  section{margin-top:40px}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .sec-kick{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:var(--peach-d)}
+  .sec-title{font-size:clamp(19px,3.6vw,24px);font-weight:800;letter-spacing:-.02em;margin:3px 0 0}
+  .sec-desc{font-size:12px;color:var(--ink3);margin:5px 0 0;max-width:62ch}
+  .sec-note{font-size:11px;color:var(--ink3);margin-top:6px}
+
+  /* ---------- stage grid ---------- */
+  .stage-grid{display:grid;gap:13px;grid-template-columns:1fr}
+  @media(min-width:520px){ .stage-grid{grid-template-columns:1fr 1fr} }
+  @media(min-width:1020px){ .stage-grid{grid-template-columns:repeat(4,1fr)} }
+  .stage{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px 13px 12px;
+    display:flex;flex-direction:column;gap:9px;position:relative;
+    box-shadow:var(--shadow);
+  }
+  .stage.cur{border-color:#f5b899;background:linear-gradient(180deg,#fff8f3,#fff);box-shadow:0 18px 40px -24px rgba(226,130,95,.85)}
+  .stage.cur::after{content:"";position:absolute;inset:0;border-radius:18px;border:1.5px solid #f7c1a4;pointer-events:none;opacity:.6}
+  .stage-top{display:flex;align-items:flex-start;gap:8px}
+  .stage h3{flex:1;min-width:0}
+  .wk{font-size:10.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#b9a8a0,#9a8880);border-radius:7px;padding:2px 7px;letter-spacing:.02em;white-space:nowrap}
+  .stage.cur .wk{background:linear-gradient(135deg,#f7a184,#e87b58)}
+  .stage h3{font-size:13px;font-weight:800;margin:0;letter-spacing:-.01em;line-height:1.35}
+  .ribbon{position:absolute;top:-9px;right:11px;font-size:10px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f7a184,#e2603c);border-radius:99px;padding:3px 9px;box-shadow:0 6px 14px -8px rgba(226,96,60,.9);z-index:2}
+  .size{display:flex;align-items:center;gap:9px;background:#fbf6f3;border-radius:12px;padding:7px 9px}
+  .size-emo{font-size:26px;line-height:1}
+  .size-t{font-size:11px;font-weight:800;letter-spacing:-.01em}
+  .size-n{font-size:10px;color:var(--ink2);margin-top:1px}
+  .size-x{font-size:9px;color:var(--ink3);margin-top:1px;line-height:1.4}
+  .blk{display:flex;gap:6px;font-size:11.5px;line-height:1.55;color:var(--ink2)}
+  .blk .k{flex:none;font-size:9px;font-weight:800;color:#c9764f;background:#fff1ea;border-radius:4px;padding:1px 3.5px;line-height:1.5;margin-top:1px;letter-spacing:-.01em;white-space:nowrap}
+  .blk.tip{background:#fffaea;border:1px solid #fbeecb;border-radius:9px;padding:6px 8px;color:#8a6a2e;font-size:11px}
+  .blk.tip .k{color:#a97d22;background:#fff3d6}
+  .items{border-top:1px dashed var(--line2);padding-top:8px;margin-top:1px;max-height:244px;overflow:auto;overscroll-behavior:contain;
+    -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 20px),rgba(0,0,0,.15) 100%);mask-image:linear-gradient(to bottom,#000 calc(100% - 20px),rgba(0,0,0,.15) 100%)}
+  @media(max-width:519px){ .items{max-height:none;overflow:visible;-webkit-mask-image:none;mask-image:none} }
+  .items::-webkit-scrollbar{width:6px}
+  .items::-webkit-scrollbar-thumb{background:#e8dbd4;border-radius:99px}
+  .grp{font-size:9.5px;font-weight:800;letter-spacing:.08em;color:var(--ink3);margin:0 0 4px;display:flex;justify-content:space-between;gap:6px}
+  .grp em{font-style:normal;font-weight:600;font-size:8.5px;letter-spacing:0;color:#b7aba6;text-align:right;max-width:64%}
+  .grp + .grp{margin-top:9px}
+  .it{display:flex;gap:6px;align-items:flex-start;padding:3px 0;cursor:pointer}
+  .it input{appearance:none;-webkit-appearance:none;width:14px;height:14px;margin:2px 0 0;flex:none;border:1.5px solid #dbcfc9;border-radius:4.5px;background:#fff;cursor:pointer;position:relative;transition:.15s}
+  .it input:hover{border-color:#f0ac8e}
+  .it input:checked{background:var(--peach-d);border-color:var(--peach-d)}
+  .it input:checked::after{content:"";position:absolute;left:3.6px;top:1px;width:4px;height:8px;border:2px solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .it-t{font-size:11px;line-height:1.45;color:#4d4548;font-weight:600}
+  .it-w{display:block;font-size:9.5px;font-weight:500;color:var(--ink3);margin-top:1px}
+  .it input:checked + .it-t{color:#b3a8a3}
+  .it input:checked + .it-t .it-w{color:#c6bbb6}
+  .tag{display:inline-block;font-size:9px;font-weight:800;padding:1px 4.5px;border-radius:4.5px;margin-right:3px;vertical-align:1px;letter-spacing:.01em}
+  .t-필수{background:#ffe1e6;color:#c0506c}
+  .t-권장{background:#d9f0e6;color:#3d8f72}
+  .t-선택{background:#eae6fb;color:#6f63c2}
+  .t-주의{background:#fff1cf;color:#a97d22}
+  .t-조건부{background:#e5e5ea;color:#6b6771}
+  .stage-foot{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:9.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:7px;margin-top:auto}
+  .stage-foot b{color:var(--ink2);font-weight:800}
+
+  /* ---------- goods controls ---------- */
+  .controls{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+  .fbtn{font:inherit;font-size:12px;font-weight:700;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:99px;padding:7px 13px;cursor:pointer;transition:.15s;display:inline-flex;gap:6px;align-items:center}
+  .fbtn:hover{border-color:#e6b9a5;color:#c9764f}
+  .fbtn[aria-pressed="true"]{background:linear-gradient(135deg,#f9b295,#ec7f5f);border-color:#ec7f5f;color:#fff;box-shadow:0 8px 18px -12px rgba(236,127,95,.95)}
+  .fbtn .n{font-size:10px;font-weight:800;opacity:.75}
+
+  .panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}
+  @media(min-width:900px){ .panel{padding:20px 22px} }
+  .panel + .panel{margin-top:16px}
+  .panel-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .panel-t{font-size:14.5px;font-weight:800;letter-spacing:-.01em}
+  .panel-t span{font-weight:600;color:var(--ink3);font-size:11.5px;margin-left:6px}
+  @media(max-width:700px){ .panel-t span{display:block;margin:3px 0 0;line-height:1.45} }
+  .panel-d{font-size:11.5px;color:var(--ink3);margin:2px 0 14px}
+
+  /* bar chart */
+  .chart{display:flex;flex-direction:column;gap:2px}
+  .cgrp{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--ink3);margin:16px 0 8px;padding-bottom:5px;border-bottom:1px dashed var(--line2);display:flex;justify-content:space-between;gap:8px}
+  .cgrp:first-child{margin-top:0}
+  .cgrp em{font-style:normal;font-weight:600;letter-spacing:0;color:#c0b4ae}
+  .crow{display:grid;grid-template-columns:1fr;gap:5px;padding:9px 0;border-bottom:1px solid #faf3ef}
+  @media(min-width:760px){ .crow{grid-template-columns:186px 1fr;gap:14px;align-items:center} }
+  .crow:last-child{border-bottom:0}
+  .crow-l{display:flex;flex-direction:column;gap:1px;min-width:0}
+  .crow-n{font-size:12px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+  .crow-p{font-size:10px;color:var(--ink3);line-height:1.4}
+  .bars{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .bar{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:7px}
+  .bar-k{font-size:10px;font-weight:800;color:var(--ink3)}
+  .track{height:15px;background:#f6f0ec;border-radius:6px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:6px;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+  .bar.win .fill{background:linear-gradient(90deg,#8fd3b8,#4fae8b)}
+  .bar.lose .fill{background:linear-gradient(90deg,#e2d8d3,#cbc0ba)}
+  .bar.tie .fill{background:linear-gradient(90deg,#c9d8ef,#a9bedd)}
+  .bar.none .track{background:repeating-linear-gradient(45deg,#f7f1ed,#f7f1ed 5px,#f1e8e2 5px,#f1e8e2 10px)}
+  .bar-v{font-size:11px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;min-width:64px;text-align:right}
+  .bar-v.miss{color:#bdb2ac;font-weight:700;font-size:10px}
+  .delta{font-size:10px;font-weight:800;color:#3f9878;background:#e4f5ee;border-radius:6px;padding:1px 6px;white-space:nowrap}
+  .delta.tie{color:#5a7fae;background:#e9f0fa}
+  .delta.only{color:#96867e;background:#f5efeb}
+
+  /* table */
+  .table{margin-top:2px}
+  .tr{display:grid;grid-template-columns:26px 1fr;gap:8px;padding:11px 2px;border-bottom:1px solid #faf3ef;align-items:start}
+  @media(min-width:820px){ .tr{grid-template-columns:26px minmax(0,1fr) 110px 118px 96px;align-items:start;gap:10px} }
+  .tr.h{display:none}
+  @media(min-width:820px){
+    .tr.h{display:grid;font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--ink3);padding:0 2px 8px;border-bottom:1px solid var(--line2)}
+  }
+  .gd{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .gd-n{font-size:12.5px;font-weight:800;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .gd-p{font-size:10.5px;color:var(--ink3)}
+  .gd-note{font-size:10px;color:#a1938c;line-height:1.45;margin-top:1px}
+  .gd-note::before{content:"ⓘ ";color:#c9b6ac}
+  .gd-grp{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.03em;color:#b3a6a0;background:#f7f1ed;border-radius:5px;padding:1px 5px}
+  .gd .badge{display:none}
+  .price{font-size:12.5px;font-weight:800;letter-spacing:-.01em}
+  .price.miss{color:#c0b4ae;font-weight:700;font-size:11px}
+  .price small{display:block;font-size:9.5px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-top:1px}
+  .price.win{color:var(--mint-dd)}
+  .pcell{display:flex;align-items:center;gap:6px}
+  @media(max-width:819px){
+    .tr{grid-template-columns:26px 1fr;row-gap:5px}
+    .pcell{grid-column:2;justify-content:flex-start;gap:10px;flex-wrap:wrap}
+    .pcell::before{content:attr(data-l);font-size:9px;font-weight:800;color:var(--ink3);letter-spacing:.05em;min-width:34px}
+    .badge-cell{margin-top:2px}
+  }
+  .badge{font-size:10px;font-weight:800;border-radius:6px;padding:2px 7px;white-space:nowrap;display:inline-block}
+  .b-cp{background:#eef2ff;color:#5b63b5}
+  .b-nv{background:#e4f5ee;color:#3f9878}
+  .b-tie{background:#eef1f5;color:#6d7684}
+  .b-one{background:#f7f0ea;color:#96867e}
+  .gcheck{appearance:none;-webkit-appearance:none;width:19px;height:19px;margin:1px 0 0;border:1.8px solid #d5c8c1;border-radius:6px;background:#fff;cursor:pointer;position:relative;transition:.15s}
+  .gcheck:hover{border-color:#7cc4a9}
+  .gcheck:checked{background:var(--mint-d);border-color:var(--mint-d)}
+  .gcheck:checked::after{content:"";position:absolute;left:5.4px;top:2.4px;width:5px;height:10px;border:2.2px solid #fff;border-width:0 2.2px 2.2px 0;transform:rotate(45deg)}
+  .tr{transition:background .18s ease,box-shadow .18s ease}
+  .tr.done{background:#eafaef;box-shadow:inset 3px 0 0 var(--mint-d)}
+  .tr.done .gd-n{color:#8f9c96}
+  .tr.done .gd-n .it-name{text-decoration:line-through;text-decoration-thickness:1.5px;text-decoration-color:#9ecdb9}
+  .tr.done .gd-p,.tr.done .gd-note{opacity:.55}
+  .tr.done .price{opacity:.5}
+  .tr.flash{animation:rowFlash .5s ease}
+  @keyframes rowFlash{0%{background:#d8f5e5}100%{background:#eafaef}}
+  .done-badge{display:none;font-size:9.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#6dc4a4,#43a784);border-radius:6px;padding:1px 6px;letter-spacing:.01em;white-space:nowrap}
+  .tr.done .done-badge{display:inline-block}
+
+  /* 최저가 구매 링크 */
+  .buy{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;color:#2f6b57;background:linear-gradient(135deg,#e7f8f0,#d9f2e7);border:1px solid #b9e4d2;border-radius:9px;padding:5px 9px;text-decoration:none;white-space:nowrap;transition:.15s}
+  .buy:hover{background:linear-gradient(135deg,#d5f3e6,#c3ecdb);border-color:#8fd3b8;color:#24594a;transform:translateY(-1px)}
+  .buy:active{transform:translateY(0)}
+  .buy-ch{font-size:9px;font-weight:800;background:#fff;border-radius:5px;padding:1px 4px;color:#5f8a79;letter-spacing:0}
+  .buy-a{font-size:11px;line-height:1;color:#4fae8b}
+  .buy.off{font-size:10px;font-weight:700;color:#bdb2ac;background:#f7f1ed;border:1px dashed #e6d7d0;border-radius:9px;padding:4px 8px}
+  .buy-cell{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+
+  /* 선택 요약 바 (표 위·아래 고정) */
+  .sum-bar{position:sticky;top:8px;z-index:6;margin:6px 0 10px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;
+    background:linear-gradient(135deg,#f4fbf7,#eef8f2);border:1px solid #cfeade;border-radius:14px;padding:10px 13px 9px;
+    box-shadow:0 10px 24px -18px rgba(60,120,95,.75), 0 0 0 6px rgba(253,250,248,.9)}
+  .sum-bar-l{font-size:12px;font-weight:700;color:#4c8f76;letter-spacing:-.01em;display:flex;align-items:baseline;gap:5px;flex-wrap:wrap}
+  .sum-bar-l b{font-size:15px;font-weight:800;color:#24594a}
+  .sum-bar-l b#sbC{font-size:13px}
+  .sb-sep{color:#a9cbbd;font-weight:700}
+  .sum-bar-r{font-size:11.5px;font-weight:700;color:#5f8a79;text-align:right;white-space:nowrap}
+  .sum-bar-r b{font-size:13px;font-weight:800;color:#2f6b57}
+  .sum-bar-r.muted{color:#a9b7b0}
+  .sum-bar-r.muted b{color:#a9b7b0}
+  .sb-track{grid-column:1 / -1;height:5px;border-radius:99px;background:#e2f1ea;overflow:hidden}
+  .sb-track > i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#9fdcc2,#4fae8b);transition:width .35s ease}
+  @media(max-width:560px){ .sum-bar{grid-template-columns:1fr;gap:3px} .sum-bar-r{text-align:left} }
+
+  /* total */
+  .total{margin-top:16px;display:grid;gap:12px;grid-template-columns:1fr;background:linear-gradient(135deg,#f0faf5,#f7fbf8);border:1px solid #d9efe4;border-radius:18px;padding:15px 16px}
+  @media(min-width:640px){ .total{grid-template-columns:auto 1fr auto;align-items:center;gap:20px} }
+  .total-k{font-size:10.5px;font-weight:800;letter-spacing:.08em;color:#4c8f76}
+  .total-v{font-size:clamp(22px,4.4vw,29px);font-weight:800;letter-spacing:-.02em;color:#2f6b57;line-height:1.15;white-space:nowrap}
+  .total-v small{font-size:11px;font-weight:700;color:#6c9d89;letter-spacing:0;margin-left:5px}
+  .total-s{font-size:11.5px;color:#5f8a79;line-height:1.55}
+  .total-s b{color:#2f6b57}
+  .reset{font:inherit;font-size:11px;font-weight:700;color:#9c8f88;background:#fff;border:1px solid #e6dcd5;border-radius:9px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+  .reset:hover{color:#c9764f;border-color:#f0c3b0}
+
+  /* trend */
+  .trend-grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:700px){ .trend-grid{grid-template-columns:repeat(3,1fr)} }
+
+  /* 통합 추이 그래프 */
+  .tgl{display:inline-flex;gap:0;background:#fff;border:1px solid var(--line2);border-radius:99px;padding:3px}
+  .tg{font:inherit;font-size:11.5px;font-weight:800;color:var(--ink3);background:transparent;border:0;border-radius:99px;padding:6px 13px;cursor:pointer;transition:.15s}
+  .tg:hover{color:#4c8f76}
+  .tg[aria-pressed="true"]{background:linear-gradient(135deg,#bfe6d4,#57b28f);color:#fff;box-shadow:0 6px 14px -10px rgba(87,178,143,.95)}
+  .cchart{background:linear-gradient(180deg,#fffdfc,#fdfaf8);border:1px solid #f4eae4;border-radius:16px;padding:8px 6px 2px;margin-top:2px;overflow-x:auto;overscroll-behavior-x:contain}
+  .cchart svg{width:100%;height:auto;display:block}
+  @media(max-width:760px){ .cchart svg{width:720px;max-width:none} }
+  .legend{display:grid;gap:6px;grid-template-columns:1fr;margin-top:12px}
+  @media(min-width:560px){ .legend{grid-template-columns:1fr 1fr} }
+  @media(min-width:1000px){ .legend{grid-template-columns:repeat(3,1fr)} }
+  .lg-i{display:grid;grid-template-columns:10px 1fr auto;gap:2px 7px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:11px;padding:7px 9px}
+  .lg-c{width:10px;height:10px;border-radius:3px}
+  .lg-n{font-size:11.5px;font-weight:800;letter-spacing:-.01em;min-width:0}
+  .lg-n small{display:block;font-size:9.5px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-top:1px;line-height:1.35}
+  .lg-p{font-size:11.5px;font-weight:800;color:#48383a;white-space:nowrap;text-align:right}
+  .lg-d{grid-column:2 / -1;font-size:10px;font-weight:800;display:flex;align-items:center;gap:5px}
+  .lg-d em{font-style:normal;font-weight:700;font-size:9px;color:#a99d97;background:#f7f1ed;border-radius:5px;padding:0 4px;margin-left:auto}
+  .lg-d.up{color:#d9698a}
+  .lg-d.down{color:#3f9878}
+  .lg-d.flat{color:#9c9397}
+  .tcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 13px 8px}
+  .tcard-h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:2px}
+  .tcard-t{font-size:12px;font-weight:800;letter-spacing:-.01em;line-height:1.35}
+  .tcard-t small{display:block;font-size:10px;font-weight:600;color:var(--ink3);letter-spacing:0;margin-top:1px}
+  .tcard-v{font-size:13px;font-weight:800;color:#48383a;white-space:nowrap}
+  .tcard-v em{display:block;font-style:normal;font-size:9.5px;font-weight:700;text-align:right;margin-top:1px}
+  .up{color:#d9698a}
+  .down{color:#3f9878}
+  .flat{color:#9c9397}
+  .tcard-n{font-size:10px;color:#a1938c;line-height:1.5;margin:2px 0 0;padding-top:2px}
+  svg{display:block;width:100%;height:auto}
+  .note{font-size:10.5px;color:#a1938c;line-height:1.65}
+  .note li{margin:3px 0}
+  .disc{margin-top:32px;font-size:10.5px;color:#a99d97;line-height:1.7;border-top:1px dashed #eadcd5;padding-top:14px}
+  .disc b{color:#8d807a}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .noscript{flex-basis:100%;font-size:10.5px;line-height:1.6;color:#8d7f79;background:#fff8f2;border:1px dashed #f0d8ca;border-radius:10px;padding:6px 10px}
+  .noscript b{color:#b9613f}
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="hero-top">
+      <div class="hero-title">🌸 수영 님의 임신·육아 준비</div>
+      <div class="hero-sub" id="todayLine">기준일 2026-11-25 (수) · 저장은 이 브라우저에만</div>
+      <noscript><div class="noscript"><b>미리보기 모드</b> — JavaScript 없이 그려진 화면입니다. 그래프·표·체크리스트는 모두 그대로 보이고, 체크·필터·자동 저장만 동작하지 않습니다. 기준일(D-day·주수)은 이 파일을 만든 <b>2026-11-25</b> 기준입니다.</div></noscript>
+    </div>
+
+    <div class="hero-main">
+      <div>
+        <div class="ga">
+          <div class="ga-big" id="gaBig">25주 3일</div>
+          <div class="dday" id="dday">D-102</div>
+        </div>
+        <div class="ga-meta">
+          <div class="chip cur" id="curStage">현재 구간 <b>24~28주</b> · 세상의 소리를 듣는 시기</div>
+          <div class="chip" id="sizeChip">🍆 옥수수 → 가지 · 30cm·600g → 37.6cm·1.0kg</div>
+        </div>
+        <div class="edd">
+          <div class="edd-ico">🍼</div>
+          <div>
+            <div class="edd-k">출산예정일</div>
+            <div class="edd-v">2027년 3월 7일 (일)<span>40주 0일 기준 · 주수는 마지막 월경 시작일부터 셉니다</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sched" id="sched"><div class="sched-card"><div class="sched-k">다가오는 일정 1</div><div class="sched-n">D-11</div><div class="sched-t">백일해(Tdap) 접종 시작</div><div class="sched-d">12/06 · 27주 0일 · 27~36주 사이 1회 접종</div></div><div class="sched-card alt"><div class="sched-k">다가오는 일정 2</div><div class="sched-n">D-18</div><div class="sched-t">임당 검사 마감</div><div class="sched-d">12/13 · 28주 0일 · 이후 2주 간격 진찰로 전환</div></div></div>
+    </div>
+
+    <div class="progs">
+      <div class="prog-card">
+        <div class="prog-head">
+          <div class="prog-k">검진 · 영양제 체크</div>
+          <div class="prog-v" id="pvA">0%</div>
+        </div>
+        <div class="prog"><i id="pbarA"></i></div>
+        <div class="prog-f" id="pfA">0 / 71 항목 · 아래 카드에서 체크하면 자동 저장됩니다</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-head">
+          <div class="prog-k">육아용품 준비 체크</div>
+          <div class="prog-v" id="pvB">0%</div>
+        </div>
+        <div class="prog goods"><i id="pbarB"></i></div>
+        <div class="prog-f" id="pfB">0 / 12 항목 · 구매 체크리스트와 연동</div>
+      </div>
+    </div>
+
+    <div class="mile" id="milestones"><div class="mile-i"><div class="mile-d">D-11 · 12/06</div><div class="mile-l">백일해 접종 시작</div></div><div class="mile-i"><div class="mile-d">D-18 · 12/13</div><div class="mile-l">임당 검사 마감</div></div><div class="mile-i"><div class="mile-d">D-46 · 01/10</div><div class="mile-l">NST 시작 가능</div></div><div class="mile-i"><div class="mile-d">D-67 · 01/31</div><div class="mile-l">GBS · 분만 전 검사</div></div><div class="mile-i"><div class="mile-d">D-74 · 02/07</div><div class="mile-l">진찰 매주 전환</div></div><div class="mile-i"><div class="mile-d">D-81 · 02/14</div><div class="mile-l">만삭 (37주)</div></div><div class="mile-i"><div class="mile-d">D-102 · 03/07</div><div class="mile-l">출산예정일</div></div></div>
+  </header>
+
+  <!-- ================= SECTION 1 ================= -->
+  <section id="sec1">
+    <div class="sec-head">
+      <div>
+        <div class="sec-kick">SECTION 1</div>
+        <h2 class="sec-title">임신 4~40주 카드뉴스</h2>
+        <p class="sec-desc">8개 구간으로 묶은 성장 기록 — 태아 크기와 발달, 엄마의 변화, 그 주차에 챙길 검진과 영양제. 지금 구간(<span id="curStageShort">5단계 · 24~28주</span>)에 <b>★ 현재</b> 표시가 있습니다.</p>
+      </div>
+      <div class="sec-note">체크박스는 이 브라우저에 자동 저장됩니다 · 데스크톱에서는 항목이 많은 카드가 안에서 스크롤되고, 모바일에서는 전체가 펼쳐집니다</div>
+    </div>
+    <div class="stage-grid" id="stageGrid">
+<div class="stage" data-id="c1">
+<span class="ribbon" style="display:none">★ 현재</span>
+<div class="stage-top"><span class="wk">4~8주</span><h3>아주 작은 시작</h3></div>
+<div class="size"><div class="size-emo">🍓</div><div><div class="size-t">양귀비 씨 → 라즈베리</div><div class="size-n">0.1cm → 1.6cm · 1g</div></div></div>
+<div class="blk"><span class="k">태아</span><div>착상 후 세포분열. 5주 질초음파로 임신낭, 6주 심장박동 확인, 7주 머리·몸통 구별되는 2등신과 손가락 싹, 8주 시신경·청각신경·태반 형성. 뇌·척수 신경세포의 80%가 이 무렵 만들어진다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>감기 같은 나른함 → 입덧 시작, 유두가 민감해지고 빈뇨·변비, 분비물 증가. 자궁이 주먹 크기.</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>이 시기 약 복용은 의사·약사와 상의. 엽산은 이미 시작했어야 하는 구간.</div></div>
+<div class="items">
+<div class="grp">검진 <em>첫 방문 6~8주, 이후 4주 간격</em></div>
+<label class="it"><input type="checkbox" data-check="c1-k0" aria-label="첫 산전 진료 + 초음파 6~8주"><span class="it-t"><span class="tag t-필수">필수</span>첫 산전 진료 + 초음파<span class="it-w">6~8주 · 아기집·심박동·주수·예정일 확인</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k1" aria-label="산전 기본 혈액검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>산전 기본 혈액검사<span class="it-w">첫 방문 · CBC·혈액형·Rh·간·신장·공복혈당</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k2" aria-label="감염 선별 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>감염 선별<span class="it-w">첫 방문 · 매독·B형간염 항원/항체·HIV·풍진 항체</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k3" aria-label="소변검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>소변검사<span class="it-w">첫 방문 · 단백뇨·요로감염(+세균배양)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k4" aria-label="자궁경부 세포검사 첫 방문"><span class="it-t"><span class="tag t-필수">필수</span>자궁경부 세포검사<span class="it-w">첫 방문 · 최근 1년 내 이력 없을 때</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k5" aria-label="보건소 임산부 등록 8주 전후"><span class="it-t"><span class="tag t-필수">필수</span>보건소 임산부 등록<span class="it-w">8주 전후 · 엽산·철분제 수령, 국민행복카드</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k6" aria-label="갑상선 기능 톡소플라즈마/CMV 항체"><span class="it-t"><span class="tag t-선택">선택</span>갑상선 기능<span class="it-w">톡소플라즈마/CMV 항체 · 병력·노출 위험 시</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-k7" aria-label="치과 검진 치료는 중기(14~27주)가 편함"><span class="it-t"><span class="tag t-선택">선택</span>치과 검진<span class="it-w">치료는 중기(14~27주)가 편함</span></span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c1-s0" aria-label="엽산 400µg 매일 임신 전~12주"><span class="it-t"><span class="tag t-필수">필수</span>엽산 400µg 매일<span class="it-w">임신 전~12주 · 늦게 시작해도 계속 복용</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-s1" aria-label="비타민D 400~1,000IU 전 기간"><span class="it-t"><span class="tag t-권장">권장</span>비타민D 400~1,000IU<span class="it-w">전 기간</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-s2" aria-label="종합비타민 레티놀 비타민A 3,000µg RAE(10,000IU) 이하"><span class="it-t"><span class="tag t-선택">선택</span>종합비타민<span class="it-w">레티놀 비타민A 3,000µg RAE(10,000IU) 이하</span></span></label>
+<label class="it"><input type="checkbox" data-check="c1-s3" aria-label="철분제는 이 구간 불필요 빈혈 없으면 입덧·구역 악화"><span class="it-t"><span class="tag t-주의">주의</span>철분제는 이 구간 불필요<span class="it-w">빈혈 없으면 입덧·구역 악화</span></span></label>
+</div>
+<div class="stage-foot"><span>검진 8 · 영양제 4</span><b>0/12</b></div>
+</div>
+<div class="stage" data-id="c2">
+<span class="ribbon" style="display:none">★ 현재</span>
+<div class="stage-top"><span class="wk">9~13주</span><h3>사람의 모양을 갖추다</h3></div>
+<div class="size"><div class="size-emo">🫛</div><div><div class="size-t">그린 올리브 → 완두콩 꼬투리</div><div class="size-n">2.3cm·3g → 7.4cm·23g</div></div></div>
+<div class="blk"><span class="k">태아</span><div>꼬리가 사라지고 몸이 곧게 펴진다. 손가락·발가락 5개가 뚜렷해지고 눈꺼풀·콧구멍·안면 골격 형성. 11주에 5cm·20g, 12주엔 솜털이 나고 머리가 전신의 1/3, 영구치 뿌리 32개가 자리 잡는다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>입덧이 절정을 지나 12주 무렵 가라앉고 기초체온이 떨어진다. 유산 위험이 크게 낮아지고 감정이 안정되는 시기.</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>1차 기형아 검사는 11~13주 6일 — 이 구간을 놓치면 다른 방식으로 대체해야 한다.</div></div>
+<div class="items">
+<div class="grp">검진 <em>4주 간격</em></div>
+<label class="it"><input type="checkbox" data-check="c2-k0" aria-label="1차 기형아 선별(NT 초음파 + PAPP-A·free β-hCG) 11~13주 6일"><span class="it-t"><span class="tag t-필수">필수</span>1차 기형아 선별(NT 초음파 + PAPP-A·free β-hCG)<span class="it-w">11~13주 6일</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-k1" aria-label="초음파 주수 재확인(CRL) 11~12주"><span class="it-t"><span class="tag t-필수">필수</span>초음파 주수 재확인(CRL)<span class="it-w">11~12주</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-k2" aria-label="NIPT(태아 DNA) 10주 이후"><span class="it-t"><span class="tag t-선택">선택</span>NIPT(태아 DNA)<span class="it-w">10주 이후 · 선별검사이며 확진 아님</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-k3" aria-label="융모막 융모 생검 10~13주"><span class="it-t"><span class="tag t-선택">선택</span>융모막 융모 생검<span class="it-w">10~13주 · 고위험 시(유산 위험 1.5~3%)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-k4" aria-label="태아 심음 도플러 청취 11주 이후"><span class="it-t"><span class="tag t-권장">권장</span>태아 심음 도플러 청취<span class="it-w">11주 이후</span></span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c2-s0" aria-label="엽산 지속 12~14주까지(이후에도 400µg 권장)"><span class="it-t"><span class="tag t-필수">필수</span>엽산 지속<span class="it-w">12~14주까지(이후에도 400µg 권장)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-s1" aria-label="비타민D 지속"><span class="it-t"><span class="tag t-권장">권장</span>비타민D 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c2-s2" aria-label="프로바이오틱스(유산균) 시작 고려 변비 완화 목적"><span class="it-t"><span class="tag t-권장">권장</span>프로바이오틱스(유산균) 시작 고려<span class="it-w">변비 완화 목적</span></span></label>
+<label class="it"><input type="checkbox" data-check="c2-s3" aria-label="오메가3(DHA) 시작 가능 EPA+DHA 300mg(그중 DHA 200mg)"><span class="it-t"><span class="tag t-권장">권장</span>오메가3(DHA) 시작 가능<span class="it-w">EPA+DHA 300mg(그중 DHA 200mg)</span></span></label>
+</div>
+<div class="stage-foot"><span>검진 5 · 영양제 4</span><b>0/9</b></div>
+</div>
+<div class="stage" data-id="c3">
+<span class="ribbon" style="display:none">★ 현재</span>
+<div class="stage-top"><span class="wk">14~18주</span><h3>중기, 배가 나오다</h3></div>
+<div class="size"><div class="size-emo">🫑</div><div><div class="size-t">레몬 → 파프리카</div><div class="size-n">8.7cm·43g → 14.2cm·190g</div></div></div>
+<div class="blk"><span class="k">태아</span><div>태반이 완성돼 자리에 뿌리를 내리고, 생식기가 외부로 드러나며 팔·다리에 관절이 생긴다. 15주에 신장이 기능해 양수로 소변을 보고, 16주에 내이가 완성돼 소리를 듣는다. 17주엔 표정·지문, 18주엔 촉각·미각·청각이 뚜렷해진다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>배가 나오기 시작하고 사타구니·허리 인대가 당긴다. 젖꼭지 색이 짙어지고 기미가 생기기도. 18주 전후로 첫 태동(초산부 20±2주).</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>철분제는 16~20주에 시작. 공복에 비타민C와 함께 먹으면 흡수가 좋다.</div></div>
+<div class="items">
+<div class="grp">검진 <em>4주 간격</em></div>
+<label class="it"><input type="checkbox" data-check="c3-k0" aria-label="2차 기형아 선별(쿼드/통합선별 2차) 15~20주(채혈 16~18주)"><span class="it-t"><span class="tag t-필수">필수</span>2차 기형아 선별(쿼드/통합선별 2차)<span class="it-w">15~20주(채혈 16~18주)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-k1" aria-label="양수검사 16~20주"><span class="it-t"><span class="tag t-선택">선택</span>양수검사<span class="it-w">16~20주 · 선별 이상 시 확진(유산 위험 0.5% 정도)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-k2" aria-label="빈혈 수치 확인 후 철분제 시작 16~20주"><span class="it-t"><span class="tag t-필수">필수</span>빈혈 수치 확인 후 철분제 시작<span class="it-w">16~20주</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-k3" aria-label="태동 인지 시작 18~20주"><span class="it-t"><span class="tag t-권장">권장</span>태동 인지 시작<span class="it-w">18~20주</span></span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c3-s0" aria-label="철분제 30~60mg(성분철) 16~20주 이후"><span class="it-t"><span class="tag t-필수">필수</span>철분제 30~60mg(성분철)<span class="it-w">16~20주 이후 · 빈혈 시 60~120mg</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-s1" aria-label="엽산 400µg 유지"><span class="it-t"><span class="tag t-필수">필수</span>엽산 400µg 유지</span></label>
+<label class="it"><input type="checkbox" data-check="c3-s2" aria-label="오메가3/DHA 태아 뇌·망막 발달"><span class="it-t"><span class="tag t-권장">권장</span>오메가3/DHA<span class="it-w">태아 뇌·망막 발달</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-s3" aria-label="칼슘은 식품 우선 우유 3컵/일, 치즈, 멸치·뱅어포"><span class="it-t"><span class="tag t-권장">권장</span>칼슘은 식품 우선<span class="it-w">우유 3컵/일, 치즈, 멸치·뱅어포</span></span></label>
+<label class="it"><input type="checkbox" data-check="c3-s4" aria-label="철분 ↔ 칼슘·커피·홍차·녹차·우유는 2시간 간격"><span class="it-t"><span class="tag t-주의">주의</span>철분 ↔ 칼슘·커피·홍차·녹차·우유는 2시간 간격</span></label>
+</div>
+<div class="stage-foot"><span>검진 4 · 영양제 5</span><b>0/9</b></div>
+</div>
+<div class="stage" data-id="c4">
+<span class="ribbon" style="display:none">★ 현재</span>
+<div class="stage-top"><span class="wk">19~23주</span><h3>절반을 지나다</h3></div>
+<div class="size"><div class="size-emo">🍊</div><div><div class="size-t">망고 → 자몽</div><div class="size-n">15.3cm·240g → 29cm·500g</div><div class="size-x">(20주부터 머리-발끝 길이로 재는 방식이 바뀜)</div></div></div>
+<div class="blk"><span class="k">태아</span><div>피부를 태지가 덮고 태동이 확실해진다. 21주에 귀 속 균형기관이 생기고 딸꾹질을 하며, 23주엔 골격·관절이 뚜렷하고 청력이 발달해 자궁 밖 소리를 모두 듣는다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>임신 중 가장 안정된 시기지만 배가 단단히 뭉치는 느낌이 하루 4~6회. 임신선이 생기고 정맥류·요통·부종이 시작된다.</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>정밀초음파(20~24주)는 아기 구조를 확인하는 핵심 검사. 얼굴·손가락 사진을 남겨두기 좋다.</div></div>
+<div class="items">
+<div class="grp">검진 <em>4주 간격</em></div>
+<label class="it"><input type="checkbox" data-check="c4-k0" aria-label="임신 중기 정밀초음파 20~24주(20~22주 권장)"><span class="it-t"><span class="tag t-필수">필수</span>임신 중기 정밀초음파<span class="it-w">20~24주(20~22주 권장) · 뇌·심장·척추·복벽·사지</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-k1" aria-label="태아 심장초음파 20~24주"><span class="it-t"><span class="tag t-선택">선택</span>태아 심장초음파<span class="it-w">20~24주 · 고위험·이상 소견 시</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-k2" aria-label="입체(3D/4D) 초음파 24~32주"><span class="it-t"><span class="tag t-선택">선택</span>입체(3D/4D) 초음파<span class="it-w">24~32주 · 26~30주가 잘 보임</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-k3" aria-label="매 방문 혈압·체중·부종 확인 임신중독증 선별"><span class="it-t"><span class="tag t-필수">필수</span>매 방문 혈압·체중·부종 확인<span class="it-w">임신중독증 선별</span></span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c4-s0" aria-label="철분제 지속"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c4-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c4-s2" aria-label="칼슘·마그네슘 검토 다리 쥐·부종 시(경련 효과 근거는 약함)"><span class="it-t"><span class="tag t-권장">권장</span>칼슘·마그네슘 검토<span class="it-w">다리 쥐·부종 시(경련 효과 근거는 약함)</span></span></label>
+<label class="it"><input type="checkbox" data-check="c4-s3" aria-label="마그네슘 보충 상한 350mg/일 설사 시 중단"><span class="it-t"><span class="tag t-주의">주의</span>마그네슘 보충 상한 350mg/일<span class="it-w">설사 시 중단</span></span></label>
+</div>
+<div class="stage-foot"><span>검진 4 · 영양제 4</span><b>0/8</b></div>
+</div>
+<div class="stage cur" data-id="c5">
+<span class="ribbon">★ 현재</span>
+<div class="stage-top"><span class="wk">24~28주</span><h3>세상의 소리를 듣는 시기</h3></div>
+<div class="size"><div class="size-emo">🍆</div><div><div class="size-t">옥수수 → 가지</div><div class="size-n">30cm·600g → 37.6cm·1.0kg</div></div></div>
+<div class="blk"><span class="k">태아</span><div>양수에 떠서 물구나무 자세, 25주에 위아래 눈꺼풀이 갈라져 엄마의 멜라토닌으로 명암을 느낀다. 양수를 마시고 손가락을 빤다. 26주에 폐포가 생겨 호흡 연습, 27주 1kg, 28주엔 눈을 깜빡이고 렘수면이 시작된다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>배가 급격히 불러 숨이 차고 잠들기 어려워진다. 임신선이 뚜렷해지고 소화불량·변비가 심해지며 몸무게가 6~7kg 늘어 넘어질 위험이 커진다.</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>임신성 당뇨 검사는 28주 전에 마쳐야 한다. 밤 다리 쥐는 마그네슘보다 스트레칭·수분·철분 상태를 먼저 확인.</div></div>
+<div class="items">
+<div class="grp">검진 <em>4주 간격, 28주부터 2주 간격</em></div>
+<label class="it"><input type="checkbox" data-check="c5-k0" aria-label="임신성 당뇨 선별(50g) 24~28주"><span class="it-t"><span class="tag t-필수">필수</span>임신성 당뇨 선별(50g)<span class="it-w">24~28주 · 1시간 혈당 140 이상(고위험 130)이면 확진</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k1" aria-label="100g 경구당부하 확진 공복 95/1h 180/2h 155/3h 140 중 2개 이상이면 임신당뇨병"><span class="it-t"><span class="tag t-조건부">조건부</span>100g 경구당부하 확진<span class="it-w">공복 95/1h 180/2h 155/3h 140 중 2개 이상이면 임신당뇨병</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k2" aria-label="빈혈 재검(CBC) 24~28주"><span class="it-t"><span class="tag t-필수">필수</span>빈혈 재검(CBC)<span class="it-w">24~28주 · 2분기 기준 Hb 10.5 미만</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k3" aria-label="Rh 음성 → 항D 면역글로불린 28주"><span class="it-t"><span class="tag t-조건부">조건부</span>Rh 음성 → 항D 면역글로불린<span class="it-w">28주</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k4" aria-label="백일해(Tdap) 예방접종 27~36주"><span class="it-t"><span class="tag t-필수">필수</span>백일해(Tdap) 예방접종<span class="it-w">27~36주 · 매 임신 1회</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-k5" aria-label="독감 예방접종 주수 무관"><span class="it-t"><span class="tag t-권장">권장</span>독감 예방접종<span class="it-w">주수 무관 · 임신부 무료(2026-09-21~2027-04-30)</span></span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c5-s0" aria-label="철분제 지속 빈혈 수치에 따라 용량 조정"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">빈혈 수치에 따라 용량 조정</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-s1" aria-label="오메가3 지속 28주 이후 수요↑"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속<span class="it-w">28주 이후 수요↑</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-s2" aria-label="칼슘 보충 검토 국내 섭취 부족 시 500mg 내외, 철분과 시간 분리"><span class="it-t"><span class="tag t-권장">권장</span>칼슘 보충 검토<span class="it-w">국내 섭취 부족 시 500mg 내외, 철분과 시간 분리</span></span></label>
+<label class="it"><input type="checkbox" data-check="c5-s3" aria-label="임당 진단 시 단순당·주스 줄이고 식후 10~20분 걷기"><span class="it-t"><span class="tag t-주의">주의</span>임당 진단 시 단순당·주스 줄이고 식후 10~20분 걷기</span></label>
+</div>
+<div class="stage-foot"><span>검진 6 · 영양제 4</span><b>0/10</b></div>
+</div>
+<div class="stage" data-id="c6">
+<span class="ribbon" style="display:none">★ 현재</span>
+<div class="stage-top"><span class="wk">29~32주</span><h3>눈을 뜨는 시기</h3></div>
+<div class="size"><div class="size-emo">🥒</div><div><div class="size-t">호박 → 애호박</div><div class="size-n">38.6cm·1.15kg → 42.4cm·1.7kg</div></div></div>
+<div class="blk"><span class="k">태아</span><div>피하지방이 붙어 통통해지고, 30주면 대개 머리를 아래로 향한다. 31주에 골격이 거의 완성되고 뇌세포와 신경이 연결되며, 32주엔 빛에 홍채가 반응하고 눈을 깜빡인다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>숨가쁨·속쓰림이 정점에 이르고 얼굴·손발이 붓는다. 골반 관절이 이완돼 걷기 불편하고, 자궁저가 25~28cm까지 올라온다.</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>부기가 아침까지 빠지지 않고 두통·시야 흐림·상복부 통증이 동반되면 자간전증 신호 — 즉시 병원.</div></div>
+<div class="items">
+<div class="grp">검진 <em>2주 간격</em></div>
+<label class="it"><input type="checkbox" data-check="c6-k0" aria-label="정기 초음파 32~36주"><span class="it-t"><span class="tag t-필수">필수</span>정기 초음파<span class="it-w">32~36주 · 태아 체중·태위·태반 위치·양수량</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-k1" aria-label="비수축검사(NST·태동검사) 32주 이후"><span class="it-t"><span class="tag t-권장">권장</span>비수축검사(NST·태동검사)<span class="it-w">32주 이후 · 고위험은 32주부터 주 1~2회</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-k2" aria-label="백일해 접종 미완료 시 36주 전까지"><span class="it-t"><span class="tag t-필수">필수</span>백일해 접종 미완료 시<span class="it-w">36주 전까지</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-k3" aria-label="태동 카운트 습관 뚜렷이 줄면 다음 진료 기다리지 말고 연락"><span class="it-t"><span class="tag t-권장">권장</span>태동 카운트 습관<span class="it-w">뚜렷이 줄면 다음 진료 기다리지 말고 연락</span></span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c6-s0" aria-label="철분제 지속"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c6-s1" aria-label="오메가3·DHA 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3·DHA 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c6-s2" aria-label="유산균 지속 변비 관리"><span class="it-t"><span class="tag t-권장">권장</span>유산균 지속<span class="it-w">변비 관리</span></span></label>
+<label class="it"><input type="checkbox" data-check="c6-s3" aria-label="단백질 +30g/일·열량 +450kcal/일 &quot;두 명분&quot;이 아니라 이 정도"><span class="it-t"><span class="tag t-주의">주의</span>단백질 +30g/일·열량 +450kcal/일<span class="it-w">&quot;두 명분&quot;이 아니라 이 정도</span></span></label>
+</div>
+<div class="stage-foot"><span>검진 4 · 영양제 4</span><b>0/8</b></div>
+</div>
+<div class="stage" data-id="c7">
+<span class="ribbon" style="display:none">★ 현재</span>
+<div class="stage-top"><span class="wk">33~36주</span><h3>골반으로 내려오다</h3></div>
+<div class="size"><div class="size-emo">🥬</div><div><div class="size-t">파인애플 → 로메인 상추</div><div class="size-n">43.7cm·1.9kg → 47.4cm·2.6kg</div></div></div>
+<div class="blk"><span class="k">태아</span><div>주름이 펴지고 손톱이 손가락 끝에 닿는다. 34주에 태위가 거의 정해지고, 35주엔 2.3~2.6kg의 신생아 체형, 36주엔 머리가 골반 안으로 들어가며 태반을 통해 면역 항체가 전달된다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>자궁이 명치를 눌러 식사가 힘들고 치골이 아프다. 36주쯤 위가 편해지며 숨이 덜 차고 식욕이 돌아온다(&#x27;가벼워짐&#x27;). 코피·잇몸 출혈·빈혈이 나타나기 쉽다.</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>출산가방을 현관 근처로. GBS 검사와 분만 전 혈액검사를 이 구간에 한다.</div></div>
+<div class="items">
+<div class="grp">검진 <em>2주 간격(36주까지), 이후 매주</em></div>
+<label class="it"><input type="checkbox" data-check="c7-k0" aria-label="GBS(B군 연쇄상구균) 검사 35~37주"><span class="it-t"><span class="tag t-권장">권장</span>GBS(B군 연쇄상구균) 검사<span class="it-w">35~37주 · 국내 표준표엔 없고 병원별 시행</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k1" aria-label="분만 전 검사 35주 이후"><span class="it-t"><span class="tag t-권장">권장</span>분만 전 검사<span class="it-w">35주 이후 · 혈액·응고·심전도 등 응급 대비</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k2" aria-label="말기 초음파 태위·태반·양수 최종 확인"><span class="it-t"><span class="tag t-필수">필수</span>말기 초음파<span class="it-w">태위·태반·양수 최종 확인</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k3" aria-label="NST 36주 이후 매 진찰 시"><span class="it-t"><span class="tag t-권장">권장</span>NST<span class="it-w">36주 이후 매 진찰 시</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-k4" aria-label="출산가방·분만 계획 정리 36주 전후"><span class="it-t"><span class="tag t-필수">필수</span>출산가방·분만 계획 정리<span class="it-w">36주 전후</span></span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c7-s0" aria-label="철분제 지속 분만 출혈 대비 철 저장"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">분만 출혈 대비 철 저장</span></span></label>
+<label class="it"><input type="checkbox" data-check="c7-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속</span></label>
+<label class="it"><input type="checkbox" data-check="c7-s2" aria-label="코피·잇몸 출혈 잦으면 빈혈 재확인"><span class="it-t"><span class="tag t-주의">주의</span>코피·잇몸 출혈 잦으면 빈혈 재확인</span></label>
+</div>
+<div class="stage-foot"><span>검진 5 · 영양제 3</span><b>0/8</b></div>
+</div>
+<div class="stage" data-id="c8">
+<span class="ribbon" style="display:none">★ 현재</span>
+<div class="stage-top"><span class="wk">37~40주</span><h3>달이 다 차다</h3></div>
+<div class="size"><div class="size-emo">🎃</div><div><div class="size-t">캔털루프 멜론 → 작은 단호박</div><div class="size-n">48.6cm·2.8kg → 51cm·3.4kg</div></div></div>
+<div class="blk"><span class="k">태아</span><div>모든 장기가 완성돼 언제 태어나도 문제없는 상태. 38주엔 40분 주기로 자고 깨고 손톱이 길게 자라며, 39주엔 태지가 거의 사라지고 피부에 윤기가 돈다. 40주엔 폐가 완전히 성숙한다.</div></div>
+<div class="blk"><span class="k">엄마</span><div>빈뇨·복부 당김이 늘고 불규칙한 가진통이 잦아진다. 이슬(피 섞인 분비물)은 2~3일 뒤 진통으로 이어지는 경우가 많다.</div></div>
+<div class="blk tip"><span class="k">TIP</span><div>규칙적 진통이 10분 간격이면 분만 시작. 양수가 터지면 진통이 없어도 즉시 병원.</div></div>
+<div class="items">
+<div class="grp">검진 <em>매주</em></div>
+<label class="it"><input type="checkbox" data-check="c8-k0" aria-label="매주 진찰 혈압·체중·소변·태아 심박동"><span class="it-t"><span class="tag t-필수">필수</span>매주 진찰<span class="it-w">혈압·체중·소변·태아 심박동</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k1" aria-label="내진 37주 이후"><span class="it-t"><span class="tag t-필수">필수</span>내진<span class="it-w">37주 이후 · 선진부·개대·소실·하강</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k2" aria-label="NST + 초음파 양수량·태반·태아 상태"><span class="it-t"><span class="tag t-필수">필수</span>NST + 초음파<span class="it-w">양수량·태반·태아 상태</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k3" aria-label="출산 징후 체크 이슬·규칙 진통·양막 파수"><span class="it-t"><span class="tag t-필수">필수</span>출산 징후 체크<span class="it-w">이슬·규칙 진통·양막 파수</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-k4" aria-label="예정일 초과 시 BPP·유도분만 상의"><span class="it-t"><span class="tag t-권장">권장</span>예정일 초과 시 BPP·유도분만 상의</span></label>
+<div class="grp">영양제 <em></em></div>
+<label class="it"><input type="checkbox" data-check="c8-s0" aria-label="철분제 지속 분만 출혈 대비"><span class="it-t"><span class="tag t-필수">필수</span>철분제 지속<span class="it-w">분만 출혈 대비</span></span></label>
+<label class="it"><input type="checkbox" data-check="c8-s1" aria-label="오메가3 지속"><span class="it-t"><span class="tag t-권장">권장</span>오메가3 지속</span></label>
+</div>
+<div class="stage-foot"><span>검진 5 · 영양제 2</span><b>0/7</b></div>
+</div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2 ================= -->
+  <section id="sec2">
+    <div class="sec-head">
+      <div>
+        <div class="sec-kick">SECTION 2</div>
+        <h2 class="sec-title">월령별 육아용품 최저가 · 구매 체크리스트</h2>
+        <p class="sec-desc">쿠팡과 네이버(네이버쇼핑·스마트스토어)의 <b>배송비 포함 실결제가</b>를 나란히 비교합니다. 2026-11-25 08:30~08:37 실측 12개 항목(규격 기준).</p>
+      </div>
+      <div class="controls" id="filters" role="group" aria-label="월령 필터"><span class="fbtn" data-f="all" aria-pressed="true">전체<span class="n">12</span></span><span class="fbtn" data-f="0~1개월" aria-pressed="false">0~1개월<span class="n">7</span></span><span class="fbtn" data-f="1~3개월" aria-pressed="false">1~3개월<span class="n">3</span></span><span class="fbtn" data-f="3~6개월" aria-pressed="false">3~6개월<span class="n">2</span></span></div>
+    </div>
+
+    <div class="panel" id="p-chart">
+      <div class="panel-h">
+        <div class="panel-t">쿠팡 vs 네이버 실결제가 <span>막대는 품목별 두 가격을 상대 비교한 길이입니다</span></div>
+      </div>
+      <p class="panel-d">더 저렴한 쪽을 초록색으로 표시했습니다 · 회색은 비싼 쪽 · 파란색은 동일가</p>
+      <div class="chart" id="chart"><div class="cgrp"><span>0~1개월</span><em>7개 항목</em></div><div class="crow"><div class="crow-l"><div class="crow-n">기저귀<span class="delta">쿠팡 70원 저렴</span></div><div class="crow-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">19,310원</div></div><div class="bar lose"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">19,380원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">물티슈 10팩<span class="delta tie">동일가</span></div><div class="crow-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">24,490원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">24,490원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">물티슈 20팩<span class="delta">네이버 16,990원 저렴</span></div><div class="crow-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">47,980원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:65%"></div></div><div class="bar-v">30,990원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">분유 1단계<span class="delta">쿠팡 430원 저렴</span></div><div class="crow-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:98%"></div></div><div class="bar-v">21,570원</div></div><div class="bar lose"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">22,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">젖병<span class="delta tie">동일가</span></div><div class="crow-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">42,470원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">42,470원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">젖병소독기<span class="delta tie">동일가</span></div><div class="crow-p">유팡 시그니처2 플러스 UP920A 28L</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">334,000원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">334,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">유축기<span class="delta tie">동일가</span></div><div class="crow-p">스펙트라 s2+ 전동식 싱글유축기 세트</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">148,000원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">148,000원</div></div></div></div><div class="cgrp"><span>1~3개월</span><em>3개 항목</em></div><div class="crow"><div class="crow-l"><div class="crow-n">속싸개<span class="delta tie">동일가</span></div><div class="crow-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">39,800원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">39,800원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">쪽쪽이<span class="delta">네이버 1,350원 저렴</span></div><div class="crow-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">14,550원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:91%"></div></div><div class="bar-v">13,200원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">바운서<span class="delta only">한 곳만 확인</span></div><div class="crow-p">베이비뵨 바운서 블리스 메쉬</div></div><div class="bars"><div class="bar none"><div class="bar-k">쿠팡</div><div class="track"></div><div class="bar-v miss">미확인</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">302,000원</div></div></div></div><div class="cgrp"><span>3~6개월</span><em>2개 항목</em></div><div class="crow"><div class="crow-l"><div class="crow-n">하이체어<span class="delta">네이버 151,190원 저렴</span></div><div class="crow-p">스토케 트립트랩 하이체어 단품</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">370,000원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:59%"></div></div><div class="bar-v">218,810원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">분유 2단계<span class="delta tie">동일가</span></div><div class="crow-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">54,700원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">54,700원</div></div></div></div></div>
+    </div>
+
+    <div class="panel" id="p-list">
+      <div class="panel-h">
+        <div class="panel-t">구매 체크리스트 <span>체크한 품목의 최저가 합계가 자동 계산됩니다</span></div>
+      </div>
+      <p class="panel-d">최저가 채널 뱃지가 붙은 곳이 그 품목에서 더 싼 채널입니다 · 쿠팡 미확인/네이버 미조사 칸은 비워 두었습니다 · 각 행의 <b>초록 버튼</b>을 누르면 그 품목 최저가 상품이 새 창으로 열립니다(네이버가 최저인 품목은 네이버쇼핑 최저가 목록으로 연결).</p>
+      <div class="sum-bar" id="sumBar" role="status" aria-live="polite">
+        <div class="sum-bar-l"><b id="sbC">0개 선택</b><span class="sb-sep">·</span> 합계 <b id="sbV">0원</b></div>
+        <div class="sum-bar-r muted" id="sbSW">절약 <b id="sbS">0원</b></div>
+        <div class="sb-track"><i id="sbP"></i></div>
+      </div>
+      <div class="table" id="table">
+        <div class="tr h">
+          <div></div><div>품목 · 대표 제품</div><div>쿠팡</div><div>네이버 (배송비 포함)</div><div>최저가</div>
+        </div>
+        <div id="rows"><div class="tr" data-row="g1"><input class="gcheck" type="checkbox" data-good="g1" aria-label="기저귀 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">기저귀</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div><div class="gd-note">네이버는 최저 표시가 17,900원(배송 3,000원)이지만 네이버의 '배송비포함 혜택가'가 19,380원(무료배송 판매처 기준)이라 쿠팡 19,310원과 70원 차이입니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">19,310원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">19,380원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8409449109?itemId=29319327796&amp;vendorItemId=96234192010" target="_blank" rel="noopener noreferrer" aria-label="기저귀 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g2"><input class="gcheck" type="checkbox" data-good="g2" aria-label="물티슈 10팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 10팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div><div class="gd-note">10팩은 양쪽 동일가(1매 35원). 20팩은 네이버가 16,990원 저렴하니 20팩으로 사는 편이 낫습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/6532149469?itemId=6922145055&amp;vendorItemId=3096887843" target="_blank" rel="noopener noreferrer" aria-label="물티슈 10팩 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g3"><input class="gcheck" type="checkbox" data-good="g3" aria-label="물티슈 20팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 20팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div><div class="gd-note">쿠팡 47,980원 vs 네이버 30,990원 — 16,990원 차. 1팩당 1,395원은 최근 저점(10/27주 27,900원) 이후 4주째 유지 중.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">47,980원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">30,990원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EB%B2%A0%EC%88%B2+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+%EC%9C%84%EB%93%9C%EB%B8%94%EB%A3%A8+%EB%AC%BC%ED%8B%B0%EC%8A%88+%EC%BA%A1%ED%98%95+70%EB%A7%A4+20%ED%8C%A9" target="_blank" rel="noopener noreferrer" aria-label="물티슈 20팩 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g4"><input class="gcheck" type="checkbox" data-good="g4" aria-label="분유 1단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 1단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div><div class="gd-note">쿠팡 1캔 21,570원으로 어제(22,000원)보다 430원 내렸고, 네이버 배송비포함 혜택가 22,000원보다 430원 쌉니다. 쿠팡은 2캔 41,130원(개당 20,565원), 3캔 61,690원이 캔당 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">21,570원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">22,000원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534" target="_blank" rel="noopener noreferrer" aria-label="분유 1단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g5"><input class="gcheck" type="checkbox" data-good="g5" aria-label="젖병 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div><div class="gd-note">트윈팩(젖병2+젖꼭지2입) 동일가. 젖병만 2개로 사면 쿠팡 34,500원 / 네이버 34,490원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8342841236?itemId=18936774672&amp;vendorItemId=88914450359" target="_blank" rel="noopener noreferrer" aria-label="젖병 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g6"><input class="gcheck" type="checkbox" data-good="g6" aria-label="젖병소독기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병소독기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">유팡 시그니처2 플러스 UP920A 28L</div><div class="gd-note">쿠팡 334,000원은 정가 448,000원의 25% 쿠폰가 — 다나와 최저 347,990원보다도 낮습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8438035154?itemId=24425263488&amp;vendorItemId=94963937041" target="_blank" rel="noopener noreferrer" aria-label="젖병소독기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g7"><input class="gcheck" type="checkbox" data-good="g7" aria-label="유축기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">유축기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">스펙트라 s2+ 전동식 싱글유축기 세트</div><div class="gd-note">동일가(네이버 최저 판매처가 쿠팡). S2 Pro는 165,000원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/29162999?itemId=111414136&amp;vendorItemId=3452585644" target="_blank" rel="noopener noreferrer" aria-label="유축기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g8"><input class="gcheck" type="checkbox" data-good="g8" aria-label="속싸개 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">속싸개</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div><div class="gd-note">동일가. 팔분리형 50/50 슈트 라이트는 네이버 33,800원.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8952492715?itemId=26187938531&amp;vendorItemId=93167381841" target="_blank" rel="noopener noreferrer" aria-label="속싸개 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g9"><input class="gcheck" type="checkbox" data-good="g9" aria-label="쪽쪽이 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">쪽쪽이</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div><div class="gd-note">네이버가 1,350원 저렴. 2세트로 사면 쿠팡 18,900원(개당 9,450원)이 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">14,550원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">13,200원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%EB%B2%A4%ED%8A%B8+%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90%EC%96%B4+%EC%95%BC%EA%B4%91+%EB%85%B8%EB%A6%AC%EA%B0%9C+SCF376+2%EC%A2%85+%EC%84%B8%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="쪽쪽이 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g10"><input class="gcheck" type="checkbox" data-good="g10" aria-label="바운서 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">바운서</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">베이비뵨 바운서 블리스 메쉬</div><div class="gd-note">베이비뵨 공식 302,000원(정가 310,000원 쿠폰가, 리뷰 4.93/858). 쿠팡에는 '바운서 메쉬 정품' 일본내수·병행 상품만 있어(108,000원+배송 50,000원 등) 정품 동일 모델 가격으로 확정하지 않았습니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price win">302,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC" target="_blank" rel="noopener noreferrer" aria-label="바운서 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g11"><input class="gcheck" type="checkbox" data-good="g11" aria-label="하이체어 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">하이체어</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">스토케 트립트랩 하이체어 단품</div><div class="gd-note">쿠팡 220,000원에 배송비 150,000원이 붙어 실결제 370,000원 — 네이버 최저(203,810원+배송 15,000원=218,810원)가 151,190원 저렴합니다. 둘 다 해외구매·병행 성격이 섞여 있어 정품등록·AS 조건을 확인하세요. 스토케 공식은 430,000원.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">370,000원<small>배송비 포함</small></div></div><div class="pcell" data-l="네이버"><div class="price win">218,810원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%8A%A4%ED%86%A0%EC%BC%80+%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9+%ED%95%98%EC%9D%B4%EC%B2%B4%EC%96%B4+%EB%8B%A8%ED%92%88" target="_blank" rel="noopener noreferrer" aria-label="하이체어 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div></div><div class="tr" data-row="g12"><input class="gcheck" type="checkbox" data-good="g12" aria-label="분유 2단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 2단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div><div class="gd-note">3캔 묶음 기준. 네이버 최저 54,700원(판매처 162)으로 쿠팡과 동일가 — 어제 미조사였던 네이버 가격을 오늘 확인했습니다. 1캔 가격은 미확인.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/7308156780?itemId=11615060339&amp;vendorItemId=78889733722" target="_blank" rel="noopener noreferrer" aria-label="분유 2단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div></div></div>
+      </div>
+      <div class="total">
+        <div>
+          <div class="total-k">체크한 품목 합계</div>
+          <div class="total-v" id="sumV">0원<small id="sumC">0개</small></div>
+        </div>
+        <div class="total-s" id="sumN">아직 체크한 품목이 없습니다. 위 목록에서 사야 할 것을 체크해 보세요.<br>참고 · 12개 항목을 모두 최저가로 사면 1,249,340원</div>
+        <button class="reset" id="resetBtn" type="button">체크 초기화</button>
+      </div>
+    </div>
+
+    <div class="panel" id="p-trend">
+      <div class="panel-h">
+        <div class="panel-t">12개 품목 가격 추이 한눈에 <span id="trendSub">10/27~11/25 · 품목별 첫 관측값 = 100 지수</span></div>
+        <div class="tgl" id="trendToggle" role="group" aria-label="그래프 값 전환">
+          <button class="tg" type="button" data-mode="pct" aria-pressed="true">변동률 %</button>
+          <button class="tg" type="button" data-mode="price" aria-pressed="false">가격 원</button>
+        </div>
+      </div>
+      <p class="panel-d"><b>변동률 %</b>는 품목별 첫 관측값을 100으로 맞춘 값입니다 — 13,200원짜리 쪽쪽이와 334,000원짜리 유팡을 같은 높이에서 비교하려면 실제 금액 대신 이렇게 봐야 합니다. <b>‘가격 원’</b>을 누르면 세로축이 실제 금액(로그 눈금)으로 바뀝니다.</p>
+      <div class="cchart" id="trend" data-mode="pct"><svg viewBox="0 0 1000 432" role="img" aria-label="12개 품목 가격 추이 통합 그래프, 첫 관측 대비 변동률 기준"><line x1="58" y1="388.0" x2="986" y2="388.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="391.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">-14.6%</text><line x1="58" y1="296.0" x2="986" y2="296.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="299.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">-7.1%</text><line x1="58" y1="208.9" x2="986" y2="208.9" stroke="#f3ece7" stroke-width="1"/><text x="50" y="212.4" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">0%</text><line x1="58" y1="112.0" x2="986" y2="112.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="115.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">7.9%</text><line x1="58" y1="20.0" x2="986" y2="20.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="23.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">15.4%</text><line x1="58" y1="208.9" x2="986" y2="208.9" stroke="#dcc9c0" stroke-width="1.3" stroke-dasharray="5 4"/><text x="58.0" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">10/27</text><text x="243.6" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/03</text><text x="429.2" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/10</text><text x="614.8" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/17</text><text x="800.4" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/24</text><text x="986.0" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/25</text><path d="M58.0 208.9 L243.6 181.9 L429.2 208.9 L614.8 244.5 L800.4 218.7 L986.0 222.4" fill="none" stroke="#e08a65" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="208.9" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="243.6" cy="181.9" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="429.2" cy="208.9" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="614.8" cy="244.5" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="800.4" cy="218.7" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="222.4" r="3.6" fill="#e08a65" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#5a92ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#5a92ba" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#5a92ba" stroke="#fff" stroke-width="1.6"/><path d="M58.0 208.9 L243.6 72.6 L429.2 72.6 L614.8 72.6 L800.4 72.6 L986.0 72.6" fill="none" stroke="#8b82d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="208.9" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="243.6" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="429.2" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="614.8" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="800.4" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="72.6" r="3.6" fill="#8b82d6" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 233.5" fill="none" stroke="#6fb69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#6fb69c" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="233.5" r="3.6" fill="#6fb69c" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#c9922a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#c9922a" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#c9922a" stroke="#fff" stroke-width="1.6"/><path d="M58.0 208.9 L243.6 208.9 L429.2 208.9 L614.8 208.9 L800.4 208.9 L986.0 258.0" fill="none" stroke="#d9698a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="243.6" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="429.2" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="614.8" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="800.4" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="258.0" r="3.6" fill="#d9698a" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#4fae8b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#4fae8b" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#4fae8b" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#b5651d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#b5651d" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#b5651d" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#7a6fbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#7a6fbf" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#7a6fbf" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#3f9878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#3f9878" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#3f9878" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 335.4" fill="none" stroke="#dd724f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#dd724f" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="335.4" r="3.6" fill="#dd724f" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#7c8894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#7c8894" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#7c8894" stroke="#fff" stroke-width="1.6"/></svg></div>
+      <div class="legend" id="trendLegend"><div class="lg-i"><span class="lg-c" style="background:#e08a65"></span><span class="lg-n">기저귀<small>66매 · 1개월 관측</small></span><span class="lg-p">19,310원</span><span class="lg-d down">−1.1%<em>1개월</em></span></div><div class="lg-i"><span class="lg-c" style="background:#5a92ba"></span><span class="lg-n">물티슈 10팩<small>70매 10팩 · 2일 관측</small></span><span class="lg-p">24,490원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#8b82d6"></span><span class="lg-n">물티슈 20팩<small>70매 20팩 · 1개월 관측</small></span><span class="lg-p">30,990원</span><span class="lg-d up">+11.1%<em>1개월</em></span></div><div class="lg-i"><span class="lg-c" style="background:#6fb69c"></span><span class="lg-n">분유 1단계<small>800g 1캔 · 2일 관측</small></span><span class="lg-p">21,570원</span><span class="lg-d down">−2.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#c9922a"></span><span class="lg-n">젖병<small>160ml 트윈팩 · 2일 관측</small></span><span class="lg-p">42,470원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#d9698a"></span><span class="lg-n">젖병소독기<small>UP920A 28L · 1개월 관측</small></span><span class="lg-p">334,000원</span><span class="lg-d down">−4.0%<em>1개월</em></span></div><div class="lg-i"><span class="lg-c" style="background:#4fae8b"></span><span class="lg-n">유축기<small>s2+ 세트 · 2일 관측</small></span><span class="lg-p">148,000원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#b5651d"></span><span class="lg-n">속싸개<small>Stage 1 S/M · 2일 관측</small></span><span class="lg-p">39,800원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#7a6fbf"></span><span class="lg-n">쪽쪽이<small>SCF376 2종 세트 · 2일 관측</small></span><span class="lg-p">13,200원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#3f9878"></span><span class="lg-n">바운서<small>블리스 메쉬 · 2일 관측</small></span><span class="lg-p">302,000원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#dd724f"></span><span class="lg-n">하이체어<small>단품 · 2일 관측</small></span><span class="lg-p">218,810원</span><span class="lg-d down">−10.3%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#7c8894"></span><span class="lg-n">분유 2단계<small>800g 3캔 · 2일 관측</small></span><span class="lg-p">54,700원</span><span class="lg-d flat">0.0%<em>2일</em></span></div></div>
+      <ul class="note" id="trendNotes" style="margin:14px 0 0;padding-left:16px"><li>선이 10/27부터 이어지는 3개 품목(기저귀·물티슈 20팩·젖병소독기)은 다나와 ‘최저가 추이’ 1개월 주간값(전체 쇼핑몰 최저가)이고, 마지막 점(11/25)만 오늘 쿠팡·네이버 실측 최저가입니다. 두 값의 출처가 달라 마지막 구간의 작은 움직임은 가격 변동이 아니라 조사 채널 차이일 수 있습니다.</li><li>나머지 9개 품목은 다나와에서 1개월 주간 이력을 확보하지 못해 11/24·11/25 두 점만 그렸습니다(변동률은 11/24 = 100 기준). 값을 추정해 채우지 않았습니다.</li><li>변동률은 품목마다 ‘첫 관측값 = 100’으로 맞춘 값이라 선의 높이끼리 바로 가격을 비교할 수는 없습니다. 실제 가격으로 보려면 위의 ‘가격(원)’ 버튼을 누르면 됩니다(세로축 로그 눈금).</li><li>품목별 최신 최저가와 변동률은 그래프 아래 범례에 있고, 매일 08:30 업데이트가 하루치 점을 이 CSV에 쌓기 때문에 관측일이 늘수록 선이 길어집니다.</li></ul>
+    </div>
+
+    <div class="disc">
+      <b>읽어두실 점</b> · 가격은 2026-11-25 08:30 조사 시점 기준이며 쿠폰·카드할인·와우 멤버십 조건에 따라 달라집니다. 주수와 태아 크기는 대표값이라 개인차가 있고 초음파 추정치가 우선합니다. 이 대시보드는 참고용이며 진료를 대신하지 않습니다 — 실제 결정은 다니는 병원 지시가 우선입니다.<br>
+      <b>데이터</b> · 임신 4~40주 카드: 질병관리청 국가건강정보포털 · 보건복지부 아이사랑 · 대한산부인과학회 대조 / 가격: 쿠팡 · 네이버쇼핑 · 다나와 실측 (2026-11-25).
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var CARDS = [{"id": "c1", "n": 1, "weeks": "4~8주", "title": "아주 작은 시작", "sizeNum": "0.1cm → 1.6cm · 1g", "sizeMeta": "양귀비 씨 → 라즈베리", "emo": "🍓"}, {"id": "c2", "n": 2, "weeks": "9~13주", "title": "사람의 모양을 갖추다", "sizeNum": "2.3cm·3g → 7.4cm·23g", "sizeMeta": "그린 올리브 → 완두콩 꼬투리", "emo": "🫛"}, {"id": "c3", "n": 3, "weeks": "14~18주", "title": "중기, 배가 나오다", "sizeNum": "8.7cm·43g → 14.2cm·190g", "sizeMeta": "레몬 → 파프리카", "emo": "🫑"}, {"id": "c4", "n": 4, "weeks": "19~23주", "title": "절반을 지나다", "sizeNum": "15.3cm·240g → 29cm·500g", "sizeMeta": "망고 → 자몽", "emo": "🍊"}, {"id": "c5", "n": 5, "weeks": "24~28주", "title": "세상의 소리를 듣는 시기", "sizeNum": "30cm·600g → 37.6cm·1.0kg", "sizeMeta": "옥수수 → 가지", "emo": "🍆"}, {"id": "c6", "n": 6, "weeks": "29~32주", "title": "눈을 뜨는 시기", "sizeNum": "38.6cm·1.15kg → 42.4cm·1.7kg", "sizeMeta": "호박 → 애호박", "emo": "🥒"}, {"id": "c7", "n": 7, "weeks": "33~36주", "title": "골반으로 내려오다", "sizeNum": "43.7cm·1.9kg → 47.4cm·2.6kg", "sizeMeta": "파인애플 → 로메인 상추", "emo": "🥬"}, {"id": "c8", "n": 8, "weeks": "37~40주", "title": "달이 다 차다", "sizeNum": "48.6cm·2.8kg → 51cm·3.4kg", "sizeMeta": "캔털루프 멜론 → 작은 단호박", "emo": "🎃"}];
+  var GOODS = [
+{
+"key": "g1",
+"group": "0~1개월",
+"item": "기저귀",
+"product": "하기스 2025 네이처메이드 밴드형 1단계 공용 66매",
+"cp": 19310,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 19380,
+"nvShipText": "배송비 포함",
+"nvMiss": "미조사",
+"note": "네이버는 최저 표시가 17,900원(배송 3,000원)이지만 네이버의 '배송비포함 혜택가'가 19,380원(무료배송 판매처 기준)이라 쿠팡 19,310원과 70원 차이입니다.",
+"cpUrl": "https://www.coupang.com/vp/products/8409449109?itemId=29319327796&vendorItemId=96234192010",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/8409449109?itemId=29319327796&vendorItemId=96234192010",
+"minKind": "상품",
+"minCh": "쿠팡"
+},
+{
+"key": "g2",
+"group": "0~1개월",
+"item": "물티슈 10팩",
+"product": "베베숲 시그니처 위드블루 캡형 70매 10팩",
+"cp": 24490,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 24490,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "10팩은 양쪽 동일가(1매 35원). 20팩은 네이버가 16,990원 저렴하니 20팩으로 사는 편이 낫습니다.",
+"cpUrl": "https://www.coupang.com/vp/products/6532149469?itemId=6922145055&vendorItemId=3096887843",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/6532149469?itemId=6922145055&vendorItemId=3096887843",
+"minKind": "상품",
+"minCh": "쿠팡"
+},
+{
+"key": "g3",
+"group": "0~1개월",
+"item": "물티슈 20팩",
+"product": "베베숲 시그니처 위드블루 캡형 70매 20팩",
+"cp": 47980,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 30990,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "쿠팡 47,980원 vs 네이버 30,990원 — 16,990원 차. 1팩당 1,395원은 최근 저점(10/27주 27,900원) 이후 4주째 유지 중.",
+"cpUrl": "",
+"nvUrl": "",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B2%A0%EB%B2%A0%EC%88%B2+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+%EC%9C%84%EB%93%9C%EB%B8%94%EB%A3%A8+%EB%AC%BC%ED%8B%B0%EC%8A%88+%EC%BA%A1%ED%98%95+70%EB%A7%A4+20%ED%8C%A9",
+"minKind": "검색",
+"minCh": "네이버"
+},
+{
+"key": "g4",
+"group": "0~1개월",
+"item": "분유 1단계",
+"product": "매일유업 앱솔루트 명작 2FL 1단계 800g 1캔",
+"cp": 21570,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 22000,
+"nvShipText": "배송비 포함",
+"nvMiss": "미조사",
+"note": "쿠팡 1캔 21,570원으로 어제(22,000원)보다 430원 내렸고, 네이버 배송비포함 혜택가 22,000원보다 430원 쌉니다. 쿠팡은 2캔 41,130원(개당 20,565원), 3캔 61,690원이 캔당 더 쌉니다.",
+"cpUrl": "https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534",
+"minKind": "상품",
+"minCh": "쿠팡"
+},
+{
+"key": "g5",
+"group": "0~1개월",
+"item": "젖병",
+"product": "더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)",
+"cp": 42470,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 42470,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "트윈팩(젖병2+젖꼭지2입) 동일가. 젖병만 2개로 사면 쿠팡 34,500원 / 네이버 34,490원.",
+"cpUrl": "https://www.coupang.com/vp/products/8342841236?itemId=18936774672&vendorItemId=88914450359",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/8342841236?itemId=18936774672&vendorItemId=88914450359",
+"minKind": "상품",
+"minCh": "쿠팡"
+},
+{
+"key": "g6",
+"group": "0~1개월",
+"item": "젖병소독기",
+"product": "유팡 시그니처2 플러스 UP920A 28L",
+"cp": 334000,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 334000,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "쿠팡 334,000원은 정가 448,000원의 25% 쿠폰가 — 다나와 최저 347,990원보다도 낮습니다.",
+"cpUrl": "https://www.coupang.com/vp/products/8438035154?itemId=24425263488&vendorItemId=94963937041",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/8438035154?itemId=24425263488&vendorItemId=94963937041",
+"minKind": "상품",
+"minCh": "쿠팡"
+},
+{
+"key": "g7",
+"group": "0~1개월",
+"item": "유축기",
+"product": "스펙트라 s2+ 전동식 싱글유축기 세트",
+"cp": 148000,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 148000,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "동일가(네이버 최저 판매처가 쿠팡). S2 Pro는 165,000원.",
+"cpUrl": "https://www.coupang.com/vp/products/29162999?itemId=111414136&vendorItemId=3452585644",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/29162999?itemId=111414136&vendorItemId=3452585644",
+"minKind": "상품",
+"minCh": "쿠팡"
+},
+{
+"key": "g8",
+"group": "1~3개월",
+"item": "속싸개",
+"product": "러브투드림 스와들업 오리지널 Stage 1 S/M",
+"cp": 39800,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 39800,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "동일가. 팔분리형 50/50 슈트 라이트는 네이버 33,800원.",
+"cpUrl": "https://www.coupang.com/vp/products/8952492715?itemId=26187938531&vendorItemId=93167381841",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/8952492715?itemId=26187938531&vendorItemId=93167381841",
+"minKind": "상품",
+"minCh": "쿠팡"
+},
+{
+"key": "g9",
+"group": "1~3개월",
+"item": "쪽쪽이",
+"product": "아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)",
+"cp": 14550,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 13200,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "네이버가 1,350원 저렴. 2세트로 사면 쿠팡 18,900원(개당 9,450원)이 더 쌉니다.",
+"cpUrl": "",
+"nvUrl": "",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%EB%B2%A4%ED%8A%B8+%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90%EC%96%B4+%EC%95%BC%EA%B4%91+%EB%85%B8%EB%A6%AC%EA%B0%9C+SCF376+2%EC%A2%85+%EC%84%B8%ED%8A%B8",
+"minKind": "검색",
+"minCh": "네이버"
+},
+{
+"key": "g10",
+"group": "1~3개월",
+"item": "바운서",
+"product": "베이비뵨 바운서 블리스 메쉬",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": 302000,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "베이비뵨 공식 302,000원(정가 310,000원 쿠폰가, 리뷰 4.93/858). 쿠팡에는 '바운서 메쉬 정품' 일본내수·병행 상품만 있어(108,000원+배송 50,000원 등) 정품 동일 모델 가격으로 확정하지 않았습니다.",
+"cpUrl": "",
+"nvUrl": "",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC",
+"minKind": "검색",
+"minCh": "네이버"
+},
+{
+"key": "g11",
+"group": "3~6개월",
+"item": "하이체어",
+"product": "스토케 트립트랩 하이체어 단품",
+"cp": 370000,
+"cpShip": "배송비 포함",
+"cpMiss": "미확인",
+"nv": 218810,
+"nvShipText": "배송비 포함",
+"nvMiss": "미조사",
+"note": "쿠팡 220,000원에 배송비 150,000원이 붙어 실결제 370,000원 — 네이버 최저(203,810원+배송 15,000원=218,810원)가 151,190원 저렴합니다. 둘 다 해외구매·병행 성격이 섞여 있어 정품등록·AS 조건을 확인하세요. 스토케 공식은 430,000원.",
+"cpUrl": "",
+"nvUrl": "",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%8A%A4%ED%86%A0%EC%BC%80+%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9+%ED%95%98%EC%9D%B4%EC%B2%B4%EC%96%B4+%EB%8B%A8%ED%92%88",
+"minKind": "검색",
+"minCh": "네이버"
+},
+{
+"key": "g12",
+"group": "3~6개월",
+"item": "분유 2단계",
+"product": "매일유업 앱솔루트 명작 2FL 2단계 800g 3캔",
+"cp": 54700,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": 54700,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "3캔 묶음 기준. 네이버 최저 54,700원(판매처 162)으로 쿠팡과 동일가 — 어제 미조사였던 네이버 가격을 오늘 확인했습니다. 1캔 가격은 미확인.",
+"cpUrl": "https://www.coupang.com/vp/products/7308156780?itemId=11615060339&vendorItemId=78889733722",
+"nvUrl": "",
+"minUrl": "https://www.coupang.com/vp/products/7308156780?itemId=11615060339&vendorItemId=78889733722",
+"minKind": "상품",
+"minCh": "쿠팡"
+}
+];
+  var DATES = {
+"sched": [
+{
+"k": "다가오는 일정 1",
+"t": "백일해(Tdap) 접종 시작",
+"s": "27주 0일 · 27~36주 사이 1회 접종",
+"d": "2026-12-06"
+},
+{
+"k": "다가오는 일정 2",
+"t": "임당 검사 마감",
+"s": "28주 0일 · 이후 2주 간격 진찰로 전환",
+"d": "2026-12-13"
+}
+],
+"mile": [
+{
+"d": "2026-12-06",
+"l": "백일해 접종 시작"
+},
+{
+"d": "2026-12-13",
+"l": "임당 검사 마감"
+},
+{
+"d": "2027-01-10",
+"l": "NST 시작 가능"
+},
+{
+"d": "2027-01-31",
+"l": "GBS · 분만 전 검사"
+},
+{
+"d": "2027-02-07",
+"l": "진찰 매주 전환"
+},
+{
+"d": "2027-02-14",
+"l": "만삭 (37주)"
+},
+{
+"d": "2027-03-07",
+"l": "출산예정일"
+}
+]
+};
+  var EDD = new Date(2027, 2, 7);           /* 2027-03-07 */
+  var EDD_MS = EDD.getTime();
+  var DAY = 86400000;
+  var STORE = "soo-baby-dashboard-v1";
+
+  /* ---------- state ---------- */
+  var state = { p:{}, g:{} };
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORE);
+      if(raw){
+        var o = JSON.parse(raw);
+        if(o && typeof o === "object"){
+          state.p = (o.p && typeof o.p === "object") ? o.p : {};
+          state.g = (o.g && typeof o.g === "object") ? o.g : {};
+        }
+      }
+    }catch(e){ state.p = {}; state.g = {}; }
+  }
+  function saveState(){
+    try{ localStorage.setItem(STORE, JSON.stringify({p:state.p, g:state.g})); }catch(e){}
+  }
+
+  function won(n){ return Number(n).toLocaleString("ko-KR"); }
+  function pad(n){ return n < 10 ? "0" + n : String(n); }
+  function dparse(s){ var p = String(s).split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+
+  /* ---------- header ---------- */
+  function each(sel, fn){
+    Array.prototype.slice.call(document.querySelectorAll(sel)).forEach(fn);
+  }
+  function trOf(el){
+    var n = el;
+    while(n && n !== document){
+      if(n.nodeType === 1 && n.className && String(n.className).indexOf("tr") > -1) return n;
+      n = n.parentNode;
+    }
+    return null;
+  }
+
+  function todayStart(){
+    var d = new Date();
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+  function gaDays(){
+    /* 40주 0일 = EDD → 임신일수 = 280 - (EDD - today) */
+    return 280 - Math.round((EDD_MS - todayStart().getTime()) / DAY);
+  }
+  function stageOf(week){
+    for(var i=0;i<CARDS.length;i++){
+      var r = CARDS[i].weeks.replace("주","").split("~");
+      if(week >= parseInt(r[0],10) && week <= parseInt(r[1],10)) return CARDS[i];
+    }
+    return null;
+  }
+
+  var WEEKDAY = ["일","월","화","수","목","금","토"];
+  function renderHeader(){
+    var t = todayStart();
+    var days = gaDays();
+    var wk = Math.floor(days/7), dd = days % 7;
+    var left = Math.round((EDD_MS - t.getTime())/DAY);
+
+    document.getElementById("todayLine").textContent =
+      "기준일 " + t.getFullYear() + "-" + pad(t.getMonth()+1) + "-" + pad(t.getDate()) +
+      " (" + WEEKDAY[t.getDay()] + ") · 저장은 이 브라우저에만";
+
+    document.getElementById("gaBig").innerHTML = (days >= 0 ? (wk + "주 " + dd + "일") : "출산 후");
+    document.getElementById("dday").textContent = days >= 0 ? ("D-" + left) : ("D+" + Math.abs(left));
+
+    var st = stageOf(wk);
+    if(st){
+      document.getElementById("curStage").innerHTML = "현재 구간 <b>" + st.weeks + "</b> · " + st.title;
+      document.getElementById("sizeChip").textContent = st.emo + " " + st.sizeMeta + " · " + st.sizeNum;
+      var csh = document.getElementById("curStageShort");
+      if(csh) csh.textContent = st.n + "단계 · " + st.weeks;
+    }else if(days < 0){
+      document.getElementById("curStage").innerHTML = "현재 구간 <b>출산 후</b> · 수고하셨어요";
+      var csh2 = document.getElementById("curStageShort");
+      if(csh2) csh2.textContent = "출산 후";
+    }
+
+    /* 핵심 일정 카드 2개 */
+    var key = DATES.sched.map(function(o){
+      return {d:dparse(o.d), k:o.k, t:o.t, s:o.s};
+    });
+    var sched = document.getElementById("sched");
+    sched.innerHTML = key.map(function(o,i){
+      var dl = Math.round((o.d.getTime() - t.getTime())/DAY);
+      var tag = dl > 0 ? ("D-" + dl) : (dl === 0 ? "오늘" : ("D+" + Math.abs(dl)));
+      return '<div class="sched-card' + (i ? " alt" : "") + '">' +
+        '<div class="sched-k">' + o.k + '</div>' +
+        '<div class="sched-n">' + tag + '</div>' +
+        '<div class="sched-t">' + o.t + '</div>' +
+        '<div class="sched-d">' + pad(o.d.getMonth()+1) + "/" + pad(o.d.getDate()) + " · " + o.s + '</div>' +
+      '</div>';
+    }).join("");
+
+    /* 마일스톤 스트립 */
+    var mile = DATES.mile.map(function(o){ return {d:dparse(o.d), l:o.l}; });
+    document.getElementById("milestones").innerHTML = mile.map(function(o){
+      var dl = Math.round((o.d.getTime() - t.getTime())/DAY);
+      var tag = dl > 0 ? ("D-" + dl) : (dl === 0 ? "오늘" : ("D+" + Math.abs(dl)));
+      return '<div class="mile-i' + (dl < 0 ? " done" : "") + '">' +
+        '<div class="mile-d">' + tag + ' · ' + pad(o.d.getMonth()+1) + "/" + pad(o.d.getDate()) + '</div>' +
+        '<div class="mile-l">' + o.l + '</div></div>';
+    }).join("");
+
+    /* 현재 카드 강조 — 빌드 시점에 표시된 카드가 다를 수 있으므로 먼저 모두 지운다 */
+    each(".stage", function(card){
+      card.classList.remove("cur");
+      var r0 = card.querySelector(".ribbon");
+      if(r0) r0.style.display = "none";
+    });
+    if(st){
+      var cur = document.querySelector('.stage[data-id="' + st.id + '"]');
+      if(cur){
+        cur.classList.add("cur");
+        var rb = cur.querySelector(".ribbon");
+        if(rb) rb.style.display = "";
+      }
+    }
+  }
+
+  /* ---------- section 1 checkboxes ---------- */
+  var boxes = [];
+  function initCards(){
+    boxes = Array.prototype.slice.call(document.querySelectorAll("input[data-check]"));
+    boxes.forEach(function(b){
+      var k = b.getAttribute("data-check");
+      b.checked = !!state.p[k];
+      b.addEventListener("change", function(){
+        if(b.checked) state.p[k] = 1; else delete state.p[k];
+        saveState();
+        updateProgress();
+      });
+    });
+    updateCardFoot();
+    updateProgress();
+  }
+
+  function updateCardFoot(){
+    each(".stage", function(card){
+      var ins = card.querySelectorAll("input[data-check]");
+      var done = card.querySelectorAll("input[data-check]:checked").length;
+      var f = card.querySelector(".stage-foot b");
+      if(f) f.textContent = done + "/" + ins.length;
+    });
+  }
+
+  function updateProgress(){
+    var total = boxes.length;
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var pct = total ? Math.round(done*100/total) : 0;
+    document.getElementById("pvA").textContent = pct + "%";
+    document.getElementById("pbarA").style.width = pct + "%";
+    document.getElementById("pfA").textContent = done + " / " + total + " 항목 · 아래 카드에서 체크하면 자동 저장됩니다";
+
+    var gt = GOODS.length;
+    var gd = GOODS.filter(function(g){ return !!state.g[g.key]; }).length;
+    var gp = gt ? Math.round(gd*100/gt) : 0;
+    document.getElementById("pvB").textContent = gp + "%";
+    document.getElementById("pbarB").style.width = gp + "%";
+    document.getElementById("pfB").textContent = gd + " / " + gt + " 항목 · 구매 체크리스트와 연동";
+    updateCardFoot();
+  }
+
+  /* ---------- section 2: filters ---------- */
+  var GROUPS = [
+    {k:"all", label:"전체"},
+    {k:"0~1개월", label:"0~1개월"},
+    {k:"1~3개월", label:"1~3개월"},
+    {k:"3~6개월", label:"3~6개월"}
+  ];
+  var filter = "all";
+
+  function renderFilters(){
+    document.getElementById("filters").innerHTML = GROUPS.map(function(g){
+      var n = g.k === "all" ? GOODS.length : GOODS.filter(function(x){ return x.group === g.k; }).length;
+      return '<button class="fbtn" type="button" data-f="' + g.k + '" aria-pressed="' +
+        (filter === g.k ? "true" : "false") + '">' + g.label + '<span class="n">' + n + '</span></button>';
+    }).join("");
+    each("#filters .fbtn", function(b){
+      b.addEventListener("click", function(){
+        filter = b.getAttribute("data-f");
+        renderFilters(); renderChart(); renderTable();
+      });
+    });
+  }
+
+  function visible(){ return GOODS.filter(function(g){ return filter === "all" || g.group === filter; }); }
+
+  function bestOf(g){
+    var c = g.cp, n = g.nv;
+    if(c == null && n == null) return {ch:"none", v:null};
+    if(c == null) return {ch:"nv", v:n};
+    if(n == null) return {ch:"cp", v:c};
+    if(c < n) return {ch:"cp", v:c};
+    if(n < c) return {ch:"nv", v:n};
+    return {ch:"tie", v:c};
+  }
+
+  /* ---------- section 2: bar chart ---------- */
+  function barRow(kind, val, max, label, missingText){
+    if(val == null){
+      return '<div class="bar none">' +
+        '<div class="bar-k">' + label + '</div>' +
+        '<div class="track"></div>' +
+        '<div class="bar-v miss">' + missingText + '</div></div>';
+    }
+    var cls = kind;
+    var w = max > 0 ? Math.max(6, Math.round(val*100/max)) : 100;
+    return '<div class="bar ' + cls + '">' +
+      '<div class="bar-k">' + label + '</div>' +
+      '<div class="track"><div class="fill" style="width:' + w + '%"></div></div>' +
+      '<div class="bar-v">' + won(val) + '원</div></div>';
+  }
+
+  function renderChart(){
+    var list = visible();
+    var out = "";
+    var groups = ["0~1개월","1~3개월","3~6개월"];
+    groups.forEach(function(gr){
+      var rows = list.filter(function(g){ return g.group === gr; });
+      if(!rows.length) return;
+      out += '<div class="cgrp"><span>' + gr + '</span><em>' + rows.length + '개 항목</em></div>';
+      rows.forEach(function(g){
+        var c = g.cp, n = g.nv;
+        var max = Math.max(c == null ? 0 : c, n == null ? 0 : n);
+        var best = bestOf(g);
+        var kindC = "lose", kindN = "lose";
+        if(c != null && n != null){
+          if(c === n){ kindC = "tie"; kindN = "tie"; }
+          else if(c < n){ kindC = "win"; } else { kindN = "win"; }
+        }else if(c != null){ kindC = "win"; }
+        else if(n != null){ kindN = "win"; }
+
+        var delta = "";
+        if(c != null && n != null){
+          var d = Math.abs(c - n);
+          if(d === 0) delta = '<span class="delta tie">동일가</span>';
+          else delta = '<span class="delta">' + (c < n ? "쿠팡" : "네이버") + " " + won(d) + '원 저렴</span>';
+        }else{
+          delta = '<span class="delta only">한 곳만 확인</span>';
+        }
+
+        out += '<div class="crow">' +
+          '<div class="crow-l">' +
+            '<div class="crow-n">' + g.item + delta + '</div>' +
+            '<div class="crow-p">' + g.product + '</div>' +
+          '</div>' +
+          '<div class="bars">' +
+            barRow(kindC, c, max, "쿠팡", g.cpMiss || "미확인") +
+            barRow(kindN, n, max, "네이버", g.nvMiss || "미조사") +
+          '</div>' +
+        '</div>';
+      });
+    });
+    document.getElementById("chart").innerHTML = out;
+  }
+
+  /* ---------- section 2: table ---------- */
+  function linkOf(g){
+    var best = bestOf(g);
+    if(best.ch === "cp" && g.cpUrl) return {url:g.cpUrl, kind:"상품", ch:"쿠팡"};
+    if(best.ch === "nv" && g.nvUrl) return {url:g.nvUrl, kind:"상품", ch:"네이버"};
+    if(g.minUrl) return {url:g.minUrl, kind:g.minKind || "상품", ch:g.minCh || ""};
+    if(g.cpUrl) return {url:g.cpUrl, kind:"상품", ch:"쿠팡"};
+    return null;
+  }
+
+  function buyHtml(g){
+    var ln = linkOf(g);
+    if(!ln) return '<span class="buy off">링크 없음</span>';
+    var label = ln.kind === "상품" ? "최저가 구매" : "최저가 목록";
+    var desc = ln.kind === "상품" ? (ln.ch + "에서 최저가 구매") : (ln.ch + " 최저가 판매처 목록");
+    return '<a class="buy" href="' + ln.url + '" target="_blank" rel="noopener noreferrer"' +
+      ' aria-label="' + g.item + ' ' + desc + ', 새 창으로 열기"' +
+      ' title="' + desc + '">' +
+      '<span class="buy-t">' + label + '</span><span class="buy-ch">' + ln.ch + '</span><span class="buy-a">↗</span></a>';
+  }
+
+  function renderTable(){
+    var list = visible();
+    var out = "";
+    list.forEach(function(g){
+      var best = bestOf(g);
+      var checked = !!state.g[g.key];
+      var badge = best.ch === "cp" ? '<span class="badge b-cp">쿠팡 최저</span>'
+               : best.ch === "nv" ? '<span class="badge b-nv">네이버 최저</span>'
+               : best.ch === "tie" ? '<span class="badge b-tie">동일가</span>'
+               : '<span class="badge b-one">확인 불가</span>';
+
+      var cpCls = g.cp == null ? "price miss" : ("price" + (best.ch === "cp" ? " win" : ""));
+      var nvCls = g.nv == null ? "price miss" : ("price" + (best.ch === "nv" ? " win" : ""));
+      var cpTxt = g.cp == null ? (g.cpMiss || "미확인") : won(g.cp) + "원";
+      var nvTxt = g.nv == null ? (g.nvMiss || "미조사") : won(g.nv) + "원";
+
+      out += '<div class="tr' + (checked ? " done" : "") + '" data-row="' + g.key + '">' +
+        '<input class="gcheck" type="checkbox" data-good="' + g.key + '" aria-label="' + g.item + ' 구매 체크"' + (checked ? " checked" : "") + '>' +
+        '<div class="gd">' +
+          '<div class="gd-n"><span class="it-name">' + g.item + '</span><span class="done-badge">✓ 구매완료</span><span class="sr">' + g.group + '</span></div>' +
+          '<div class="gd-p">' + g.product + '</div>' +
+          (g.note ? '<div class="gd-note">' + g.note + '</div>' : '') +
+          '<div class="badge-cell"><span class="gd-grp">' + g.group + '</span> ' + badge + '</div>' +
+        '</div>' +
+        '<div class="pcell" data-l="쿠팡">' +
+          '<div class="' + cpCls + '">' + cpTxt + (g.cp != null && g.cpShip ? '<small>' + g.cpShip + '</small>' : '') + '</div>' +
+        '</div>' +
+        '<div class="pcell" data-l="네이버">' +
+          '<div class="' + nvCls + '">' + nvTxt + (g.nv != null && g.nvShipText ? '<small>' + g.nvShipText + '</small>' : '') + '</div>' +
+        '</div>' +
+        '<div class="pcell badge-cell buy-cell" data-l="최저가">' + badge + buyHtml(g) + '</div>' +
+      '</div>';
+    });
+    document.getElementById("rows").innerHTML = out;
+
+    each("#rows input[data-good]", function(b){
+      b.addEventListener("change", function(){
+        var k = b.getAttribute("data-good");
+        if(b.checked) state.g[k] = 1; else delete state.g[k];
+        saveState();
+        var row = trOf(b);
+        if(row){
+          if(b.checked){
+            row.className = "tr done flash";
+            setTimeout(function(){ if(row.className.indexOf("flash") > -1) row.className = "tr" + (b.checked ? " done" : ""); }, 500);
+          }else{
+            row.className = "tr";
+          }
+        }
+        updateProgress();
+        renderTotal();
+      });
+    });
+    renderTotal();
+  }
+
+  function renderTotal(){
+    var picked = GOODS.filter(function(g){ return !!state.g[g.key]; });
+    var minSum = 0, cpSum = 0, nvSum = 0, saving = 0;
+    picked.forEach(function(g){
+      var b = bestOf(g);
+      if(b.v != null){ minSum += b.v; }
+      var c = g.cp != null ? g.cp : g.nv;
+      var n = g.nv != null ? g.nv : g.cp;
+      if(c != null) cpSum += c;
+      if(n != null) nvSum += n;
+      if(g.cp != null && g.nv != null) saving += Math.abs(g.cp - g.nv);
+    });
+
+    document.getElementById("sumV").innerHTML = won(minSum) + '원<small id="sumC">' + picked.length + '개</small>';
+
+    /* 표 위 스티키 요약 바 — 체크하면 바로 바뀐다 */
+    var sbC = document.getElementById("sbC");
+    var sbV = document.getElementById("sbV");
+    var sbS = document.getElementById("sbS");
+    var sbSW = document.getElementById("sbSW");
+    var sbP = document.getElementById("sbP");
+    if(sbC) sbC.textContent = picked.length + "개 선택";
+    if(sbV) sbV.textContent = won(minSum) + "원";
+    if(sbS) sbS.textContent = won(saving) + "원";
+    if(sbSW) sbSW.className = "sum-bar-r" + (picked.length ? "" : " muted");
+    if(sbP) sbP.style.width = (GOODS.length ? Math.round(picked.length*100/GOODS.length) : 0) + "%";
+
+    var allMin = GOODS.reduce(function(a,g){ var b = bestOf(g); return a + (b.v == null ? 0 : b.v); }, 0);
+    var lines = [];
+    if(!picked.length){
+      lines.push("아직 체크한 품목이 없습니다. 위 목록에서 사야 할 것을 체크해 보세요.");
+    }else{
+      lines.push("최저가 기준 합계입니다 · 쿠팡에서만 살 때 " + won(cpSum) + "원, 네이버에서만 살 때 " + won(nvSum) + "원입니다.");
+      lines.push("두 곳 중 <b>비싼 쪽으로 샀을 때보다 " + won(saving) + "원 절약</b>했습니다.");
+    }
+    lines.push("참고 · " + GOODS.length + "개 항목을 모두 최저가로 사면 " + won(allMin) + "원");
+    document.getElementById("sumN").innerHTML = lines.join("<br>");
+  }
+
+  /* ---------- trend: 12개 품목 통합 그래프 ---------- */
+  var TRENDD = {
+"dates": [
+"10/27",
+"11/03",
+"11/10",
+"11/17",
+"11/24",
+"11/25"
+],
+"series": [
+{
+"id": "t0",
+"name": "기저귀",
+"spec": "66매",
+"span": "1개월",
+"color": "#e08a65",
+"values": [
+19530,
+19960,
+19530,
+18970,
+19380,
+19310
+],
+"base": 19530,
+"latest": 19310
+},
+{
+"id": "t1",
+"name": "물티슈 10팩",
+"spec": "70매 10팩",
+"span": "2일",
+"color": "#5a92ba",
+"values": [
+null,
+null,
+null,
+null,
+24490,
+24490
+],
+"base": 24490,
+"latest": 24490
+},
+{
+"id": "t2",
+"name": "물티슈 20팩",
+"spec": "70매 20팩",
+"span": "1개월",
+"color": "#8b82d6",
+"values": [
+27900,
+30990,
+30990,
+30990,
+30990,
+30990
+],
+"base": 27900,
+"latest": 30990
+},
+{
+"id": "t3",
+"name": "분유 1단계",
+"spec": "800g 1캔",
+"span": "2일",
+"color": "#6fb69c",
+"values": [
+null,
+null,
+null,
+null,
+22000,
+21570
+],
+"base": 22000,
+"latest": 21570
+},
+{
+"id": "t4",
+"name": "젖병",
+"spec": "160ml 트윈팩",
+"span": "2일",
+"color": "#c9922a",
+"values": [
+null,
+null,
+null,
+null,
+42470,
+42470
+],
+"base": 42470,
+"latest": 42470
+},
+{
+"id": "t5",
+"name": "젖병소독기",
+"spec": "UP920A 28L",
+"span": "1개월",
+"color": "#d9698a",
+"values": [
+347990,
+347990,
+347990,
+347990,
+347990,
+334000
+],
+"base": 347990,
+"latest": 334000
+},
+{
+"id": "t6",
+"name": "유축기",
+"spec": "s2+ 세트",
+"span": "2일",
+"color": "#4fae8b",
+"values": [
+null,
+null,
+null,
+null,
+148000,
+148000
+],
+"base": 148000,
+"latest": 148000
+},
+{
+"id": "t7",
+"name": "속싸개",
+"spec": "Stage 1 S/M",
+"span": "2일",
+"color": "#b5651d",
+"values": [
+null,
+null,
+null,
+null,
+39800,
+39800
+],
+"base": 39800,
+"latest": 39800
+},
+{
+"id": "t8",
+"name": "쪽쪽이",
+"spec": "SCF376 2종 세트",
+"span": "2일",
+"color": "#7a6fbf",
+"values": [
+null,
+null,
+null,
+null,
+13200,
+13200
+],
+"base": 13200,
+"latest": 13200
+},
+{
+"id": "t9",
+"name": "바운서",
+"spec": "블리스 메쉬",
+"span": "2일",
+"color": "#3f9878",
+"values": [
+null,
+null,
+null,
+null,
+302000,
+302000
+],
+"base": 302000,
+"latest": 302000
+},
+{
+"id": "t10",
+"name": "하이체어",
+"spec": "단품",
+"span": "2일",
+"color": "#dd724f",
+"values": [
+null,
+null,
+null,
+null,
+244000,
+218810
+],
+"base": 244000,
+"latest": 218810
+},
+{
+"id": "t11",
+"name": "분유 2단계",
+"spec": "800g 3캔",
+"span": "2일",
+"color": "#7c8894",
+"values": [
+null,
+null,
+null,
+null,
+54700,
+54700
+],
+"base": 54700,
+"latest": 54700
+}
+],
+"colors": [
+"#e08a65",
+"#5a92ba",
+"#8b82d6",
+"#6fb69c",
+"#c9922a",
+"#d9698a",
+"#4fae8b",
+"#b5651d",
+"#7a6fbf",
+"#3f9878",
+"#dd724f",
+"#7c8894"
+],
+"notes": [
+"선이 10/27부터 이어지는 3개 품목(기저귀·물티슈 20팩·젖병소독기)은 다나와 ‘최저가 추이’ 1개월 주간값(전체 쇼핑몰 최저가)이고, 마지막 점(11/25)만 오늘 쿠팡·네이버 실측 최저가입니다. 두 값의 출처가 달라 마지막 구간의 작은 움직임은 가격 변동이 아니라 조사 채널 차이일 수 있습니다.",
+"나머지 9개 품목은 다나와에서 1개월 주간 이력을 확보하지 못해 11/24·11/25 두 점만 그렸습니다(변동률은 11/24 = 100 기준). 값을 추정해 채우지 않았습니다.",
+"변동률은 품목마다 ‘첫 관측값 = 100’으로 맞춘 값이라 선의 높이끼리 바로 가격을 비교할 수는 없습니다. 실제 가격으로 보려면 위의 ‘가격(원)’ 버튼을 누르면 됩니다(세로축 로그 눈금).",
+"품목별 최신 최저가와 변동률은 그래프 아래 범례에 있고, 매일 08:30 업데이트가 하루치 점을 이 CSV에 쌓기 때문에 관측일이 늘수록 선이 길어집니다."
+]
+};
+  var trendMode = "pct";
+
+  function trendPoint(s, i, mode){
+    var v = s.values[i];
+    if(v === null || v === undefined || !s.base) return null;
+    return mode === "pct" ? Math.round((v * 1000.0 / s.base) - 1000) / 10 : Math.log10(v);
+  }
+
+  function trendDelta(s){
+    if(!s.base || s.latest === null) return 0;
+    return Math.round((s.latest * 1000.0 / s.base) - 1000) / 10;
+  }
+
+  function moneyShort(v){
+    if(v >= 10000){
+      var m = (v / 10000).toFixed(1);
+      if(m.indexOf(".") > -1) m = m.replace(/0+$/, "").replace(/\.$/, "");
+      return m + "만";
+    }
+    return won(v);
+  }
+
+  function drawTrendChart(mode){
+    var W = 1000, H = 432, PL = 58, PR = 14, PT = 20, PB = 44;
+    var iw = W - PL - PR, ih = H - PT - PB;
+    var n = TRENDD.dates.length;
+    var X = function(i){ return PL + iw * i / (n - 1); };
+
+    var ptsAll = TRENDD.series.map(function(s){
+      var pts = [];
+      for(var i = 0; i < n; i++){
+        var v = trendPoint(s, i, mode);
+        if(v !== null) pts.push([i, v]);
+      }
+      return {s: s, pts: pts};
+    });
+
+    var flat = [];
+    ptsAll.forEach(function(o){ o.pts.forEach(function(p){ flat.push(p[1]); }); });
+    var lo = Math.min.apply(null, flat), hi = Math.max.apply(null, flat);
+    if(mode === "pct"){
+      lo = Math.min(lo, 0); hi = Math.max(hi, 0);
+      var pad = Math.max(0.35, (hi - lo) * 0.2);
+      lo = lo - pad; hi = hi + pad;
+    }else{
+      var pad2 = (hi - lo) * 0.1 || 0.08;
+      lo = lo - pad2; hi = hi + pad2;
+    }
+    var Y = function(v){ return hi > lo ? PT + ih * (1 - (v - lo) / (hi - lo)) : PT + ih / 2; };
+    var F = function(x){ return x.toFixed(1); };
+
+    var o = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + TRENDD.series.length +
+      '개 품목 가격 추이 통합 그래프, ' + (mode === "pct" ? "첫 관측 대비 변동률" : "실제 최저가(원, 로그 눈금)") + ' 기준">'];
+
+    var ticks = [];
+    if(mode === "pct"){
+      var raw = [];
+      for(var k = 0; k < 5; k++) raw.push(lo + (hi - lo) * k / 4.0);
+      if(lo < 0 && hi > 0){
+        var near = 0;
+        for(var q = 1; q < raw.length; q++){ if(Math.abs(raw[q]) < Math.abs(raw[near])) near = q; }
+        raw.splice(near, 1); raw.push(0);
+      }
+      raw.sort(function(a, b){ return a - b; });
+      raw.forEach(function(v){ ticks.push([v, v]); });
+    }else{
+      [10000,20000,30000,50000,100000,200000,300000].forEach(function(c){
+        var lv = Math.log10(c);
+        if(lv >= lo && lv <= hi) ticks.push([lv, c]);
+      });
+    }
+
+    ticks.forEach(function(tpair){
+      var v = tpair[0], raw = tpair[1], y = Y(v);
+      o.push('<line x1="' + PL + '" y1="' + F(y) + '" x2="' + (W - PR) + '" y2="' + F(y) + '" stroke="#f3ece7" stroke-width="1"/>');
+      var lab = mode === "pct" ? raw.toFixed(1) + "%" : moneyShort(raw);
+      if(mode === "pct" && (lab === "-0.0%" || lab === "0.0%")) lab = "0%";
+      o.push('<text x="' + (PL - 8) + '" y="' + F(y + 3.5) + '" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">' + lab + '</text>');
+    });
+
+    if(mode === "pct" && lo < 0 && hi > 0){
+      var y0 = Y(0);
+      o.push('<line x1="' + PL + '" y1="' + F(y0) + '" x2="' + (W - PR) + '" y2="' + F(y0) + '" stroke="#dcc9c0" stroke-width="1.3" stroke-dasharray="5 4"/>');
+    }
+
+    var step = Math.max(1, Math.ceil((n - 1) / 6));
+    TRENDD.dates.forEach(function(d, i){
+      if(i % step && i !== n - 1) return;
+      o.push('<text x="' + F(X(i)) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">' + d + '</text>');
+    });
+
+    ptsAll.forEach(function(item){
+      var s = item.s, pts = item.pts;
+      if(!pts.length) return;
+      if(pts.length > 1){
+        var line = pts.map(function(p, k){ return (k ? "L" : "M") + F(X(p[0])) + " " + F(Y(p[1])); }).join(" ");
+        o.push('<path d="' + line + '" fill="none" stroke="' + s.color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>');
+      }
+      pts.forEach(function(p, k){
+        var last = k === pts.length - 1;
+        o.push('<circle cx="' + F(X(p[0])) + '" cy="' + F(Y(p[1])) + '" r="' + (last ? "3.6" : "2.2") + '" fill="' + s.color + '" stroke="#fff" stroke-width="' + (last ? "1.6" : "1") + '"/>');
+      });
+    });
+    o.push("</svg>");
+    return o.join("");
+  }
+
+  function drawTrendLegend(){
+    return TRENDD.series.map(function(s){
+      var d = trendDelta(s);
+      var cls = d > 0 ? "up" : (d < 0 ? "down" : "flat");
+      var sign = d > 0 ? "+" : (d === 0 ? "" : "−");
+      var val = d !== 0 ? Math.abs(d).toFixed(1) + "%" : "0.0%";
+      return '<div class="lg-i">' +
+        '<span class="lg-c" style="background:' + s.color + '"></span>' +
+        '<span class="lg-n">' + s.name + '<small>' + s.spec + (s.span ? " · " + s.span + " 관측" : "") + '</small></span>' +
+        '<span class="lg-p">' + won(s.latest) + '원</span>' +
+        '<span class="lg-d ' + cls + '">' + sign + val + '<em>' + (s.span === "1개월" ? "1개월" : "2일") + '</em></span>' +
+      '</div>';
+    }).join("");
+  }
+
+  function renderTrend(){
+    document.getElementById("trend").innerHTML = drawTrendChart(trendMode);
+    document.getElementById("trend").setAttribute("data-mode", trendMode);
+    document.getElementById("trendLegend").innerHTML = drawTrendLegend();
+    each("#trendToggle .tg", function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-mode") === trendMode ? "true" : "false");
+    });
+    var sub = document.getElementById("trendSub");
+    if(sub) sub.textContent = trendMode === "pct"
+      ? "10/27~11/25 · 품목별 첫 관측값 = 100 지수"
+      : "10/27~11/25 · 실제 최저가(원, 로그 눈금)";
+  }
+
+  function initTrendToggle(){
+    each("#trendToggle .tg", function(b){
+      b.addEventListener("click", function(){
+        trendMode = b.getAttribute("data-mode");
+        renderTrend();
+      });
+    });
+  }
+
+  /* ---------- reset ---------- */
+  function initReset(){
+    document.getElementById("resetBtn").addEventListener("click", function(){
+      if(!window.confirm("검진·영양제 체크와 구매 체크를 모두 지웁니다. 계속할까요?")) return;
+      state.p = {}; state.g = {};
+      saveState();
+      each("input[data-check]", function(b){ b.checked = false; });
+      renderChart();
+      renderTable();
+      updateProgress();
+    });
+  }
+
+  /* ---------- boot ---------- */
+  loadState();
+  renderHeader();
+  initCards();
+  renderFilters();
+  renderChart();
+  renderTable();
+  renderTrend();
+  initTrendToggle();
+  initReset();
+})();
+</script>
+</body>
+</html>
