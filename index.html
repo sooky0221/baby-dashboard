@@ -182,7 +182,11 @@
   .stage-foot b{color:var(--ink2);font-weight:800}
 
   /* ---------- goods controls ---------- */
+  .controls-wrap{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
   .controls{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+  .controls.buyrow{gap:5px}
+  .controls.buyrow .fbtn{font-size:11.5px;padding:6px 11px;background:#fdfaf8}
+  .controls.buyrow .fbtn[aria-pressed="true"]{background:linear-gradient(135deg,#8fd3b8,#4fae8b);border-color:#4fae8b;box-shadow:0 8px 18px -12px rgba(79,174,139,.95)}
   .fbtn{font:inherit;font-size:12px;font-weight:700;color:var(--ink2);background:#fff;border:1px solid var(--line2);border-radius:99px;padding:7px 13px;cursor:pointer;transition:.15s;display:inline-flex;gap:6px;align-items:center}
   .fbtn:hover{border-color:#e6b9a5;color:#c9764f}
   .fbtn[aria-pressed="true"]{background:linear-gradient(135deg,#f9b295,#ec7f5f);border-color:#ec7f5f;color:#fff;box-shadow:0 8px 18px -12px rgba(236,127,95,.95)}
@@ -226,7 +230,7 @@
   /* table */
   .table{margin-top:2px}
   .tr{display:grid;grid-template-columns:26px 1fr;gap:8px;padding:11px 2px;border-bottom:1px solid #faf3ef;align-items:start}
-  @media(min-width:820px){ .tr{grid-template-columns:26px minmax(0,1fr) 110px 118px 96px;align-items:start;gap:10px} }
+  @media(min-width:820px){ .tr{grid-template-columns:26px minmax(0,1fr) 96px 104px 92px 92px;align-items:start;gap:9px} }
   .tr.h{display:none}
   @media(min-width:820px){
     .tr.h{display:grid;font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--ink3);padding:0 2px 8px;border-bottom:1px solid var(--line2)}
@@ -234,6 +238,23 @@
   .gd{display:flex;flex-direction:column;gap:2px;min-width:0}
   .gd-n{font-size:12.5px;font-weight:800;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .gd-p{font-size:10.5px;color:var(--ink3)}
+  .gd-tags{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:3px}
+  .bm{font-size:9.5px;font-weight:800;border-radius:6px;padding:2px 6px;white-space:nowrap;letter-spacing:-.01em}
+  .b-dg{background:#fff1e3;color:#c0703a;border:1px solid #f4d6b8}
+  .b-new{background:#eef2ff;color:#4f5bb0;border:1px solid #d6ddf8}
+  .b-rent{background:#fbeeff;color:#a25bb5;border:1px solid #ecd3f5}
+  .req{font-size:9.5px;font-weight:800;border-radius:6px;padding:2px 6px;white-space:nowrap}
+  .r-must{background:#fdecef;color:#c3506c}
+  .r-rec{background:#eef5fb;color:#4d7fa8}
+  .r-opt{background:#f4f0ed;color:#96867e}
+  .qty{font-size:9.5px;font-weight:700;color:#a1938c;background:#faf5f1;border-radius:6px;padding:2px 6px;white-space:nowrap}
+  .gd-why{font-size:10px;color:#8d8178;line-height:1.5;margin-top:3px}
+  .gd-why::before{content:"💬 ";font-size:9px}
+  .dg-cell{flex-wrap:wrap}
+  .price.dg{color:#c0703a}
+  .dg-none{font-size:10px;font-weight:700;color:#bdb2ac}
+  .dg-link{font-size:10px;font-weight:800;color:#9c5c2e;background:#fff4e9;border:1px solid #f0d7bd;border-radius:8px;padding:3px 7px;text-decoration:none;white-space:nowrap}
+  .dg-link:hover{background:#ffe9d6}
   .gd-note{font-size:10px;color:#a1938c;line-height:1.45;margin-top:1px}
   .gd-note::before{content:"ⓘ ";color:#c9b6ac}
   .gd-grp{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.03em;color:#b3a6a0;background:#f7f1ed;border-radius:5px;padding:1px 5px}
@@ -315,6 +336,11 @@
   .tg:hover{color:#4c8f76}
   .tg[aria-pressed="true"]{background:linear-gradient(135deg,#bfe6d4,#57b28f);color:#fff;box-shadow:0 6px 14px -10px rgba(87,178,143,.95)}
   .cchart{background:linear-gradient(180deg,#fffdfc,#fdfaf8);border:1px solid #f4eae4;border-radius:16px;padding:8px 6px 2px;margin-top:2px;overflow-x:auto;overscroll-behavior-x:contain}
+  .trend-tip{margin:6px 0 8px;padding:8px 11px;border-radius:12px;background:linear-gradient(135deg,#fff7f1,#fff1e7);border:1px solid #f3d9c6;font-size:11.5px;font-weight:800;color:#8c5a37;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+  .trend-tip b{color:#c0703a;font-size:12.5px}
+  .trend-tip .tt-o{font-weight:700;color:#a98a75;font-size:10.5px}
+  .cchart .hit{cursor:pointer}
+  .cchart circle.sel{stroke:#c0703a !important;stroke-width:2.4 !important}
   .cchart svg{width:100%;height:auto;display:block}
   @media(max-width:760px){ .cchart svg{width:720px;max-width:none} }
   .legend{display:grid;gap:6px;grid-template-columns:1fr;margin-top:12px}
@@ -511,7 +537,7 @@
           <div class="prog-v" id="pvB">0%</div>
         </div>
         <div class="prog goods"><i id="pbarB"></i></div>
-        <div class="prog-f" id="pfB">0 / 12 항목 · 구매 체크리스트와 연동</div>
+        <div class="prog-f" id="pfB">0 / 36 항목 · 구매 체크리스트와 연동</div>
       </div>
     </div>
 
@@ -713,9 +739,12 @@
       <div>
         <div class="sec-kick">SECTION 2</div>
         <h2 class="sec-title">월령별 육아용품 최저가 · 구매 체크리스트</h2>
-        <p class="sec-desc">쿠팡과 네이버(네이버쇼핑·스마트스토어)의 <b>배송비 포함 실결제가</b>를 나란히 비교합니다. 2026-11-25 08:30~08:37 실측 12개 항목(규격 기준).</p>
+        <p class="sec-desc">쿠팡과 네이버(네이버쇼핑·스마트스토어)의 <b>배송비 포함 실결제가</b>를 나란히 비교합니다. 출산준비 체크리스트 36개 항목(규격 기준) · 2026-11-25 실측/조사.</p>
       </div>
-      <div class="controls" id="filters" role="group" aria-label="월령 필터"><span class="fbtn" data-f="all" aria-pressed="true">전체<span class="n">12</span></span><span class="fbtn" data-f="0~1개월" aria-pressed="false">0~1개월<span class="n">7</span></span><span class="fbtn" data-f="1~3개월" aria-pressed="false">1~3개월<span class="n">3</span></span><span class="fbtn" data-f="3~6개월" aria-pressed="false">3~6개월<span class="n">2</span></span></div>
+      <div class="controls-wrap">
+        <div class="controls" id="filters" role="group" aria-label="월령 필터"><span class="fbtn" data-f="all" aria-pressed="true">전체<span class="n">36</span></span><span class="fbtn" data-f="0~1개월" aria-pressed="false">0~1개월<span class="n">28</span></span><span class="fbtn" data-f="1~3개월" aria-pressed="false">1~3개월<span class="n">5</span></span><span class="fbtn" data-f="3~6개월" aria-pressed="false">3~6개월<span class="n">3</span></span></div>
+        <div class="controls buyrow" id="bfilters" role="group" aria-label="구매방법 필터"><span class="fbtn bf" data-bf="all" aria-pressed="true">전체<span class="n">36</span></span><span class="fbtn bf" data-bf="당근" aria-pressed="false">🥕 당근 추천<span class="n">12</span></span><span class="fbtn bf" data-bf="새상품" aria-pressed="false">🆕 새 상품 추천<span class="n">21</span></span><span class="fbtn bf" data-bf="대여" aria-pressed="false">🎁 대여·지원<span class="n">3</span></span></div>
+      </div>
     </div>
 
     <div class="panel" id="p-chart">
@@ -723,46 +752,47 @@
         <div class="panel-t">쿠팡 vs 네이버 실결제가 <span>막대는 품목별 두 가격을 상대 비교한 길이입니다</span></div>
       </div>
       <p class="panel-d">더 저렴한 쪽을 초록색으로 표시했습니다 · 회색은 비싼 쪽 · 파란색은 동일가</p>
-      <div class="chart" id="chart"><div class="cgrp"><span>0~1개월</span><em>7개 항목</em></div><div class="crow"><div class="crow-l"><div class="crow-n">기저귀<span class="delta">쿠팡 70원 저렴</span></div><div class="crow-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">19,310원</div></div><div class="bar lose"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">19,380원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">물티슈 10팩<span class="delta tie">동일가</span></div><div class="crow-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">24,490원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">24,490원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">물티슈 20팩<span class="delta">네이버 16,990원 저렴</span></div><div class="crow-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">47,980원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:65%"></div></div><div class="bar-v">30,990원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">분유 1단계<span class="delta">쿠팡 430원 저렴</span></div><div class="crow-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:98%"></div></div><div class="bar-v">21,570원</div></div><div class="bar lose"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">22,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">젖병<span class="delta tie">동일가</span></div><div class="crow-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">42,470원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">42,470원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">젖병소독기<span class="delta tie">동일가</span></div><div class="crow-p">유팡 시그니처2 플러스 UP920A 28L</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">334,000원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">334,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">유축기<span class="delta tie">동일가</span></div><div class="crow-p">스펙트라 s2+ 전동식 싱글유축기 세트</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">148,000원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">148,000원</div></div></div></div><div class="cgrp"><span>1~3개월</span><em>3개 항목</em></div><div class="crow"><div class="crow-l"><div class="crow-n">속싸개<span class="delta tie">동일가</span></div><div class="crow-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">39,800원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">39,800원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">쪽쪽이<span class="delta">네이버 1,350원 저렴</span></div><div class="crow-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">14,550원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:91%"></div></div><div class="bar-v">13,200원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">바운서<span class="delta only">한 곳만 확인</span></div><div class="crow-p">베이비뵨 바운서 블리스 메쉬</div></div><div class="bars"><div class="bar none"><div class="bar-k">쿠팡</div><div class="track"></div><div class="bar-v miss">미확인</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">302,000원</div></div></div></div><div class="cgrp"><span>3~6개월</span><em>2개 항목</em></div><div class="crow"><div class="crow-l"><div class="crow-n">하이체어<span class="delta">네이버 151,190원 저렴</span></div><div class="crow-p">스토케 트립트랩 하이체어 단품</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">370,000원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:59%"></div></div><div class="bar-v">218,810원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">분유 2단계<span class="delta tie">동일가</span></div><div class="crow-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">54,700원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">54,700원</div></div></div></div></div>
+      <div class="chart" id="chart"><div class="cgrp"><span>0~1개월</span><em>11개 항목 · 가격 미확인 17개 제외</em></div><div class="crow"><div class="crow-l"><div class="crow-n">기저귀<span class="delta">쿠팡 70원 저렴</span></div><div class="crow-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">19,310원</div></div><div class="bar lose"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">19,380원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">물티슈 10팩<span class="delta tie">동일가</span></div><div class="crow-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">24,490원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">24,490원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">물티슈 20팩<span class="delta">네이버 16,990원 저렴</span></div><div class="crow-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">47,980원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:65%"></div></div><div class="bar-v">30,990원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">분유 1단계<span class="delta">쿠팡 430원 저렴</span></div><div class="crow-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:98%"></div></div><div class="bar-v">21,570원</div></div><div class="bar lose"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">22,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">젖병<span class="delta tie">동일가</span></div><div class="crow-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">42,470원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">42,470원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">젖병소독기<span class="delta tie">동일가</span></div><div class="crow-p">유팡 시그니처2 플러스 UP920A 28L</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">334,000원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">334,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">유축기<span class="delta tie">동일가</span></div><div class="crow-p">스펙트라 s2+ 전동식 싱글유축기 세트</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">148,000원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">148,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">자동 분유제조기(브레짜)<span class="delta only">한 곳만 확인</span></div><div class="crow-p">베이비브레짜 포뮬러 프로 어드밴스드 BRZFRP-1A</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">299,000원</div></div><div class="bar none"><div class="bar-k">네이버</div><div class="track"></div><div class="bar-v miss">미조사</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">기저귀 갈이대(소베맘)<span class="delta only">한 곳만 확인</span></div><div class="crow-p">소베맘 3세대 솔리드 원터치 기저귀교환대</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">109,900원</div></div><div class="bar none"><div class="bar-k">네이버</div><div class="track"></div><div class="bar-v miss">미조사</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">원목 신생아 아기침대<span class="delta only">한 곳만 확인</span></div><div class="crow-p">리안 드림콧(26년형) 이동식 아기침대</div></div><div class="bars"><div class="bar none"><div class="bar-k">쿠팡</div><div class="track"></div><div class="bar-v miss">미확인</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">260,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">브라운 체온계 IRT-6520<span class="delta only">한 곳만 확인</span></div><div class="crow-p">브라운 귀 적외선 체온계 IRT-6520</div></div><div class="bars"><div class="bar none"><div class="bar-k">쿠팡</div><div class="track"></div><div class="bar-v miss">미확인</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">119,000원</div></div></div></div><div class="cgrp"><span>1~3개월</span><em>4개 항목 · 가격 미확인 1개 제외</em></div><div class="crow"><div class="crow-l"><div class="crow-n">속싸개<span class="delta tie">동일가</span></div><div class="crow-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">39,800원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">39,800원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">쪽쪽이<span class="delta">네이버 1,350원 저렴</span></div><div class="crow-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">14,550원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:91%"></div></div><div class="bar-v">13,200원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">바운서<span class="delta only">한 곳만 확인</span></div><div class="crow-p">베이비뵨 바운서 블리스 메쉬</div></div><div class="bars"><div class="bar none"><div class="bar-k">쿠팡</div><div class="track"></div><div class="bar-v miss">미확인</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">302,000원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">국민 모빌(타이니러브)<span class="delta only">한 곳만 확인</span></div><div class="crow-p">타이니러브 수더앤그루브 모빌(흑백+컬러)</div></div><div class="bars"><div class="bar win"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">126,660원</div></div><div class="bar none"><div class="bar-k">네이버</div><div class="track"></div><div class="bar-v miss">미조사</div></div></div></div><div class="cgrp"><span>3~6개월</span><em>2개 항목 · 가격 미확인 1개 제외</em></div><div class="crow"><div class="crow-l"><div class="crow-n">하이체어<span class="delta">네이버 151,190원 저렴</span></div><div class="crow-p">스토케 트립트랩 하이체어 단품</div></div><div class="bars"><div class="bar lose"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">370,000원</div></div><div class="bar win"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:59%"></div></div><div class="bar-v">218,810원</div></div></div></div><div class="crow"><div class="crow-l"><div class="crow-n">분유 2단계<span class="delta tie">동일가</span></div><div class="crow-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div></div><div class="bars"><div class="bar tie"><div class="bar-k">쿠팡</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">54,700원</div></div><div class="bar tie"><div class="bar-k">네이버</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="bar-v">54,700원</div></div></div></div></div>
     </div>
 
     <div class="panel" id="p-list">
       <div class="panel-h">
         <div class="panel-t">구매 체크리스트 <span>체크한 품목의 최저가 합계가 자동 계산됩니다</span></div>
       </div>
-      <p class="panel-d">최저가 채널 뱃지가 붙은 곳이 그 품목에서 더 싼 채널입니다 · 쿠팡 미확인/네이버 미조사 칸은 비워 두었습니다 · 각 행의 <b>초록 버튼</b>을 누르면 그 품목 최저가 상품이 새 창으로 열립니다(네이버가 최저인 품목은 네이버쇼핑 최저가 목록으로 연결). 각 행의 <b>내 구매</b> 칸에 실제로 산 제품명과 가격을 적으면 최저가와 얼마나 차이 나는지 바로 비교해 드립니다.</p>
+      <p class="panel-d">최저가 채널 뱃지가 붙은 곳이 그 품목에서 더 싼 채널입니다 · 쿠팡 미확인/네이버 미조사 칸은 비워 두었습니다 · 각 행의 <b>초록 버튼</b>을 누르면 그 품목 최저가 상품이 새 창으로 열립니다(네이버가 최저인 품목은 네이버쇼핑 최저가 목록으로 연결). 각 행의 <b>내 구매</b> 칸에 실제로 산 제품명과 가격을 적으면 최저가와 얼마나 차이 나는지 바로 비교해 드립니다.<br><b>🥕 당근 추천 / 🆕 새 상품 추천</b>은 네이버 블로그·인스타 실사용 후기(광고·협찬 글 제외)를 기준으로 나눈 구분입니다. 당근 칸의 <b>매물 확인 필요</b>는 송파구·거여동 현재 매물을 실시간으로 확인하지 못한 상태라는 뜻이며, 오른쪽 링크로 당근 검색을 바로 열 수 있습니다.</p>
       <div class="sum-bar" id="sumBar" role="status" aria-live="polite">
         <div class="sum-bar-l"><b id="sbC">0개 선택</b><span class="sb-sep">·</span> 합계 <b id="sbV">0원</b></div>
         <div class="sum-bar-r muted" id="sbSW">절약 <b id="sbS">0원</b></div>
         <div class="sb-my" id="sbMy" hidden>내 실구매 <b id="sbMyV">0원</b> · 최저가 대비 <b id="sbMyD">0원</b></div>
         <div class="sb-track"><i id="sbP"></i></div>
       </div>
-      <div class="table" id="table">
+        <div class="table" id="table">
         <div class="tr h">
-          <div></div><div>품목 · 대표 제품</div><div>쿠팡</div><div>네이버 (배송비 포함)</div><div>최저가</div>
+          <div></div><div>품목 · 대표 제품</div><div>쿠팡</div><div>네이버 (배송비 포함)</div><div>당근 (중고)</div><div>최저가</div>
         </div>
-        <div id="rows"><div class="tr" data-row="g1"><input class="gcheck" type="checkbox" data-good="g1" aria-label="기저귀 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">기저귀</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div><div class="gd-note">네이버는 최저 표시가 17,900원(배송 3,000원)이지만 네이버의 '배송비포함 혜택가'가 19,380원(무료배송 판매처 기준)이라 쿠팡 19,310원과 70원 차이입니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">19,310원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">19,380원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8409449109?itemId=29319327796&amp;vendorItemId=96234192010" target="_blank" rel="noopener noreferrer" aria-label="기저귀 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g1" aria-label="기저귀 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g1" aria-label="기저귀 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g2"><input class="gcheck" type="checkbox" data-good="g2" aria-label="물티슈 10팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 10팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div><div class="gd-note">10팩은 양쪽 동일가(1매 35원). 20팩은 네이버가 16,990원 저렴하니 20팩으로 사는 편이 낫습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/6532149469?itemId=6922145055&amp;vendorItemId=3096887843" target="_blank" rel="noopener noreferrer" aria-label="물티슈 10팩 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g2" aria-label="물티슈 10팩 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g2" aria-label="물티슈 10팩 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g3"><input class="gcheck" type="checkbox" data-good="g3" aria-label="물티슈 20팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 20팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div><div class="gd-note">쿠팡 47,980원 vs 네이버 30,990원 — 16,990원 차. 1팩당 1,395원은 최근 저점(10/27주 27,900원) 이후 4주째 유지 중.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">47,980원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">30,990원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EB%B2%A0%EC%88%B2+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+%EC%9C%84%EB%93%9C%EB%B8%94%EB%A3%A8+%EB%AC%BC%ED%8B%B0%EC%8A%88+%EC%BA%A1%ED%98%95+70%EB%A7%A4+20%ED%8C%A9" target="_blank" rel="noopener noreferrer" aria-label="물티슈 20팩 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g3" aria-label="물티슈 20팩 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g3" aria-label="물티슈 20팩 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g4"><input class="gcheck" type="checkbox" data-good="g4" aria-label="분유 1단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 1단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div><div class="gd-note">쿠팡 1캔 21,570원으로 어제(22,000원)보다 430원 내렸고, 네이버 배송비포함 혜택가 22,000원보다 430원 쌉니다. 쿠팡은 2캔 41,130원(개당 20,565원), 3캔 61,690원이 캔당 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">21,570원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">22,000원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534" target="_blank" rel="noopener noreferrer" aria-label="분유 1단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g4" aria-label="분유 1단계 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g4" aria-label="분유 1단계 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g5"><input class="gcheck" type="checkbox" data-good="g5" aria-label="젖병 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div><div class="gd-note">트윈팩(젖병2+젖꼭지2입) 동일가. 젖병만 2개로 사면 쿠팡 34,500원 / 네이버 34,490원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8342841236?itemId=18936774672&amp;vendorItemId=88914450359" target="_blank" rel="noopener noreferrer" aria-label="젖병 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g5" aria-label="젖병 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g5" aria-label="젖병 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g6"><input class="gcheck" type="checkbox" data-good="g6" aria-label="젖병소독기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병소독기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">유팡 시그니처2 플러스 UP920A 28L</div><div class="gd-note">쿠팡 334,000원은 정가 448,000원의 25% 쿠폰가 — 다나와 최저 347,990원보다도 낮습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8438035154?itemId=24425263488&amp;vendorItemId=94963937041" target="_blank" rel="noopener noreferrer" aria-label="젖병소독기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g6" aria-label="젖병소독기 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g6" aria-label="젖병소독기 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g7"><input class="gcheck" type="checkbox" data-good="g7" aria-label="유축기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">유축기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">스펙트라 s2+ 전동식 싱글유축기 세트</div><div class="gd-note">동일가(네이버 최저 판매처가 쿠팡). S2 Pro는 165,000원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/29162999?itemId=111414136&amp;vendorItemId=3452585644" target="_blank" rel="noopener noreferrer" aria-label="유축기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g7" aria-label="유축기 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g7" aria-label="유축기 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g8"><input class="gcheck" type="checkbox" data-good="g8" aria-label="속싸개 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">속싸개</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div><div class="gd-note">동일가. 팔분리형 50/50 슈트 라이트는 네이버 33,800원.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8952492715?itemId=26187938531&amp;vendorItemId=93167381841" target="_blank" rel="noopener noreferrer" aria-label="속싸개 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g8" aria-label="속싸개 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g8" aria-label="속싸개 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g9"><input class="gcheck" type="checkbox" data-good="g9" aria-label="쪽쪽이 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">쪽쪽이</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div><div class="gd-note">네이버가 1,350원 저렴. 2세트로 사면 쿠팡 18,900원(개당 9,450원)이 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">14,550원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">13,200원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%EB%B2%A4%ED%8A%B8+%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90%EC%96%B4+%EC%95%BC%EA%B4%91+%EB%85%B8%EB%A6%AC%EA%B0%9C+SCF376+2%EC%A2%85+%EC%84%B8%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="쪽쪽이 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g9" aria-label="쪽쪽이 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g9" aria-label="쪽쪽이 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g10"><input class="gcheck" type="checkbox" data-good="g10" aria-label="바운서 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">바운서</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">베이비뵨 바운서 블리스 메쉬</div><div class="gd-note">베이비뵨 공식 302,000원(정가 310,000원 쿠폰가, 리뷰 4.93/858). 쿠팡에는 '바운서 메쉬 정품' 일본내수·병행 상품만 있어(108,000원+배송 50,000원 등) 정품 동일 모델 가격으로 확정하지 않았습니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price win">302,000원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC" target="_blank" rel="noopener noreferrer" aria-label="바운서 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g10" aria-label="바운서 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g10" aria-label="바운서 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g11"><input class="gcheck" type="checkbox" data-good="g11" aria-label="하이체어 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">하이체어</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">스토케 트립트랩 하이체어 단품</div><div class="gd-note">쿠팡 220,000원에 배송비 150,000원이 붙어 실결제 370,000원 — 네이버 최저(203,810원+배송 15,000원=218,810원)가 151,190원 저렴합니다. 둘 다 해외구매·병행 성격이 섞여 있어 정품등록·AS 조건을 확인하세요. 스토케 공식은 430,000원.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">370,000원<small>배송비 포함</small></div></div><div class="pcell" data-l="네이버"><div class="price win">218,810원<small>배송비 포함</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%8A%A4%ED%86%A0%EC%BC%80+%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9+%ED%95%98%EC%9D%B4%EC%B2%B4%EC%96%B4+%EB%8B%A8%ED%92%88" target="_blank" rel="noopener noreferrer" aria-label="하이체어 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g11" aria-label="하이체어 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g11" aria-label="하이체어 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g12"><input class="gcheck" type="checkbox" data-good="g12" aria-label="분유 2단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 2단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div><div class="gd-note">3캔 묶음 기준. 네이버 최저 54,700원(판매처 162)으로 쿠팡과 동일가 — 어제 미조사였던 네이버 가격을 오늘 확인했습니다. 1캔 가격은 미확인.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/7308156780?itemId=11615060339&amp;vendorItemId=78889733722" target="_blank" rel="noopener noreferrer" aria-label="분유 2단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g12" aria-label="분유 2단계 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g12" aria-label="분유 2단계 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div></div>
+        <div id="rows"><div class="tr" data-row="g1" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g1" aria-label="기저귀 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">기저귀</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">하기스 2025 네이처메이드 밴드형 1단계 공용 66매</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">2팩(1단계)</span></div><div class="gd-why">입에 닿지는 않지만 위생·흡수력 때문에 새것. 미개봉 당근(1팩 7,000원)은 예외적으로 괜찮다는 후기</div><div class="gd-note">네이버는 최저 표시가 17,900원(배송 3,000원)이지만 네이버의 '배송비포함 혜택가'가 19,380원(무료배송 판매처 기준)이라 쿠팡 19,310원과 70원 차이입니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">19,310원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">19,380원<small>배송비 포함</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8409449109?itemId=29319327796&amp;vendorItemId=96234192010" target="_blank" rel="noopener noreferrer" aria-label="기저귀 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g1" aria-label="기저귀 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g1" aria-label="기저귀 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g2" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g2" aria-label="물티슈 10팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 10팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 10팩</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">10~20팩</span></div><div class="gd-why">소모품이라 새것. 20팩이 10팩보다 팩당 싸면 20팩으로</div><div class="gd-note">10팩은 양쪽 동일가(1매 35원). 20팩은 네이버가 16,990원 저렴하니 20팩으로 사는 편이 낫습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">24,490원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/6532149469?itemId=6922145055&amp;vendorItemId=3096887843" target="_blank" rel="noopener noreferrer" aria-label="물티슈 10팩 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g2" aria-label="물티슈 10팩 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g2" aria-label="물티슈 10팩 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g3" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g3" aria-label="물티슈 20팩 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">물티슈 20팩</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베베숲 시그니처 위드블루 캡형 70매 20팩</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">20팩</span></div><div class="gd-why">소모품이라 새것. 신생아 때 하루 8~10장씩 가장 빨리 닳는 품목</div><div class="gd-note">쿠팡 47,980원 vs 네이버 30,990원 — 16,990원 차. 1팩당 1,395원은 최근 저점(10/27주 27,900원) 이후 4주째 유지 중.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">47,980원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">30,990원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EB%B2%A0%EC%88%B2+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+%EC%9C%84%EB%93%9C%EB%B8%94%EB%A3%A8+%EB%AC%BC%ED%8B%B0%EC%8A%88+%EC%BA%A1%ED%98%95+70%EB%A7%A4+20%ED%8C%A9" target="_blank" rel="noopener noreferrer" aria-label="물티슈 20팩 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g3" aria-label="물티슈 20팩 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g3" aria-label="물티슈 20팩 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g4" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g4" aria-label="분유 1단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 1단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 1단계 800g 1캔</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">1~2캔</span></div><div class="gd-why">먹는 것이라 새것. 조리원에서 어떤 분유를 먹였는지 보고 같은 것으로 맞추는 후기가 많음</div><div class="gd-note">쿠팡 1캔 21,570원으로 어제(22,000원)보다 430원 내렸고, 네이버 배송비포함 혜택가 22,000원보다 430원 쌉니다. 쿠팡은 2캔 41,130원(개당 20,565원), 3캔 61,690원이 캔당 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">21,570원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">22,000원<small>배송비 포함</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534" target="_blank" rel="noopener noreferrer" aria-label="분유 1단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g4" aria-label="분유 1단계 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g4" aria-label="분유 1단계 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g5" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g5" aria-label="젖병 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">더블하트 모유실감 3세대 PPSU 160ml 트윈팩(젖병2+젖꼭지2입)</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">2~4개</span></div><div class="gd-why">입에 닿는 젖병·젖꼭지는 새것(젖병 6개월·젖꼭지 3개월 수명)</div><div class="gd-note">트윈팩(젖병2+젖꼭지2입) 동일가. 젖병만 2개로 사면 쿠팡 34,500원 / 네이버 34,490원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">42,470원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8342841236?itemId=18936774672&amp;vendorItemId=88914450359" target="_blank" rel="noopener noreferrer" aria-label="젖병 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g5" aria-label="젖병 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g5" aria-label="젖병 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g6" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g6" aria-label="젖병소독기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병소독기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">유팡 시그니처2 플러스 UP920A 28L</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-rec">권장</span><span class="qty">1대</span></div><div class="gd-why">램프만 정상이면 기능은 동일. 22년 12월 이전 생산은 5년 무상 AS라 영수증까지 받으면 유리</div><div class="gd-note">쿠팡 334,000원은 정가 448,000원의 25% 쿠폰가 — 다나와 최저 347,990원보다도 낮습니다.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">334,000원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EC%9C%A0%ED%8C%A1%20%EC%A0%96%EB%B3%91%EC%86%8C%EB%8F%85%EA%B8%B0" target="_blank" rel="noopener noreferrer" aria-label="젖병소독기 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8438035154?itemId=24425263488&amp;vendorItemId=94963937041" target="_blank" rel="noopener noreferrer" aria-label="젖병소독기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g6" aria-label="젖병소독기 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g6" aria-label="젖병소독기 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g7" data-buy="대여"><input class="gcheck" type="checkbox" data-good="g7" aria-label="유축기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">유축기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">스펙트라 s2+ 전동식 싱글유축기 세트</div><div class="gd-tags"><span class="bm b-rent">🎁 대여·지원</span><span class="req r-opt">선택</span><span class="qty">1대</span></div><div class="gd-why">의료기기라 중고거래가 불가 — 보건소 무료 대여(출산 후 신청·1~2개월·본체만)가 기본, 새로 사면 148,000원</div><div class="gd-note">동일가(네이버 최저 판매처가 쿠팡). S2 Pro는 165,000원.</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">148,000원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/29162999?itemId=111414136&amp;vendorItemId=3452585644" target="_blank" rel="noopener noreferrer" aria-label="유축기 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g7" aria-label="유축기 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g7" aria-label="유축기 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g8" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g8" aria-label="속싸개 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">속싸개</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">러브투드림 스와들업 오리지널 Stage 1 S/M</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">2~3개</span></div><div class="gd-why">피부에 직접 닿아 새것. 사이즈 업 전까지 1~3개월만 쓰는 점 참고</div><div class="gd-note">동일가. 팔분리형 50/50 슈트 라이트는 네이버 33,800원.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">39,800원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/8952492715?itemId=26187938531&amp;vendorItemId=93167381841" target="_blank" rel="noopener noreferrer" aria-label="속싸개 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g8" aria-label="속싸개 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g8" aria-label="속싸개 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g9" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g9" aria-label="쪽쪽이 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">쪽쪽이</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">아벤트 울트라에어 야광 노리개 2종 세트 SCF376(0~6개월)</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-opt">선택</span><span class="qty">1~2개</span></div><div class="gd-why">입에 물고 빠는 것이라 새것. 아기마다 안 물 수 있어 1~2개만 먼저</div><div class="gd-note">네이버가 1,350원 저렴. 2세트로 사면 쿠팡 18,900원(개당 9,450원)이 더 쌉니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">14,550원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price win">13,200원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%EB%B2%A4%ED%8A%B8+%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90%EC%96%B4+%EC%95%BC%EA%B4%91+%EB%85%B8%EB%A6%AC%EA%B0%9C+SCF376+2%EC%A2%85+%EC%84%B8%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="쪽쪽이 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g9" aria-label="쪽쪽이 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g9" aria-label="쪽쪽이 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g10" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g10" aria-label="바운서 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">바운서</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">베이비뵨 바운서 블리스 메쉬</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-opt">선택</span><span class="qty">1대</span></div><div class="gd-why">아기 취향을 타서 안 쓰는 경우가 많음 — 상태 좋은 중고로 먼저 써 보는 후기 다수</div><div class="gd-note">베이비뵨 공식 302,000원(정가 310,000원 쿠폰가, 리뷰 4.93/858). 쿠팡에는 '바운서 메쉬 정품' 일본내수·병행 상품만 있어(108,000원+배송 50,000원 등) 정품 동일 모델 가격으로 확정하지 않았습니다.</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price win">302,000원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8%20%EB%B0%94%EC%9A%B4%EC%84%9C" target="_blank" rel="noopener noreferrer" aria-label="바운서 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B4%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC" target="_blank" rel="noopener noreferrer" aria-label="바운서 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g10" aria-label="바운서 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g10" aria-label="바운서 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g11" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g11" aria-label="하이체어 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">하이체어</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">스토케 트립트랩 하이체어 단품</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-rec">권장</span><span class="qty">1대</span></div><div class="gd-why">뉴본세트까지 갖춘 매물이 80,000원(정가 210,000원)에 나옴. 인기라 알림 걸어두고 대기</div><div class="gd-note">쿠팡 220,000원에 배송비 150,000원이 붙어 실결제 370,000원 — 네이버 최저(203,810원+배송 15,000원=218,810원)가 151,190원 저렴합니다. 둘 다 해외구매·병행 성격이 섞여 있어 정품등록·AS 조건을 확인하세요. 스토케 공식은 430,000원.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">370,000원<small>배송비 포함</small></div></div><div class="pcell" data-l="네이버"><div class="price win">218,810원<small>배송비 포함</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9" target="_blank" rel="noopener noreferrer" aria-label="하이체어 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%8A%A4%ED%86%A0%EC%BC%80+%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9+%ED%95%98%EC%9D%B4%EC%B2%B4%EC%96%B4+%EB%8B%A8%ED%92%88" target="_blank" rel="noopener noreferrer" aria-label="하이체어 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g11" aria-label="하이체어 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g11" aria-label="하이체어 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g12" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g12" aria-label="분유 2단계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">분유 2단계</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">매일유업 앱솔루트 명작 2FL 2단계 800g 3캔</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">3캔</span></div><div class="gd-why">먹는 것이라 새것. 1단계에서 2단계로 넘어가는 시점에 맞춰</div><div class="gd-note">3캔 묶음 기준. 네이버 최저 54,700원(판매처 162)으로 쿠팡과 동일가 — 어제 미조사였던 네이버 가격을 오늘 확인했습니다. 1캔 가격은 미확인.</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-tie">동일가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price">54,700원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-tie">동일가</span><a class="buy" href="https://www.coupang.com/vp/products/7308156780?itemId=11615060339&amp;vendorItemId=78889733722" target="_blank" rel="noopener noreferrer" aria-label="분유 2단계 쿠팡에서 최저가 구매, 새 창으로 열기" title="쿠팡에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">쿠팡</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g12" aria-label="분유 2단계 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g12" aria-label="분유 2단계 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g13" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g13" aria-label="임산부 수유 속옷·손목보호대 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">임산부 수유 속옷·손목보호대</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">마더스베이비 실키 수유브라 + 메디니스 손목보호대 세트</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">3~4세트</span></div><div class="gd-why">피부에 닿고 유즙·땀을 먹는 옷이라 후기 대부분 새것. 손목보호대는 아기가 4kg을 넘으면 손목 통증이 와서 미리 준비</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%A7%88%EB%8D%94%EC%8A%A4%EB%B2%A0%EC%9D%B4%EB%B9%84%20%EC%88%98%EC%9C%A0%EB%B8%8C%EB%9D%BC" target="_blank" rel="noopener noreferrer" aria-label="임산부 수유 속옷·손목보호대 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g13" aria-label="임산부 수유 속옷·손목보호대 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g13" aria-label="임산부 수유 속옷·손목보호대 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g14" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g14" aria-label="밤부 손수건(거즈·엠보) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">밤부 손수건(거즈·엠보)</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">밤부베베 시그니처 엠보손수건 30매(거즈 20+엠보 20이 최소)</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">30~40장</span></div><div class="gd-why">얼굴·입에 닿고 첫 세탁 2~3회에도 먼지가 계속 나옴 — 실사용 후기 공통으로 '새것' (브랜드는 상관없다는 의견 다수)</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B0%A4%EB%B6%80%EB%B2%A0%EB%B2%A0%20%EC%97%A0%EB%B3%B4%20%EC%86%90%EC%88%98%EA%B1%B4%2030%EB%A7%A4" target="_blank" rel="noopener noreferrer" aria-label="밤부 손수건(거즈·엠보) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g14" aria-label="밤부 손수건(거즈·엠보) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g14" aria-label="밤부 손수건(거즈·엠보) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g15" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g15" aria-label="순면·밤부 천기저귀 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">순면·밤부 천기저귀</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">밤부베베 대나무 시그니처 사각 천기저귀 5~10장</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">5~10장</span></div><div class="gd-why">목욕 타월·받침·턱받이로 하루 종일 피부에 닿음. '비싼 목욕수건 대신 천기저귀가 최고'라는 후기 다수</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B0%A4%EB%B6%80%EB%B2%A0%EB%B2%A0%20%EC%82%AC%EA%B0%81%20%EC%B2%9C%EA%B8%B0%EC%A0%80%EA%B7%80" target="_blank" rel="noopener noreferrer" aria-label="순면·밤부 천기저귀 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g15" aria-label="순면·밤부 천기저귀 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g15" aria-label="순면·밤부 천기저귀 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g16" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g16" aria-label="배앓이 젖병(160ml)·젖꼭지 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">배앓이 젖병(160ml)·젖꼭지</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">닥터브라운 옵션스 PPSU 160ml + 젖꼭지 4~6개</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">4~6개</span></div><div class="gd-why">입에 닿는 젖병·젖꼭지는 소모품이라 새것. 젖병 유목민이 많아 1~2종만 먼저 사고 맞으면 추가</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%8B%A5%ED%84%B0%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%EC%98%B5%EC%85%98%EC%8A%A4%20%EC%A0%96%EB%B3%91%20160ml" target="_blank" rel="noopener noreferrer" aria-label="배앓이 젖병(160ml)·젖꼭지 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g16" aria-label="배앓이 젖병(160ml)·젖꼭지 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g16" aria-label="배앓이 젖병(160ml)·젖꼭지 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g17" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g17" aria-label="젖병 세제·실리콘 브러쉬 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">젖병 세제·실리콘 브러쉬</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">마더케이 젖병세정제 + 실리콘 젖병솔·젖꼭지솔 세트</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">1세트</span></div><div class="gd-why">솔은 2~3주마다 갈아야 하는 소모품이고 세제는 먹는 도구에 쓰므로 새것 (배송비 낼 때 여유분 함께)</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%A7%88%EB%8D%94%EC%BC%80%EC%9D%B4%20%EC%A0%96%EB%B3%91%EC%84%B8%EC%A0%95%EC%A0%9C%20%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EB%B8%8C%EB%9F%AC%EC%89%AC" target="_blank" rel="noopener noreferrer" aria-label="젖병 세제·실리콘 브러쉬 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g17" aria-label="젖병 세제·실리콘 브러쉬 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g17" aria-label="젖병 세제·실리콘 브러쉬 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g18" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g18" aria-label="아기 세탁세제·섬유유연제 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">아기 세탁세제·섬유유연제</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">아이솝 아기세제 무향 1L + 섬유유연제</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">1세트</span></div><div class="gd-why">피부에 닿는 세제라 무향·아기 전용 새것. 세탁망(무형광)도 함께 준비</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%EC%9D%B4%EC%86%9D%20%EC%95%84%EA%B8%B0%EC%84%B8%EC%A0%9C%20%EB%AC%B4%ED%96%A5" target="_blank" rel="noopener noreferrer" aria-label="아기 세탁세제·섬유유연제 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g18" aria-label="아기 세탁세제·섬유유연제 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g18" aria-label="아기 세탁세제·섬유유연제 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g19" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g19" aria-label="신생아 수딩젤·고보습 로션 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">신생아 수딩젤·고보습 로션</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">아토팜 수딩젤 1개 + 고보습 로션 1개</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">각 1개</span></div><div class="gd-why">신생아 피부에 바르는 것이라 새것. 개봉 후 6~12개월 안에 쓰는 양만</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%ED%86%A0%ED%8C%9C%20%EC%88%98%EB%94%A9%EC%A0%A4" target="_blank" rel="noopener noreferrer" aria-label="신생아 수딩젤·고보습 로션 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g19" aria-label="신생아 수딩젤·고보습 로션 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g19" aria-label="신생아 수딩젤·고보습 로션 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g20" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g20" aria-label="올인원 아기띠·힙시트 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">올인원 아기띠·힙시트</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">에르고베이비 옴니 360(신생아 인서트형) 또는 코니 사이드 힙시트</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-must">★필수</span><span class="qty">1개</span></div><div class="gd-why">신생아용 슬링·미니 아기띠는 5개월이면 재당근되는 국민템이라 중고가 합리적. 힙시트는 목 가눈 뒤 새것</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EC%95%84%EA%B8%B0%EB%9D%A0" target="_blank" rel="noopener noreferrer" aria-label="올인원 아기띠·힙시트 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%97%90%EB%A5%B4%EA%B3%A0%EB%B2%A0%EC%9D%B4%EB%B9%84%20%EC%98%B4%EB%8B%88%20360" target="_blank" rel="noopener noreferrer" aria-label="올인원 아기띠·힙시트 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g20" aria-label="올인원 아기띠·힙시트 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g20" aria-label="올인원 아기띠·힙시트 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g21" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g21" aria-label="디지털 온습도계 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">디지털 온습도계</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">휴비딕 HT-1(백라이트) 등 2개</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-must">★필수</span><span class="qty">2개</span></div><div class="gd-why">저가라 당근 매물이 흔하고 거실·아기방 두 개가 필요. 백라이트 유무만 확인하면 충분</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EC%98%A8%EC%8A%B5%EB%8F%84%EA%B3%84" target="_blank" rel="noopener noreferrer" aria-label="디지털 온습도계 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%ED%9C%B4%EB%B9%84%EB%94%95%20%EC%98%A8%EC%8A%B5%EB%8F%84%EA%B3%84" target="_blank" rel="noopener noreferrer" aria-label="디지털 온습도계 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g21" aria-label="디지털 온습도계 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g21" aria-label="디지털 온습도계 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g22" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g22" aria-label="항균 아기 지퍼백 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">항균 아기 지퍼백</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">마더케이 아기 지퍼백 사이즈별 세트</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-rec">권장</span><span class="qty">1세트</span></div><div class="gd-why">소모품이라 새것. 다만 후기 상당수는 '일반 지퍼백으로 충분'이라 선택 품목</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%95%84%EA%B8%B0%20%EC%A7%80%ED%8D%BC%EB%B0%B1" target="_blank" rel="noopener noreferrer" aria-label="항균 아기 지퍼백 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g22" aria-label="항균 아기 지퍼백 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g22" aria-label="항균 아기 지퍼백 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g23" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g23" aria-label="자동 분유제조기(브레짜) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">자동 분유제조기(브레짜)</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">베이비브레짜 포뮬러 프로 어드밴스드 BRZFRP-1A</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-opt">선택</span><span class="qty">1대</span></div><div class="gd-why">가격방어가 안 돼 원가 20%에도 나오는 품목. 부품 세척이 번거로워 2주 만에 당근행 사례도 있음</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">299,000원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EB%B8%8C%EB%A0%88%EC%A7%9C" target="_blank" rel="noopener noreferrer" aria-label="자동 분유제조기(브레짜) 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B8%8C%EB%A0%88%EC%A7%9C%20%EC%9E%90%EB%8F%99%EB%B6%84%EC%9C%A0%EC%A0%9C%EC%A1%B0%EA%B8%B0" target="_blank" rel="noopener noreferrer" aria-label="자동 분유제조기(브레짜) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g23" aria-label="자동 분유제조기(브레짜) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g23" aria-label="자동 분유제조기(브레짜) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g24" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g24" aria-label="유모차(절충형·디럭스) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">유모차(절충형·디럭스)</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">미마자리 디럭스급(디럭스) 또는 리안 절충형</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-opt">선택</span><span class="qty">1대</span></div><div class="gd-why">디럭스는 정가 199만원짜리가 당근 30만원대. 차에 싣고 다니기 힘들어 곧 절충형을 새로 사는 경우가 많음</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EC%9C%A0%EB%AA%A8%EC%B0%A8" target="_blank" rel="noopener noreferrer" aria-label="유모차(절충형·디럭스) 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%AF%B8%EB%A7%88%EC%9E%90%EB%A6%AC%20%EB%94%94%EB%9F%AD%EC%8A%A4%20%EC%9C%A0%EB%AA%A8%EC%B0%A8" target="_blank" rel="noopener noreferrer" aria-label="유모차(절충형·디럭스) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g24" aria-label="유모차(절충형·디럭스) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g24" aria-label="유모차(절충형·디럭스) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g25" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g25" aria-label="국민 모빌(타이니러브) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">국민 모빌(타이니러브)</span><span class="done-badge">✓ 구매완료</span><span class="sr">1~3개월</span></div><div class="gd-p">타이니러브 수더앤그루브 모빌(흑백+컬러)</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-must">★필수</span><span class="qty">1세트</span></div><div class="gd-why">실내에서만 쓰고 4~5개월이면 졸업이라 상태 좋은 매물이 많음. 작동·음악·부품만 확인</div><div class="badge-cell"><span class="gd-grp">1~3개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">126,660원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%ED%83%80%EC%9D%B4%EB%8B%88%EB%9F%AC%EB%B8%8C%20%EB%AA%A8%EB%B9%8C" target="_blank" rel="noopener noreferrer" aria-label="국민 모빌(타이니러브) 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%ED%83%80%EC%9D%B4%EB%8B%88%EB%9F%AC%EB%B8%8C%20%EB%AA%A8%EB%B9%8C" target="_blank" rel="noopener noreferrer" aria-label="국민 모빌(타이니러브) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g25" aria-label="국민 모빌(타이니러브) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g25" aria-label="국민 모빌(타이니러브) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g26" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g26" aria-label="층간소음 시공·폴더 매트 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">층간소음 시공·폴더 매트</span><span class="done-badge">✓ 구매완료</span><span class="sr">3~6개월</span></div><div class="gd-p">플로리아 구름매트(퍼즐) 또는 시공 매트(평수 견적)</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-opt">선택</span><span class="qty">1세트</span></div><div class="gd-why">시공 매트는 34평 거실·복도 기준 321만원 수준의 새 시공. 퍼즐매트만 80장 10만원에 당근하는 사례도 있음</div><div class="badge-cell"><span class="gd-grp">3~6개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%ED%94%8C%EB%A1%9C%EB%A6%AC%EC%95%84%20%EA%B5%AC%EB%A6%84%EB%A7%A4%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="층간소음 시공·폴더 매트 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g26" aria-label="층간소음 시공·폴더 매트 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g26" aria-label="층간소음 시공·폴더 매트 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g27" data-buy="대여"><input class="gcheck" type="checkbox" data-good="g27" aria-label="바구니 카시트 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">바구니 카시트</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">페도라 인펀트 카시트(대여 또는 당근)</div><div class="gd-tags"><span class="bm b-rent">🎁 대여·지원</span><span class="req r-must">★필수</span><span class="qty">1개</span></div><div class="gd-why">실사용 10회 미만(조리원→집)이라 대여점·당근 1.5~3만원. 사고이력·리콜·안전규격은 꼭 확인</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%ED%8E%98%EB%8F%84%EB%9D%BC%20%EB%B0%94%EA%B5%AC%EB%8B%88%20%EC%B9%B4%EC%8B%9C%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="바구니 카시트 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g27" aria-label="바구니 카시트 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g27" aria-label="바구니 카시트 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g28" data-buy="대여"><input class="gcheck" type="checkbox" data-good="g28" aria-label="배냇저고리·신생아 모자 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">배냇저고리·신생아 모자</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">아가방·오가닉맘 배냇저고리 3~5벌 + 모자</div><div class="gd-tags"><span class="bm b-rent">🎁 대여·지원</span><span class="req r-must">★필수</span><span class="qty">3~5벌</span></div><div class="gd-why">출산 선물로 가장 많이 들어오는 품목 — 미리 사면 남는다는 후기 공통. 물려받기·선물 먼저 확인</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B0%B0%EB%83%87%EC%A0%80%EA%B3%A0%EB%A6%AC%20%EC%8B%A0%EC%83%9D%EC%95%84" target="_blank" rel="noopener noreferrer" aria-label="배냇저고리·신생아 모자 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g28" aria-label="배냇저고리·신생아 모자 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g28" aria-label="배냇저고리·신생아 모자 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g29" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g29" aria-label="역류방지쿠션(역방쿠) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">역류방지쿠션(역방쿠)</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">제이앤제나 역류방지쿠션 18도(커버+솜)</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">1개</span></div><div class="gd-why">아기가 토를 많이 해서 중고는 기피하는 후기 다수. 핫딜로 6만원대(정가 8만원) 구매 사례</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%A0%9C%EC%9D%B4%EC%95%A4%EC%A0%9C%EB%82%98%20%EC%97%AD%EB%A5%98%EB%B0%A9%EC%A7%80%EC%BF%A0%EC%85%98" target="_blank" rel="noopener noreferrer" aria-label="역류방지쿠션(역방쿠) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g29" aria-label="역류방지쿠션(역방쿠) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g29" aria-label="역류방지쿠션(역방쿠) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g30" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g30" aria-label="기저귀 갈이대(소베맘) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">기저귀 갈이대(소베맘)</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">소베맘 3세대 솔리드 원터치 기저귀교환대</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-must">★필수</span><span class="qty">1개</span></div><div class="gd-why">커버 분리 세탁 + 방수패드로 위생 해결, 사용은 4개월 — '깨끗한 것 당근 추천'이 다수. 허리·무릎 보호</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-cp">쿠팡 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price win">109,900원<small>무료배송</small></div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EC%86%8C%EB%B2%A0%EB%A7%98%20%EA%B8%B0%EC%A0%80%EA%B7%80%EA%B0%88%EC%9D%B4%EB%8C%80" target="_blank" rel="noopener noreferrer" aria-label="기저귀 갈이대(소베맘) 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-cp">쿠팡 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%86%8C%EB%B2%A0%EB%A7%98%20%EA%B8%B0%EC%A0%80%EA%B7%80%20%EA%B0%88%EC%9D%B4%EB%8C%80" target="_blank" rel="noopener noreferrer" aria-label="기저귀 갈이대(소베맘) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g30" aria-label="기저귀 갈이대(소베맘) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g30" aria-label="기저귀 갈이대(소베맘) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g31" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g31" aria-label="신생아 등받이 욕조(슈너글) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">신생아 등받이 욕조(슈너글)</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">슈너글 신생아 욕조 2개(목욕·헹굼)</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-must">★필수</span><span class="qty">1~2개</span></div><div class="gd-why">사이즈별로 갈아타 100일 안팎만 사용. 변색·곰팡이 없으면 세척해 쓴다는 후기 — 위생 민감하면 새것</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EC%8A%88%EB%84%88%EA%B8%80%20%EC%9A%95%EC%A1%B0" target="_blank" rel="noopener noreferrer" aria-label="신생아 등받이 욕조(슈너글) 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EC%8A%88%EB%84%88%EA%B8%80%20%EC%95%84%EA%B8%B0%EC%9A%95%EC%A1%B0" target="_blank" rel="noopener noreferrer" aria-label="신생아 등받이 욕조(슈너글) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g31" aria-label="신생아 등받이 욕조(슈너글) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g31" aria-label="신생아 등받이 욕조(슈너글) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g32" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g32" aria-label="원목 신생아 아기침대 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">원목 신생아 아기침대</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">리안 드림콧(26년형) 이동식 아기침대</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-rec">권장</span><span class="qty">1개</span></div><div class="gd-why">뒤집기 전 100일 안팎만 사용 — 당근 5.5만원(정가 17.5만) 사례. 프레임 흔들림·나사·매트리스만 확인</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price win">260,000원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EB%A6%AC%EC%95%88%20%EB%93%9C%EB%A6%BC%EC%BD%A7" target="_blank" rel="noopener noreferrer" aria-label="원목 신생아 아기침대 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%A6%AC%EC%95%88%20%EB%93%9C%EB%A6%BC%EC%BD%A7%20%EC%95%84%EA%B8%B0%EC%B9%A8%EB%8C%80" target="_blank" rel="noopener noreferrer" aria-label="원목 신생아 아기침대 네이버에서 최저가 구매, 새 창으로 열기" title="네이버에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g32" aria-label="원목 신생아 아기침대 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g32" aria-label="원목 신생아 아기침대 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g33" data-buy="당근"><input class="gcheck" type="checkbox" data-good="g33" aria-label="안심 분유포트(43℃ 보온) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">안심 분유포트(43℃ 보온)</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">보르르 분유포트(또는 릴리팟)</div><div class="gd-tags"><span class="bm b-dg">🥕 당근 추천</span><span class="req r-must">★필수</span><span class="qty">1대</span></div><div class="gd-why">입에 직접 닿지 않고 매일 물을 끓여 소독되므로 당근 충분. 새벽 수유 시간을 줄여주는 필수템</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">매물 확인 필요</span><a class="dg-link" href="https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&amp;search=%EB%B6%84%EC%9C%A0%ED%8F%AC%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="안심 분유포트(43℃ 보온) 당근 검색, 새 창으로 열기">당근 보기 ↗</a></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B3%B4%EB%A5%B4%EB%A5%B4%20%EB%B6%84%EC%9C%A0%ED%8F%AC%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="안심 분유포트(43℃ 보온) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g33" aria-label="안심 분유포트(43℃ 보온) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g33" aria-label="안심 분유포트(43℃ 보온) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g34" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g34" aria-label="브라운 체온계 IRT-6520 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">브라운 체온계 IRT-6520</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">브라운 귀 적외선 체온계 IRT-6520</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">1개</span></div><div class="gd-why">오래 쓰면 고장률이 올라가는 정밀 의료기기라 새것. 국내 A/S 되는 정품인지 확인</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-nv">네이버 최저</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price win">119,000원<small>무료배송</small></div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-nv">네이버 최저</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%EC%B2%B4%EC%98%A8%EA%B3%84%20IRT-6520" target="_blank" rel="noopener noreferrer" aria-label="브라운 체온계 IRT-6520 네이버에서 최저가 구매, 새 창으로 열기" title="네이버에서 최저가 구매"><span class="buy-t">최저가 구매</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g34" aria-label="브라운 체온계 IRT-6520 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g34" aria-label="브라운 체온계 IRT-6520 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g35" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g35" aria-label="아기비데·필터 샤워기 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">아기비데·필터 샤워기</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">포프베베 아기비데 + 필터 아기수전(해피달링·두리)</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">1세트</span></div><div class="gd-why">위생·내구성 문제로 당근 비추천이 다수. 세면대 설치 가능 여부를 먼저 확인</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%ED%8F%AC%ED%94%84%EB%B2%A0%EB%B2%A0%20%EC%95%84%EA%B8%B0%EB%B9%84%EB%8D%B0" target="_blank" rel="noopener noreferrer" aria-label="아기비데·필터 샤워기 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g35" aria-label="아기비데·필터 샤워기 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g35" aria-label="아기비데·필터 샤워기 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div><div class="tr" data-row="g36" data-buy="새상품"><input class="gcheck" type="checkbox" data-good="g36" aria-label="신생아 위생 세트(면봉·손톱가위) 구매 체크"><div class="gd"><div class="gd-n"><span class="it-name">신생아 위생 세트(면봉·손톱가위)</span><span class="done-badge">✓ 구매완료</span><span class="sr">0~1개월</span></div><div class="gd-p">마더케이 손톱가위 + 3종 면봉 세트</div><div class="gd-tags"><span class="bm b-new">🆕 새 상품 추천</span><span class="req r-must">★필수</span><span class="qty">1세트</span></div><div class="gd-why">자잘한 소모품이라 가격 부담이 없어 새것. 신생아 때는 전동 네일트리머를 쓰는 집도 많음</div><div class="badge-cell"><span class="gd-grp">0~1개월</span> <span class="badge b-one">확인 불가</span></div></div><div class="pcell" data-l="쿠팡"><div class="price miss">미확인</div></div><div class="pcell" data-l="네이버"><div class="price miss">미조사</div></div><div class="pcell dg-cell" data-l="당근"><span class="dg-none">—</span></div><div class="pcell badge-cell buy-cell" data-l="최저가"><span class="badge b-one">확인 불가</span><a class="buy" href="https://m.search.naver.com/search.naver?ssc=tab.m_shop&amp;where=m_shop&amp;query=%EB%A7%88%EB%8D%94%EC%BC%80%EC%9D%B4%20%EC%86%90%ED%86%B1%EA%B0%80%EC%9C%84%20%EB%A9%B4%EB%B4%89%20%EC%84%B8%ED%8A%B8" target="_blank" rel="noopener noreferrer" aria-label="신생아 위생 세트(면봉·손톱가위) 네이버 최저가 판매처 목록, 새 창으로 열기" title="네이버 최저가 판매처 목록"><span class="buy-t">최저가 목록</span><span class="buy-ch">네이버</span><span class="buy-a">↗</span></a></div><div class="mb"><span class="mb-k">내 구매</span><input class="mb-n" type="text" data-bn="g36" aria-label="신생아 위생 세트(면봉·손톱가위) 내 구매 제품명" placeholder="실제 산 제품명" maxlength="60" value=""><input class="mb-p" type="number" min="0" step="10" inputmode="numeric" data-bp="g36" aria-label="신생아 위생 세트(면봉·손톱가위) 내 구매 가격(원)" placeholder="실구매가" value=""><span class="mb-w">원</span></div></div></div>
       </div>
       <div class="total">
         <div>
           <div class="total-k">체크한 품목 합계</div>
           <div class="total-v" id="sumV">0원<small id="sumC">0개</small></div>
         </div>
-        <div class="total-s" id="sumN">아직 체크한 품목이 없습니다. 위 목록에서 사야 할 것을 체크해 보세요.<br>참고 · 12개 항목을 모두 최저가로 사면 1,249,340원</div>
+        <div class="total-s" id="sumN">아직 체크한 품목이 없습니다. 위 목록에서 사야 할 것을 체크해 보세요.<br>참고 · 36개 항목을 모두 최저가로 사면 2,163,900원</div>
         <button class="reset" id="resetBtn" type="button">체크 초기화</button>
       </div>
     </div>
 
     <div class="panel" id="p-trend">
       <div class="panel-h">
-        <div class="panel-t">12개 품목 가격 추이 한눈에 <span id="trendSub">10/27~11/25 · 품목별 첫 관측값 = 100 지수</span></div>
+        <div class="panel-t">12개 품목 가격 추이 한눈에 <span id="trendSub">10/27~11/25 · 실제 최저가(원, 로그 눈금) · 점을 누르면 금액이 보입니다</span></div>
         <div class="tgl" id="trendToggle" role="group" aria-label="그래프 값 전환">
-          <button class="tg" type="button" data-mode="pct" aria-pressed="true">변동률 %</button>
-          <button class="tg" type="button" data-mode="price" aria-pressed="false">가격 원</button>
+          <button class="tg" type="button" data-mode="price" aria-pressed="true">가격 원</button>
+          <button class="tg" type="button" data-mode="pct" aria-pressed="false">변동률 %</button>
         </div>
       </div>
-      <p class="panel-d"><b>변동률 %</b>는 품목별 첫 관측값을 100으로 맞춘 값입니다 — 13,200원짜리 쪽쪽이와 334,000원짜리 유팡을 같은 높이에서 비교하려면 실제 금액 대신 이렇게 봐야 합니다. <b>‘가격 원’</b>을 누르면 세로축이 실제 금액(로그 눈금)으로 바뀝니다.</p>
-      <div class="cchart" id="trend" data-mode="pct"><svg viewBox="0 0 1000 432" role="img" aria-label="12개 품목 가격 추이 통합 그래프, 첫 관측 대비 변동률 기준"><line x1="58" y1="388.0" x2="986" y2="388.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="391.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">-14.6%</text><line x1="58" y1="296.0" x2="986" y2="296.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="299.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">-7.1%</text><line x1="58" y1="208.9" x2="986" y2="208.9" stroke="#f3ece7" stroke-width="1"/><text x="50" y="212.4" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">0%</text><line x1="58" y1="112.0" x2="986" y2="112.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="115.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">7.9%</text><line x1="58" y1="20.0" x2="986" y2="20.0" stroke="#f3ece7" stroke-width="1"/><text x="50" y="23.5" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">15.4%</text><line x1="58" y1="208.9" x2="986" y2="208.9" stroke="#dcc9c0" stroke-width="1.3" stroke-dasharray="5 4"/><text x="58.0" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">10/27</text><text x="243.6" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/03</text><text x="429.2" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/10</text><text x="614.8" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/17</text><text x="800.4" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/24</text><text x="986.0" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/25</text><path d="M58.0 208.9 L243.6 181.9 L429.2 208.9 L614.8 244.5 L800.4 218.7 L986.0 222.4" fill="none" stroke="#e08a65" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="208.9" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="243.6" cy="181.9" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="429.2" cy="208.9" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="614.8" cy="244.5" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="800.4" cy="218.7" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="222.4" r="3.6" fill="#e08a65" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#5a92ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#5a92ba" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#5a92ba" stroke="#fff" stroke-width="1.6"/><path d="M58.0 208.9 L243.6 72.6 L429.2 72.6 L614.8 72.6 L800.4 72.6 L986.0 72.6" fill="none" stroke="#8b82d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="208.9" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="243.6" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="429.2" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="614.8" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="800.4" cy="72.6" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="72.6" r="3.6" fill="#8b82d6" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 233.5" fill="none" stroke="#6fb69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#6fb69c" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="233.5" r="3.6" fill="#6fb69c" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#c9922a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#c9922a" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#c9922a" stroke="#fff" stroke-width="1.6"/><path d="M58.0 208.9 L243.6 208.9 L429.2 208.9 L614.8 208.9 L800.4 208.9 L986.0 258.0" fill="none" stroke="#d9698a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="243.6" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="429.2" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="614.8" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="800.4" cy="208.9" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="258.0" r="3.6" fill="#d9698a" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#4fae8b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#4fae8b" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#4fae8b" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#b5651d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#b5651d" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#b5651d" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#7a6fbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#7a6fbf" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#7a6fbf" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#3f9878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#3f9878" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#3f9878" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 335.4" fill="none" stroke="#dd724f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#dd724f" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="335.4" r="3.6" fill="#dd724f" stroke="#fff" stroke-width="1.6"/><path d="M800.4 208.9 L986.0 208.9" fill="none" stroke="#7c8894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="208.9" r="2.2" fill="#7c8894" stroke="#fff" stroke-width="1"/><circle cx="986.0" cy="208.9" r="3.6" fill="#7c8894" stroke="#fff" stroke-width="1.6"/></svg></div>
+      <p class="panel-d"><b>‘가격 원’</b>이 기본입니다 — 세로축이 실제 금액(로그 눈금)이고, <b>그래프의 점을 누르면(또는 마우스를 올리면) 그 날짜·품목·금액이 그래프 위 배지에 바로 뜨고, 같은 날 확인된 다른 품목 금액도 함께 보입니다.</b> 품목별 첫 관측값을 100으로 맞춘 <b>변동률 %</b>로 바꾸면 13,200원짜리 쪽쪽이와 334,000원짜리 유팡을 같은 높이에서 비교할 수 있습니다.</p>
+      <div class="trend-tip" id="trendTip" role="status" aria-live="polite" hidden></div>
+      <div class="cchart" id="trend" data-mode="price"><svg viewBox="0 0 1000 432" role="img" aria-label="12개 품목 가격 추이 통합 그래프, 실제 최저가(원, 로그 눈금) 기준"><line x1="58" y1="383.4" x2="986" y2="383.4" stroke="#f3ece7" stroke-width="1"/><text x="50" y="386.9" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">1만</text><line x1="58" y1="318.4" x2="986" y2="318.4" stroke="#f3ece7" stroke-width="1"/><text x="50" y="321.9" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">2만</text><line x1="58" y1="280.4" x2="986" y2="280.4" stroke="#f3ece7" stroke-width="1"/><text x="50" y="283.9" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">3만</text><line x1="58" y1="232.5" x2="986" y2="232.5" stroke="#f3ece7" stroke-width="1"/><text x="50" y="236.0" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">5만</text><line x1="58" y1="167.5" x2="986" y2="167.5" stroke="#f3ece7" stroke-width="1"/><text x="50" y="171.0" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">10만</text><line x1="58" y1="102.6" x2="986" y2="102.6" stroke="#f3ece7" stroke-width="1"/><text x="50" y="106.1" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">20만</text><line x1="58" y1="64.6" x2="986" y2="64.6" stroke="#f3ece7" stroke-width="1"/><text x="50" y="68.1" text-anchor="end" font-size="10.5" font-weight="600" fill="#a99d97" font-family="inherit">30만</text><text x="58.0" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">10/27</text><text x="243.6" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/03</text><text x="429.2" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/10</text><text x="614.8" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/17</text><text x="800.4" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/24</text><text x="986.0" y="420" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">11/25</text><path d="M58.0 320.6 L243.6 318.6 L429.2 320.6 L614.8 323.3 L800.4 321.3 L986.0 321.7" fill="none" stroke="#e08a65" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="320.6" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle class="hit" cx="58.0" cy="320.6" r="14" fill="transparent" data-s="0" data-i="0" data-tt="10/27 · 기저귀 · 19,530원"/><circle cx="243.6" cy="318.6" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle class="hit" cx="243.6" cy="318.6" r="14" fill="transparent" data-s="0" data-i="1" data-tt="11/03 · 기저귀 · 19,960원"/><circle cx="429.2" cy="320.6" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle class="hit" cx="429.2" cy="320.6" r="14" fill="transparent" data-s="0" data-i="2" data-tt="11/10 · 기저귀 · 19,530원"/><circle cx="614.8" cy="323.3" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle class="hit" cx="614.8" cy="323.3" r="14" fill="transparent" data-s="0" data-i="3" data-tt="11/17 · 기저귀 · 18,970원"/><circle cx="800.4" cy="321.3" r="2.2" fill="#e08a65" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="321.3" r="14" fill="transparent" data-s="0" data-i="4" data-tt="11/24 · 기저귀 · 19,380원"/><circle cx="986.0" cy="321.7" r="3.6" fill="#e08a65" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="321.7" r="14" fill="transparent" data-s="0" data-i="5" data-tt="11/25 · 기저귀 · 19,310원"/><path d="M800.4 299.4 L986.0 299.4" fill="none" stroke="#5a92ba" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="299.4" r="2.2" fill="#5a92ba" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="299.4" r="14" fill="transparent" data-s="1" data-i="4" data-tt="11/24 · 물티슈 10팩 · 24,490원"/><circle cx="986.0" cy="299.4" r="3.6" fill="#5a92ba" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="299.4" r="14" fill="transparent" data-s="1" data-i="5" data-tt="11/25 · 물티슈 10팩 · 24,490원"/><path d="M58.0 287.2 L243.6 277.3 L429.2 277.3 L614.8 277.3 L800.4 277.3 L986.0 277.3" fill="none" stroke="#8b82d6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="287.2" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle class="hit" cx="58.0" cy="287.2" r="14" fill="transparent" data-s="2" data-i="0" data-tt="10/27 · 물티슈 20팩 · 27,900원"/><circle cx="243.6" cy="277.3" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle class="hit" cx="243.6" cy="277.3" r="14" fill="transparent" data-s="2" data-i="1" data-tt="11/03 · 물티슈 20팩 · 30,990원"/><circle cx="429.2" cy="277.3" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle class="hit" cx="429.2" cy="277.3" r="14" fill="transparent" data-s="2" data-i="2" data-tt="11/10 · 물티슈 20팩 · 30,990원"/><circle cx="614.8" cy="277.3" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle class="hit" cx="614.8" cy="277.3" r="14" fill="transparent" data-s="2" data-i="3" data-tt="11/17 · 물티슈 20팩 · 30,990원"/><circle cx="800.4" cy="277.3" r="2.2" fill="#8b82d6" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="277.3" r="14" fill="transparent" data-s="2" data-i="4" data-tt="11/24 · 물티슈 20팩 · 30,990원"/><circle cx="986.0" cy="277.3" r="3.6" fill="#8b82d6" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="277.3" r="14" fill="transparent" data-s="2" data-i="5" data-tt="11/25 · 물티슈 20팩 · 30,990원"/><path d="M800.4 309.5 L986.0 311.3" fill="none" stroke="#6fb69c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="309.5" r="2.2" fill="#6fb69c" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="309.5" r="14" fill="transparent" data-s="3" data-i="4" data-tt="11/24 · 분유 1단계 · 22,000원"/><circle cx="986.0" cy="311.3" r="3.6" fill="#6fb69c" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="311.3" r="14" fill="transparent" data-s="3" data-i="5" data-tt="11/25 · 분유 1단계 · 21,570원"/><path d="M800.4 247.8 L986.0 247.8" fill="none" stroke="#c9922a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="247.8" r="2.2" fill="#c9922a" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="247.8" r="14" fill="transparent" data-s="4" data-i="4" data-tt="11/24 · 젖병 · 42,470원"/><circle cx="986.0" cy="247.8" r="3.6" fill="#c9922a" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="247.8" r="14" fill="transparent" data-s="4" data-i="5" data-tt="11/25 · 젖병 · 42,470원"/><path d="M58.0 50.7 L243.6 50.7 L429.2 50.7 L614.8 50.7 L800.4 50.7 L986.0 54.5" fill="none" stroke="#d9698a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="58.0" cy="50.7" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle class="hit" cx="58.0" cy="50.7" r="14" fill="transparent" data-s="5" data-i="0" data-tt="10/27 · 젖병소독기 · 347,990원"/><circle cx="243.6" cy="50.7" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle class="hit" cx="243.6" cy="50.7" r="14" fill="transparent" data-s="5" data-i="1" data-tt="11/03 · 젖병소독기 · 347,990원"/><circle cx="429.2" cy="50.7" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle class="hit" cx="429.2" cy="50.7" r="14" fill="transparent" data-s="5" data-i="2" data-tt="11/10 · 젖병소독기 · 347,990원"/><circle cx="614.8" cy="50.7" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle class="hit" cx="614.8" cy="50.7" r="14" fill="transparent" data-s="5" data-i="3" data-tt="11/17 · 젖병소독기 · 347,990원"/><circle cx="800.4" cy="50.7" r="2.2" fill="#d9698a" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="50.7" r="14" fill="transparent" data-s="5" data-i="4" data-tt="11/24 · 젖병소독기 · 347,990원"/><circle cx="986.0" cy="54.5" r="3.6" fill="#d9698a" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="54.5" r="14" fill="transparent" data-s="5" data-i="5" data-tt="11/25 · 젖병소독기 · 334,000원"/><path d="M800.4 130.8 L986.0 130.8" fill="none" stroke="#4fae8b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="130.8" r="2.2" fill="#4fae8b" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="130.8" r="14" fill="transparent" data-s="6" data-i="4" data-tt="11/24 · 유축기 · 148,000원"/><circle cx="986.0" cy="130.8" r="3.6" fill="#4fae8b" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="130.8" r="14" fill="transparent" data-s="6" data-i="5" data-tt="11/25 · 유축기 · 148,000원"/><path d="M800.4 253.9 L986.0 253.9" fill="none" stroke="#b5651d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="253.9" r="2.2" fill="#b5651d" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="253.9" r="14" fill="transparent" data-s="7" data-i="4" data-tt="11/24 · 속싸개 · 39,800원"/><circle cx="986.0" cy="253.9" r="3.6" fill="#b5651d" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="253.9" r="14" fill="transparent" data-s="7" data-i="5" data-tt="11/25 · 속싸개 · 39,800원"/><path d="M800.4 357.3 L986.0 357.3" fill="none" stroke="#7a6fbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="357.3" r="2.2" fill="#7a6fbf" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="357.3" r="14" fill="transparent" data-s="8" data-i="4" data-tt="11/24 · 쪽쪽이 · 13,200원"/><circle cx="986.0" cy="357.3" r="3.6" fill="#7a6fbf" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="357.3" r="14" fill="transparent" data-s="8" data-i="5" data-tt="11/25 · 쪽쪽이 · 13,200원"/><path d="M800.4 64.0 L986.0 64.0" fill="none" stroke="#3f9878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="64.0" r="2.2" fill="#3f9878" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="64.0" r="14" fill="transparent" data-s="9" data-i="4" data-tt="11/24 · 바운서 · 302,000원"/><circle cx="986.0" cy="64.0" r="3.6" fill="#3f9878" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="64.0" r="14" fill="transparent" data-s="9" data-i="5" data-tt="11/25 · 바운서 · 302,000원"/><path d="M800.4 83.9 L986.0 94.2" fill="none" stroke="#dd724f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="83.9" r="2.2" fill="#dd724f" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="83.9" r="14" fill="transparent" data-s="10" data-i="4" data-tt="11/24 · 하이체어 · 244,000원"/><circle cx="986.0" cy="94.2" r="3.6" fill="#dd724f" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="94.2" r="14" fill="transparent" data-s="10" data-i="5" data-tt="11/25 · 하이체어 · 218,810원"/><path d="M800.4 224.1 L986.0 224.1" fill="none" stroke="#7c8894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/><circle cx="800.4" cy="224.1" r="2.2" fill="#7c8894" stroke="#fff" stroke-width="1"/><circle class="hit" cx="800.4" cy="224.1" r="14" fill="transparent" data-s="11" data-i="4" data-tt="11/24 · 분유 2단계 · 54,700원"/><circle cx="986.0" cy="224.1" r="3.6" fill="#7c8894" stroke="#fff" stroke-width="1.6"/><circle class="hit" cx="986.0" cy="224.1" r="14" fill="transparent" data-s="11" data-i="5" data-tt="11/25 · 분유 2단계 · 54,700원"/></svg></div>
       <div class="legend" id="trendLegend"><div class="lg-i"><span class="lg-c" style="background:#e08a65"></span><span class="lg-n">기저귀<small>66매 · 1개월 관측</small></span><span class="lg-p">19,310원</span><span class="lg-d down">−1.1%<em>1개월</em></span></div><div class="lg-i"><span class="lg-c" style="background:#5a92ba"></span><span class="lg-n">물티슈 10팩<small>70매 10팩 · 2일 관측</small></span><span class="lg-p">24,490원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#8b82d6"></span><span class="lg-n">물티슈 20팩<small>70매 20팩 · 1개월 관측</small></span><span class="lg-p">30,990원</span><span class="lg-d up">+11.1%<em>1개월</em></span></div><div class="lg-i"><span class="lg-c" style="background:#6fb69c"></span><span class="lg-n">분유 1단계<small>800g 1캔 · 2일 관측</small></span><span class="lg-p">21,570원</span><span class="lg-d down">−2.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#c9922a"></span><span class="lg-n">젖병<small>160ml 트윈팩 · 2일 관측</small></span><span class="lg-p">42,470원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#d9698a"></span><span class="lg-n">젖병소독기<small>UP920A 28L · 1개월 관측</small></span><span class="lg-p">334,000원</span><span class="lg-d down">−4.0%<em>1개월</em></span></div><div class="lg-i"><span class="lg-c" style="background:#4fae8b"></span><span class="lg-n">유축기<small>s2+ 세트 · 2일 관측</small></span><span class="lg-p">148,000원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#b5651d"></span><span class="lg-n">속싸개<small>Stage 1 S/M · 2일 관측</small></span><span class="lg-p">39,800원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#7a6fbf"></span><span class="lg-n">쪽쪽이<small>SCF376 2종 세트 · 2일 관측</small></span><span class="lg-p">13,200원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#3f9878"></span><span class="lg-n">바운서<small>블리스 메쉬 · 2일 관측</small></span><span class="lg-p">302,000원</span><span class="lg-d flat">0.0%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#dd724f"></span><span class="lg-n">하이체어<small>단품 · 2일 관측</small></span><span class="lg-p">218,810원</span><span class="lg-d down">−10.3%<em>2일</em></span></div><div class="lg-i"><span class="lg-c" style="background:#7c8894"></span><span class="lg-n">분유 2단계<small>800g 3캔 · 2일 관측</small></span><span class="lg-p">54,700원</span><span class="lg-d flat">0.0%<em>2일</em></span></div></div>
       <ul class="note" id="trendNotes" style="margin:14px 0 0;padding-left:16px"><li>선이 10/27부터 이어지는 3개 품목(기저귀·물티슈 20팩·젖병소독기)은 다나와 ‘최저가 추이’ 1개월 주간값(전체 쇼핑몰 최저가)이고, 마지막 점(11/25)만 오늘 쿠팡·네이버 실측 최저가입니다. 두 값의 출처가 달라 마지막 구간의 작은 움직임은 가격 변동이 아니라 조사 채널 차이일 수 있습니다.</li><li>나머지 9개 품목은 다나와에서 1개월 주간 이력을 확보하지 못해 11/24·11/25 두 점만 그렸습니다(변동률은 11/24 = 100 기준). 값을 추정해 채우지 않았습니다.</li><li>변동률은 품목마다 ‘첫 관측값 = 100’으로 맞춘 값이라 선의 높이끼리 바로 가격을 비교할 수는 없습니다. 실제 가격으로 보려면 위의 ‘가격(원)’ 버튼을 누르면 됩니다(세로축 로그 눈금).</li><li>품목별 최신 최저가와 변동률은 그래프 아래 범례에 있고, 매일 08:30 업데이트가 하루치 점을 이 CSV에 쌓기 때문에 관측일이 늘수록 선이 길어집니다.</li></ul>
     </div>
@@ -869,7 +899,14 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/8409449109?itemId=29319327796&vendorItemId=96234192010",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "필수",
+"qty": "2팩(1단계)",
+"buy": "새상품",
+"why": "입에 닿지는 않지만 위생·흡수력 때문에 새것. 미개봉 당근(1팩 7,000원)은 예외적으로 괜찮다는 후기",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g2",
@@ -887,7 +924,14 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/6532149469?itemId=6922145055&vendorItemId=3096887843",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "필수",
+"qty": "10~20팩",
+"buy": "새상품",
+"why": "소모품이라 새것. 20팩이 10팩보다 팩당 싸면 20팩으로",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g3",
@@ -905,7 +949,14 @@
 "nvUrl": "",
 "minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B2%A0%EB%B2%A0%EC%88%B2+%EC%8B%9C%EA%B7%B8%EB%8B%88%EC%B2%98+%EC%9C%84%EB%93%9C%EB%B8%94%EB%A3%A8+%EB%AC%BC%ED%8B%B0%EC%8A%88+%EC%BA%A1%ED%98%95+70%EB%A7%A4+20%ED%8C%A9",
 "minKind": "검색",
-"minCh": "네이버"
+"minCh": "네이버",
+"req": "필수",
+"qty": "20팩",
+"buy": "새상품",
+"why": "소모품이라 새것. 신생아 때 하루 8~10장씩 가장 빨리 닳는 품목",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g4",
@@ -923,7 +974,14 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/8631775229?vendorItemId=78809898534",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "필수",
+"qty": "1~2캔",
+"buy": "새상품",
+"why": "먹는 것이라 새것. 조리원에서 어떤 분유를 먹였는지 보고 같은 것으로 맞추는 후기가 많음",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g5",
@@ -941,7 +999,14 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/8342841236?itemId=18936774672&vendorItemId=88914450359",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "필수",
+"qty": "2~4개",
+"buy": "새상품",
+"why": "입에 닿는 젖병·젖꼭지는 새것(젖병 6개월·젖꼭지 3개월 수명)",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g6",
@@ -959,7 +1024,14 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/8438035154?itemId=24425263488&vendorItemId=94963937041",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "권장",
+"qty": "1대",
+"buy": "당근",
+"why": "램프만 정상이면 기능은 동일. 22년 12월 이전 생산은 5년 무상 AS라 영수증까지 받으면 유리",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EC%9C%A0%ED%8C%A1%20%EC%A0%96%EB%B3%91%EC%86%8C%EB%8F%85%EA%B8%B0"
 },
 {
 "key": "g7",
@@ -977,7 +1049,14 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/29162999?itemId=111414136&vendorItemId=3452585644",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "선택",
+"qty": "1대",
+"buy": "대여",
+"why": "의료기기라 중고거래가 불가 — 보건소 무료 대여(출산 후 신청·1~2개월·본체만)가 기본, 새로 사면 148,000원",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g8",
@@ -995,7 +1074,14 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/8952492715?itemId=26187938531&vendorItemId=93167381841",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "필수",
+"qty": "2~3개",
+"buy": "새상품",
+"why": "피부에 직접 닿아 새것. 사이즈 업 전까지 1~3개월만 쓰는 점 참고",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g9",
@@ -1013,7 +1099,14 @@
 "nvUrl": "",
 "minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%EB%B2%A4%ED%8A%B8+%EC%9A%B8%ED%8A%B8%EB%9D%BC%EC%97%90%EC%96%B4+%EC%95%BC%EA%B4%91+%EB%85%B8%EB%A6%AC%EA%B0%9C+SCF376+2%EC%A2%85+%EC%84%B8%ED%8A%B8",
 "minKind": "검색",
-"minCh": "네이버"
+"minCh": "네이버",
+"req": "선택",
+"qty": "1~2개",
+"buy": "새상품",
+"why": "입에 물고 빠는 것이라 새것. 아기마다 안 물 수 있어 1~2개만 먼저",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 },
 {
 "key": "g10",
@@ -1029,9 +1122,16 @@
 "note": "베이비뵨 공식 302,000원(정가 310,000원 쿠폰가, 리뷰 4.93/858). 쿠팡에는 '바운서 메쉬 정품' 일본내수·병행 상품만 있어(108,000원+배송 50,000원 등) 정품 동일 모델 가격으로 확정하지 않았습니다.",
 "cpUrl": "",
 "nvUrl": "",
-"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B4%A8+%EB%B0%94%EC%9A%B4%EC%84%9C+%EB%B8%94%EB%A6%AC%EC%8A%A4+%EB%A9%94%EC%89%AC",
 "minKind": "검색",
-"minCh": "네이버"
+"minCh": "네이버",
+"req": "선택",
+"qty": "1대",
+"buy": "당근",
+"why": "아기 취향을 타서 안 쓰는 경우가 많음 — 상태 좋은 중고로 먼저 써 보는 후기 다수",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B5%A8%20%EB%B0%94%EC%9A%B4%EC%84%9C"
 },
 {
 "key": "g11",
@@ -1049,7 +1149,14 @@
 "nvUrl": "",
 "minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%8A%A4%ED%86%A0%EC%BC%80+%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9+%ED%95%98%EC%9D%B4%EC%B2%B4%EC%96%B4+%EB%8B%A8%ED%92%88",
 "minKind": "검색",
-"minCh": "네이버"
+"minCh": "네이버",
+"req": "권장",
+"qty": "1대",
+"buy": "당근",
+"why": "뉴본세트까지 갖춘 매물이 80,000원(정가 210,000원)에 나옴. 인기라 알림 걸어두고 대기",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%ED%8A%B8%EB%A6%BD%ED%8A%B8%EB%9E%A9"
 },
 {
 "key": "g12",
@@ -1067,7 +1174,614 @@
 "nvUrl": "",
 "minUrl": "https://www.coupang.com/vp/products/7308156780?itemId=11615060339&vendorItemId=78889733722",
 "minKind": "상품",
-"minCh": "쿠팡"
+"minCh": "쿠팡",
+"req": "필수",
+"qty": "3캔",
+"buy": "새상품",
+"why": "먹는 것이라 새것. 1단계에서 2단계로 넘어가는 시점에 맞춰",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g13",
+"group": "0~1개월",
+"item": "임산부 수유 속옷·손목보호대",
+"product": "마더스베이비 실키 수유브라 + 메디니스 손목보호대 세트",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A7%88%EB%8D%94%EC%8A%A4%EB%B2%A0%EC%9D%B4%EB%B9%84%20%EC%88%98%EC%9C%A0%EB%B8%8C%EB%9D%BC",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A7%88%EB%8D%94%EC%8A%A4%EB%B2%A0%EC%9D%B4%EB%B9%84%20%EC%88%98%EC%9C%A0%EB%B8%8C%EB%9D%BC",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "3~4세트",
+"buy": "새상품",
+"why": "피부에 닿고 유즙·땀을 먹는 옷이라 후기 대부분 새것. 손목보호대는 아기가 4kg을 넘으면 손목 통증이 와서 미리 준비",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g14",
+"group": "0~1개월",
+"item": "밤부 손수건(거즈·엠보)",
+"product": "밤부베베 시그니처 엠보손수건 30매(거즈 20+엠보 20이 최소)",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B0%A4%EB%B6%80%EB%B2%A0%EB%B2%A0%20%EC%97%A0%EB%B3%B4%20%EC%86%90%EC%88%98%EA%B1%B4%2030%EB%A7%A4",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B0%A4%EB%B6%80%EB%B2%A0%EB%B2%A0%20%EC%97%A0%EB%B3%B4%20%EC%86%90%EC%88%98%EA%B1%B4%2030%EB%A7%A4",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "30~40장",
+"buy": "새상품",
+"why": "얼굴·입에 닿고 첫 세탁 2~3회에도 먼지가 계속 나옴 — 실사용 후기 공통으로 '새것' (브랜드는 상관없다는 의견 다수)",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g15",
+"group": "0~1개월",
+"item": "순면·밤부 천기저귀",
+"product": "밤부베베 대나무 시그니처 사각 천기저귀 5~10장",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B0%A4%EB%B6%80%EB%B2%A0%EB%B2%A0%20%EC%82%AC%EA%B0%81%20%EC%B2%9C%EA%B8%B0%EC%A0%80%EA%B7%80",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B0%A4%EB%B6%80%EB%B2%A0%EB%B2%A0%20%EC%82%AC%EA%B0%81%20%EC%B2%9C%EA%B8%B0%EC%A0%80%EA%B7%80",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "5~10장",
+"buy": "새상품",
+"why": "목욕 타월·받침·턱받이로 하루 종일 피부에 닿음. '비싼 목욕수건 대신 천기저귀가 최고'라는 후기 다수",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g16",
+"group": "0~1개월",
+"item": "배앓이 젖병(160ml)·젖꼭지",
+"product": "닥터브라운 옵션스 PPSU 160ml + 젖꼭지 4~6개",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%8B%A5%ED%84%B0%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%EC%98%B5%EC%85%98%EC%8A%A4%20%EC%A0%96%EB%B3%91%20160ml",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%8B%A5%ED%84%B0%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%EC%98%B5%EC%85%98%EC%8A%A4%20%EC%A0%96%EB%B3%91%20160ml",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "4~6개",
+"buy": "새상품",
+"why": "입에 닿는 젖병·젖꼭지는 소모품이라 새것. 젖병 유목민이 많아 1~2종만 먼저 사고 맞으면 추가",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g17",
+"group": "0~1개월",
+"item": "젖병 세제·실리콘 브러쉬",
+"product": "마더케이 젖병세정제 + 실리콘 젖병솔·젖꼭지솔 세트",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A7%88%EB%8D%94%EC%BC%80%EC%9D%B4%20%EC%A0%96%EB%B3%91%EC%84%B8%EC%A0%95%EC%A0%9C%20%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EB%B8%8C%EB%9F%AC%EC%89%AC",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A7%88%EB%8D%94%EC%BC%80%EC%9D%B4%20%EC%A0%96%EB%B3%91%EC%84%B8%EC%A0%95%EC%A0%9C%20%EC%8B%A4%EB%A6%AC%EC%BD%98%20%EB%B8%8C%EB%9F%AC%EC%89%AC",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1세트",
+"buy": "새상품",
+"why": "솔은 2~3주마다 갈아야 하는 소모품이고 세제는 먹는 도구에 쓰므로 새것 (배송비 낼 때 여유분 함께)",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g18",
+"group": "0~1개월",
+"item": "아기 세탁세제·섬유유연제",
+"product": "아이솝 아기세제 무향 1L + 섬유유연제",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%EC%9D%B4%EC%86%9D%20%EC%95%84%EA%B8%B0%EC%84%B8%EC%A0%9C%20%EB%AC%B4%ED%96%A5",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%EC%9D%B4%EC%86%9D%20%EC%95%84%EA%B8%B0%EC%84%B8%EC%A0%9C%20%EB%AC%B4%ED%96%A5",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1세트",
+"buy": "새상품",
+"why": "피부에 닿는 세제라 무향·아기 전용 새것. 세탁망(무형광)도 함께 준비",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g19",
+"group": "0~1개월",
+"item": "신생아 수딩젤·고보습 로션",
+"product": "아토팜 수딩젤 1개 + 고보습 로션 1개",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%ED%86%A0%ED%8C%9C%20%EC%88%98%EB%94%A9%EC%A0%A4",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%ED%86%A0%ED%8C%9C%20%EC%88%98%EB%94%A9%EC%A0%A4",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "각 1개",
+"buy": "새상품",
+"why": "신생아 피부에 바르는 것이라 새것. 개봉 후 6~12개월 안에 쓰는 양만",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g20",
+"group": "0~1개월",
+"item": "올인원 아기띠·힙시트",
+"product": "에르고베이비 옴니 360(신생아 인서트형) 또는 코니 사이드 힙시트",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%97%90%EB%A5%B4%EA%B3%A0%EB%B2%A0%EC%9D%B4%EB%B9%84%20%EC%98%B4%EB%8B%88%20360",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%97%90%EB%A5%B4%EA%B3%A0%EB%B2%A0%EC%9D%B4%EB%B9%84%20%EC%98%B4%EB%8B%88%20360",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1개",
+"buy": "당근",
+"why": "신생아용 슬링·미니 아기띠는 5개월이면 재당근되는 국민템이라 중고가 합리적. 힙시트는 목 가눈 뒤 새것",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EC%95%84%EA%B8%B0%EB%9D%A0"
+},
+{
+"key": "g21",
+"group": "0~1개월",
+"item": "디지털 온습도계",
+"product": "휴비딕 HT-1(백라이트) 등 2개",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%9C%B4%EB%B9%84%EB%94%95%20%EC%98%A8%EC%8A%B5%EB%8F%84%EA%B3%84",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%9C%B4%EB%B9%84%EB%94%95%20%EC%98%A8%EC%8A%B5%EB%8F%84%EA%B3%84",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "2개",
+"buy": "당근",
+"why": "저가라 당근 매물이 흔하고 거실·아기방 두 개가 필요. 백라이트 유무만 확인하면 충분",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EC%98%A8%EC%8A%B5%EB%8F%84%EA%B3%84"
+},
+{
+"key": "g22",
+"group": "0~1개월",
+"item": "항균 아기 지퍼백",
+"product": "마더케이 아기 지퍼백 사이즈별 세트",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%EA%B8%B0%20%EC%A7%80%ED%8D%BC%EB%B0%B1",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%95%84%EA%B8%B0%20%EC%A7%80%ED%8D%BC%EB%B0%B1",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "권장",
+"qty": "1세트",
+"buy": "새상품",
+"why": "소모품이라 새것. 다만 후기 상당수는 '일반 지퍼백으로 충분'이라 선택 품목",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g23",
+"group": "0~1개월",
+"item": "자동 분유제조기(브레짜)",
+"product": "베이비브레짜 포뮬러 프로 어드밴스드 BRZFRP-1A",
+"cp": 299000,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B8%8C%EB%A0%88%EC%A7%9C%20%EC%9E%90%EB%8F%99%EB%B6%84%EC%9C%A0%EC%A0%9C%EC%A1%B0%EA%B8%B0",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B8%8C%EB%A0%88%EC%A7%9C%20%EC%9E%90%EB%8F%99%EB%B6%84%EC%9C%A0%EC%A0%9C%EC%A1%B0%EA%B8%B0",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "선택",
+"qty": "1대",
+"buy": "당근",
+"why": "가격방어가 안 돼 원가 20%에도 나오는 품목. 부품 세척이 번거로워 2주 만에 당근행 사례도 있음",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EB%B8%8C%EB%A0%88%EC%A7%9C"
+},
+{
+"key": "g24",
+"group": "1~3개월",
+"item": "유모차(절충형·디럭스)",
+"product": "미마자리 디럭스급(디럭스) 또는 리안 절충형",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%AF%B8%EB%A7%88%EC%9E%90%EB%A6%AC%20%EB%94%94%EB%9F%AD%EC%8A%A4%20%EC%9C%A0%EB%AA%A8%EC%B0%A8",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%AF%B8%EB%A7%88%EC%9E%90%EB%A6%AC%20%EB%94%94%EB%9F%AD%EC%8A%A4%20%EC%9C%A0%EB%AA%A8%EC%B0%A8",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "선택",
+"qty": "1대",
+"buy": "당근",
+"why": "디럭스는 정가 199만원짜리가 당근 30만원대. 차에 싣고 다니기 힘들어 곧 절충형을 새로 사는 경우가 많음",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EC%9C%A0%EB%AA%A8%EC%B0%A8"
+},
+{
+"key": "g25",
+"group": "1~3개월",
+"item": "국민 모빌(타이니러브)",
+"product": "타이니러브 수더앤그루브 모빌(흑백+컬러)",
+"cp": 126660,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%83%80%EC%9D%B4%EB%8B%88%EB%9F%AC%EB%B8%8C%20%EB%AA%A8%EB%B9%8C",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%83%80%EC%9D%B4%EB%8B%88%EB%9F%AC%EB%B8%8C%20%EB%AA%A8%EB%B9%8C",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1세트",
+"buy": "당근",
+"why": "실내에서만 쓰고 4~5개월이면 졸업이라 상태 좋은 매물이 많음. 작동·음악·부품만 확인",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%ED%83%80%EC%9D%B4%EB%8B%88%EB%9F%AC%EB%B8%8C%20%EB%AA%A8%EB%B9%8C"
+},
+{
+"key": "g26",
+"group": "3~6개월",
+"item": "층간소음 시공·폴더 매트",
+"product": "플로리아 구름매트(퍼즐) 또는 시공 매트(평수 견적)",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%94%8C%EB%A1%9C%EB%A6%AC%EC%95%84%20%EA%B5%AC%EB%A6%84%EB%A7%A4%ED%8A%B8",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%94%8C%EB%A1%9C%EB%A6%AC%EC%95%84%20%EA%B5%AC%EB%A6%84%EB%A7%A4%ED%8A%B8",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "선택",
+"qty": "1세트",
+"buy": "새상품",
+"why": "시공 매트는 34평 거실·복도 기준 321만원 수준의 새 시공. 퍼즐매트만 80장 10만원에 당근하는 사례도 있음",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g27",
+"group": "0~1개월",
+"item": "바구니 카시트",
+"product": "페도라 인펀트 카시트(대여 또는 당근)",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%8E%98%EB%8F%84%EB%9D%BC%20%EB%B0%94%EA%B5%AC%EB%8B%88%20%EC%B9%B4%EC%8B%9C%ED%8A%B8",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%8E%98%EB%8F%84%EB%9D%BC%20%EB%B0%94%EA%B5%AC%EB%8B%88%20%EC%B9%B4%EC%8B%9C%ED%8A%B8",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1개",
+"buy": "대여",
+"why": "실사용 10회 미만(조리원→집)이라 대여점·당근 1.5~3만원. 사고이력·리콜·안전규격은 꼭 확인",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g28",
+"group": "0~1개월",
+"item": "배냇저고리·신생아 모자",
+"product": "아가방·오가닉맘 배냇저고리 3~5벌 + 모자",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B0%B0%EB%83%87%EC%A0%80%EA%B3%A0%EB%A6%AC%20%EC%8B%A0%EC%83%9D%EC%95%84",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B0%B0%EB%83%87%EC%A0%80%EA%B3%A0%EB%A6%AC%20%EC%8B%A0%EC%83%9D%EC%95%84",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "3~5벌",
+"buy": "대여",
+"why": "출산 선물로 가장 많이 들어오는 품목 — 미리 사면 남는다는 후기 공통. 물려받기·선물 먼저 확인",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g29",
+"group": "0~1개월",
+"item": "역류방지쿠션(역방쿠)",
+"product": "제이앤제나 역류방지쿠션 18도(커버+솜)",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%A0%9C%EC%9D%B4%EC%95%A4%EC%A0%9C%EB%82%98%20%EC%97%AD%EB%A5%98%EB%B0%A9%EC%A7%80%EC%BF%A0%EC%85%98",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%A0%9C%EC%9D%B4%EC%95%A4%EC%A0%9C%EB%82%98%20%EC%97%AD%EB%A5%98%EB%B0%A9%EC%A7%80%EC%BF%A0%EC%85%98",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1개",
+"buy": "새상품",
+"why": "아기가 토를 많이 해서 중고는 기피하는 후기 다수. 핫딜로 6만원대(정가 8만원) 구매 사례",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g30",
+"group": "0~1개월",
+"item": "기저귀 갈이대(소베맘)",
+"product": "소베맘 3세대 솔리드 원터치 기저귀교환대",
+"cp": 109900,
+"cpShip": "무료배송",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%86%8C%EB%B2%A0%EB%A7%98%20%EA%B8%B0%EC%A0%80%EA%B7%80%20%EA%B0%88%EC%9D%B4%EB%8C%80",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%86%8C%EB%B2%A0%EB%A7%98%20%EA%B8%B0%EC%A0%80%EA%B7%80%20%EA%B0%88%EC%9D%B4%EB%8C%80",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1개",
+"buy": "당근",
+"why": "커버 분리 세탁 + 방수패드로 위생 해결, 사용은 4개월 — '깨끗한 것 당근 추천'이 다수. 허리·무릎 보호",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EC%86%8C%EB%B2%A0%EB%A7%98%20%EA%B8%B0%EC%A0%80%EA%B7%80%EA%B0%88%EC%9D%B4%EB%8C%80"
+},
+{
+"key": "g31",
+"group": "0~1개월",
+"item": "신생아 등받이 욕조(슈너글)",
+"product": "슈너글 신생아 욕조 2개(목욕·헹굼)",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%8A%88%EB%84%88%EA%B8%80%20%EC%95%84%EA%B8%B0%EC%9A%95%EC%A1%B0",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EC%8A%88%EB%84%88%EA%B8%80%20%EC%95%84%EA%B8%B0%EC%9A%95%EC%A1%B0",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1~2개",
+"buy": "당근",
+"why": "사이즈별로 갈아타 100일 안팎만 사용. 변색·곰팡이 없으면 세척해 쓴다는 후기 — 위생 민감하면 새것",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EC%8A%88%EB%84%88%EA%B8%80%20%EC%9A%95%EC%A1%B0"
+},
+{
+"key": "g32",
+"group": "0~1개월",
+"item": "원목 신생아 아기침대",
+"product": "리안 드림콧(26년형) 이동식 아기침대",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": 260000,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A6%AC%EC%95%88%20%EB%93%9C%EB%A6%BC%EC%BD%A7%20%EC%95%84%EA%B8%B0%EC%B9%A8%EB%8C%80",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A6%AC%EC%95%88%20%EB%93%9C%EB%A6%BC%EC%BD%A7%20%EC%95%84%EA%B8%B0%EC%B9%A8%EB%8C%80",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "권장",
+"qty": "1개",
+"buy": "당근",
+"why": "뒤집기 전 100일 안팎만 사용 — 당근 5.5만원(정가 17.5만) 사례. 프레임 흔들림·나사·매트리스만 확인",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EB%A6%AC%EC%95%88%20%EB%93%9C%EB%A6%BC%EC%BD%A7"
+},
+{
+"key": "g33",
+"group": "0~1개월",
+"item": "안심 분유포트(43℃ 보온)",
+"product": "보르르 분유포트(또는 릴리팟)",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B3%B4%EB%A5%B4%EB%A5%B4%20%EB%B6%84%EC%9C%A0%ED%8F%AC%ED%8A%B8",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B3%B4%EB%A5%B4%EB%A5%B4%20%EB%B6%84%EC%9C%A0%ED%8F%AC%ED%8A%B8",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1대",
+"buy": "당근",
+"why": "입에 직접 닿지 않고 매일 물을 끓여 소독되므로 당근 충분. 새벽 수유 시간을 줄여주는 필수템",
+"dg": null,
+"dgWhere": "",
+"dgUrl": "https://www.daangn.com/kr/buy-sell/?in=%EC%86%A1%ED%8C%8C%EA%B5%AC&search=%EB%B6%84%EC%9C%A0%ED%8F%AC%ED%8A%B8"
+},
+{
+"key": "g34",
+"group": "0~1개월",
+"item": "브라운 체온계 IRT-6520",
+"product": "브라운 귀 적외선 체온계 IRT-6520",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": 119000,
+"nvShipText": "무료배송",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%EC%B2%B4%EC%98%A8%EA%B3%84%20IRT-6520",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%B8%8C%EB%9D%BC%EC%9A%B4%20%EC%B2%B4%EC%98%A8%EA%B3%84%20IRT-6520",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1개",
+"buy": "새상품",
+"why": "오래 쓰면 고장률이 올라가는 정밀 의료기기라 새것. 국내 A/S 되는 정품인지 확인",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g35",
+"group": "0~1개월",
+"item": "아기비데·필터 샤워기",
+"product": "포프베베 아기비데 + 필터 아기수전(해피달링·두리)",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%8F%AC%ED%94%84%EB%B2%A0%EB%B2%A0%20%EC%95%84%EA%B8%B0%EB%B9%84%EB%8D%B0",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%ED%8F%AC%ED%94%84%EB%B2%A0%EB%B2%A0%20%EC%95%84%EA%B8%B0%EB%B9%84%EB%8D%B0",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1세트",
+"buy": "새상품",
+"why": "위생·내구성 문제로 당근 비추천이 다수. 세면대 설치 가능 여부를 먼저 확인",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
+},
+{
+"key": "g36",
+"group": "0~1개월",
+"item": "신생아 위생 세트(면봉·손톱가위)",
+"product": "마더케이 손톱가위 + 3종 면봉 세트",
+"cp": null,
+"cpShip": "",
+"cpMiss": "미확인",
+"nv": null,
+"nvShipText": "",
+"nvMiss": "미조사",
+"note": "",
+"cpUrl": "",
+"nvUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A7%88%EB%8D%94%EC%BC%80%EC%9D%B4%20%EC%86%90%ED%86%B1%EA%B0%80%EC%9C%84%20%EB%A9%B4%EB%B4%89%20%EC%84%B8%ED%8A%B8",
+"minUrl": "https://m.search.naver.com/search.naver?ssc=tab.m_shop&where=m_shop&query=%EB%A7%88%EB%8D%94%EC%BC%80%EC%9D%B4%20%EC%86%90%ED%86%B1%EA%B0%80%EC%9C%84%20%EB%A9%B4%EB%B4%89%20%EC%84%B8%ED%8A%B8",
+"minKind": "검색",
+"minCh": "네이버",
+"req": "필수",
+"qty": "1세트",
+"buy": "새상품",
+"why": "자잘한 소모품이라 가격 부담이 없어 새것. 신생아 때는 전동 네일트리머를 쓰는 집도 많음",
+"dg": null,
+"dgWhere": "",
+"dgUrl": ""
 }
 ];
   var DATES = {
@@ -1525,6 +2239,13 @@
     {k:"3~6개월", label:"3~6개월"}
   ];
   var filter = "all";
+  var BUYLIST = [
+    {k:"all", label:"전체"},
+    {k:"당근", label:"🥕 당근 추천"},
+    {k:"새상품", label:"🆕 새 상품 추천"},
+    {k:"대여", label:"🎁 대여·지원"}
+  ];
+  var bfilter = "all";
 
   function renderFilters(){
     document.getElementById("filters").innerHTML = GROUPS.map(function(g){
@@ -1538,9 +2259,28 @@
         renderFilters(); renderChart(); renderTable();
       });
     });
+    renderBfilters();
   }
 
-  function visible(){ return GOODS.filter(function(g){ return filter === "all" || g.group === filter; }); }
+  function renderBfilters(){
+    document.getElementById("bfilters").innerHTML = BUYLIST.map(function(g){
+      var n = g.k === "all" ? GOODS.length : GOODS.filter(function(x){ return x.buy === g.k; }).length;
+      return '<button class="fbtn bf" type="button" data-bf="' + g.k + '" aria-pressed="' +
+        (bfilter === g.k ? "true" : "false") + '">' + g.label + '<span class="n">' + n + '</span></button>';
+    }).join("");
+    each("#bfilters .fbtn", function(b){
+      b.addEventListener("click", function(){
+        bfilter = b.getAttribute("data-bf");
+        renderFilters(); renderChart(); renderTable();
+      });
+    });
+  }
+
+  function visible(){
+    return GOODS.filter(function(g){
+      return (filter === "all" || g.group === filter) && (bfilter === "all" || g.buy === bfilter);
+    });
+  }
 
   function bestOf(g){
     var c = g.cp, n = g.nv;
@@ -1573,9 +2313,12 @@
     var out = "";
     var groups = ["0~1개월","1~3개월","3~6개월"];
     groups.forEach(function(gr){
-      var rows = list.filter(function(g){ return g.group === gr; });
+      var allrows = list.filter(function(g){ return g.group === gr; });
+      var rows = allrows.filter(function(g){ return g.cp != null || g.nv != null; });
       if(!rows.length) return;
-      out += '<div class="cgrp"><span>' + gr + '</span><em>' + rows.length + '개 항목</em></div>';
+      var skip = allrows.length - rows.length;
+      out += '<div class="cgrp"><span>' + gr + '</span><em>' + rows.length + '개 항목' +
+        (skip ? ' · 가격 미확인 ' + skip + '개 제외' : '') + '</em></div>';
       rows.forEach(function(g){
         var c = g.cp, n = g.nv;
         var max = Math.max(c == null ? 0 : c, n == null ? 0 : n);
@@ -1682,6 +2425,33 @@
     if(h) mb.insertAdjacentHTML("beforeend", h);
   }
 
+  /* ---------- section 2: 구매방법 배지 · 당근 칸 ---------- */
+  var BUY_LABEL = { "당근": "🥕 당근 추천", "새상품": "🆕 새 상품 추천", "대여": "🎁 대여·지원" };
+  var BUY_CLS = { "당근": "b-dg", "새상품": "b-new", "대여": "b-rent" };
+  var REQ_CLS = { "필수": "r-must", "권장": "r-rec", "선택": "r-opt" };
+
+  function buyBadge(g){
+    if(!g.buy) return "";
+    return '<span class="bm ' + (BUY_CLS[g.buy] || "b-new") + '">' + (BUY_LABEL[g.buy] || g.buy) + '</span>';
+  }
+  function reqPill(g){
+    if(!g.req) return "";
+    return '<span class="req ' + (REQ_CLS[g.req] || "r-opt") + '">' + (g.req === "필수" ? "★" : "") + g.req + '</span>';
+  }
+  function dgHtml(g){
+    if(g.buy !== "당근" && (g.dg === null || g.dg === undefined)) return '<span class="dg-none">—</span>';
+    var link = "";
+    if(g.dgUrl){
+      link = '<a class="dg-link" href="' + g.dgUrl + '" target="_blank" rel="noopener noreferrer"' +
+        ' aria-label="' + escH(g.item) + ' 당근 검색, 새 창으로 열기">' +
+        (g.dg === null || g.dg === undefined ? "당근 보기 ↗" : "매물 보기 ↗") + '</a>';
+    }
+    var body = (g.dg === null || g.dg === undefined)
+      ? '<span class="dg-none">매물 확인 필요</span>'
+      : '<div class="price dg">' + won(g.dg) + '원' + (g.dgWhere ? '<small>' + escH(g.dgWhere) + '</small>' : '') + '</div>';
+    return body + link;
+  }
+
   function renderTable(){
     var list = visible();
     var out = "";
@@ -1698,11 +2468,13 @@
       var cpTxt = g.cp == null ? (g.cpMiss || "미확인") : won(g.cp) + "원";
       var nvTxt = g.nv == null ? (g.nvMiss || "미조사") : won(g.nv) + "원";
 
-      out += '<div class="tr' + (checked ? " done" : "") + '" data-row="' + g.key + '">' +
+      out += '<div class="tr' + (checked ? " done" : "") + '" data-row="' + g.key + '" data-buy="' + escH(g.buy || "") + '">' +
         '<input class="gcheck" type="checkbox" data-good="' + g.key + '" aria-label="' + g.item + ' 구매 체크"' + (checked ? " checked" : "") + '>' +
         '<div class="gd">' +
           '<div class="gd-n"><span class="it-name">' + g.item + '</span><span class="done-badge">✓ 구매완료</span><span class="sr">' + g.group + '</span></div>' +
           '<div class="gd-p">' + g.product + '</div>' +
+          '<div class="gd-tags">' + buyBadge(g) + reqPill(g) + (g.qty ? '<span class="qty">' + g.qty + '</span>' : '') + '</div>' +
+          (g.why ? '<div class="gd-why">' + g.why + '</div>' : '') +
           (g.note ? '<div class="gd-note">' + g.note + '</div>' : '') +
           '<div class="badge-cell"><span class="gd-grp">' + g.group + '</span> ' + badge + '</div>' +
         '</div>' +
@@ -1712,6 +2484,7 @@
         '<div class="pcell" data-l="네이버">' +
           '<div class="' + nvCls + '">' + nvTxt + (g.nv != null && g.nvShipText ? '<small>' + g.nvShipText + '</small>' : '') + '</div>' +
         '</div>' +
+        '<div class="pcell dg-cell" data-l="당근">' + dgHtml(g) + '</div>' +
         '<div class="pcell badge-cell buy-cell" data-l="최저가">' + badge + buyHtml(g) + '</div>' +
         mbHtml(g) +
       '</div>';
@@ -2073,7 +2846,7 @@ null,
 "품목별 최신 최저가와 변동률은 그래프 아래 범례에 있고, 매일 08:30 업데이트가 하루치 점을 이 CSV에 쌓기 때문에 관측일이 늘수록 선이 길어집니다."
 ]
 };
-  var trendMode = "pct";
+  var trendMode = "price";
 
   function trendPoint(s, i, mode){
     var v = s.values[i];
@@ -2164,7 +2937,7 @@ null,
       o.push('<text x="' + F(X(i)) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="10.5" font-weight="600" fill="#b3a8a3" font-family="inherit">' + d + '</text>');
     });
 
-    ptsAll.forEach(function(item){
+    ptsAll.forEach(function(item, si){
       var s = item.s, pts = item.pts;
       if(!pts.length) return;
       if(pts.length > 1){
@@ -2174,6 +2947,9 @@ null,
       pts.forEach(function(p, k){
         var last = k === pts.length - 1;
         o.push('<circle cx="' + F(X(p[0])) + '" cy="' + F(Y(p[1])) + '" r="' + (last ? "3.6" : "2.2") + '" fill="' + s.color + '" stroke="#fff" stroke-width="' + (last ? "1.6" : "1") + '"/>');
+        o.push('<circle class="hit" cx="' + F(X(p[0])) + '" cy="' + F(Y(p[1])) + '" r="14" fill="transparent"' +
+          ' data-s="' + si + '" data-i="' + p[0] + '" data-tt="' +
+          escH(TRENDD.dates[p[0]] + " · " + s.name + " · " + won(s.values[p[0]]) + "원") + '"/>');
       });
     });
     o.push("</svg>");
@@ -2206,6 +2982,43 @@ null,
     if(sub) sub.textContent = trendMode === "pct"
       ? "10/27~11/25 · 품목별 첫 관측값 = 100 지수"
       : "10/27~11/25 · 실제 최저가(원, 로그 눈금)";
+  }
+
+  function initTrendTip(){
+    var box = document.getElementById("trend");
+    var tip = document.getElementById("trendTip");
+    if(!box || !tip) return;
+    function show(hit){
+      var i = parseInt(hit.getAttribute("data-i"), 10);
+      var si = parseInt(hit.getAttribute("data-s"), 10);
+      var s = TRENDD.series[si];
+      if(!s || isNaN(i)) return;
+      var same = [];
+      TRENDD.series.forEach(function(o, k){
+        if(k === si) return;
+        var v = o.values[i];
+        if(v !== null && v !== undefined) same.push(o.name + " " + won(v) + "원");
+      });
+      var html = '<span>📅 ' + TRENDD.dates[i] + '</span>' +
+        '<b>' + escH(s.name) + '</b><b>' + won(s.values[i]) + '원</b>';
+      if(same.length){
+        html += '<span class="tt-o">같은 날 · ' + same.slice(0, 5).map(function(x){ return escH(x); }).join(" / ") +
+          (same.length > 5 ? " 외 " + (same.length - 5) + "개" : "") + '</span>';
+      }
+      tip.innerHTML = html;
+      tip.removeAttribute("hidden");
+      each("#trend circle.sel", function(c){ c.setAttribute("class", ""); });
+      var r = hit.getAttribute("r");
+      hit.setAttribute("class", "hit sel");
+    }
+    box.addEventListener("click", function(ev){
+      var t = ev.target;
+      if(t && t.getAttribute && t.getAttribute("class") && String(t.getAttribute("class")).indexOf("hit") > -1) show(t);
+    });
+    box.addEventListener("pointerover", function(ev){
+      var t = ev.target;
+      if(t && t.getAttribute && String(t.getAttribute("class") || "").indexOf("hit") > -1) show(t);
+    });
   }
 
   function initTrendToggle(){
@@ -2381,6 +3194,7 @@ null,
   renderTable();
   renderTrend();
   initTrendToggle();
+  initTrendTip();
   initLeave();
   initReset();
 })();
